@@ -147,8 +147,8 @@
     <!-- https://pretextbook.org/doc/guide/html/publication-file-online.html#online-style-options -->
     <css
         theme="tacoma"
-        primary-color="#386F94"
-        primary-color-dark="#5192BD"
+        primary-color="#00FFCC"
+        primary-color-dark="#00FFCC"
         provide-dark-mode="yes"
     />
 

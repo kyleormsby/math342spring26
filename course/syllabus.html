@@ -9,7 +9,7 @@
 <!--******************************************-->
 <!--*  Authored with PreTeXt                 *-->
 <!--*  pretextbook.org                       *-->
-<!--*  Theme: denver                         *-->
+<!--*  Theme: tacoma                         *-->
 <!--*  Palette:                              *-->
 <!--******************************************-->
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
@@ -77,8 +77,8 @@ window.MathJax = {
 </script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
-<meta property="book:title" content="Course Name (change me)">
-<meta property="book:author" content="Instructor Lastname">
+<meta property="book:title" content="Topology">
+<meta property="book:author" content="Kyle Ormsby">
 <script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
 <!--** Runestone components to run locally in reader's browser **-->
 <!--** No external communication:                              **-->
@@ -101,22 +101,22 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.11.7';
+eBookConfig.runestone_version = '7.11.9';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.991c135ccf182bf5.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.c2757fc695bc848c.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.f4ab138da65f4203.css">
+<script src="_static/prefix-runtime.991c135ccf182bf5.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.1c010553c35c544c.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.677a75a9120449ff.css">
 <script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
 </head>
 <body class="pretext book ignore-math">
 <a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner"><div class="title-container">
-<h1 class="heading"><a href="root-1-2.html"><span class="title">Course Name (change me)</span> <span class="subtitle">MATH xxx Semester 20xx</span></a></h1>
-<p class="byline">Instructor Lastname</p>
+<h1 class="heading"><a href="root-1-2.html"><span class="title">Topology</span> <span class="subtitle">MATH 342 Spring 2026</span></a></h1>
+<p class="byline">Kyle Ormsby</p>
 </div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
 <button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
 <div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
@@ -153,90 +153,217 @@ eBookConfig.enable_chatcodes =  false;
 <div class="toc-title-box"><a href="course-documents.html" class="internal"><span class="title">Course Documents</span></a></div>
 <ul class="structural toc-item-list contains-active"><li class="toc-item toc-section contains-active">
 <div class="toc-title-box"><a href="syllabus.html" class="internal"><span class="title">Syllabus</span></a></div>
-<ul class="structural toc-item-list active">
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="syllabus.html#sec-course-info" class="internal"><span class="title">Course Information</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="syllabus.html#sec-assessments" class="internal"><span class="title">Assessments and Grades</span></a></div></li>
-</ul>
+<ul class="structural toc-item-list active"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="syllabus.html#sec-course-info" class="internal"><span class="title">Course Information</span></a></div></li></ul>
 </li></ul>
 </li>
 <li class="toc-item toc-chapter">
 <div class="toc-title-box"><a href="course-notes.html" class="internal"><span class="title">Course Notes</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-section">
+<ul class="structural toc-item-list"><li class="toc-item toc-section">
 <div class="toc-title-box"><a href="notes-week-01.html" class="internal"><span class="title">Week 1</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-3" class="internal"><span class="title">Monday 8/22</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-4" class="internal"><span class="title">Wednesday 8/24</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-5" class="internal"><span class="title">Friday 8/26</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-2" class="internal"><span class="title">Monday</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-3" class="internal"><span class="title">Wednesday</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-4" class="internal"><span class="title">Friday</span></a></div></li>
 </ul>
+</li></ul>
 </li>
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="notes-week-02.html" class="internal"><span class="title">Week 2</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-2" class="internal"><span class="title">Monday</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-3" class="internal"><span class="title">Wednesday</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-4" class="internal"><span class="title">Friday</span></a></div></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="activities.html" class="internal"><span class="title">In-Class Activities</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="activity-01-intro-activity.html" class="internal"><span class="title">Introduction Activity</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="handouts.html" class="internal"><span class="title">Handouts</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-handout"><div class="toc-title-box"><a href="handouts-2.html" class="internal"><span class="title">Handout Title</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="homework.html" class="internal"><span class="title">Homework</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-2.html" class="internal"><span class="title">Homework 01</span></a></div></li></ul>
-</li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="homework.html" class="internal"><span class="title">Homework</span></a></div></li>
 </ul></nav></div>
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="syllabus"><h2 class="heading hide-type">
 <span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Syllabus</span>
 </h2>
-<section class="introduction" id="syllabus-2"><div class="para" id="syllabus-2-1"><div class="autopermalink" data-description="Paragraph"><a href="#syllabus-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div></section><section class="subsection" id="sec-course-info"><h3 class="heading hide-type">
+<section class="subsection" id="sec-course-info"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Course Information</span>
 </h3>
 <div class="para logical" id="sec-course-info-2">
-<div class="para">This is the syllabus for <dfn class="terminology">course name (MATH xxx, section xxx)</dfn> for [term] 20xx. It is a [n] credit course. </div>
 <dl class="description-list">
-<dt id="sec-course-info-2-2-1">Instructor<div class="autopermalink" data-description="Item: Instructor"><a href="#sec-course-info-2-2-1" title="Copy heading and permalink for Item: Instructor" aria-label="Copy heading and permalink for Item: Instructor">🔗</a></div>
+<dt id="sec-course-info-2-1-1">Instructor<div class="autopermalink" data-description="Item: Instructor"><a href="#sec-course-info-2-1-1" title="Copy heading and permalink for Item: Instructor" aria-label="Copy heading and permalink for Item: Instructor">🔗</a></div>
 </dt>
-<dd><div class="para" id="sec-course-info-2-2-1-2">Prof. Lastname, Office Location, <a class="external" href="mailto:prof.lastname@example.edu" target="_blank">prof.lastname@example.edu</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<dd><div class="para" id="sec-course-info-2-1-1-2">Kyle Ormsby, <a class="external" href="mailto:ormsbyk@reed.edu" target="_blank">ormsbyk@reed.edu</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></dd>
-<dt id="sec-course-info-2-2-2">Student Hours<div class="autopermalink" data-description="Item: Student Hours"><a href="#sec-course-info-2-2-2" title="Copy heading and permalink for Item: Student Hours" aria-label="Copy heading and permalink for Item: Student Hours">🔗</a></div>
+<dt id="sec-course-info-2-1-2">Class meetings<div class="autopermalink" data-description="Item: Class meetings"><a href="#sec-course-info-2-1-2" title="Copy heading and permalink for Item: Class meetings" aria-label="Copy heading and permalink for Item: Class meetings">🔗</a></div>
 </dt>
-<dd><div class="para" id="sec-course-info-2-2-2-2">TBD<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<dd><div class="para" id="sec-course-info-2-1-2-2">MWF 14:40-15:30 in Eliot 207<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-1-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></dd>
-<dt id="sec-course-info-2-2-3">Class meets<div class="autopermalink" data-description="Item: Class meets"><a href="#sec-course-info-2-2-3" title="Copy heading and permalink for Item: Class meets" aria-label="Copy heading and permalink for Item: Class meets">🔗</a></div>
+<dt id="sec-course-info-2-1-3">Office hours<div class="autopermalink" data-description="Item: Office hours"><a href="#sec-course-info-2-1-3" title="Copy heading and permalink for Item: Office hours" aria-label="Copy heading and permalink for Item: Office hours">🔗</a></div>
 </dt>
-<dd><div class="para" id="sec-course-info-2-2-3-2">course times and location.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-2-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<dd><div class="para" id="sec-course-info-2-1-3-2">TuTh 13:00-14:00 in Lib 306 and <a class="external" href="https://calendar.notion.so/meet/kyleormsby/office" target="_blank">by appointment</a><div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-1-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></dd>
-<dt id="sec-course-info-2-2-4">Course Description<div class="autopermalink" data-description="Item: Course Description"><a href="#sec-course-info-2-2-4" title="Copy heading and permalink for Item: Course Description" aria-label="Copy heading and permalink for Item: Course Description">🔗</a></div>
+<dt id="sec-course-info-2-1-4">Zulip workspace<div class="autopermalink" data-description="Item: Zulip workspace"><a href="#sec-course-info-2-1-4" title="Copy heading and permalink for Item: Zulip workspace" aria-label="Copy heading and permalink for Item: Zulip workspace">🔗</a></div>
 </dt>
-<dd><div class="para" id="sec-course-info-2-2-4-2">course description from catalog<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-2-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div></dd>
-<dt id="sec-course-info-2-2-5">Prerequisite<div class="autopermalink" data-description="Item: Prerequisite"><a href="#sec-course-info-2-2-5" title="Copy heading and permalink for Item: Prerequisite" aria-label="Copy heading and permalink for Item: Prerequisite">🔗</a></div>
-</dt>
-<dd><div class="para" id="sec-course-info-2-2-5-2">list of prerequisites<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-2-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div></dd>
-<dt id="sec-course-info-2-2-6">Textbook and course materials<div class="autopermalink" data-description="Item: Textbook and course materials"><a href="#sec-course-info-2-2-6" title="Copy heading and permalink for Item: Textbook and course materials" aria-label="Copy heading and permalink for Item: Textbook and course materials">🔗</a></div>
-</dt>
-<dd><div class="para" id="sec-course-info-2-2-6-2">
-<span class="booktitle">textbook name</span> by textbook author.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-2-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<dd><div class="para" id="sec-course-info-2-1-4-2">
+<a class="external" href="https://math342-2026.zulipchat.com/" target="_blank">math342-2026.zulipchat.com</a><div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2-1-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div></dd>
 </dl>
 <div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<section class="paragraphs" id="sec-course-info-3"><h4 class="heading"><span class="title">Course Overview.</span></h4>
-<div class="para" id="sec-course-info-3-2"><div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
-<div class="autopermalink" data-description="Paragraphs: Course Overview"><a href="#sec-course-info-3" title="Copy heading and permalink for Paragraphs: Course Overview" aria-label="Copy heading and permalink for Paragraphs: Course Overview">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Course Information"><a href="#sec-course-info" title="Copy heading and permalink for Subsection: Course Information" aria-label="Copy heading and permalink for Subsection: Course Information">🔗</a></div></section><section class="subsection" id="sec-assessments"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Assessments and Grades</span>
-</h3>
-<div class="para" id="sec-assessments-2"><div class="autopermalink" data-description="Paragraph"><a href="#sec-assessments-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
-<div class="autopermalink" data-description="Subsection: Assessments and Grades"><a href="#sec-assessments" title="Copy heading and permalink for Subsection: Assessments and Grades" aria-label="Copy heading and permalink for Subsection: Assessments and Grades">🔗</a></div></section><div class="autopermalink" data-description="Section: Syllabus"><a href="#syllabus" title="Copy heading and permalink for Section: Syllabus" aria-label="Copy heading and permalink for Section: Syllabus">🔗</a></div></section></div>
+<section class="paragraphs" id="sec-course-info-3"><h4 class="heading"><span class="title">Course description.</span></h4>
+<div class="para" id="sec-course-info-3-2">Topology is the study of properties of spaces and maps that are invariant under continuous deformation — the qualitative geometry captured by notions like continuity, convergence, compactness, and connectedness rather than by distances or angles. In this course we will build a rigorous foundation for these ideas and then use it as a common language for a range of modern examples, with particular attention to configuration spaces and moduli spaces, manifolds and their local-to-global structure, and profinite spaces that arise as inverse limits and in “arithmetic” topological contexts. We will also introduce homology as a first bridge from point-set foundations to algebraic topology, using it to extract computable invariants and to illuminate how spaces are built. Along the way we will emphasize categorical perspectives — functoriality, universal properties, and adjointness — as tools for organizing constructions and revealing the relationships among these different kinds of spaces.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Course description"><a href="#sec-course-info-3" title="Copy heading and permalink for Paragraphs: Course description" aria-label="Copy heading and permalink for Paragraphs: Course description">🔗</a></div></section><section class="paragraphs" id="sec-course-info-4"><h4 class="heading"><span class="title">Learning outcomes.</span></h4>
+<div class="para logical" id="sec-course-info-4-2">
+<div class="para">Here are the overarching goals of the course:</div>
+<ul class="disc" id="sec-course-info-4-2-1">
+<li id="sec-course-info-4-2-1-1">
+<div class="para" id="sec-course-info-4-2-1-1-1">Converse in the languages of topology and category theory.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-4-2-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-4-2-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-4-2-1-2">
+<div class="para" id="sec-course-info-4-2-1-2-1">Utilize universal properties and concrete constructions to define mathematical objects and manipulate them.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-4-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-4-2-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-4-2-1-3">
+<div class="para" id="sec-course-info-4-2-1-3-1">Understand and utilize theorems and concepts from topology such as connectedness, compactness, Hausdorffness, Tychonoff’s theorem, one-point and Stone-Čech compactifications, homology, and Mayer-Vietoris sequence.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-4-2-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-4-2-1-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-4-2-1-4">
+<div class="para" id="sec-course-info-4-2-1-4-1">Understand and utilize theorems and concepts from category theory such as functors, natural transformations, the Yoneda lemma, (co)limits, and adjunctions.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-4-2-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-4-2-1-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-4-2-1-5">
+<div class="para" id="sec-course-info-4-2-1-5-1">Understand and produce proofs related to the above topics.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-4-2-1-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-4-2-1-5" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-4-2-1-6">
+<div class="para" id="sec-course-info-4-2-1-6-1">Apply the above topics in relevant examples and applications.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-4-2-1-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-4-2-1-6" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-4-2-1-7">
+<div class="para" id="sec-course-info-4-2-1-7-1">Communicate mathematical ideas verbally and in writing.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-4-2-1-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-4-2-1-7" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Learning outcomes"><a href="#sec-course-info-4" title="Copy heading and permalink for Paragraphs: Learning outcomes" aria-label="Copy heading and permalink for Paragraphs: Learning outcomes">🔗</a></div></section><section class="paragraphs" id="sec-course-info-5"><h4 class="heading"><span class="title">Distribution requirements.</span></h4>
+<div class="para logical" id="sec-course-info-5-2">
+<div class="para">This course can be used towards your Group III, "Natural, Mathematical, and Psychological Science," requirement. It accomplishes the following goals for the group:</div>
+<ul class="disc" id="sec-course-info-5-2-1">
+<li id="sec-course-info-5-2-1-1">
+<div class="para" id="sec-course-info-5-2-1-1-1">Use and evaluate quantitative data or modeling, or use logical/mathematical reasoning to evaluate, test, or prove statements.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-5-2-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-5-2-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-5-2-1-2">
+<div class="para" id="sec-course-info-5-2-1-2-1">Given a problem or question, formulate a hypothesis or conjecture, and design an experiment, collect data or use mathematical reasoning to test or validate it.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-5-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-5-2-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-course-info-5-3">This course does <em class="alert">not</em> satisfy the "primary data collection and analysis" requirement.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Distribution requirements"><a href="#sec-course-info-5" title="Copy heading and permalink for Paragraphs: Distribution requirements" aria-label="Copy heading and permalink for Paragraphs: Distribution requirements">🔗</a></div></section><section class="paragraphs" id="sec-course-info-6"><h4 class="heading"><span class="title">Texts.</span></h4>
+<div class="para" id="sec-course-info-6-2">This course does not have an assigned textbook, but I recommend Topology (2nd ed.) by James Munkres and <a class="external" href="https://topology.mitpress.mit.edu/" target="_blank">Topology: A Categorical Approach</a> as supplementary texts. I will be writing course notes during the term which will appear on this website.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Texts"><a href="#sec-course-info-6" title="Copy heading and permalink for Paragraphs: Texts" aria-label="Copy heading and permalink for Paragraphs: Texts">🔗</a></div></section><section class="paragraphs" id="sec-course-info-7"><h4 class="heading"><span class="title">Homework.</span></h4>
+<div class="para logical" id="sec-course-info-7-2">
+<div class="para">Homework will be posted on the course website and should be submitted via <a class="external" href="https://gradescope.com/" target="_blank">Gradescope</a> every Friday by 10pm. Homework due Friday of week <span class="process-math">\(N\)</span> covers topics through Monday of week <span class="process-math">\(N\)</span> and you are strongly encouraged to start the homework early in order to take advantage of office hours and study groups. Excellent solutions take many forms, but they all have the following characteristics:</div>
+<ul class="disc" id="sec-course-info-7-2-4">
+<li id="sec-course-info-7-2-4-1">
+<div class="para" id="sec-course-info-7-2-4-1-1">they are written as explanations for other students in the course; in particular, they fully explain all of their reasoning and do not assume that the reader will fill in details;<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-7-2-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-7-2-4-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-7-2-4-2">
+<div class="para" id="sec-course-info-7-2-4-2-1">when graphical reasoning is called for, they include large, carefully drawn and labeled diagrams;<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-7-2-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-7-2-4-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-7-2-4-3">
+<div class="para" id="sec-course-info-7-2-4-3-1">they are neatly written or typeset; and<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-7-2-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-7-2-4-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-7-2-4-4">
+<div class="para" id="sec-course-info-7-2-4-4-1">they use complete sentences, even when formulas or symbols are involved.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-7-2-4-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-7-2-4-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">Given the exigences of contemporary existence, students may take advantage of up to three weekend extensions on homework assignments over the course of the semester. To do so, you must contact the instructor <em class="alert">before</em> the deadline and request an extension. No explanation is needed, and you will automatically receive an extension till the following Monday at 10pm. In extreme circumstances, I may make additional accommodations; early and clear communication is key.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Homework"><a href="#sec-course-info-7" title="Copy heading and permalink for Paragraphs: Homework" aria-label="Copy heading and permalink for Paragraphs: Homework">🔗</a></div></section><section class="paragraphs" id="sec-course-info-8"><h4 class="heading"><span class="title">Collaboration.</span></h4>
+<div class="para" id="sec-course-info-8-2">You are permitted and encouraged to work with your peers on homework problems. You must cite those with whom you worked, and you must write up solutions independently. Duplicated solutions will not be accepted and constitute a violation of the Honor Principle.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-8-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Collaboration"><a href="#sec-course-info-8" title="Copy heading and permalink for Paragraphs: Collaboration" aria-label="Copy heading and permalink for Paragraphs: Collaboration">🔗</a></div></section><section class="paragraphs" id="sec-course-info-9"><h4 class="heading"><span class="title">Feedback.</span></h4>
+<div class="para" id="sec-course-info-9-2">You will receive timely feedback on your homework via Gradescope, either from me or the course grader (a mathematics undergraduate).  Each homework problem can earn up to <em class="alert">five points</em> for mathematical content, and <em class="alert">two points</em> for the quality of writing.  If your answer is incorrect, this will be reflected in the score, and there will also be a comment indicating where things went wrong with your solution.  You are strongly encouraged to engage with this comment, understand your error, and try to come up with a correct solution. You are very welcome to post questions about old homework problems to the Zulip workspace (see below) and talk about them with me in office hours (see the Help section).<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-9-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Feedback"><a href="#sec-course-info-9" title="Copy heading and permalink for Paragraphs: Feedback" aria-label="Copy heading and permalink for Paragraphs: Feedback">🔗</a></div></section><section class="paragraphs" id="sec-course-info-10"><h4 class="heading"><span class="title">Exams.</span></h4>
+<div class="para" id="sec-course-info-10-2">We will have two midterm exams and a final exam. The midterm exams will be open book, open notes, and take-home. They will have suggested time constraints and firm due dates, but you will be permitted to spend an arbitrary amount of time on the problems between when the exam is distributed and collected.  Calculators, computers, phones, collaboration, the Internet, and chat bots / AI are prohibited during exams.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-10-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-course-info-10-3">
+<div class="para">The final exam will be an oral exam. Questions related to those asked during the exam will be distributed beforehand.</div>
+<dl class="description-list">
+<dt id="sec-course-info-10-3-1-1">Midterm Exam 1<div class="autopermalink" data-description="Item: Midterm Exam 1"><a href="#sec-course-info-10-3-1-1" title="Copy heading and permalink for Item: Midterm Exam 1" aria-label="Copy heading and permalink for Item: Midterm Exam 1">🔗</a></div>
+</dt>
+<dd><div class="para" id="sec-course-info-10-3-1-1-2">TBD<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-10-3-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="sec-course-info-10-3-1-2">Midterm Exam 2<div class="autopermalink" data-description="Item: Midterm Exam 2"><a href="#sec-course-info-10-3-1-2" title="Copy heading and permalink for Item: Midterm Exam 2" aria-label="Copy heading and permalink for Item: Midterm Exam 2">🔗</a></div>
+</dt>
+<dd><div class="para" id="sec-course-info-10-3-1-2-2">TBD<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-10-3-1-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="sec-course-info-10-3-1-3">Final Exam<div class="autopermalink" data-description="Item: Final Exam"><a href="#sec-course-info-10-3-1-3" title="Copy heading and permalink for Item: Final Exam" aria-label="Copy heading and permalink for Item: Final Exam">🔗</a></div>
+</dt>
+<dd><div class="para" id="sec-course-info-10-3-1-3-2">Individual 30-minute time slots scheduled during finals week, May 11-14.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-10-3-1-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+</dl>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-10-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Exams"><a href="#sec-course-info-10" title="Copy heading and permalink for Paragraphs: Exams" aria-label="Copy heading and permalink for Paragraphs: Exams">🔗</a></div></section><section class="paragraphs" id="sec-course-info-11"><h4 class="heading"><span class="title">Joint expectations.</span></h4>
+<div class="para" id="sec-course-info-11-2">As members of a communal learning environment, we should all expect consideration, fairness, patience, and curiosity from each other.  Our aim is to all learn more through cooperation and genuine listening and sharing, not to compete or show off.  I expect diligence and academic and intellectual honesty from each of you.  You should expect that I will do my best to focus the course on interesting, pertinent topics, and that I will provide feedback and guidance which will help you excel as a student.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-11-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Joint expectations"><a href="#sec-course-info-11" title="Copy heading and permalink for Paragraphs: Joint expectations" aria-label="Copy heading and permalink for Paragraphs: Joint expectations">🔗</a></div></section><section class="paragraphs" id="sec-course-info-12"><h4 class="heading"><span class="title">Zulip.</span></h4>
+<div class="para" id="sec-course-info-12-2">This course will use a Zulip workspace for asynchronous communication. Use the Zulip workspace to ask questions (of me or the class), collaborate on problems, and share resources. The Zulip workspace is an extension of our classroom and the above joint expectations extend to this setting.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-12-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-course-info-12-3">You will receive an email invitation to join our Zulip workspace during the first week of classes. Please use channels and threads to keep conversations organized.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-12-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Zulip"><a href="#sec-course-info-12" title="Copy heading and permalink for Paragraphs: Zulip" aria-label="Copy heading and permalink for Paragraphs: Zulip">🔗</a></div></section><section class="paragraphs" id="sec-course-info-13"><h4 class="heading"><span class="title">Help.</span></h4>
+<div class="para" id="sec-course-info-13-2">Everyone is welcome and encouraged to attend my <em class="alert">office hours</em> 13:00-14:00 Tuesday and Thursday each week. These are an opportunity to discuss course content, get help on homework problems, or dig deeper into material. You can also schedule a one-on-one <em class="alert">appointment</em> with me <a class="external" href="https://calendar.notion.so/meet/kyleormsby/office" target="_blank">via this link</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-13-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-course-info-13-3">Additionally, every Reed student is entitled to one hour of free individual tutoring per week.  Use the tutoring app in IRIS to arrange to work with a student tutor.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-13-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Help"><a href="#sec-course-info-13" title="Copy heading and permalink for Paragraphs: Help" aria-label="Copy heading and permalink for Paragraphs: Help">🔗</a></div></section><section class="paragraphs" id="sec-course-info-14"><h4 class="heading"><span class="title">The Internet and AI.</span></h4>
+<div class="para" id="sec-course-info-14-2">The goal of this course is to help you think and solve problems like a mathematician. It is the instructor’s opinion that many uses of the Internet and most uses of AI chatbots (such as ChatGPT, Gemini, Claude, etc.) will impede your progress toward this goal. I encourage you to consider your priorities as a student in this course and, whenever tempted to try to look up answers or ask a chatbot, ask yourself "will this help me achieve my goals, or will it short circuit the learning process?"<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-14-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-course-info-14-3">It is not acceptable to turn in work copied from the Internet or generated by a chatbot; doing so constitutes a violation of the Honor Principle. Any Internet resources or chatbot sessions used to help generate a homework submission should be cited. In the case of chatbot sessions, you should include the prompt you used in your submission.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-14-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-course-info-14-4">
+<div class="para">Make sure you are aware of the following two facts:</div>
+<ul class="disc" id="sec-course-info-14-4-1">
+<li id="sec-course-info-14-4-1-1">
+<div class="para" id="sec-course-info-14-4-1-1-1">The Internet and AI chatbots are <em class="alert">not</em> permitted on take-home exams.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-14-4-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-14-4-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-course-info-14-4-1-2">
+<div class="para" id="sec-course-info-14-4-1-2-1">These policies are <em class="alert">specific to this course</em>. Consult your other instructors and their syllabi to understand if and how these resources are permitted elsewhere.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-14-4-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-course-info-14-4-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-14-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: The Internet and AI"><a href="#sec-course-info-14" title="Copy heading and permalink for Paragraphs: The Internet and AI" aria-label="Copy heading and permalink for Paragraphs: The Internet and AI">🔗</a></div></section><section class="paragraphs" id="sec-course-info-15"><h4 class="heading"><span class="title">Academic accommodations.</span></h4>
+<div class="para" id="sec-course-info-15-2">If you have a documented disability requiring academic accommodation, please have  Disability &amp; Accessibility Resources (DAR)  provide a letter during the first week of classes.  I will then contact you to schedule a meeting during which we can discuss your accommodations.  If you believe you have an undocumented disability and that accommodations would ensure equal access to your Reed education, I would be happy to help you contact DAR.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-15-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Academic accommodations"><a href="#sec-course-info-15" title="Copy heading and permalink for Paragraphs: Academic accommodations" aria-label="Copy heading and permalink for Paragraphs: Academic accommodations">🔗</a></div></section><section class="paragraphs" id="sec-course-info-16"><h4 class="heading"><span class="title">Grades.</span></h4>
+<div class="para" id="sec-course-info-16-2">Your grade will reflect a composite assessment of the work you produce for the class, weighted in the following fashion:  35% homework, 25% final exam, 20% exam 2, 15% exam 1, 5% class participation.<div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-16-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Grades"><a href="#sec-course-info-16" title="Copy heading and permalink for Paragraphs: Grades" aria-label="Copy heading and permalink for Paragraphs: Grades">🔗</a></div></section><section class="paragraphs" id="sec-course-info-17"><h4 class="heading"><span class="title">Final advice.</span></h4>
+<div class="para" id="sec-course-info-17-2">
+<em class="alert">Math is hard, but we’ll get through this together!</em><div class="autopermalink" data-description="Paragraph"><a href="#sec-course-info-17-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Final advice"><a href="#sec-course-info-17" title="Copy heading and permalink for Paragraphs: Final advice" aria-label="Copy heading and permalink for Paragraphs: Final advice">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Course Information"><a href="#sec-course-info" title="Copy heading and permalink for Subsection: Course Information" aria-label="Copy heading and permalink for Subsection: Course Information">🔗</a></div></section><div class="autopermalink" data-description="Section: Syllabus"><a href="#syllabus" title="Copy heading and permalink for Section: Syllabus" aria-label="Copy heading and permalink for Section: Syllabus">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="course-documents.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="course-notes.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

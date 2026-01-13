@@ -7,16 +7,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "",
   "title": "Syllabus",
-  "body": " Syllabus        Course Information  This is the syllabus for course name (MATH xxx, section xxx) for [term] 20xx. It is a [n] credit course.    Instructor  Prof. Lastname, Office Location, prof.lastname@example.edu .    Student Hours  TBD    Class meets  course times and location.    Course Description  course description from catalog    Prerequisite  list of prerequisites    Textbook and course materials   textbook name by textbook author.       Course Overview        Assessments and Grades     "
-},
-{
-  "id": "sec-course-info-2",
-  "level": "2",
-  "url": "syllabus.html#sec-course-info-2",
-  "type": "Paragraph (with a defined term)",
-  "number": "",
-  "title": "",
-  "body": "course name (MATH xxx, section xxx) "
+  "body": " Syllabus    Course Information      Instructor  Kyle Ormsby, ormsbyk@reed.edu .    Class meetings  MWF 14:40-15:30 in Eliot 207    Office hours  TuTh 13:00-14:00 in Lib 306 and by appointment     Zulip workspace   math342-2026.zulipchat.com        Course description  Topology is the study of properties of spaces and maps that are invariant under continuous deformation — the qualitative geometry captured by notions like continuity, convergence, compactness, and connectedness rather than by distances or angles. In this course we will build a rigorous foundation for these ideas and then use it as a common language for a range of modern examples, with particular attention to configuration spaces and moduli spaces, manifolds and their local-to-global structure, and profinite spaces that arise as inverse limits and in “arithmetic” topological contexts. We will also introduce homology as a first bridge from point-set foundations to algebraic topology, using it to extract computable invariants and to illuminate how spaces are built. Along the way we will emphasize categorical perspectives — functoriality, universal properties, and adjointness — as tools for organizing constructions and revealing the relationships among these different kinds of spaces.    Learning outcomes  Here are the overarching goals of the course:   Converse in the languages of topology and category theory.    Utilize universal properties and concrete constructions to define mathematical objects and manipulate them.    Understand and utilize theorems and concepts from topology such as connectedness, compactness, Hausdorffness, Tychonoff's theorem, one-point and Stone-Čech compactifications, homology, and Mayer-Vietoris sequence.    Understand and utilize theorems and concepts from category theory such as functors, natural transformations, the Yoneda lemma, (co)limits, and adjunctions.    Understand and produce proofs related to the above topics.    Apply the above topics in relevant examples and applications.    Communicate mathematical ideas verbally and in writing.       Distribution requirements  This course can be used towards your Group III, \"Natural, Mathematical, and Psychological Science,\" requirement. It accomplishes the following goals for the group:   Use and evaluate quantitative data or modeling, or use logical\/mathematical reasoning to evaluate, test, or prove statements.    Given a problem or question, formulate a hypothesis or conjecture, and design an experiment, collect data or use mathematical reasoning to test or validate it.     This course does not satisfy the \"primary data collection and analysis\" requirement.    Texts  This course does not have an assigned textbook, but I recommend Topology (2nd ed.) by James Munkres and Topology: A Categorical Approach as supplementary texts. I will be writing course notes during the term which will appear on this website.    Homework  Homework will be posted on the course website and should be submitted via Gradescope every Friday by 10pm. Homework due Friday of week covers topics through Monday of week and you are strongly encouraged to start the homework early in order to take advantage of office hours and study groups. Excellent solutions take many forms, but they all have the following characteristics:   they are written as explanations for other students in the course; in particular, they fully explain all of their reasoning and do not assume that the reader will fill in details;    when graphical reasoning is called for, they include large, carefully drawn and labeled diagrams;    they are neatly written or typeset; and    they use complete sentences, even when formulas or symbols are involved.   Given the exigences of contemporary existence, students may take advantage of up to three weekend extensions on homework assignments over the course of the semester. To do so, you must contact the instructor before the deadline and request an extension. No explanation is needed, and you will automatically receive an extension till the following Monday at 10pm. In extreme circumstances, I may make additional accommodations; early and clear communication is key.    Collaboration  You are permitted and encouraged to work with your peers on homework problems. You must cite those with whom you worked, and you must write up solutions independently. Duplicated solutions will not be accepted and constitute a violation of the Honor Principle.    Feedback  You will receive timely feedback on your homework via Gradescope, either from me or the course grader (a mathematics undergraduate). Each homework problem can earn up to five points for mathematical content, and two points for the quality of writing. If your answer is incorrect, this will be reflected in the score, and there will also be a comment indicating where things went wrong with your solution. You are strongly encouraged to engage with this comment, understand your error, and try to come up with a correct solution. You are very welcome to post questions about old homework problems to the Zulip workspace (see below) and talk about them with me in office hours (see the Help section).    Exams  We will have two midterm exams and a final exam. The midterm exams will be open book, open notes, and take-home. They will have suggested time constraints and firm due dates, but you will be permitted to spend an arbitrary amount of time on the problems between when the exam is distributed and collected. Calculators, computers, phones, collaboration, the Internet, and chat bots \/ AI are prohibited during exams.  The final exam will be an oral exam. Questions related to those asked during the exam will be distributed beforehand.   Midterm Exam 1  TBD    Midterm Exam 2  TBD    Final Exam  Individual 30-minute time slots scheduled during finals week, May 11-14.       Joint expectations  As members of a communal learning environment, we should all expect consideration, fairness, patience, and curiosity from each other. Our aim is to all learn more through cooperation and genuine listening and sharing, not to compete or show off. I expect diligence and academic and intellectual honesty from each of you. You should expect that I will do my best to focus the course on interesting, pertinent topics, and that I will provide feedback and guidance which will help you excel as a student.    Zulip  This course will use a Zulip workspace for asynchronous communication. Use the Zulip workspace to ask questions (of me or the class), collaborate on problems, and share resources. The Zulip workspace is an extension of our classroom and the above joint expectations extend to this setting.  You will receive an email invitation to join our Zulip workspace during the first week of classes. Please use channels and threads to keep conversations organized.    Help  Everyone is welcome and encouraged to attend my office hours 13:00-14:00 Tuesday and Thursday each week. These are an opportunity to discuss course content, get help on homework problems, or dig deeper into material. You can also schedule a one-on-one appointment with me via this link .  Additionally, every Reed student is entitled to one hour of free individual tutoring per week. Use the tutoring app in IRIS to arrange to work with a student tutor.    The Internet and AI  The goal of this course is to help you think and solve problems like a mathematician. It is the instructor's opinion that many uses of the Internet and most uses of AI chatbots (such as ChatGPT, Gemini, Claude, etc.) will impede your progress toward this goal. I encourage you to consider your priorities as a student in this course and, whenever tempted to try to look up answers or ask a chatbot, ask yourself \"will this help me achieve my goals, or will it short circuit the learning process?\"  It is not acceptable to turn in work copied from the Internet or generated by a chatbot; doing so constitutes a violation of the Honor Principle. Any Internet resources or chatbot sessions used to help generate a homework submission should be cited. In the case of chatbot sessions, you should include the prompt you used in your submission.  Make sure you are aware of the following two facts:   The Internet and AI chatbots are not permitted on take-home exams.    These policies are specific to this course . Consult your other instructors and their syllabi to understand if and how these resources are permitted elsewhere.       Academic accommodations  If you have a documented disability requiring academic accommodation, please have Disability & Accessibility Resources (DAR) provide a letter during the first week of classes. I will then contact you to schedule a meeting during which we can discuss your accommodations. If you believe you have an undocumented disability and that accommodations would ensure equal access to your Reed education, I would be happy to help you contact DAR.    Grades  Your grade will reflect a composite assessment of the work you produce for the class, weighted in the following fashion: 35% homework, 25% final exam, 20% exam 2, 15% exam 1, 5% class participation.    Final advice   Math is hard, but we'll get through this together!     "
 },
 {
   "id": "notes-week-01",
@@ -25,61 +16,16 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "",
   "title": "Week 1",
-  "body": " Week 1   This is an outline of the topics we covered in the first week of class.     Monday 8\/22      Wednesday 8\/24      Friday 8\/26     "
+  "body": " Week 1    Monday      Wednesday      Friday     "
 },
 {
-  "id": "notes-week-02",
+  "id": "homework",
   "level": "1",
-  "url": "notes-week-02.html",
-  "type": "Section",
+  "url": "homework.html",
+  "type": "Chapter",
   "number": "",
-  "title": "Week 2",
-  "body": " Week 2   Monday      Wednesday      Friday     "
-},
-{
-  "id": "activity-01-intro-activity",
-  "level": "1",
-  "url": "activity-01-intro-activity.html",
-  "type": "Worksheet",
-  "number": "",
-  "title": "Introduction Activity",
-  "body": " Introduction Activity    This is the introduction to the activity.      This is the first exercise.    "
-},
-{
-  "id": "activity-01-intro-activity-3",
-  "level": "2",
-  "url": "activity-01-intro-activity.html#activity-01-intro-activity-3",
-  "type": "Worksheet Exercise",
-  "number": "1",
-  "title": "",
-  "body": "  This is the first exercise.   "
-},
-{
-  "id": "handouts-2",
-  "level": "1",
-  "url": "handouts-2.html",
-  "type": "Handout",
-  "number": "",
-  "title": "Handout Title",
-  "body": " Handout Title   A first paragraph with some space for notes below it.   "
-},
-{
-  "id": "homework-2",
-  "level": "1",
-  "url": "homework-2.html",
-  "type": "Worksheet",
-  "number": "",
-  "title": "Homework 01",
-  "body": " Homework 01    Instructions: Complete all the exercises below and submit your work by the due date.      This is the first homework exercise.     "
-},
-{
-  "id": "homework-2-3-1",
-  "level": "2",
-  "url": "homework-2.html#homework-2-3-1",
-  "type": "Worksheet Exercise",
-  "number": "1",
-  "title": "",
-  "body": "  This is the first homework exercise.   "
+  "title": "Homework",
+  "body": " Homework    "
 }
 ]
 

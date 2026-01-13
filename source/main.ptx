@@ -6,9 +6,9 @@
   <xi:include href="./docinfo.ptx" />
   <!-- By creating a PreTeXt "book" for the course, we can split components into "chapters" -->
   <book>
-    <title>Course Name (change me)</title>
+    <title>Topology</title>
 
-    <subtitle>MATH xxx Semester 20xx</subtitle>
+    <subtitle>MATH 342 Spring 2026</subtitle>
 
     <!-- Optional: include frontmatter with author info and date -->
     <xi:include href="./frontmatter.ptx" />
@@ -26,18 +26,36 @@
 
       <introduction>
         <p>
-          The following notes are intended to remind you what we covered each week.
-          They are not a substitute for attending class and not a substitute for reading the textbook.
+          These course notes should provide a full description of what we cover in class, 
+          but they are not a substitute for attending class. In particular, there will be a 
+          number of activities, diagrams, and discussions that cannot be replicated in text.
+        </p>
+        <p>
+          If you find any typos or errors in the notes, please post your observation to the 
+          #notes channel in our <url href="https://math342-2026.zulipchat.com/">Zulip workspace</url>.
         </p>
       </introduction>
 
       <xi:include href="./notes/week01.ptx"/>
-      <xi:include href="./notes/week02.ptx"/>
+      <!--<xi:include href="./notes/week02.ptx"/> -->
       <!-- etc. -->
 
     </chapter>
 
+    <chapter xml:id="homework">
+      <title>Homework</title>
 
+      <!-- Include homework files -->
+      <!-- <xi:include href="./homework/homework-01.ptx"/> -->
+
+    </chapter>
+
+    <!-- Include additional chapters for other categories -->
+
+    </book>
+  </pretext>
+
+    <!--
     <chapter xml:id="activities">
       <title>In-Class Activities</title>
 
@@ -47,27 +65,13 @@
         </p>
       </introduction>
 
-      <!-- Remove the example and replace with your own activities -->
       <xi:include href="./activities/01-intro-activity.ptx"/>
 
-      <!-- Add more xi:include files here to include them in the main course -->
     </chapter>
 
     <chapter xml:id="handouts">
       <title>Handouts</title>
-      <!-- Include handouts -->
+
       <xi:include href="./handouts/handout-template.ptx"/>
     </chapter>
-
-    <chapter xml:id="homework">
-      <title>Homework</title>
-
-      <!-- Include homework files -->
-      <xi:include href="./homework/homework-01.ptx"/>
-
-    </chapter>
-
-    <!-- Include additional chapters for other categories -->
-
-    </book>
-  </pretext>
+    -->

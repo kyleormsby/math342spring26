@@ -3,65 +3,41 @@
 <section xml:id="syllabus" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Syllabus</title>
 
-  <introduction>
-    <p>
-    </p>
-  </introduction>
   <!-- Include chapters -->
   <subsection xml:id="sec-course-info">
     <title>Course Information</title>
 
     <p>
-      This is the syllabus for <term>course name (MATH xxx, section xxx)</term> for [term] 20xx.
-      It is a [n] credit course.
       <!-- use a description list (dl) for short items -->
       <dl>
         <li>
           <title>Instructor</title>
 
           <p>
-            Prof. Lastname, Office Location, <url href="mailto:prof.lastname@example.edu">prof.lastname@example.edu</url>.
+            Kyle Ormsby, <url href="mailto:ormsbyk@reed.edu">ormsbyk@reed.edu</url>.
           </p>
         </li>
 
         <li>
-          <title>Student Hours</title>
+          <title>Class meetings</title>
 
           <p>
-            TBD
+            MWF 14:40-15:30 in Eliot 207
           </p>
         </li>
 
         <li>
-          <title>Class meets</title>
+          <title>Office hours</title>
 
           <p>
-            course times and location.
+            TuTh 13:00-14:00 in Lib 306 and <url href="https://calendar.notion.so/meet/kyleormsby/office">by appointment</url>
           </p>
         </li>
-
         <li>
-          <title>Course Description</title>
-
+          <title>Zulip workspace</title>
+          
           <p>
-            course description from catalog
-          </p>
-        </li>
-
-        <li>
-          <title>Prerequisite</title>
-
-          <p>
-            list of prerequisites
-          </p>
-        </li>
-
-        <li>
-          <title>Textbook and course materials</title>
-
-          <p>
-            <pubtitle>textbook name</pubtitle>
-            by textbook author.
+            <url href="https://math342-2026.zulipchat.com/">math342-2026.zulipchat.com</url>
           </p>
         </li>
       </dl>
@@ -69,18 +45,280 @@
 
   <!-- Use paragraphs to break apart subsections -->
     <paragraphs>
-      <title>Course Overview</title>
+      <title>Course description</title>
 
       <p>
+       Topology is the study of properties of spaces and maps that are invariant 
+       under continuous deformation — the qualitative geometry captured by notions like 
+       continuity, convergence, compactness, and connectedness rather than by distances 
+       or angles. In this course we will build a rigorous foundation for these ideas 
+       and then use it as a common language for a range of modern examples, with particular 
+       attention to configuration spaces and moduli spaces, manifolds and their 
+       local-to-global structure, and profinite spaces that arise as inverse limits and in 
+       “arithmetic” topological contexts. We will also introduce homology as a first bridge 
+       from point-set foundations to algebraic topology, using it to extract computable 
+       invariants and to illuminate how spaces are built. Along the way we will emphasize 
+       categorical perspectives — functoriality, universal properties, and adjointness — 
+       as tools for organizing constructions and revealing the relationships among these 
+       different kinds of spaces.
       </p>
     </paragraphs>
-  </subsection>
-
-  <!-- Other subsections for larger dividers -->
-  <subsection xml:id="sec-assessments">
-    <title>Assessments and Grades</title>
-
-    <p>
-    </p>
+    <paragraphs>
+      <title>Learning outcomes</title>
+      <p>
+        Here are the overarching goals of the course:
+        <ul>
+          <li>
+            <p>
+              Converse in the languages of topology and category theory.
+            </p>
+          </li>
+          <li>
+            <p>
+              Utilize universal properties and concrete constructions to define mathematical objects and manipulate them.
+            </p>
+          </li>
+          <li>
+            <p>
+              Understand and utilize theorems and concepts from topology such as connectedness, compactness, Hausdorffness, 
+              Tychonoff's theorem, one-point and Stone-Čech compactifications, homology, and Mayer-Vietoris sequence.
+            </p>
+          </li>
+          <li>
+            <p>
+              Understand and utilize theorems and concepts from category theory such as functors, natural transformations, 
+              the Yoneda lemma, (co)limits, and adjunctions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Understand and produce proofs related to the above topics.
+            </p>
+          </li>
+          <li>
+            <p>
+              Apply the above topics in relevant examples and applications.
+            </p>
+          </li>
+          <li>
+            <p>
+              Communicate mathematical ideas verbally and in writing.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Distribution requirements</title>
+      <p>
+        This course can be used towards your Group III, "Natural, Mathematical, and Psychological Science," 
+        requirement. It accomplishes the following goals for the group:
+        <ul>
+          <li>
+            <p>
+              Use and evaluate quantitative data or modeling, or use logical/mathematical reasoning to evaluate, 
+              test, or prove statements.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given a problem or question, formulate a hypothesis or conjecture, and design an experiment, 
+              collect data or use mathematical reasoning to test or validate it.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        This course does <alert>not</alert> satisfy the "primary data collection and analysis" requirement.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Texts</title>
+      <p>
+        This course does not have an assigned textbook, but I recommend Topology (2nd ed.) by James Munkres and 
+        <url href="https://topology.mitpress.mit.edu/">Topology: A Categorical Approach</url> as supplementary texts. 
+        I will be writing course notes during the term which will appear on this website.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Homework</title>
+      <p>
+        Homework will be posted on the course website and should be submitted via 
+        <url href="https://gradescope.com/">Gradescope</url> every Friday by 10pm. Homework due Friday of week <m>N</m> 
+        covers topics through Monday of week <m>N</m> and you are strongly encouraged to start the homework early in order 
+        to take advantage of office hours and study groups. Excellent solutions take many forms, but they all have the 
+        following characteristics:
+        <ul>
+          <li>
+            <p>
+              they are written as explanations for other students in the course; in particular, 
+              they fully explain all of their reasoning and do not assume that the reader will fill in details;
+            </p>
+          </li>
+          <li>
+            <p>
+              when graphical reasoning is called for, they include large, carefully drawn and labeled diagrams;
+            </p>
+          </li>
+          <li>
+            <p>
+              they are neatly written or typeset; and
+            </p>
+          </li>
+          <li>
+            <p>
+              they use complete sentences, even when formulas or symbols are involved.
+            </p>
+          </li>
+        </ul>
+        Given the exigences of contemporary existence, students may take advantage of up to three weekend 
+        extensions on homework assignments over the course of the semester. To do so, you must contact the 
+        instructor <alert>before</alert> the deadline and request an extension. No explanation is needed, and 
+        you will automatically receive an extension till the following Monday at 10pm. In extreme circumstances, 
+        I may make additional accommodations; early and clear communication is key.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Collaboration</title>
+      <p>
+        You are permitted and encouraged to work with your peers on homework problems. You must cite those 
+        with whom you worked, and you must write up solutions independently. Duplicated solutions will not 
+        be accepted and constitute a violation of the Honor Principle.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Feedback</title>
+      <p>
+        You will receive timely feedback on your homework via Gradescope, either from me or the course grader 
+        (a mathematics undergraduate).  Each homework problem can earn up to <alert>five points</alert> for mathematical content, 
+        and <alert>two points</alert> for the quality of writing.  If your answer is incorrect, this will be reflected in the score, 
+        and there will also be a comment indicating where things went wrong with your solution.  You are strongly 
+        encouraged to engage with this comment, understand your error, and try to come up with a correct solution.  
+        You are very welcome to post questions about old homework problems to the Zulip workspace (see below) and talk 
+        about them with me in office hours (see the Help section).
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Exams</title>
+      <p>
+        We will have two midterm exams and a final exam. The midterm exams will be open book, open notes, and take-home.  
+        They will have suggested time constraints and firm due dates, but you will be permitted to spend an arbitrary 
+        amount of time on the problems between when the exam is distributed and collected.  Calculators, computers, 
+        phones, collaboration, the Internet, and chat bots / AI are prohibited during exams.
+      </p>
+      <p>
+        The final exam will be an oral exam. Questions related to those asked during the exam will be distributed 
+        beforehand.
+        <dl>
+          <li>
+            <title>Midterm Exam 1</title>
+            <p>
+              TBD
+            </p>
+          </li>
+          <li>
+            <title>Midterm Exam 2</title>
+            <p>
+              TBD
+            </p>
+          </li>
+          <li>
+            <title>Final Exam</title>
+            <p>
+              Individual 30-minute time slots scheduled during finals week, May 11-14.
+            </p>
+          </li>
+        </dl>
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Joint expectations</title>
+      <p>
+        As members of a communal learning environment, we should all expect consideration, fairness, 
+        patience, and curiosity from each other.  Our aim is to all learn more through cooperation and 
+        genuine listening and sharing, not to compete or show off.  I expect diligence and academic and 
+        intellectual honesty from each of you.  You should expect that I will do my best to focus the 
+        course on interesting, pertinent topics, and that I will provide feedback and guidance which will 
+        help you excel as a student.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Zulip</title>
+      <p>
+        This course will use a Zulip workspace for asynchronous communication. Use the Zulip workspace 
+        to ask questions (of me or the class), collaborate on problems, and share resources. The Zulip 
+        workspace is an extension of our classroom and the above joint expectations extend to this setting.
+      </p>
+      <p>
+        You will receive an email invitation to join our Zulip workspace during the first week of classes. 
+        Please use channels and threads to keep conversations organized.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Help</title>
+      <p>
+        Everyone is welcome and encouraged to attend my <alert>office hours</alert> 13:00-14:00 Tuesday and Thursday each week. 
+        These are an opportunity to discuss course content, get help on homework problems, or dig deeper into material. 
+        You can also schedule a one-on-one <alert>appointment</alert> with me 
+        <url href="https://calendar.notion.so/meet/kyleormsby/office">via this link</url>.
+      </p>
+      <p>
+        Additionally, every Reed student is entitled to one hour of free individual tutoring per week.  Use the tutoring app 
+        in IRIS to arrange to work with a student tutor.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>The Internet and AI</title>
+      <p>
+        The goal of this course is to help you think and solve problems like a mathematician. It is the instructor's opinion 
+        that many uses of the Internet and most uses of AI chatbots (such as ChatGPT, Gemini, Claude, etc.) will impede 
+        your progress toward this goal. I encourage you to consider your priorities as a student in this course and, 
+        whenever tempted to try to look up answers or ask a chatbot, ask yourself "will this help me achieve my goals, or 
+        will it short circuit the learning process?"
+      </p>
+      <p>
+        It is not acceptable to turn in work copied from the Internet or generated by a chatbot; doing so constitutes a 
+        violation of the Honor Principle. Any Internet resources or chatbot sessions used to help generate a homework 
+        submission should be cited. In the case of chatbot sessions, you should include the prompt you used in your submission.
+      </p>
+      <p>
+        Make sure you are aware of the following two facts:
+        <ul>
+          <li>
+            <p>
+              The Internet and AI chatbots are <alert>not</alert> permitted on take-home exams.
+            </p>
+          </li>
+          <li>
+            <p>
+              These policies are <alert>specific to this course</alert>. Consult your other instructors and their 
+              syllabi to understand if and how these resources are permitted elsewhere.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Academic accommodations</title>
+      <p>
+        If you have a documented disability requiring academic accommodation, please have  Disability &amp; Accessibility 
+        Resources (DAR)  provide a letter during the first week of classes.  I will then contact you to schedule a meeting 
+        during which we can discuss your accommodations.  If you believe you have an undocumented disability and that 
+        accommodations would ensure equal access to your Reed education, I would be happy to help you contact DAR.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Grades</title>
+      <p>
+        Your grade will reflect a composite assessment of the work you produce for the class, weighted in the following 
+        fashion:  35% homework, 25% final exam, 20% exam 2, 15% exam 1, 5% class participation.
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>Final advice</title>
+      <p>
+        <alert>Math is hard, but we'll get through this together!</alert>
+      </p>
+    </paragraphs>
   </subsection>
 </section>

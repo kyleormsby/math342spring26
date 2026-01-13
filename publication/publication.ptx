@@ -146,7 +146,7 @@
     <!-- See also                                              -->
     <!-- https://pretextbook.org/doc/guide/html/publication-file-online.html#online-style-options -->
     <css
-        theme="denver"
+        theme="tacoma"
         primary-color="#386F94"
         primary-color-dark="#5192BD"
         provide-dark-mode="yes"

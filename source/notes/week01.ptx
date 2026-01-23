@@ -394,7 +394,7 @@
             \tau_{\text{Zar}} := \{k^n\smallsetminus \mathbb V(\mathscr F)\mid \mathscr F
               \text{ is a finite subset of }k[x_1,\ldots,x_n]\}.
           </md>
-          In other words, <m>U\substeq k^n</m> is Zariski open if and only if there exist finitely many polynomials 
+          In other words, <m>U\subseteq k^n</m> is Zariski open if and only if there exist finitely many polynomials 
           <m>p_i\in k[x_1,\ldots,x_n]</m>, <m>i\in I</m>, for which <m>x\in U</m> if and only if <m>p_i(x)\ne 0</m> for all 
           <m>i\in I</m>.
         </p>

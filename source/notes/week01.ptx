@@ -247,9 +247,12 @@
         </p>
       </remark>
       <exercise>
-        Extend the above reasoning to argue that arbitrary unions of open sets are open. Your task is to show that for 
-        <alert>any</alert> collection of open sets <m>\mathscr U</m>, the set <m>\bicup_{U\in\mathscr U}U</m> is open as well. 
-        You may <alert>not</alert> assume that <m>\mathscr U</m> is finite; in particular, an inductive argument won't work!
+        <title>Arbitrary unions of opens are open</title>     
+        <p>
+          Extend the above reasoning to argue that arbitrary unions of open sets are open. Your task is to show that for 
+          <alert>any</alert> collection of open sets <m>\mathscr U</m>, the set <m>\bigcup_{U\in\mathscr U}U</m> is open as well. 
+          You may <alert>not</alert> assume that <m>\mathscr U</m> is finite; in particular, an inductive argument won't work!
+        </p>
       </exercise>
       <remark xml:id="rmk-finite-intersection">
         <title>Finite intersections of opens are open</title>
@@ -394,7 +397,7 @@
             \tau_{\text{Zar}} := \{k^n\smallsetminus \mathbb V(\mathscr F)\mid \mathscr F
               \text{ is a finite subset of }k[x_1,\ldots,x_n]\}.
           </md>
-          In other words, <m>U\subseteq k^n</m> is Zariski open if and only if there exist finitely many polynomials 
+          In other words, <m>U\substeq k^n</m> is Zariski open if and only if there exist finitely many polynomials 
           <m>p_i\in k[x_1,\ldots,x_n]</m>, <m>i\in I</m>, for which <m>x\in U</m> if and only if <m>p_i(x)\ne 0</m> for all 
           <m>i\in I</m>.
         </p>
@@ -430,9 +433,11 @@
       </exercise>
       <example>
         <title>Poset topology</title>        
-        Let <m>(X,\le)</m> be a poset. The <term>poset topology</term> on <m>X</m> has open sets the <term>upwards closed</term> subsets 
-        of <m>X</m>. This means that <m>U\subseteq X</m> is open if and only if <m>x\in U</m>, <m>y\in X</m>, <m>x\le y</m> implies 
-        <m>y\in U</m>.
+        <p>
+          Let <m>(X,\le)</m> be a poset. The <term>poset topology</term> on <m>X</m> has open sets the <term>upwards closed</term> subsets 
+          of <m>X</m>. This means that <m>U\subseteq X</m> is open if and only if <m>x\in U</m>, <m>y\in X</m>, <m>x\le y</m> implies 
+          <m>y\in U</m>.
+        </p>
       </example>
     </subsubsection>
   </subsection>

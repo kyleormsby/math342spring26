@@ -67,15 +67,15 @@
     <!-- numbering should appear.                                     -->
     <!-- For use with a book organized by part, you can set the -->
     <!--  @part-structure to "decorative" or "structural" -->
-      <divisions level="0"/>
+      <divisions level="2"/>
 
     <!-- The next elements say how the levels deep to break up the    -->
     <!-- numbering of the respective elements. Can't be more than the -->
     <!-- @level on divisions above.                                   -->
-      <blocks level="0" />
-      <projects level="0" />
-      <equations level="0" />
-      <footnotes level="0" />
+      <blocks level="2" />
+      <projects level="2" />
+      <equations level="2" />
+      <footnotes level="2" />
   </numbering>
 
   <!-- LaTeX specific options: set @print="yes" to get pdf set up   -->
@@ -146,7 +146,7 @@
     <!-- See also                                              -->
     <!-- https://pretextbook.org/doc/guide/html/publication-file-online.html#online-style-options -->
     <css
-        theme="tacoma"
+        theme="default-modern"
         primary-color="#00FFCC"
         primary-color-dark="#00FFCC"
         provide-dark-mode="yes"

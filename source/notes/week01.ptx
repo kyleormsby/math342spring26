@@ -4,11 +4,437 @@
   <title>Week 1</title>
 
   <!-- Can also be <handout> instead of <subsection> to get a printable version -->
-  <subsection>
+  <subsection xml:id="notes-week-01-Monday">
     <title>Monday</title>
 
+    <subsubsection xml:id="subsubsec-arena">
+      <title>Welcome to the Generous Arena</title>
+      
+      <p>
+        In <pubtitle><url href="https://sites.socsci.uci.edu/~pjmaddy/bio/What%20do%20we%20want%20-%20final">What do we want a 
+        foundation to do?</url></pubtitle> (2019), Penelope Maddy argues that set theory forms a Generous Arena for mathematics: 
+        <blockquote>
+          <p>
+            a unified setting with a Shared Standard of Proof, and a Meta-mathematical Corral so that formal techniques can 
+            be applied to all of mathematics at once.
+          </p>
+        </blockquote>
+        As interesting and alive as they are, we won't pursue questions of foundations in this course. But I want to argue 
+        that <alert>topology</alert> is a Generous Arena for all — or at least nearly all — things geometric in mathematics. 
+        Given a mere whiff of geometry, some sense of closeness or continuity or paths, topology is lurking and the experience 
+        and labor of generations of mathematicians has revealed that the formalism of topology offers a common language in 
+        which these notions can be captured and made precise.
+      </p>
+      <p>
+        This is somewhat at odds with the common conception of topology as "rubber sheet geometry" — a coffee cup is the same 
+        as a donut! the Möbius strip only has one side! Euler's formula for planar graphs! Khovanov homology distinguishes the 
+        unknot! These are fine, even wonderful, topics and results, and we will discuss some of them in due course. But they 
+        do poor service in capturing the stunning breadth and extreme utility of topology in contemporary mathematics.
+      </p>
+      <p>
+        To make this claim concrete, here is an incomplete list of settings in which topological ideas (spaces, 
+        continuity, compactness, connectedness, homotopy, homology, and their descendants) function as a shared language:
+      </p>
+
+      <ul>
+        <li>
+          <p>
+            <em>Manifolds and singular spaces.</em> Smooth manifolds, manifolds with boundary, orbifolds, and stratified 
+            spaces; the passage from local geometry to global invariants; and the basic fact that many geometric problems 
+            are really problems about how local pieces glue.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Configuration and moduli spaces.</em> Spaces of points in a manifold, spaces of embeddings, and moduli of 
+            geometric structures; topology keeps track of how parameters vary continuously, and it detects global features 
+            that no coordinate chart can see.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Algebraic geometry and its avatars.</em> Schemes as locally ringed topological spaces, complex varieties 
+            viewed as topological spaces, étale/profinite shadows of spaces, and the way cohomology packages intersection 
+            data and subtle “hidden” structure.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Category theory as geometry.</em> Categories as spaces (via nerves and classifying spaces), higher categories 
+            as higher-dimensional geometry, and the guiding principle that “equivalence” is often the right notion of sameness.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Dynamics and flows.</em> Long-term behavior of iterated processes and differential equations; attractors, 
+            recurrence, and qualitative features that persist under perturbation.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Combinatorics with geometry inside.</em> Graphs, posets, and simplicial complexes; topological invariants 
+            that constrain what combinatorial objects can exist and how they must behave.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Topological data analysis.</em> Turning point clouds into simplicial complexes and extracting stable, 
+            noise-robust features; using homology as a kind of geometric summary statistic.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Physics and symmetry.</em> Spaces of fields, gauge symmetry, and phase spaces; invariants arising from 
+            quantization and from the topology of symmetry actions.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Computation and invariants.</em> Algorithms that compute topological signatures; the practical question of 
+            which invariants are computable and what they reveal (and conceal) about geometric input.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Arithmetic geometry.</em> Number theory has its own natural topologies: the <alert>profinite Galois group</alert> 
+            <m>\mathrm{Gal}(\overline{K}/K)</m> assembled from finite quotients, the <alert><m>p</m>-adic integers</alert> <m>\mathbb{Z}_p</m>, 
+            and the <alert>adeles</alert> <m>\mathbb{A}_K</m>, where “closeness” is measured <m>p</m>-adically and via local-global structure.
+          </p>
+        </li>
+
+      </ul>
+      <p>
+        Our aim in this course is to build enough of the basic toolkit to recognize these phenomena when they appear, and 
+        to compute invariants that remain meaningful when coordinates, metrics, and other rigid structures are unavailable 
+        (or irrelevant).
+      </p>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-define-top">
+      <title>So what is a topology?</title>
+      <p>
+        Whatever a topology is, it is should specify a notion of convergent sequences. That is, if <m>X</m> is a topological 
+        space (to be defined in due course) and <m>x\colon \mathbb{N}\to X</m> is a sequence in <m>X</m>, then the statement 
+        "the limit of <m>x</m> is <m>L</m>" should make sense.
+      </p>
+      <p>
+        Now if <m>X = \mathbb{R}^n</m> is Euclidean space, we know what this means:
+        <blockquote>
+          <p>
+            for all <m>\varepsilon>0</m> there exists <m>N\in\mathbb{N}</m> such that <m>n>N</m> implies 
+            <m>d(x_n,L) \lt \varepsilon</m>
+          </p>
+        </blockquote>
+        where <m>d</m> is the standard distance function on <m>\mathbb R^n</m>. If we focus on the role of <m>d</m>, we'll 
+        arrive at the notion of a metric space, which is not where we're headed presently. Instead, write 
+        <m>B(L,\varepsilon)</m> for the ball of points in <m>\mathbb R^n</m> distance less than <m>\varepsilon</m> from <m>L</m>. 
+        We can then recast convergence of <m>x</m> to <m>L</m> as 
+        <blockquote>
+          <p>
+            for all <m>\varepsilon>0</m> there exists <m>N\in\mathbb{N}</m> such that <m>n>N</m> implies 
+            <m>x_n\in B(L,\varepsilon)</m>
+          </p>
+        </blockquote>
+        or
+        <blockquote>
+          <p>
+            for every ball <m>B</m> centered at <m>L</m> there exists <m>N\in\mathbb N</m> such that <m>n\gt N</m> implies 
+            <m>x_n\in B</m>.
+          </p>
+        </blockquote>
+      </p>
+      <p>
+        This suggests that a topology on <m>X</m> might be specified by a <term>basis</term> <m>\mathscr B</m> of subsets of <m>X</m> 
+        with similar properties to those of open balls in <m>\mathbb R^n</m>.
+      </p>
+      <definition xml:id="def-basis">
+        <statement>
+          <p>
+            A (topological) <term>basis</term> on a set <m>X</m> is a collection of subsets <m>\mathscr B\subseteq 2^X</m> satisfying 
+            the following two properties:
+            <dl>
+              <li>
+                <title>Covering:</title>
+                <p>
+                  <m>\bigcup_{B\in \mathscr B} B = X</m>; in other words, every <m>x\in X</m> is contained in some 
+                  <m>B\in\mathscr B</m>.
+                </p>
+              </li>
+              <li>
+                <title>Filtered:</title>
+                <p>
+                  for all <m>B_1,B_2\in\mathscr B</m> and all <m>x\in B_1\cap B_2</m> there exists <m>B_3\in\mathscr B</m> such that 
+                  <m>x\in B_3\subseteq B_1\cap B_2</m>.
+                </p>
+              </li>
+            </dl>
+          </p>
+        </statement>
+      </definition>
+      <exercise>
+        <statement>
+          <p>
+            Verify that the collection of open balls in <m>\mathbb R^n</m> is a basis.
+          </p>
+        </statement>
+      </exercise>
+      <definition xml:id="def-basis-conv">
+        <title>Convergence with respect to a basis</title>
+        <statement>
+          <p>
+            Suppose <m>X</m> is a set equipped with a basis <m>\mathscr B\subseteq 2^X</m> and that <m>x</m> is a sequence in 
+            <m>X</m>. Then <m>x</m> <term>converges</term> to <m>L\in X</m> with respect to <m>\mathscr B</m> :iff 
+            for all <m>B\in \mathscr B</m> containing <m>x</m> there exists <m>N\in\mathbb N</m> such that <m>n\gt N</m> 
+            implies <m>x_n\in B</m>.
+          </p>
+        </statement>
+      </definition>
+      <aside>
+        <title>:iff</title>
+          <p>
+            Mathematicians make a tremendous fuss about precision in language and then break all their rules when defining 
+            terms and concepts. As you know, <term>iff</term> is short for "if and only if". The colon in <term>:iff</term> 
+            indicates that the language to the right of :iff provides a specification for the object on the left. We will use 
+            :iff when appropriate in order to avoid the imprecision and caveats necessary for "if" in mathematical 
+            definitions.
+          </p>
+      </aside>
+      <p>
+        Given a basis, we can define <term>open sets</term>:
+      </p>
+      <definition xml:id="def-open-basis">
+        <title>Open sets with respect to a basis</title>
+        <statement>
+          <p>
+            Suppose <m>X</m> is a set equipped with a basis <m>\mathscr B\subseteq 2^X</m>. A subset <m>U\subseteq X</m> 
+            is called <term>open</term> with respect to <m>\mathscr B</m> :iff <m>U</m> is a union of basis sets; equivalently, 
+            there exists <m>S\subseteq \mathscr B</m> such that <m>U = \bigcup_{B\in S}B</m>.
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <title>Nothing is open</title>
+        <p>
+          The empty set <m>\varnothing\subseteq X</m> is automatically open: <m>\varnothing = \bigcup_{B\in \varnothing}B</m>. 
+          This is a computation, not a convention. Indeed, <m>x\in \bigcup_{B\in S}B</m> :iff there exists <m>B\in S</m> such that 
+          <m>x\in B</m>. Since there is no <m>B</m> in <m>S=\varnothing</m>, we learn that the set <m>\bigcup_{B\in \varnothing}B</m> 
+          has no elements!
+        </p>
+      </remark>
+      <remark>
+        <title>Everything is open</title>
+        <p>
+          Recall that <m>\mathscr B</m> covers <m>X</m>. As such, <m>X = \bigcup_{B\in\mathscr B}B</m> is open.
+        </p>
+      </remark>
+      <remark>
+        <title>Unions of opens are open</title>
+        <p>
+          Given open sets <m>U = \bigcup_{B\in S} B</m> and <m>V = \bigcup_{B\in T} B</m> where <m>S,T\subseteq \mathscr B</m>, 
+          we find that
+          <md>
+            U\cup V = \bigcup_{B\in S\cup T} B
+          </md>
+          is also open since <m>S\cup T\subseteq \mathscr B</m> as well.
+        </p>
+      </remark>
+      <exercise>
+        Extend the above reasoning to argue that arbitrary unions of open sets are open. Your task is to show that for 
+        <alert>any</alert> collection of open sets <m>\mathscr U</m>, the set <m>\bicup_{U\in\mathscr U}U</m> is open as well. 
+        You may <alert>not</alert> assume that <m>\mathscr U</m> is finite; in particular, an inductive argument won't work!
+      </exercise>
+      <remark xml:id="rmk-finite-intersection">
+        <title>Finite intersections of opens are open</title>
+        <p>
+          It is also the case that if <m>U,V</m> are open with respect to a basis <m>\mathscr B\subseteq 2^X</m>, then <m>U\cap V</m> 
+          is open with respect to <m>\mathscr B</m> as well. One can then argue by induction that any <alert>finite</alert> 
+          intersection of open sets is open.
+        </p>
+      </remark>
+      <exercise>
+        <p>
+          Verify the claims of <xref ref="rmk-finite-intersection" />.
+        </p>
+      </exercise>
+    </subsubsection>
     <p>
+      This leads us to the notion of a <term>topology</term> on a set.
     </p>
+    <definition xml:id="def-topology">
+      <title>Topology on a set</title>
+      <statement>
+        <p>
+          A <term>topology</term> on a set <m>X</m> is a collection of subsets <m>\tau\subseteq 2^X</m> (called 
+          <term>open sets</term>) that is closed under arbitrary unions and finite intersections. A set <m>X</m> equipped 
+          with a topology <m>\tau</m> is called a <term>topological space</term>. We will often abuse notation and write 
+          <m>X = (X,\tau)</m> when the topology is understood from context.
+        </p>
+      </statement>
+    </definition>
+    <remark>
+      <title>On a redundant axiom</title>
+      <p>
+        Some authors further specify that <m>\varnothing</m> and <m>X</m> are open (that is, elements of <m>\tau</m>). 
+        Since <m>\bigcup \varnothing = \varnothing</m> and <m>\bigcap \varnothing = X</m> (when taking intersections of 
+        subsets of <m>X</m>), these conditions actually follow from closure under unions and finite intersections. 
+        Nonetheless, it is certainly important that <m>\varnothing</m> and <m>X</m> are open sets in every topology on <m>X</m>,
+      </p>
+    </remark>
+    <p>
+      We have seen that every basis induces a topology by declaring the open sets to be unions of basis sets. It is also the 
+      case that every topology is a basis. We will now define sequence convergence with respect to a topology, and it will be your 
+      task to confirm that convergence with respect to a basis is the same thing as convergence with respect to the topology induced 
+      by that basis.
+    </p>
+    <definition xml:id="def-open-nbhd">
+      <title>Open neighborhoods</title>
+      <statement>
+        <p>
+          Suppose <m>(X,\tau)</m> is a topological space and <m>x\in X</m>. An <term>open neighborhood</term> of <m>x</m> (with 
+          respect to <m>\tau</m>) is an open set <m>U\in \tau</m> that contains <m>x</m>.
+        </p>
+      </statement>
+    </definition>
+    <definition xml:id="def-convergence-top">
+      <title>Sequence convergence with respect to a topology</title>
+      <statement>
+        <p>
+          Suppose <m>(X,\tau)</m> is a topological space and <m>x</m> is a sequence in <m>X</m>. We say that 
+          <m>x</m> <term>converges</term> to <m>L\in X</m> :iff for every open neighborhood <m>U</m> of <m>L</m> there exists 
+          <m>N\in \mathbb{N}</m> such that <m>n\gt N</m> implies <m>x_n\in U</m>.
+        </p>
+      </statement>
+    </definition>
+    <exercise>
+      <title>Sequence convergence with respect to basis versus topology</title>      
+      <p>
+        Let <m>X</m> be a set, <m>\mathscr B</m> be a basis on <m>X</m>, and <m>\tau</m> be the topology induced by <m>\mathscr B</m>. 
+        Show that a sequence <m>x\colon \mathbb N\to X</m> converges to <m>L\in X</m> with respect to the basis <m>\mathscr B</m> if 
+        and only if it converges to <m>L\in X</m> with respect to the topology <m>\tau</m>.
+      </p>
+    </exercise>
+
+    <subsubsection xml:id="subsubsec-examples-top">
+      <title>Examples of topologies</title>
+      <p>
+        It is now our lot to recite some fundamental examples of topologies. Of course, you won't really have a feel for these 
+        until you start working with topological spaces, but we have to start somewhere. The careful reader will verify that each 
+        example is indeed a topology (closed under arbitrary unions and finite intersections).
+      </p>
+      <example>
+        <title>Discrete topology</title>
+        <p>
+          The <term>discrete topology</term> on a set <m>X</m> is <m>\tau_{\text{disc}} := 2^X</m>. That is, in the discrete topology, 
+          <alert>every</alert> subset of <m>X</m> is open.
+        </p>
+      </example>
+      <example>
+        <title>Concrete topology</title>        
+        <p>
+          The <term>concrete topology</term> on a set <m>X</m> is <m>\tau_{\text{conc}} := \{\varnothing, X\}</m>. Other authors 
+          sometimes call this the trivial, indiscrete, or codiscrete topology.
+        </p>
+      </example>
+      <example>
+        <title>Sierpiński space</title>        
+        <p>
+          The <term>Sierpiński space</term> is the set <m>\mathbb 2 = \{0,1\}</m> equipped with the topology 
+          <m>\tau_{\mathbb 2} := \{\varnothing,\{1\},\{0,1\}\}</m>. Note that this is <alert>not</alert> the discrete or concrete topology on 
+          <m>S</m>. After developing the language of conntinuity, we will discover that for an arbitrary topological space 
+          <m>X</m>, the continuous functions <m>X\to \mathbb 2</m> are in natural bijection with open subsets of <m>X</m>.
+        </p>
+      </example>
+      <exercise>
+        <title>Topologies on a finite set</title>        
+        <p>
+          Determine all topologies on the set <m>\mathbb 2 = \{0,1\}</m>. How many are there? Now do the same thing with 
+          <m>\mathbb 3 = \{0,1,2\}</m>. (You should draw a picture and it should be large and glorious. How can you organize 
+          your picture so that )
+        </p>
+        <p>
+          It is an open problem to determine the number of topologies on a finite set (as a function of cardinality). You can find 
+          known data and references on this problem on the <url href="https://oeis.org/A000798">OEIS</url>.
+        </p>
+      </exercise>
+      <example>
+        <title>Cofinite topology</title>        
+        <p>
+          Given a set <m>X</m>, we can define its <term>cofinite topology</term> with open sets
+          <md>
+            \tau_{\text{cof}} := \{U\subseteq X\mid \#(X\smallsetminus U)\lt \infty\} \cup \{\varnothing\}.
+          </md>
+          Note that if <m>X</m> is finite, then its confinite topology is the same as the discrete topology.
+        </p>
+      </example>
+      <example>
+        <title>The Euclidean topology on <m>\mathbb R^n</m></title>        
+        <p>
+          We already discussed the open ball basis for the <term>standard</term> (or <term>Euclidean</term>) topology 
+          on <m>\mathbb R^n</m>. The open sets in this topology are the arbitrary unions of open balls.
+        </p>
+      </example>
+      <example>
+        <title>The Zariski topology on <m>k^n</m></title>        
+        <p>
+          Fix a field <m>k</m> and natural number <m>n</m>. Given a finite set of polynomials in <m>n</m> variables 
+          <m>\mathscr F\subseteq k[x_1,\ldots,x_n]</m>, its <term>vanishing locus</term> is
+          <md>
+            \mathbb V(\mathscr F) := \{x\in k^n\mid p(x)=0\text{ for all }p\in\mathscr F\}.
+          </md>
+          The <term>Zariski topology</term> on <m>k^n</m> is
+          <md>
+            \tau_{\text{Zar}} := \{k^n\smallsetminus \mathbb V(\mathscr F)\mid \mathscr F
+              \text{ is a finite subset of }k[x_1,\ldots,x_n]\}.
+          </md>
+          In other words, <m>U\substeq k^n</m> is Zariski open if and only if there exist finitely many polynomials 
+          <m>p_i\in k[x_1,\ldots,x_n]</m>, <m>i\in I</m>, for which <m>x\in U</m> if and only if <m>p_i(x)\ne 0</m> for all 
+          <m>i\in I</m>.
+        </p>
+      </example>
+      <exercise>
+        <title>Zariski versus cofinite topologies</title>
+        <introduction>
+          <p>
+            Let <m>k</m> be a field.
+          </p>
+        </introduction>  
+        <task>
+          <statement>
+            <p>
+              Show that every cofinite open subset of <m>k^n</m> is Zariski open.
+            </p>
+          </statement>
+        </task>   
+        <task>
+          <statement>
+            <p>
+              Show that when <m>n=1</m>, the cofinite and Zariski topologies on <m>k</m> are the same.
+            </p>
+          </statement>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Show that for <m>k</m> infinite and <m>n\gt 1</m>, there are Zariski open subsets of <m>k^n</m> that are not cofinite.
+            </p>
+          </statement>
+        </task>
+      </exercise>
+      <example>
+        <title>Poset topology</title>        
+        Let <m>(X,\le)</m> be a poset. The <term>poset topology</term> on <m>X</m> has open sets the <term>upwards closed</term> subsets 
+        of <m>X</m>. This means that <m>U\subseteq X</m> is open if and only if <m>x\in U</m>, <m>y\in X</m>, <m>x\le y</m> implies 
+        <m>y\in U</m>.
+      </example>
+    </subsubsection>
   </subsection>
 
 

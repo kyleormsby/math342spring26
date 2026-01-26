@@ -439,22 +439,314 @@
           <m>y\in U</m>.
         </p>
       </example>
+      <example>
+        <title>Subspace topology</title>
+        <p>
+          Let <m>X</m> be a topological space and let <m>A\subseteq X</m> be a subset. The <term>subspace topology</term> on <m>A</m> 
+          has open sets of the form <m>A\cap U</m> where <m>U\subseteq X</m> is open. This is a very powerful construction that 
+          allows us to induce topologies on all manner of things. For instance, open intervals <m>(a,b)\subseteq \mathbb R</m> receive 
+          a topology in this way, as do open balls <m>B = B(p,\varepsilon)\subseteq \RR^n</m> and the unit sphere
+          <md>
+            S^n = \{x\in \mathbb R^{n+1}\mid |x|=1\} \subseteq \mathbb R^{n+1}.
+          </md>
+          If we do not specify otherwise, a subset of a topological space will always be endowed with the subspace topology.
+        </p>
+      </example>
     </subsubsection>
   </subsection>
 
 
   <subsection>
     <title>Wednesday</title>
-
-    <p>
-    </p>
+    <subsubsection>
+      <title>Continuity</title>
+      <p>
+        Given sets <m>X,Y</m>, we are familiar with functions <m>f\colon X\to Y</m> as a mechanism for 
+        comparing <m>X</m> and <m>Y</m>. If <m>X</m> and <m>Y</m> are topological spaces, then only some functions 
+        "respect" their topology; we call these <term>continuous</term> functions. Before introducing the formal definition 
+        of continuity, let's motivate it in terms of familiar <m>\varepsilon</m>-<m>\delta</m> continuity:
+      </p>
+      <p>
+        A function <m>f\colon \mathbb R\to \mathbb R</m> is continuous at a point <m>p</m> in its domain :iff
+        <blockquote>
+          <p>
+            for all <m>\varepsilon \gt 0</m> there exists <m>\delta \gt 0</m> such that <m>|x-p|\lt\delta</m> implies 
+            <m>|f(x)-f(p)|\lt\varepsilon</m>.
+          </p>
+        </blockquote>
+        We are currently interested in functions continuous everywhere, so the above condition must hold for all 
+        <m>p\in \mathbb R</m>. Of course, <m>\delta</m> is permitted to depend on both <m>p</m> and <m>\varepsilon</m>.
+      </p>
+      <p>
+        Phrased in terms of the basic open sets of <m>\mathbb R</m>, that is, open balls, we see that for every 
+        <m>p\in \mathbb R</m> and every open ball <m>B</m> centered at <m>f(p)</m>, there exists an open ball <m>C</m> 
+        centered at <m>p</m> such that <m>fC\subseteq B</m>; equivalently, <m>C\subseteq f^{-1}B</m>.
+      </p>
+      <aside>
+        <p>
+          Every function <m>f\colon X\to Y</m> induces a <term>direct image</term> function <m>f\colon 2^X\to 2^Y</m> and 
+          <term>preimage function</term>  <m>f^{-1}\colon 2^Y\to 2^X</m> given by <m>fA := \{f(a)\mid a\in A\}</m> 
+          and <m>f^{-1}B := \{a\in X\mid f(a)\in B\}</m>.
+        </p>
+      </aside>
+      <p>
+        We can further recast <m>\varepsilon</m>-<m>\delta</m> continuity as follows:
+        <blockquote>
+          <p>
+            for every <m>p</m> in the domain and every basic open <m>B</m> of the codomain with <m>f(p)\in B</m>, 
+            there exists a basic open <m>C</m> of the domain such that <m>p\in C</m> and <m>C\subseteq f^{-1}B</m>.
+          </p>
+        </blockquote>
+        Now consider some <m>x\in f^{-1}B</m>. By continuity, there exists a basic open <m>C_x</m> of the domain for which 
+        <m>x\in C_x</m> and <m>C_x\subseteq f^{-1}B</m>. From this, we may conclude that
+        <md>
+          f^{-1}B = \bigcup_{x\in f^{-1}B}C_x.
+        </md>
+        (You should check the details.) Thus <m>f^{-1}B</m> is open. Observe that every open set is a union of basic opens, 
+        whence we get another equivalent condition for continuity:
+        <blockquote>
+          <p>
+            for every basic open <m>B</m> of the codomain, <m>f^{-1}B</m> is open in the domain.
+          </p>
+        </blockquote>
+        And once again, every open is a union of basic opens, and preimage commutes with unions, we we can simply say 
+        that the preimage of every open is open. This is our formal definition of continuity in the context of general 
+        topological spaces:
+      </p>
+      <definition xml:id="def-continuity">
+        <title>Continuity</title>
+        <statement>
+          <p>
+            A function <m>f\colon X\to Y</m> between topological spaces is <term>continuous</term> :iff for every open 
+            subset <m>V\subseteq Y</m>, the preimage <m>f^{-1}V</m> is open in <m>X</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        In order to develop our intuition for continuity, we'll introduce some additional terminology:
+        <definition xml:id="def-closed">
+          <title>Closed subsets</title>
+          <statement>
+            <p>
+              A subset <m>C\subseteq X</m> of a topological space <m>X</m> is <term>closed</term> :iff 
+              <m>C = X\smallsetminus U</m> for some open set <m>U\subseteq X</m>.
+            </p>
+          </statement>
+        </definition>
+      </p>
+      <exercise>
+        <title>Topologies via closed sets</title>
+        <p>
+          Prove that the closed subsets of a topological space are closed under arbitrary intersection and finite union. 
+          Then verify that a family of subsets <m>\kappa \subseteq 2^X</m> closed under arbitrary intersection and finite 
+          union specifies a topology by declaring <m>U\subseteq X</m> to be open if and only if it is the complement of some 
+          set in <m>\kappa</m>.
+        </p>
+      </exercise>
+      <p>
+        Since <m>\varnothing</m> and <m>X</m> are always open subsets of a topological space <m>X</m>, we see that 
+        <m>X</m> and <m>\varnothing</m> are always closed subsets of <m>X</m>. In this fashion, we see that "open" 
+        and "closed" are not antonyms in topology — they are properties that can be simultaneously obtained. When 
+        a set is both open and closed, we may exercise questionable taste and call it <term>clopen</term>.
+      </p>
+      <definition xml:id="def-int-clo">
+        <title>Interior and closure</title>
+        <statement>
+          <p>
+            Let <m>X</m> be a space and <m>A\subseteq X</m> be a subset. The <term>interior</term> of <m>A</m>, 
+            denoted <m>A^\circ</m>, is the maximal open subset of <m>A</m>; the <term>closure</term> of <m>A</m>, denoted               <m>\bar A</m>, is the minimal closed subset of <m>X</m> containing <m>A</m>.
+          </p>
+        </statement>
+      </definition>
+      <exercise>
+        <title>Constructing interiors and closures</title>
+        <p>
+          Prove that for <m>A</m> a subset of a space <m>X</m>,
+          <md>
+            A^\circ = \bigcup_{U\subseteq A\text{ open}}U\qquad\text{and}\qquad
+            \bar A = \bigcap_{C\supseteq A\text{ closed}}C.
+          </md>
+        </p>
+      </exercise>
+      <exercise>
+        <title>Continuity in terms of interiors and closures</title>
+        <p>
+          Show that a function <m>f\colon X\to Y</m> between topological spaces in continuous if and only if for all 
+          subsets <m>B\subseteq Y</m>, <m>f^{-1}[B^\circ]\subseteq [f^{-1}B]^\circ</m>. Show that continuity is also equivalent 
+          to the condition that for all subsets <m>A\subseteq X</m>, <m>f\bar A\subseteq \overline{fA}</m>.
+        </p>
+      </exercise>
+      <p>
+        With a good notion of continuity in hand, we are now ready to specify what it means for two spaces to be the "same" --- 
+        structurally if not literally.
+      </p>
+      <definition xml:id="def-homeo">
+        <title>Homeomorphism</title>
+        <statement>
+          <p>
+            Given topological spaces <m>X,Y</m>, a continuous function <m>f\colon X\to Y</m> is a <term>homeomorphism</term> :iff 
+            it has a continuous two-sided inverse <m>g\colon Y\to X</m>. Two spaces <m>X,Y</m> are called 
+            <term>homeomorphic</term> :iff a homeomorphism <m>f\colon X\to Y</m> exists; in this case, we write <m>X\cong Y</m> 
+            or <m>f\colon X\xrightarrow{\cong}Y</m> or <m>f\colon X\cong Y</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Here is an important theorem that will help you solve the ensuing exercise.
+      </p>
+      <theorem xml:id="thm-compose-continuous">
+        <title>Compositions of continuous functions are continuous</title>
+        <statement>
+          <p>
+            Suppose <m>f\colon X\to Y</m> and <m>g\colon Y\to Z</m> are continuous functions between topological spaces. 
+            Then the composite function <m>g\circ f\colon X\to Z</m> is continuous as well.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          Suppose <m>U\subseteq Z</m> is open. Since <m>g</m> is continuous, <m>g^{-1}U</m> is an open subset of <m>Y</m>. 
+          Since <m>f</m> is continuous, <m>f^{-1}[g^{-1}U]</m> is an open subset of <m>X</m>. One may check that
+          <md>
+            f^{-1}[g^{-1}U] = (g\circ f)^{-1}U.
+          </md>
+          This shows that <m>(g\circ f)^{-1}U</m> is an open subset of <m>X</m>. Since <m>U</m> was an arbitrary open subset of 
+          <m>Z</m>, we deduce that <m>g\circ f</m> is continuous.
+        </p>
+      </proof>
+      <exercise>
+        <title>Homeomorphism is an equivalence relation</title>
+        <p>
+          Momentarily pretend there is such a thing as the "set" <m>\mathrm{Top}</m> of all topological spaces. 
+          Prove that homeomorphism <m>\cong</m> is an equivalence relation on <m>\mathrm{Top}</m>.
+        </p>
+      </exercise>
+      <p>
+        It is now high time for some examples.
+      </p>
+      <example>
+        <title>Identities are homeomorphisms</title>
+        <p>
+          The identity function <m>\operatorname{id_X}\colon (X,\tau)\to (X,\tau)</m> is a homeomorphism. This is because 
+          <m>\operatorname{id_X}</m> is continuous and its inverse is <m>\operatorname{id}_X</m>.
+        </p>
+      </example>
+      <example>
+        <title>Every function from a discrete space is continuous</title>
+        <p>
+          Write <m>(X,\tau_{\text{disc}})</m> for a set <m>X</m> endowed with the discrete topology <m>\tau_{\text{disc}} = 2^X</m>. 
+          If <m>(Y,\tau)</m> is some other topological space and <m>f\colon X\to Y</m> is an arbitrary function, then <m>f</m> is 
+          continuous. Indeed, if <m>V\subseteq Y</m> is open, then <m>f^{-1}V\subseteq X</m> is open since all subsets of a discrete 
+          space are open.
+        </p>
+      </example>
+      <example>
+        <title>Continuous bijections need not be homeomorphisms</title>
+        <p>
+          For a set <m>X</m>, consider the identity function
+          <md>
+            \operatorname{id}_X\colon (X,\tau_{\text{disc}})\to (X,\tau_{\text{conc}}).
+          </md>
+          This is a continuous bijection, but its inverse
+          <md>
+            \operatorname{id}_X\colon (X,\tau_{\text{conc}})\to (X,\tau_{\text{disc}}).
+          </md>
+          is not continuous unless <m>X=\varnothing</m>. (Check this!)
+        </p>
+        <p>
+          For a more geometric example, consider the function
+          <md>
+            <mrow>[0,1) \amp \longrightarrow S^1 \subseteq \mathbb C </mrow>
+            <mrow>t \amp \longmapsto \operatorname{exp}(2\pi i t).</mrow>
+          </md>
+          This is a continuous bijection, but the inverse rends the circle at <m>1</m>. To see why this fails the formal 
+          definition of continuity, note that <m>[0,1/2)\subseteq [0,1)</m> is open, but its preimage 
+          <m>\{z\in S^1\mid \operatorname{Re}(z)\gt 0\}\cup \{1\}</m> is not open.
+        </p>
+      </example>
+      <example>
+        <title>Open intervals and <m>\mathbb R</m></title>
+        <p>
+          The open interval <m>(0,1)\subseteq \mathbb R</m> is homemorphic to every other open interval 
+          <m>(a,b)\subseteq \mathbb R</m> with <m>a\lt b</m> via
+          <md>
+            <mrow>(0,1) \amp \longrightarrow (a,b)</mrow>
+            <mrow>t \amp \longmapsto a+(b-a)t</mrow>
+          </md>
+          which is continuous with continuous inverse
+          <md>
+            <mrow>(a,b) \amp \longrightarrow (0,1)</mrow>
+            <mrow>t \amp \longmapsto \frac{t-a}{b-a}</mrow>.
+          </md>
+          All open intervals are also homeomorphic to <m>\mathbb R</m>. Indeed,
+          <md>
+            <mrow>(-1,+1) \amp \longleftrightarrow \mathbb R </mrow>
+            <mrow>t \amp \longmapsto \frac{t}{1-t^2}</mrow>
+            <mrow>\frac{-1+\sqrt{1+4t^2}}{2t} \amp ⟻ t </mrow>
+          </md>
+          are inverse continuous functions (where for the second map, we define <m>0\mapsfrom 0</m>).
+        </p>
+      </example>
+      <aside>
+        Beware that we have not yet verified the continuity of these maps. Rather than undertaking laborious verifications 
+        presently, we will return and make this check after we have developed some helpful rules on how we may combine 
+        continuous functions while preserving continuity.
+      </aside>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-top-properties">
+      <title>Topological properties</title>
+      <p>
+        Historically, topological properties preceded topology. Mathematicians noticed that certain properties — such as 
+        nonemptiness, connectedness, discreteness, and compactness — did not change under a broad class of deformations. In order 
+        codify these properties, they then created the language of topology, continuity, and homeomorphisms.
+      </p>
+      <definition xml:id="def-top-prop">
+        <title>Topological property</title>
+        <statement>
+          <p>
+            Let <m>P</m> be a property that may or may not be obtained by each topological space. Call <m>P</m> a 
+            <term>topological property</term> :iff
+            <md>
+              \text{a space }X\text{ has property }P\text{ and }X\cong Y\implies Y\text{ has property }P.
+            </md>
+            In other words, a property is a topological property if and only if it is homeomorphism invariant.
+          </p>
+        </statement>
+      </definition>
+      <example>
+        <title>Cardinality is a topological property</title>
+        <p>
+          If <m>X\cong Y</m>, then a homeomorphism <m>f\colon X\xrightarrow{\cong}Y</m> is necessarily a bijection, whence the 
+          cardinalities of <m>X</m> and <m>Y</m> are equal: <m>\#X=\#Y</m>.
+        </p>
+      </example>
+      <exercise>
+        <title>Cardinality of the topology is a topological property</title>
+        <p>
+          Prove that <m>(X,\tau)\cong (X',\tau')</m> implies <m>\#\tau=\#\tau'</m>.
+        </p>
+      </exercise>
+      <p>
+        Much of this course will develop additional topological properties, such as (path) connectivity, connectedness, 
+        the (isomorphism type of the) fundamental group, and the (isomorphism type of) homology.
+      </p>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-building-cts">
+      <title>Building continuous functions</title>
+      <p>
+        TODO: Add info on how continuous functions combine to give new continuous functions.
+      </p>
+    </subsubsection>
   </subsection>
 
 
   <subsection>
     <title>Friday</title>
-
-    <p>
-    </p>
+    <subsubsection>
+      <title>Category theory</title>
+        <p>
+          TODO: Introduce category theory as a unifying framework for things like product, coproduct, quotient.
+        </p>
+    </subsubsection>
   </subsection>
 </section>

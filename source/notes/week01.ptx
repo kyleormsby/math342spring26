@@ -624,7 +624,7 @@
       <p>
         It is now high time for some examples.
       </p>
-      <example>
+      <example xml:id="example-identity">
         <title>Identities are homeomorphisms</title>
         <p>
           The identity function <m>\operatorname{id_X}\colon (X,\tau)\to (X,\tau)</m> is a homeomorphism. This is because 
@@ -734,7 +734,65 @@
     <subsubsection xml:id="subsubsec-building-cts">
       <title>Building continuous functions</title>
       <p>
-        TODO: Add info on how continuous functions combine to give new continuous functions.
+        Our task now is to assemble a toolkit that will allow us to build new continuous functions from old ones. These notes will 
+        prove a few of the statments, you will prove a few in your homework, and the rest will be left for personal verification or faith. 
+        Recall that in <xref ref="thm-compose-continuous" /> we have already verified that composition preserves continuity, and in 
+        <xref ref="example-identity" /> we learned that identity functions (from a space to the same space) are continuous.
+      </p>
+      <theorem xml:id="thm-construct-continuous">
+        <title>New continuous maps from old</title>     
+        <statement>
+          <p>
+            Let <m>X,Y,Z</m> be topological spaces.
+          </p>
+          <dl>
+            <li>
+              <title>Constant maps</title>
+              <p>
+                Fix <m>y_0\in Y</m>. Then the constant map <m>\operatorname{const}_{y_0}\colon X\to Y,~x\mapsto y_0</m> is continuous.
+              </p>
+            </li>
+            <li>
+              <title>Open inclusions</title>
+              <p>
+                Let <m>U\subseteq X</m> be an open subset. The inclusion map <m>\operatorname{inc}\colon U\hookrightarrow X,~x\mapsto x</m> 
+                is continuous.
+              </p>
+            </li>
+            <li>
+              <title>Into an open</title>
+              <p>
+                Let <m>V\subseteq Y</m> be open and let <m>f\colon X\to V</m> be a function. If the composite 
+                <m>\operatorname{inc}\circ f\colon X\to V\to Y</m> is continuous, then so is <m>f</m>.
+              </p>
+            </li>
+            <li>
+              <title>Locality</title>
+              <p>
+                Let <m>f\colon X\to Y</m> be a function. Suppose that for each <m>x\in X</m> there exists an open subset <m>x\in U_x\subseteq X</m> 
+                for which <m>f\circ \operatorname{inc}\colon U_x\hookrightarrow X\to Y</m> is continuous. Then <m>f</m> is continuous.
+              </p>
+            </li>
+          </dl>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          We will only verify locality and leave the other properties as exercises. Suppose that <m>f\colon X\to Y</m> satisfies the hypotheses of 
+          locality and let <m>V\subseteq Y</m> be an open subset. Then 
+          <md>
+            (f\circ \operatorname{inc}_{U_x})^{-1}V = \operatorname{inc}_{U_x}^{-1}[f^{-1}V] = U_x\cap (f^{-1}V)
+          </md>
+          is open for all <m>x\in X</m>. Furthermore,
+          <md>
+            f^{-1}V = \bigcup_{x\in X} U_x\cap (f^{-1}V)
+          </md>
+          since the <m>U_x</m> cover <m>X</m>. Since arbitrary unions of open sets are open, we conclude that <m>f^{-1}V</m> is open. Since 
+          <m>V\subseteq Y</m> was an arbitrary open subset, this demonstrates that <m>f</m> is continuous.
+        </p>
+      </proof>
+      <p>
+        TODO: Add more ways to build continuous maps + give examples.
       </p>
     </subsubsection>
   </subsection>

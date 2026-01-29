@@ -192,7 +192,7 @@
           <p>
             Suppose <m>X</m> is a set equipped with a basis <m>\mathscr B\subseteq 2^X</m> and that <m>x</m> is a sequence in 
             <m>X</m>. Then <m>x</m> <term>converges</term> to <m>L\in X</m> with respect to <m>\mathscr B</m> :iff 
-            for all <m>B\in \mathscr B</m> containing <m>x</m> there exists <m>N\in\mathbb N</m> such that <m>n\gt N</m> 
+            for all <m>B\in \mathscr B</m> containing <m>L</m> there exists <m>N\in\mathbb N</m> such that <m>n\gt N</m> 
             implies <m>x_n\in B</m>.
           </p>
         </statement>

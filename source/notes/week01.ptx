@@ -397,8 +397,8 @@
             \tau_{\text{Zar}} := \{k^n\smallsetminus \mathbb V(\mathscr F)\mid \mathscr F
               \text{ is a finite subset of }k[x_1,\ldots,x_n]\}.
           </md>
-          In other words, <m>U\substeq k^n</m> is Zariski open if and only if there exist finitely many polynomials 
-          <m>p_i\in k[x_1,\ldots,x_n]</m>, <m>i\in I</m>, for which <m>x\in U</m> if and only if <m>p_i(x)\ne 0</m> for all 
+          In other words, <m>U\subseteq k^n</m> is Zariski open if and only if there exist finitely many polynomials 
+          <m>p_i\in k[x_1,\ldots,x_n]</m>, <m>i\in I</m>, for which <m>x\in U</m> if and only if <m>p_i(x)\ne 0</m> for some 
           <m>i\in I</m>.
         </p>
       </example>
@@ -445,11 +445,31 @@
           Let <m>X</m> be a topological space and let <m>A\subseteq X</m> be a subset. The <term>subspace topology</term> on <m>A</m> 
           has open sets of the form <m>A\cap U</m> where <m>U\subseteq X</m> is open. This is a very powerful construction that 
           allows us to induce topologies on all manner of things. For instance, open intervals <m>(a,b)\subseteq \mathbb R</m> receive 
-          a topology in this way, as do open balls <m>B = B(p,\varepsilon)\subseteq \RR^n</m> and the unit sphere
+          a topology in this way, as do open balls <m>B = B(p,\varepsilon)\subseteq \mathbb R^n</m> and the unit sphere
           <md>
             S^n = \{x\in \mathbb R^{n+1}\mid |x|=1\} \subseteq \mathbb R^{n+1}.
           </md>
           If we do not specify otherwise, a subset of a topological space will always be endowed with the subspace topology.
+        </p>
+        <p>
+          Here's a fun way to produce interesting (sub)spaces: first, endow the <m>n\times n</m> real matrices <m>\mathbb R^{n\times n}</m> 
+          with the Euclidean topoology (considering a matrix <m>(x_{ij})_{1\le i,j\le n}</m> as the vector 
+          <m>(x_{11},\ldots,x_{1n},x_{21},\ldots,x_{2n},\ldots, x_{n1},\ldots,x_{nn})</m>). Inside of <m>\mathbb R^{n\times n}</m> we have the 
+          matrix groups
+          <md>
+            \mathrm{SO}_n(\mathbb R)\subseteq \mathrm{O}_n(\mathbb R)\subseteq \mathrm{GL}_n(\mathbb R)\subseteq \mathbb R^{n\times n}
+          </md>
+          of special orthogonal, orthogonal, and invertible (general linear) matrices. We will consider each as a subspace of 
+          <m>\mathbb R^{n\times n}</m>k, producing a rich family of topological spaces.
+        </p>
+        <p>
+          As a special case, consider <m>\mathrm{SO}_2(\mathbb R)</m>. These matrices encode rotations about the origin in the plane. Once we 
+          have introduced the concepts of continuity and homeomorphism, we will argue that <m>\mathrm{SO}_2(\mathbb R)</m> is "the same as" 
+          (homeomorphic to) <m>S^1</m>, <ie />
+          <md>
+            \mathrm{SO}_2(\mathbb R)\cong S^1.
+          </md>
+          
         </p>
       </example>
     </subsubsection>
@@ -737,7 +757,7 @@
       <title>Building continuous functions</title>
       <p>
         Our task now is to assemble a toolkit that will allow us to build new continuous functions from old ones. These notes will 
-        prove a few of the statments, you will prove a few in your homework, and the rest will be left for personal verification or faith. 
+        prove a few of the statements, you will prove a few in your homework, and the rest will be left for personal verification or faith. 
         Recall that in <xref ref="thm-compose-continuous" /> we have already verified that composition preserves continuity, and in 
         <xref ref="example-identity" /> we learned that identity functions (from a space to the same space) are continuous.
       </p>

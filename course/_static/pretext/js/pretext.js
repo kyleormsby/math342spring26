@@ -11,13 +11,6 @@
  *******************************************************************************
  */
 
-// from https://stackoverflow.com/questions/34422189/get-item-offset-from-the-top-of-page
-function getOffsetTop(e) {
-    // recursively walk up the DOM via offsetParent, accumulating offsetTop as we go
-    if (!e) return 0;
-    return getOffsetTop(e.offsetParent) + e.offsetTop;
-};
-
 function scrollTocToActive() {
     //Try to figure out current TocItem from URL
     let fileNameWHash = window.location.href.split("/").pop();
@@ -29,23 +22,13 @@ function scrollTocToActive() {
         return; //complete failure, get out
     }
 
-    let tocEntryTop = 0;
-    //See if we can also match fileName#hash (assuming there is a fragment)
-    if (fileNameWHash.includes('#')) {
-        let tocEntryWHash = document.querySelector(
-            '#ptx-toc a[href="' + fileNameWHash + '"]'
-        );
-        if (tocEntryWHash) {
-            //Matched something below a subsection - activate the list item that contains it
-            tocEntry.closest("li").querySelectorAll("li").forEach(li => {
-                li.classList.remove("active");
-            });
-            tocEntryWHash.closest("li").classList.add("active");
-            tocEntryTop = getOffsetTop(tocEntryWHash);
-        }
-    }
-    if (!tocEntryTop) {
-        tocEntryTop = getOffsetTop(tocEntry);
+    //See if we can also match fileName#hash
+    let tocEntryWHash = document.querySelector(
+        '#ptx-toc a[href="' + fileNameWHash + '"]'
+    );
+    if (tocEntryWHash) {
+        //Matched something below a subsection - activate the list item that contains it
+        tocEntryWHash.closest("li").classList.add("active");
     }
 
     //Now activate ToC item for fileName and scroll to it
@@ -54,9 +37,7 @@ function scrollTocToActive() {
     tocEntry.closest("li").classList.add("active");
     // Scroll only if the tocEntry is below the bottom half of the window,
     // scrolling to that position.
-    let toc = document.querySelector("#ptx-toc");
-    let tocTop = getOffsetTop(toc);
-    toc.scrollTop = tocEntryTop - tocTop - 0.4 * self.innerHeight;
+    document.querySelector("#ptx-toc").scrollTop = tocEntry.offsetTop - 0.4 * self.innerHeight;
 }
 
 function toggletoc() {
@@ -72,65 +53,9 @@ function toggletoc() {
    scrollTocToActive();
 }
 
-function samePageLink(a) {
-    if (!(a instanceof HTMLAnchorElement)) return false;
-
-    try {
-        const linkUrl = new URL(a.href, document.baseURI);
-        const currentUrl = new URL(window.location.href);
-
-        const sameDocument =
-              linkUrl.origin === currentUrl.origin &&
-              linkUrl.pathname === currentUrl.pathname &&
-              linkUrl.search === currentUrl.search;
-
-        return sameDocument && !!linkUrl.hash;
-    } catch (e) {
-        // Invalid URL
-        return false;
-    }
-}
-
-
 window.addEventListener("DOMContentLoaded",function(event) {
-    thetocbutton = document.getElementsByClassName("toc-toggle")[0];
-    thetocbutton.addEventListener("click", (e) => {
-        toggletoc();
-        e.stopPropagation(); // keep global click handler from immediately toggling it back
-    });
-
-    // For themes that want it, install click handlers to auto close the toc
-    // when the reader clicks anywhere outside it or selects a subsection.
-    // (Selecting other sections or chapters navigates away from the page so
-    // effectively closes the TOC.)
-    if (getComputedStyle(document.documentElement).getPropertyValue('--auto-collapse-toc') == "yes") {
-
-        const sidebar = document.getElementById("ptx-sidebar");
-
-        // Handle all clicks outside the sidebar
-        window.addEventListener("click", function(event) {
-            if (sidebar.classList.contains("visible")) {
-                if (!event.composedPath().includes(sidebar)) {
-                    toggletoc();
-                }
-            }
-        });
-
-        // Handle clicks inside the sidebar but on link within a subsection.
-        sidebar.addEventListener("click", function (event) {
-            if (samePageLink(event.target.closest('a'))) {
-                toggletoc();
-            }
-        });
-
-        // Handle persistent sidebar if the page is restored from cache on back/forward buttons.
-        window.addEventListener('pageshow', (e) => {
-            if (e.persisted) {
-                sidebar.classList.remove('visible');
-                sidebar.classList.add('hidden');
-            }
-        });
-    }
+       thetocbutton = document.getElementsByClassName("toc-toggle")[0];
+       thetocbutton.addEventListener('click', () => toggletoc() );
 });
 
 /* jump to next page if reader tries to scroll past the bottom */
@@ -246,35 +171,10 @@ window.addEventListener("DOMContentLoaded", function(event) {
                 expander.title = "Expand" + (itemType !== "" ? " " + itemType : "");
             }
         }
-    }
-
-    //Do we have a hash in the URL? If so, we need to identify up to make sure
-    // all parents of that item are expanded
-    if(window.location.hash) {
-        let hash = window.location.hash;
-        // find the link in the TOC that has an href ending in this hash
-        let hashLink = document.querySelector(`.ptx-toc a[href$="${hash}"]`);
-        if(hashLink) {
-            let parentTocItem = hashLink.closest(".toc-item");
-            while(parentTocItem && !parentTocItem.classList.contains("contains-active")) {
-                parentTocItem.classList.add("contains-active");
-                let expander = parentTocItem.querySelector(".toc-expander");
-                if(expander) {
-                    //make sure it is expanded
-                    if(!parentTocItem.classList.contains("expanded")) {
-                        toggleTOCItem(expander);
-                    }
-                }
-                parentTocItem = parentTocItem.parentElement.closest(".toc-item");
-            }
-        }
-    }
-
+      }
 });
 
 // This needs to be after the TOC's geometry is settled
 window.addEventListener("DOMContentLoaded",function(event) {
     scrollTocToActive();
 });
-
-window.onhashchange = scrollTocToActive;

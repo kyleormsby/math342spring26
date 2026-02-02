@@ -5,9 +5,397 @@
 
   <subsection>
     <title>Monday</title>
+    <subsubsection>
+      <title>Topology from the categorical viewpoint</title>
+        <aside>
+          <p>
+            One of my favorite math books is John Milnor's <pubtitle>Topology from the differentiable viewpoint</pubtitle>, 
+            which serves as inspiration for the the section title here.
+          </p>
+        </aside>
+
+  <p>
+    One of the primary insights of twentieth century mathematics is that <alert>objects</alert> should not be studied in
+    isolation. Rather, to understand objects we must also understand <alert>relationships</alert> between objects.
+    Topologies offer one notion of “relation”, organizing the points of a set into neighborhoods. As an abstraction
+    of geometry, topology is immensely successful, but it fails to capture a second, more structural notion of relation.
+  </p>
+
+  <p>
+    <alert>Category theory</alert> organizes objects by their transformations. Once these notions of object and relation are
+    abstracted, it becomes possible to compare and contrast different fields of mathematics. Theorems about wildly
+    different mathematical objects are often identical in their categorical content. In this manner, category theory
+    becomes a meta-mathematical tool for both identifying and conjecturing structural results.
+  </p>
+
+  <p>
+    Our present goal is to use the 
+    language of category theory to motivate definitions and interpret theorems. Moving into the algebro-topological portion of the course,
+    this language will become even more important as we use the homology <term>functor</term> to compare the
+    categories of topological spaces and vector spaces.
+  </p>
+</subsubsection>
+
+  <subsubsection xml:id="sec-categories">
+    <title>Categories</title>
 
     <p>
+      We begin with a motivating example. Sets are a type of mathematical object. Sets are related by functions.
+      Each function has a domain (source) and codomain (target). In standard notation, <m>f:A\to B</m> denotes
+      a function with domain <m>A</m> and codomain <m>B</m>. Of course, functions admit composition: given
+      <m>g:B\to C</m> and <m>f:A\to B</m> we can form <m>g\circ f:A\to C</m> by assigning <m>g(f(a))</m> to
+      <m>a\in A</m>. This composition is associative: if <m>f:A\to B</m>, <m>g:B\to C</m>, and <m>h:C\to D</m>
+      are functions, then
+      <md>h\circ(g\circ f) = (h\circ g)\circ f.</md>
     </p>
+
+    <p>
+      Moreover, each set (even the empty set!) admits an identity function <m>\operatorname{id}_A:A\to A</m>. This function takes
+      each <m>a\in A</m> to <m>a</m> and satisfies the following property: for each <m>g:A\to B</m> and each
+      <m>f:C\to A</m>,
+    </p>
+
+    <p>
+      <md>g\circ \operatorname{id}_A = g\qquad\text{and}\qquad \operatorname{id}_A\circ f = f.</md>
+    </p>
+
+    <p>
+      In the following definition, we will see that categories consist of objects, morphisms (with source and target
+      objects), composition, and identity morphisms satisfying associativity and identity properties. As such, sets and
+      functions form our first example of a category.
+    </p>
+
+    <definition xml:id="def-category">
+      <statement>
+        <p>
+          A <term>category</term> <m>\mathcal{C}</m> consists of a collection of <term>objects</term> <m>\mathrm{Ob}\,\mathcal{C}</m>
+          and a collection of <term>morphisms</term> <m>\mathrm{Mor}\,\mathcal{C}</m> along with assignments
+          <m>s,t:\mathrm{Mor}\,\mathcal{C}\to \mathrm{Ob}\,\mathcal{C}</m> (called the <term>source</term> and <term>target</term> maps).
+          Let <m>\mathcal{C}(x,y)\subseteq \mathrm{Mor}\,\mathcal{C}</m> denote the collection of morphisms with source
+          <m>x\in \mathrm{Ob}\,\mathcal{C}</m> and target <m>y\in \mathrm{Ob}\,\mathcal{C}</m>. Then for each
+          <m>x,y,z\in \mathrm{Ob}\,\mathcal{C}</m>, <m>\mathcal{C}</m> is also equipped with a <term>composition</term>
+          <md>
+            <mrow>\circ\colon \mathcal{C}(y,z)\times \mathcal{C}(x,y) \amp \longrightarrow \mathcal{C}(x,z)</mrow>
+            <mrow>(g,f) \amp \longmapsto g\circ f.</mrow>
+          </md>
+        </p>
+
+        <p>
+          Additionally, for each <m>x\in \mathrm{Ob}\,\mathcal{C}</m> there is an <term>identity morphism</term>
+          <m>\operatorname{id}_x\in \mathcal{C}(x,x)</m>. This data must satisfy the following properties:
+        </p>
+
+        <dl>
+         <li>
+           <title>Associativity:</title>
+           <p>
+             For objects <m>x,y,z,w</m> and morphisms <m>f\in \mathcal{C}(x,y)</m>,
+             <m>g\in \mathcal{C}(y,z)</m>, and <m>h\in \mathcal{C}(z,w)</m>, we have
+             <md>h\circ(g\circ f) = (h\circ g)\circ f.</md>
+           </p>
+         </li>
+       
+         <li>
+            <title>Identity:</title>
+            <p>
+              For each <m>x,y\in \mathrm{Ob}\,\mathcal{C}</m>, <m>f\in \mathcal{C}(x,y)</m>, and
+              <m>g\in \mathcal{C}(y,x)</m>, we have
+              <md>f\circ \operatorname{id}_x = f\qquad\text{and}\qquad \operatorname{id}_x\circ g = g.</md>
+            </p>
+          </li>
+        </dl>
+
+      </statement>
+    </definition>
+
+    <p>
+      It is useful to think about categories diagrammatically. These diagrams use letters to represent objects, and
+      labelled arrows to represent morphisms. So if <m>x,y\in \mathrm{Ob}\,\mathcal{C}</m> and <m>f\in \mathcal{C}(x,y)</m>,
+      we may draw an arrow from <m>x</m> to <m>y</m> labelled <m>f</m> in order to represent that <m>f</m> is a morphism
+      with source <m>x</m> and target <m>y</m>. (Note that we have dropped <m>\mathcal{C}</m> from our notation here:
+      usually it will be clear from context which category we are working in.) We may also write <m>f\colon x\to y</m> to
+      represent <m>f\in \mathcal{C}(x,y)</m>.
+    </p>
+
+    <p>
+      Now suppose that in addition to <m>f</m> we also have a morphism <m>g\colon y\to z</m>. Composition tells us that we then
+      get a new morphism <m>g\circ f\colon x\to z</m>. We can put all of this information into a single <em>commutative diagram</em>.
+    </p>
+      <image width="55%">
+        <prefigure label="comm-triangle" xmlns="https://prefigure.org">
+          <diagram dimensions="(320,230)" margins="5">
+            <coordinates bbox="(-1.35,-0.2,1.35,1.45)">
+
+              <definition>graph={0:[1,2], 1:[2]}</definition>
+
+              <network directed="yes" arrows="end"
+                       graph="graph"
+                       labels="yes"
+                       node-style="circle"
+                       node-fill="white" node-stroke="none"
+                       node-size="30">
+
+                <node at="0" p="(-1,0)"><m>x</m></node>
+                <node at="1" p="(0,1.1)"><m>y</m></node>
+                <node at="2" p="(1,0)"><m>z</m></node>
+
+                <edge vertices="(0,1)" label-location="0.50" alignment="nw"><m>f</m></edge>
+                <edge vertices="(1,2)" label-location="0.50" alignment="ne"><m>g</m></edge>
+                <edge vertices="(0,2)" label-location="0.50" alignment="south"><m>g\circ f</m></edge>
+
+              </network>
+            </coordinates>
+          </diagram>
+        </prefigure>
+        <description>
+          A triangle with objects <m>x</m>, <m>y</m>, <m>z</m> and arrows <m>f\colon x\to y</m>, <m>g\colon y\to z</m>, 
+          and <m>g\circ f\colon x\to z</m>. The arrows form a triangle with indicated sources and targets.
+        </description>
+      </image>0
+    <p>
+      When we say that a diagram like the one above <alert>commutes</alert>, we are saying precisely that the two paths from
+      <m>x</m> to <m>z</m> determine the same morphism, i.e. the bottom arrow equals the composite of the two slanted arrows.
+      The geometric presentation of the diagram is unimportant; we can rearrange the nodes without changing the meaning.
+    </p>
+
+    <p>
+      We can also use diagrams to express the axioms for a category. Associativity can be pictured as the statement that
+      two different ways of composing <m>f</m>, <m>g</m>, and <m>h</m> agree.
+    </p>
+      <image width="70%">
+        <prefigure label="assoc-diagram" xmlns="https://prefigure.org">
+          <diagram dimensions="(460,240)" margins="5">
+            <coordinates bbox="(-1.6,-0.2,1.6,1.25)">
+
+              <definition>graph={0:[1,2], 1:[2,3], 2:[3]}</definition>
+
+              <network directed="yes" arrows="end"
+                       graph="graph"
+                       labels="yes"
+                       node-style="circle"
+                       node-fill="white" node-stroke="none"
+                       node-size="30">
+
+                <!-- nodes: 0=x, 1=y, 2=z, 3=w -->
+                <node at="0" p="(-1.35,0)"><m>x</m></node>
+                <node at="1" p="(-0.35,1.0)"><m>y</m></node>
+                <node at="2" p="(0.55,0)"><m>z</m></node>
+                <node at="3" p="(1.35,1.0)"><m>w</m></node>
+
+                <!-- basic arrows -->
+                <edge vertices="(0,1)" label-location="0.50" alignment="nw"><m>f</m></edge>
+                <edge vertices="(1,2)" label-location="0.50" alignment="ne"><m>g</m></edge>
+                <edge vertices="(2,3)" label-location="0.50" alignment="se"><m>h</m></edge>
+
+                <!-- composites displayed as additional arrows -->
+                <edge vertices="(0,2)" label-location="0.50" alignment="south"><m>g\circ f</m></edge>
+                <edge vertices="(1,3)" label-location="0.50" alignment="north"><m>h\circ g</m></edge>
+
+              </network>
+            </coordinates>
+          </diagram>
+        </prefigure>
+        <description>
+          A four-object diagram showing arrows <m>f</m>, <m>g</m>, <m>h</m> and the composites <m>g\circ f</m>, <m>h\circ g</m>.
+        </description>
+      </image>
+
+    <p>
+      We can interpret this axiom as saying that we can paste together commutative triangles to produce commutative quadrilaterals.
+      The identity axiom also admits a simple diagrammatic expression.
+    </p>
+
+
+      <sidebyside widths="45% 45%" valign="middle">
+        <image>
+          <prefigure label="id-left" xmlns="https://prefigure.org">
+            <diagram dimensions="(320,240)" margins="5">
+              <coordinates bbox="(-1.35,-0.2,1.35,1.35)">
+
+                <definition>graph={0:[1,2], 1:[2]}</definition>
+
+                <network directed="yes" arrows="end"
+                         graph="graph"
+                         labels="yes"
+                         node-style="circle"
+                         node-fill="white" node-stroke="none"
+                         node-size="30">
+
+                  <!-- 0 = x (left), 1 = x (top-right), 2 = x (bottom-right) -->
+                  <node at="0" p="(-1,0.2)"><m>x</m></node>
+                  <node at="1" p="(0.8,1.1)"><m>x</m></node>
+                  <node at="2" p="(0.8,0.0)"><m>x</m></node>
+
+                  <edge vertices="(0,1)" label-location="0.50" alignment="nw"><m>\operatorname{id}_x</m></edge>
+                  <edge vertices="(1,2)" label-location="0.50" alignment="e"><m>f</m></edge>
+                  <edge vertices="(0,2)" label-location="0.50" alignment="south"><m>f</m></edge>
+
+                </network>
+              </coordinates>
+            </diagram>
+          </prefigure>
+          <description>
+            A triangle expressing <m>f\circ \operatorname{id}_x=f</m>.
+          </description>
+        </image>
+
+        <image>
+          <prefigure label="id-right" xmlns="https://prefigure.org">
+            <diagram dimensions="(320,240)" margins="5">
+              <coordinates bbox="(-1.35,-0.2,1.35,1.35)">
+
+                <definition>graph={0:[1,2], 1:[2]}</definition>
+
+                <network directed="yes" arrows="end"
+                         graph="graph"
+                         labels="yes"
+                         node-style="circle"
+                         node-fill="white" node-stroke="none"
+                         node-size="30">
+
+                  <!-- 0 = y (left), 1 = x (top-right), 2 = x (bottom-right) -->
+                  <node at="0" p="(-1,0.2)"><m>y</m></node>
+                  <node at="1" p="(0.8,1.1)"><m>x</m></node>
+                  <node at="2" p="(0.8,0.0)"><m>x</m></node>
+
+                  <edge vertices="(0,1)" label-location="0.50" alignment="nw"><m>g</m></edge>
+                  <edge vertices="(1,2)" label-location="0.50" alignment="e"><m>\operatorname{id}_x</m></edge>
+                  <edge vertices="(0,2)" label-location="0.50" alignment="south"><m>g</m></edge>
+
+                </network>
+              </coordinates>
+            </diagram>
+          </prefigure>
+          <description>
+            A triangle expressing <m>\operatorname{id}_x\circ g=g</m>.
+          </description>
+        </image>
+      </sidebyside>
+
+    <p>
+      Without realizing it, you have been working with categories for a long time. Consider the following examples.
+    </p>
+
+    <example xml:id="eg-sets">
+      <title>The category of sets and functions</title>
+      <statement>
+        <p>
+          We have already mentioned that sets and functions form a category. We denote this category <m>\mathsf{Set}</m>.
+          Similarly, there is a category <m>\mathsf{FinSet}</m> with objects finite sets and morphisms functions between finite sets.
+        </p>
+      </statement>
+    </example>
+
+    <example xml:id="eg-vect">
+      <title>The category of vector spaces and linear transformations</title>
+      <statement>
+        <p>
+          Let <m>k</m> be a field and let <m>\mathsf{Vect}_k</m> have objects <m>k</m>-vector spaces and morphisms <m>k</m>-linear
+          transformations. Since linear transformations compose (in the set-theoretic sense) to give new linear transformations,
+          <m>\mathsf{Vect}_k</m> is also a category. (It is obvious that the identity function <m>1_V:V\to V</m> is linear.)
+          We can also consider the category <m>\mathsf{FinVect}_k</m> of finite-dimensional <m>k</m>-vector spaces and <m>k</m>-linear
+          transformations.
+        </p>
+      </statement>
+    </example>
+
+    <example xml:id="eg-empty-category">
+      <title>The empty category</title>
+      <statement>
+        <p>
+          The <term>empty category</term> <m>\varnothing</m> has no objects (i.e. <m>\mathrm{Ob}\,\varnothing=\varnothing</m>) and no morphisms
+          (<m>\mathrm{Mor}\,\varnothing=\varnothing</m>). The source, target, and composition functions are all the empty function
+          <m>\varnothing\to\varnothing</m> and all properties are satisfied vacuously!
+        </p>
+      </statement>
+    </example>
+
+    <example xml:id="eg-trivial-category">
+      <title>The trivial category</title>
+      <statement>
+        <p>
+          The <term>trivial category</term> <m>\bullet</m> has a singleton set <m>\{*\}</m> for its objects and a single morphism
+          (necessarily the identity on <m>*</m>), <m>\operatorname{id}_*:* \to *</m>. The only composition to define is 
+          <m>\operatorname{id}_*\circ \operatorname{id}_*=\operatorname{id}_*</m> and this is enough
+          to check the associativity and identity properties as well.
+        </p>
+      </statement>
+    </example>
+
+    <example xml:id="eg-mat">
+      <title>A category whose morphisms are not functions</title>
+      <statement>
+        <p>
+          Not every category has special classes of functions as morphisms. Consider <m>\mathsf{Mat}_k</m> whose objects are the natural numbers
+          <m>\mathbb{N}=\{0,1,2,\ldots\}</m> and whose morphisms <m>\mathsf{Mat}_k(m,n)</m> are <m>n\times m</m> matrices with entries in a field
+          <m>k</m>. Composition is given by matrix multiplication (check compatibility!) and <m>\operatorname{id}_k</m> is the <m>k\times k</m> 
+          identity matrix. 
+          Since matrix multiplication is associative, this forms a category.
+        </p>
+
+        <p>
+          If you are suspicious that this category is eerily similar to <m>\mathsf{FinVect}_k</m>, worry not: it is! After studying equivalences of
+          categories and skeleta, you will understand exactly how similar.
+        </p>
+      </statement>
+    </example>
+
+    <p>
+      The following two examples should seem completely obvious if you have already taken a course in abstract algebra. If you have not, there is no harm
+      in skipping them.
+    </p>
+
+    <example xml:id="eg-groups">
+      <title>Categories of groups</title>
+      
+      
+      <statement>
+        <p>
+          There are categories <m>\mathsf{Gp}</m>, <m>\mathsf{FinGp}</m>, and <m>\mathsf{AbGp}</m> of groups, finite groups, and Abelian groups,
+          respectively. In each case, morphisms are group homomorphisms.
+        </p>
+      </statement>
+    </example>
+
+    <example xml:id="eg-rings">
+      <title>Categories of rings</title>
+      
+      
+      <statement>
+        <p>
+          There are categories <m>\mathsf{Ring}</m> and <m>\mathsf{CommRing}</m> of rings and commutative rings, respectively. In both cases,
+          morphisms are ring homomorphisms. There is also a category <m>\mathsf{Field}</m> of fields and field homomorphisms.
+        </p>
+      </statement>
+    </example>
+
+    <p>
+      Finally, we come to the category of primary interest in this course, the category of topological spaces and continuous functions.
+    </p>
+
+    <example xml:id="eg-top">
+      <title>The category of topological spaces and continuous functions</title>
+      
+      
+      <statement>
+        <p>
+          The category <m>\mathsf{Top}</m> has topological spaces as its objects and continuous functions as its morphisms. In order to check this, we must
+          see that the composition of continuous functions is continuous and that identity functions are continuous. If <m>X</m> is a topological space and
+          <m>\operatorname{id}_X:X\to X</m> is the identity function, then for any <m>U\subseteq X</m> open, <m>\operatorname{id}_X^{-1}(U)=U</m> is open in 
+          <m>X</m>, so <m>\operatorname{id}\operatorname{id}_X</m> is continuous. The associativity and identity axioms hold because they hold for functions.
+        </p>
+      </statement>
+    </example>
+
+    <remark xml:id="rmk-wrong-morphisms">
+      <title>Choice of morphisms</title>
+      <p>
+        Of course, there is also a category whose objects are topological spaces and morphisms are arbitrary functions between underlying sets. And while we are
+        free to define such a category, it is not of particular interest. A category is a tool for studying relationships between objects. If we choose the wrong
+        set of relationships (i.e. the wrong morphisms), then we end up with an uninteresting — or, worse yet, misleading — category.
+      </p>
+    </remark>
+    </subsubsection>
   </subsection>
 
 

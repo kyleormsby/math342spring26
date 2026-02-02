@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<worksheet>
+  <title>Homework 02</title>
+  <introduction>
+    <p>
+      <alert>Instructions:</alert> Complete all the exercises below and submit your work via 
+      <url href="https://www.gradescope.com/courses/1238540">Gradescope</url> by Friday February 6 at 10pm.
+    </p>
+  </introduction>
+
+  <page>
+    <exercise>
+      <statement>
+        <p>
+          Prove that the squaring map
+          <md>
+            <mrow>s\colon (-1,0)\cup [1,2) \amp \longrightarrow (0,4) </mrow>
+            <mrow>x \amp \longmapsto x^2</mrow>
+          </md>
+          is a continuous bijection which is not a homeomorphism.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>\mathbb R\smallsetminus \{0\}\to \mathbb R</m>, <m>x\mapsto 1/x</m> is continuous but 
+          admits no continuous extension to a map with domain <m>\mathbb R</m>. (Part of your task is to make 
+          the meaning of this prompt precise. As much as possible, use "preimage of an open is open" language 
+          in your proof, as opposed to <m>\varepsilon</m>-<m>\delta</m> language.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Rigorously prove that <m>\mathrm{SO}(2)</m> is homeomorphic to <m>S^1</m>. Here <m>\mathrm{SO}(2) = \mathrm{SO}_2(\mathbb R)</m> 
+          the set of <m>2\times 2</m> real orthogonal matrices with determinant <m>1</m> given the subspace topology inside 
+          <m>\mathbb R^{2\times 2}</m>, and <m>S^1</m> is the unit circle given the subspace topology inside <m>\mathbb R^2</m>. You may 
+          freely use the fact that every element of <m>\mathrm{SO}(2)</m> is of the form 
+          <m>
+            \begin{pmatrix}
+              \cos \theta \amp -\sin \theta\\
+              \sin \theta \amp \cos \theta
+            \end{pmatrix}
+          </m> for <m>\theta</m> some real number.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Share an example of a category not discussed in class that you find interesting, and say why.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Consider a morphism <m>f\colon x\to y</m> in a category <m>\mathsf C</m>. Prove the following statement:
+          <blockquote>
+            <p>
+              if there exist morphisms <m>g,h\colon y\rightrightarrows x</m> such that <m>gf=\operatorname{id}_x</m> and 
+              <m>gf=\operatorname{id}_y</m>, then <m>g=h</m> and <m>f</m> is an isomorphism.
+            </p>
+          </blockquote>
+          Conclude that two-sided compositional inverses in a category are unique.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <task>
+        <statement>
+          <p>
+          Prove that functors preserve isomorphisms, <ie />, if <m>F\colon \mathsf C\to \mathsf D</m> is a functor and <m>f</m> is an 
+          isomorhism in <m>\mathsf C</m>, then <m>Ff</m> is an isomorphism in <m>\mathsf D</m>. 
+          </p>
+        </statement>
+      </task>
+      <task>
+        <statement>
+        <p>
+          Give an example of a functor that does 
+          not <term>refelct isomorphisms</term>; that is, find categories <m>\mathsf C</m>, <m>\mathsf D</m>, a functor
+          <m>F\colon \mathsf C\to \mathsf D</m>, and a morphism <m>f</m> of <m>\mathsf C</m> for which <m>Ff</m> is an isomorphism but 
+          <m>f</m> is not.
+        </p>
+      </statement>
+      </task>
+    </exercise>
+   
+
+  </page>
+</worksheet>

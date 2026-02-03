@@ -396,6 +396,39 @@
       </p>
     </remark>
     </subsubsection>
+    <subsubsection xml:id="subsubsec-functors">
+      <title>Functors</title>
+      <p>
+        If category theory is all about relations between mathematical objects, and categories are themselves mathematical objects 
+        then we need a way to compare — or relate — categories. This is what functors do.
+      </p>
+      <definition xml:id="def-functor">
+        <statement>
+          <p>
+            A <term>functor</term> from a category <m>\mathsf C</m> to a category <m>\mathsf D</m>, denoted 
+            <m>F\colon \mathsf C\to \mathsf D</m> is an assignment on objects 
+            <m>F\colon \operatorname{Ob} \mathsf C\to \operatorname{Ob} \mathsf D</m> together with an assignment on morphisms 
+            <m>F\colon \mathsf C(x,y)\to \mathsf D(Fx,Fy)</m> for each <m>x,y\in \operatorname{Ob} \mathsf C</m> satisfying the 
+            following properties:
+            <ul>
+              <li>
+                <p>
+                  for all <m>x\in\operatorname{Ob} \mathsf C</m>, <m>F\operatorname{id}_x = \operatorname{id}_{Fx}</m>, and
+                </p>
+              </li>
+              <li>
+                <p>
+                  for every pair of composable morphisms <m>f\in \mathsf C(x,y)</m>, <m>g\in \mathsf C(y,z)</m>,
+                  <md>
+                    F(gf) = (Fg)(Ff).
+                  </md>
+                </p>
+              </li>
+            </ul>
+          </p>
+        </statement>
+      </definition>
+    </subsubsection>
   </subsection>
 
 

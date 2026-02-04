@@ -396,7 +396,7 @@
       </p>
     </remark>
     </subsubsection>
-    <subsubsection xml:id="subsubsec-functors">
+      <subsubsection xml:id="subsubsec-functors">
       <title>Functors</title>
       <p>
         If category theory is all about relations between mathematical objects, and categories are themselves mathematical objects 
@@ -428,15 +428,307 @@
           </p>
         </statement>
       </definition>
+      <example>
+        <title>The direct image functor</title>
+        <p>
+          There are multiple functors associated with the power set construction <m>X\mapsto 2^X</m>. Our first example is 
+          direct image, which takes <m>X\mapsto 2^X</m> and <m>(f\colon X\to Y)\mapsto (f\colon 2^X\to 2^Y,~A\mapsto f[A]</m>. 
+          You should check that the identity function maps to the identity on power sets, and that direct image commutes with 
+          composition, <ie />, <m>(g\circ f)[A] = g[f[A]]</m>.
+        </p>
+      </example>
+      
     </subsubsection>
   </subsection>
 
 
   <subsection>
     <title>Wednesday</title>
+    <subsubsection xml:id="subsubsec-more-functors">
+      <title>More on functors</title>
+            <p>
+        Some functors "reverse arrows". For instance, preimages famously satisfy <m>(g\circ f)^{-1} = f^{-1}\circ g^{-1}</m>. To 
+        handle this formally, we make the following definition.
+      </p>
+      <definition xml:id="def-opposite-cat">
+        <title>Opposite category</title>
+        <statement>
+          <p>
+            Given a category <m>\mathsf C</m>, its <term>opposite category</term> <m>\mathsf C^{\mathrm{op}}</m> has the same objects 
+            as <m>\mathsf C</m> and <m>\mathsf C^{\mathrm{op}}(x,y) = \mathsf C(y,x)</m>. Composition in <m>\mathsf C^{\mathrm{op}}</m> 
+            is given by composing in the swapped order in <m>\mathsf C</m>, and identities are the same as in <m>\mathsf C</m>.
+          </p>
+        </statement>
+      </definition>
+      <exercise>        
+        <p>
+          Verify that <m>\mathsf C^{\mathrm{op}}</m> is a category.
+        </p>
+      </exercise>
+      <p>
+        A functor that "reverses arrows" can now be encoded as a functor <m>\mathsf C^{\mathrm{op}}\to \mathsf D</m>. Some authors call 
+        this a <term>contravariant functor</term> <m>\mathsf C\to \mathsf D</m>, but we will try to avoid this language here.
+      </p>
+      <example>
+        <title>The preimage functor</title>
+        <p>
+          The power set construction on objects also admits preimage as its functorial assignment on morphisms. That is, there is a functor 
+          <m>\mathsf{Set}^{\mathrm{op}}\to \mathsf{Set}</m> given by
+          <md>
+            <mrow>X \amp \longmapsto 2^X</mrow>
+            <mrow>(f\colon X\to Y) \amp \longmapsto (f^{-1}\colon 2^Y\to 2^X,~B\mapsto f^{-1}B := \{x\in X\mid f(x)\in B\}.</mrow>
+          </md>
+        </p>
+      </example>
+      <p>
+        Functors are fantastic tools. One thing you can do with them is prove existence results like the Brouwer fixed-point theorem. A 
+        <term>fixed point</term> of a function <m>f\colon X\to X</m> is a point <m>x\in X</m> for which <m>f(x)=x</m>.
+      </p>
+      <theorem xml:id="thm-brouwer-fp">
+        <title>Brouwer fixed-point theorem</title>
+        <statement>
+          <p>
+            Let <m>D^n := \{x\in \mathbb R^n\mid \lVert x\rVert \le 1\}</m> denote the closed unit disk in Euclidean <m>n</m>-space for 
+            some <m>n\ge 0</m>. Then every continuous function <m>D^n\to D^n</m> has a fixed point.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          Let <m>f\colon D^n\to D^n</m> be a continuous function and suppose for contradiction that <m>f</m> does not admit a fixed 
+          point. Then there is a well-defined continuous function <m>g\colon D^n \to S^{n-1} </m> taking <m>x</m> to the 
+          unique point on <m>S^{n-1}</m> through which the ray from <m>f(x)</m> to <m>x</m> passes. (Can you prove that this is 
+          continuous?) Since it will be important momentarily, 
+          note that the restriction of <m>g</m> to <m>S^{n-1}\subseteq D^n</m> is the identity map.
+        </p>
+        <p>
+          Later, we will introduce a functor called <term>homology</term>. The <m>k</m>-th homology functor
+          <md>
+            H_k\colon \mathsf{Top}\longrightarrow \mathsf{Ab}
+          </md>
+          from spaces to Abelian groups has something to do with "<m>k</m>-dimensional holes" and, in particular, we will compute
+          <md>
+            H_{n-1}S^{n-1}\cong \mathbb Z\qquad\text{and}\qquad H_{n-1}D^n = 0.
+          </md>
+          Since the restriction of <m>g</m> to <m>S^{n-1}</m> is the identity, we know that the diagram
+          <image width="45%">
+            <description>
+              A commutative diagram with <m>S^{n-1}</m> at upper left and upper right, and <m>D^n</m> at the bottom.
+              Arrows: <m>\operatorname{id}</m> from the left <m>S^{n-1}</m> to the right <m>S^{n-1}</m>;
+              <m>\operatorname{inc}</m> from the left <m>S^{n-1}</m> down to <m>D^n</m>;
+              and <m>g</m> from <m>D^n</m> up to the right <m>S^{n-1}</m>.
+            </description>
 
-    <p>
-    </p>
+            <prefigure xmlns="https://prefigure.org" label="cbrouwer">
+              <diagram dimensions="(320,230)" margins="5">
+                <coordinates bbox="(-1.6,-0.35,1.6,1.35)">
+
+                  <definition>graph={0:[1,2], 1:[2]}</definition>
+
+                  <network directed="yes" arrows="end"
+                          graph="graph"
+                          labels="yes"
+                          node-style="circle"
+                          node-fill="white" node-stroke="none"
+                          node-size="44">
+
+                    <node at="0" p="(-1,1.0)"><m>S^{n-1}</m></node>
+                    <node at="1" p="(0,0.0)"><m>D^n</m></node>
+                    <node at="2" p="(1,1.0)"><m>S^{n-1}</m></node>
+
+                    <edge vertices="(0,2)" label-location="0.50" alignment="n"><m>\operatorname{id}</m></edge>
+                    <edge vertices="(0,1)" label-location="0.50" alignment="sw"><m>\operatorname{inc}</m></edge>
+                    <edge vertices="(1,2)" label-location="0.50" alignment="se"><m>g</m></edge>
+
+                  </network>
+                </coordinates>
+              </diagram>
+            </prefigure>
+          </image>
+          commutes. Applying <m>H_{n-1}</m>, it follows that the diagram
+          <image width="45%">
+            <description>
+              A commutative diagram with <m>H_{n-1}S^{n-1}</m> at upper left and upper right, and <m>0</m> at the bottom.
+              Arrows: <m>\operatorname{id}</m> from the left <m>H_{n-1}S^{n-1}</m> to the right <m>H_{n-1}S^{n-1}</m>;
+              <m>H_{n-1}\operatorname{inc}</m> from the left <m>H_{n-1}S^{n-1}</m> down to <m>0</m>;
+              and <m>H_{n-1}g</m> from <m>0</m> up to the right <m>H_{n-1}S^{n-1}</m>.
+            </description>
+
+            <prefigure xmlns="https://prefigure.org" label="homology-brouwer">
+              <diagram dimensions="(320,230)" margins="5">
+                <coordinates bbox="(-1.6,-0.35,1.6,1.35)">
+
+                  <definition>graph={0:[1,2], 1:[2]}</definition>
+
+                  <network directed="yes" arrows="end"
+                          graph="graph"
+                          labels="yes"
+                          node-style="circle"
+                          node-fill="white" node-stroke="none"
+                          node-size="44">
+
+                    <node at="0" p="(-1,1.0)"><m>H_{n-1}S^{n-1}</m></node>
+                    <node at="1" p="(0,0.0)"><m>0</m></node>
+                    <node at="2" p="(1,1.0)"><m>H_{n-1}S^{n-1}</m></node>
+
+                    <edge vertices="(0,2)" label-location="0.50" alignment="n"><m>\operatorname{id}</m></edge>
+                    <edge vertices="(0,1)" label-location="0.50" alignment="sw"><m>H_{n-1}\operatorname{inc}</m></edge>
+                    <edge vertices="(1,2)" label-location="0.50" alignment="se"><m>H_{n-1}g</m></edge>
+
+                  </network>
+                </coordinates>
+              </diagram>
+            </prefigure>
+          </image>
+          commutes. This is a contradiction since the identity map between nonzero Abelian groups does not factor through the 
+          trivial group! We conclude that a fixed point must exist after all.
+        </p>
+      </proof>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-new-from-old">
+      <title>New topologies from old</title>
+      <p>
+        We now undertake the construction of new topological spaces from old ones, with a focus on the subspace, product, coproduct, 
+        and quotient topologies. Later, we will also talk about function spaces.
+      </p>
+      <p>
+        In each case, we employ the following pattern in developing our intuition:
+        <dl>
+          <li>
+            <title>Universal property</title>
+            <p>
+              Say what we want the space to do in a way that specifies the construction up to unique homeomorphism.
+            </p>
+          </li>
+          <li>
+            <title>Construction</title>
+            <p>
+              Provide a concrete desciption of the space and verify that it satisfies the universal property.
+            </p>
+          </li>
+          <li>
+            <title>Examples</title>
+            <p>
+              Get familiar with the space, universal property, and construction by playing with well-chosen examples.
+            </p>
+          </li>
+          <li>
+            <title>Other contexts</title>
+            <p>
+              By stating the universal property of our <m>\mathsf{Top}</m>-situated construction in other categories, we 
+              can deepen our understanding and build bridges between topology and other parts of mathematics.
+            </p>
+          </li>
+        </dl>
+      </p>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-subspace">
+      <title>The subspace topology</title>
+      <p>
+        Given a space <m>X</m> and subset <m>A\subseteq X</m>, we have already defined the <term>subspace topology</term> on <m>A</m>. It 
+        has open sets of the form <m>A\cap U</m> where <m>U\subseteq X</m> is open.
+      </p>
+      <p>
+        But <alert>why</alert> did we make this definition? What does the subspace topology on <m>A</m> do for us that other topologies 
+        do not?
+      </p>
+      <p>
+        To answer this question, we will extend our notion of "subspace" a bit and develop its <alert>universal property</alert> in 
+        categorical language.
+      </p>
+      <definition xml:id="def-subspace-top">
+        <title>Subspace topology by universal property</title>
+        <statement>
+          <p>
+            Suppose <m>X</m> is a space, <m>A</m> is a set, and <m>i\colon A\to X</m> is an injective function. Then the <term>subspace topology</term> on <m>A</m> (relative to <m>i</m>) is the topology satisfying the 
+            following universal property:
+            <blockquote>
+              <p>
+                for any space <m>K</m> and function <m>f\colon K\to A</m>, the map <m>f</m> is continuous if and only if 
+                <m>i\circ f\colon K\to X</m> is continuous.
+              </p>
+            </blockquote>
+          </p>
+        </statement>
+      </definition>
+      <p>
+        We now need to check that this universal property characterizes the subspace topology.
+      </p>
+      <proposition xml:id="prop-subspace-up">
+        <statement>
+          <title>Characterizing the subspace topology</title>
+          <p>
+            Suppose <m>X</m> is a space, <m>A</m> is a set, and <m>i\colon A\to X</m> is an injective function. 
+            If <m>(A,\tau)</m> and <m>(A,\tau')</m> are topologies on <m>A</m> satisfying the condition of <xref ref="def-subspace-top" />, 
+            then <m>\tau=\tau'</m>.
+          </p>
+        </statement>
+      </proposition>
+      <proof>
+        <p>
+          Take <m>K = (A,\tau')</m> and <m>f=\operatorname{id}\colon A\to A</m>. Since <m>i\circ f=i</m>, the universal property 
+          of <m>(A,\tau)</m> implies that <m>\operatorname{id}\colon (A,\tau')\to (A,\tau)</m> is continuous. 
+          The analogous argument with <m>K = (A,\tau)</m> invoking the universal property of <m>(A,\tau')</m> implies that 
+          <m>\operatorname{id}\colon (A,\tau)\to (A,\tau')</m> is continuous. We conclude that 
+          <m>\operatorname{id}\colon (A,\tau)\to (A,\tau')</m> is a homeomorphism. The reader may check that the identity map is 
+          a homeomorphism if and only if <m>\tau=\tau'</m>.
+        </p>
+
+      </proof>
+      <p>
+        The above proposition is critical for checking that <alert>at most one</alert> topology on <m>A</m> is a subspace 
+        topology on <m>A</m>. But more is needed — we must also know that <alert>at least one</alert> subspace topology on <m>A</m> 
+        exists!
+      </p>
+      <proposition xml:id="prop-subspace-construction">
+        <title>Constructing the subspace topology</title>
+        <statement>
+          <p>
+            Suppose <m>X</m> is a space, <m>A</m> is a set, and <m>i\colon A\to X</m> is an injective function. Define
+            <md>
+              \tau_{\text{sub}} := \{i^{-1}U\mid U\subseteq X\text{ open}\}.
+            </md>
+            Then <m>(A,\tau_{\text{sub}})</m> satisfies the universal property of <xref ref="def-subspace-top" />.
+          </p>
+        </statement>
+      </proposition>
+      <exercise>
+        <title>The subspace topology is a topology</title>
+        <p>
+          Verify that <m>\tau_{\text{sub}}</m> is a topology on <m>A</m>.
+        </p>
+      </exercise>
+      <proof>
+        <p>
+          Endow <m>A</m> with the topology <m>\tau_{\text{sub}}</m>. Fix a space <m>K</m> and function <m>f\colon K\to A</m>. 
+          For the forwards implication, suppose that <m>f</m> is continuous. We need to check that <m>i\circ f</m> is continuous. 
+          Since continuity is preserved by composition, it suffices to prove that <m>i\colon A\to X</m> is continuous with respect 
+          to <m>\tau_{\text{sub}}</m>. This follows immediately from the definitions of continuity and <m>\tau_{\text{sub}}</m>.
+        </p>
+        <p>
+          For the backwards implication, suppose that <m>i\circ f\colon K\to X</m> is continuous (without assuming <m>f</m> is continuous). 
+          Suppose <m>V\in \tau_{\text{sub}}</m>. Then <m>V = i^{-1}U</m> for some <m>U\subseteq X</m> open. We observe that
+          <md>
+            f^{-1}V = f^{-1}[i^{-1}[U]] = (i\circ f)^{-1}U.
+          </md>
+          Since <m>i\circ f</m> is continuous, we know that this is an open subset of <m>K</m>. This verifies that <m>f</m> is continuous, 
+          as desired.
+        </p>
+      </proof>
+      <p>
+        We are now justified in talking about <alert>the</alert> subspace topology on <m>A</m> 
+        (relative to the injection <m>i\colon A\to X</m>). We have already seen a number of examples of subspaces, so we only provide one 
+        new one here.
+      </p>
+      <example>
+        <title>A non-discrete countable subspace of <m>\mathbb R</m> in which every point is isolated</title>
+        <p>
+          Consider the set <m>A:= \{1/n\mid n\in \mathbb Z_{\gt 0}\}\subseteq \mathbb R</m> with the subspace topology. 
+          Despite being in natural bijection with the discrete subspace <m>\mathbb Z_{\gt 0}\subseteq \mathbb R</m>, it is <alert>not</alert> 
+          the case that <m>A</m> is discrete. TODO: Add details.
+        </p>
+      </example>
+    </subsubsection>
   </subsection>
 
 

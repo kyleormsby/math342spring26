@@ -61,8 +61,8 @@
           Consider a morphism <m>f\colon x\to y</m> in a category <m>\mathsf C</m>. Prove the following statement:
           <blockquote>
             <p>
-              if there exist morphisms <m>g,h\colon y\rightrightarrows x</m> such that <m>gf=\operatorname{id}_x</m> and 
-              <m>gf=\operatorname{id}_y</m>, then <m>g=h</m> and <m>f</m> is an isomorphism.
+              if there exist morphisms <m>g,h\colon y\rightrightarrows x</m> such that <m>gf=hf=\operatorname{id}_x</m> and 
+              <m>fg=fh=\operatorname{id}_y</m>, then <m>g=h</m> and <m>f</m> is an isomorphism.
             </p>
           </blockquote>
           Conclude that two-sided compositional inverses in a category are unique.

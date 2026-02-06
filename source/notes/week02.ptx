@@ -221,10 +221,10 @@
                          node-fill="white" node-stroke="none"
                          node-size="30">
 
-                  <!-- 0 = x (left), 1 = x (top-right), 2 = x (bottom-right) -->
+                  <!-- 0 = x (left), 1 = x (top-right), 2 = y (bottom-right) -->
                   <node at="0" p="(-1,0.2)"><m>x</m></node>
                   <node at="1" p="(0.8,1.1)"><m>x</m></node>
-                  <node at="2" p="(0.8,0.0)"><m>x</m></node>
+                  <node at="2" p="(0.8,0.0)"><m>y</m></node>
 
                   <edge vertices="(0,1)" label-location="0.50" alignment="nw"><m>\operatorname{id}_x</m></edge>
                   <edge vertices="(1,2)" label-location="0.50" alignment="e"><m>f</m></edge>
@@ -640,12 +640,13 @@
         <title>Subspace topology by universal property</title>
         <statement>
           <p>
-            Suppose <m>X</m> is a space, <m>A</m> is a set, and <m>i\colon A\to X</m> is an injective function. Then the <term>subspace topology</term> on <m>A</m> (relative to <m>i</m>) is the topology satisfying the 
+            Suppose <m>X</m> is a space, <m>A</m> is a set, and <m>i\colon A\to X</m> is an injective function. Then the 
+            <term>subspace topology</term> on <m>A</m> (relative to <m>i</m>) is the topology satisfying the 
             following universal property:
             <blockquote>
               <p>
-                for any space <m>K</m> and function <m>f\colon K\to A</m>, the map <m>f</m> is continuous if and only if 
-                <m>i\circ f\colon K\to X</m> is continuous.
+                <m>i\colon A\to X</m> is continuous and for any space <m>K</m> and function <m>f\colon K\to A</m>, the map 
+                <m>f</m> is continuous if and only if <m>i\circ f\colon K\to X</m> is continuous.
               </p>
             </blockquote>
           </p>
@@ -721,11 +722,13 @@
         new one here.
       </p>
       <example>
-        <title>A non-discrete countable subspace of <m>\mathbb R</m> in which every point is isolated</title>
+        <title>A non-discrete countable subspace of <m>\mathbb R</m> in which all but one point is isolated</title>
         <p>
-          Consider the set <m>A:= \{1/n\mid n\in \mathbb Z_{\gt 0}\}\subseteq \mathbb R</m> with the subspace topology. 
-          Despite being in natural bijection with the discrete subspace <m>\mathbb Z_{\gt 0}\subseteq \mathbb R</m>, it is <alert>not</alert> 
-          the case that <m>A</m> is discrete. TODO: Add details.
+          Consider the set <m>A:= \{0\}\cup \{1/n\mid n\in \mathbb Z_{\gt 0}\}\subseteq \mathbb R</m> with the subspace topology. 
+          Despite being in natural bijection with the discrete subspace <m>\mathbb N\subseteq \mathbb R</m>, it is <alert>not</alert> 
+          the case that <m>A</m> is discrete. Indeed, every open subset of <m>A</m> containing <m>0</m> contains other elements of 
+          <m>A</m> as well, whereas every point of <m>\mathbb N</m> is <term>isolated</term> — its associated singleton subset is open. 
+          You should check that every nonzero element of <m>A</m> is isolated.
         </p>
       </example>
     </subsubsection>
@@ -734,8 +737,175 @@
 
   <subsection>
     <title>Friday</title>
-
+    <subsubsection xml:id="subsubsec-quotient">
+      <title>The quotient topology</title>
     <p>
+      Quotients are ubiquitous, and you are already familiar with some important examples. For instance, modular arithmetic passes 
+      from the integers <m>\mathbb Z</m> to the integers mod <m>n</m>, <m>\mathbb Z/n\mathbb Z</m>. The elements of the latter are 
+      equivalence classes of the form <m>x+n\mathbb Z</m> for <m>x\in \mathbb Z</m>. Of course, there are only <m>n</m> such 
+      equivalence classes since <m>x+n\mathbb Z=y+n\mathbb Z</m> if and only if <m>x-y\in n\mathbb Z</m>.
     </p>
+    <p>
+      This motivating example is not so interesting topologically since we usually view <m>\mathbb Z</m> as a discrete space. But here 
+      is a related construction: for real numbers <m>x,y</m>, declare <m>x\sim y</m> if and only if <m>x-y\in \mathbb Z</m>. We will call 
+      this quotient <m>\mathbb R/\mathbb Z</m>.
+    </p>
+    <exercise>
+      <title>Guess the topology of <m>\mathbb R/\mathbb Z</m></title>
+      <p>
+        How can you visualize <m>\mathbb R/\mathbb Z</m>? Is there a familiar space to which it "should" be homeomorphic?
+      </p>
+    </exercise>
+    <p>
+      Here's another case in which a topology on quotients would be useful. The idea is that we would like a space whose points parametrize 
+      lines through the origin in <m>\mathbb R^{n+1}</m>. As a first attempt, we might imagine an equivalence relation on 
+      <m>\mathbb R^{n+1}</m> where <m>x\sim y</m> if and only if <m>x</m> and <m>y</m> are on the same line through the origin. This 
+      immediately hits a snag since every line through the origin contains the origin, so <m>x\sim 0\sim y</m> for all 
+      <m>x,y\in\mathbb R^{n+1}</m> and we have collapsed everything into the same equivalence class. But there is an easy fix: first remove 
+      the origin from <m>\mathbb R^{n+1}</m>, and then declare <m>x\sim y</m> :iff <m>x</m> and <m>y</m> are on the same line through the 
+      origin. Equivalently, <m>x\sim y</m> if and only if <m>x=\lambda y</m> for some 
+      <m>\lambda\in \mathbb R^\times = \mathbb R\smallsetminus \{0\}</m>.
+    </p>
+    <p>
+      We write <m>\mathbb{RP}^n := (\mathbb R^{n+1}\smallsetminus \{0\})/\sim</m> and call this space 
+      <term>real projective <m>n</m>-space</term>. But we haven't pinned down the topology yet! The "collapsing" occuring in the quotient 
+      is far more dramatic here, and it is less clear what the resulting space "looks like".
+    </p>
+    <exercise>
+      <title>Guess the topologies of <m>\mathbb{RP}^1</m> and <m>\mathbb{RP}^2</m>.</title>
+      <p>
+        The homeomorphism type of <m>\mathbb{RP}^1</m> is one you've encountered before. Can you see it? What about <m>\mathbb{RP}^2</m>?
+      </p>
+    </exercise>
+    With this motivation in mind, we now develop the quotient topology, following our usual pattern of universal property, 
+    construction, examples, and other contexts. All our constructions will be predicated upon a surjective function <m>q\colon X\to Z</m>, 
+    but the reader is invited to imagine <m>Z=X/\sim</m> where <m>x\sim x'</m> :iff <m>q(x)=q(x')</m>. 
+    <definition xml:id="def-quotient-top">
+      <title>Quotient topology by universal property</title>
+      <statement>
+        <p>
+          Let <m>X</m> be a space and let <m>q\colon X\to Z</m> be a surjective function. The <term>quotient topology</term> on <m>Z</m> 
+          satisfies the following universal property:
+          <blockquote>
+            <p>
+              the map <m>q\colon X\to Z</m> is continuous and, for any space <m>K</m>, a function <m>f\colon Z\to K</m> is continuous 
+              if and only if the composite <m>f\circ q\colon X\to Z\to K</m> is continuous.
+            </p>
+          </blockquote>
+          In this case, we call <m>q\colon X\to Z</m> a <term>quotient map</term>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Our next task is to check that the universal property characterizes the quotient topology.
+    </p>
+    <proposition xml:id="prop-quotient-unique">
+      <statement>
+        <p>
+          If <m>(Z,\tau)</m> and <m>(Z,\tau')</m> are topologies on <m>Z</m> satisfying the universal property of 
+          <xref ref="def-quotient-top" />, then <m>\tau=\tau'</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        This will be part of your homework!
+      </p>
+    </proof>
+    <p>
+      In many practical situations, we will have a quotient map <m>q\colon X\to Z</m> at hand, and also a continuous function 
+      <m>f\colon X\to Y</m>, and we will want to know whether <m>f</m> <term>extends</term> along <m>q</m>. That is, is there a 
+      continuous function <m>\tilde f\colon Z\to Y</m> such that <m>\tilde f\circ q=f</m>? This is best split up into a set theoretic 
+      and topological component.
+    </p>
+    <proposition xml:id="prop-func-preserve-fibers">
+      <title>Fiber-preserving functions factor through the quotient</title>
+      <statement>
+        <p>
+          Suppose <m>q\colon X\to Z</m> is a surjective function and <m>f\colon X\to Y</m> is some other function. Then <m>f</m> 
+          <term>factors through</term> <m>Z</m> (via <m>q</m>) — that is, there exists <m>\tilde f\colon Z\to Y</m> such that 
+          <m>f=\tilde f \circ q</m> — if and only if <m>f</m> is constant on the fibers of <m>q</m>.
+        </p>
+      </statement>
+    </proposition>
+    <aside>
+      <title>Fibers</title>
+      <p>
+        A <term>fiber</term> of <m>q\colon X\to Z</m> is defined to be the preimage of a singleton subset of <m>Z</m>. To say that 
+        <m>f</m> is constant on the fibers of <m>q</m> is to say that <m>q(x)=q(x')</m> implies <m>f(x)=f(x')</m>. When <m>q</m> is the 
+        canonical quotient <m>X\to X/\sim</m>, this condition says that <m>x\sim x'</m> implies <m>f(x)=f(x')</m>, <ie /> <m>f</m> respects 
+        <m>\sim</m>.
+      </p>
+    </aside>
+    <proof>
+      <p>
+        The reader should verify this statement for themselves!
+      </p>
+    </proof>
+    <p>
+      By combining <xref ref="def-quotient-top" /> and <xref ref="prop-func-preserve-fibers" />, we immediately arrive at the following:
+    </p>
+    <proposition xml:id="prop-top-factor-quotient">
+      <statement>
+        <p>
+          Suppose <m>q\colon X\to Z</m> is a quotient map in <m>\mathsf{Top}</m> and <m>f\colon X\to Y</m> is a continuous function. Then 
+          <m>f</m> admits a continuous factorization through <m>Z</m> if and only if <m>f</m> is constant on the fibers of <m>q</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Since <m>f</m> is constant on fibers, <xref ref="prop-func-preserve-fibers" /> provides a function 
+        <m>\tilde f\colon Z\to Y</m> such that <m>f=\tilde f\circ q</m>. Now <xref ref="def-quotient-top" /> kicks in and tells us that 
+        <m>\tilde f</m> is continuous because <m>f</m> is.
+      </p>
+    </proof>
+    <p>
+      It is now time to ensure that quotient topologies exist.
+    </p>
+    <proposition xml:id="prop-quotient-construction">
+      <statement>
+        <p>
+          Let <m>X</m> be a space and let <m>q\colon X\to Z</m> be a surjective function. Then the topology
+          <md>
+            \tau_{\text{quot}} := \{V\subseteq Z\mid q^{-1}V\subseteq X\text{ open}\}
+          </md>
+          satisfies the conditions of <xref ref="def-quotient-top" /> and makes <m>q</m> a quotient map.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        First observe that <m>q\colon X\to (Z,\tau_{\text{quot}})</m> is continuous by definition of <m>\tau_{\text{quot}}</m>. We now need 
+        to show that for a space <m>K</m> and function <m>f\colon Z\to K</m>, <m>f</m> is continuous if and only if <m>f\circ q</m> is continuous. 
+        The forwards direction is automatic since composition preserves continuity. For the backwards direction, suppose <m>f\circ q</m> is 
+        continuous. Given <m>U\subseteq K</m> open, we need to guarantee that <m>f^{-1}U\subseteq Z</m> is open in <m>Z</m>. 
+        By definition of <m>\tau_{\text{quot}}</m>, this is the case if and only if <m>q^{-1}[f^{-1}U]\subseteq X</m> is open. But of course 
+        <m>q^{-1}[f^{-1}U]\subseteq X = (f\circ q)^{-1}U</m>, and the latter is open by continuity of <m>f\circ q</m>.
+      </p>
+    </proof>
+    </subsubsection>
+    <p>
+      Now that we know that there is a unique quotient topology satisfying <xref ref="def-quotient-top" />, we are ready to explore some 
+      examples in-depth.
+    </p>
+    <example>
+      <title><m>\mathbb R/\mathbb Z</m> is a circle</title>
+      <p>
+        
+      </p>
+    </example>
+    <example>
+      <title><m>\mathbb{RP}^1</m> is a circle</title>
+      <p>
+        
+      </p>
+    </example>
+    <example>
+      <title>The topology of <m>\mathbb{RP}^2</m></title>
+      <p>
+        
+      </p>
+    </example>
   </subsection>
 </section>

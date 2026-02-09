@@ -892,20 +892,33 @@
     <example>
       <title><m>\mathbb R/\mathbb Z</m> is a circle</title>
       <p>
-        
+        The map <m>f\colon \mathbb R\to S^1</m> given by <m>f(t) = e^{2\pi i t}</m> is continuous and constant on the fibers of the 
+        quotient map <m>q\colon \mathbb R\to \mathbb R/\mathbb Z</m>, thus there is a continuous map 
+        <m>\tilde f\colon \mathbb R/\mathbb Z\to S^1</m> such that <m>f=\tilde f\circ q</m>. The reader may check that <m>\tilde f</m> 
+        is a bijection (straightforward) and an open map (more work) and thus <m>\tilde f\colon \mathbb R/\mathbb Z\cong S^1</m>.
       </p>
     </example>
     <example>
       <title><m>\mathbb{RP}^1</m> is a circle</title>
       <p>
-        
+        This is a similar argument to the previous example, but using <m>f\colon \mathbb R^2\smallsetminus \{0\}\to S^1</m> defined by 
+        <md>
+          f(x) = \frac x{\lVert x\rVert}.
+        </md>
       </p>
     </example>
     <example>
       <title>The topology of <m>\mathbb{RP}^2</m></title>
       <p>
+        The lines 
+      </p>
+    </example>
+    <example>
+      <title>The space of unit cubes</title>
+      <p>
         
       </p>
+      
     </example>
   </subsection>
 </section>

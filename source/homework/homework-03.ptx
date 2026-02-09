@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<worksheet>
+  <title>Homework 03</title>
+  <introduction>
+    <p>
+      <alert>Instructions:</alert> Complete all the exercises below and submit your work via 
+      <url href="https://www.gradescope.com/courses/1238540">Gradescope</url> by Friday February 13 at 10pm.
+    </p>
+  </introduction>
+
+  <page>
+    <exercise>
+        <statement>
+            <p>
+                Complete one of the following tasks: either (a) read Ted Chiang's short story 
+                <url href="https://myenglishhomework.com/wp-content/uploads/2021/03/tower_of_babylon_-_ted_chiang.pdf">Tower of Babylon</url> 
+                and write one-page description of the topology of the story's world, or (b) write a one-page description of some other 
+                real or imagined object with a novel topology. Your description should, at minimum, include both the quotient and 
+                product topologies.
+            </p>
+        </statement>
+    </exercise>
+    <exercise>
+        <statement>
+            <p>
+              Prove <xref ref="prop-quotient-unique" />: If <m>(Z,\tau)</m> and <m>(Z,\tau')</m> are topologies on 
+              <m>Z</m> satisfying the universal property of <xref ref="def-quotient-top" />, then <m>\tau=\tau'</m>.
+            </p>
+        </statement>
+    </exercise>
+    <exercise>
+        <introduction>
+            <p>
+                In this problem, you will determine the homeomorphism type of some quotients of the plane.
+            </p>
+        </introduction>
+        <task>
+          <statement>
+            <p>
+              For points <m>(x_0,y_0),(x_1,y_1)\in \mathbb R^2</m>, declare
+              <md>
+                (x_0,y_0)\sim (x_1,y_1)\iff x_0+y_0^2=x_1+y_1^2.
+              </md>
+              Endow <m>\mathbb R^2/\sim</m> with the quotient topology and determine, with proof, a familiar space with which it is 
+              homeomorphic.
+            </p>
+          </statement>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Do the same thing again but with
+              <md>
+                (x_0,y_0)\sim (x_1,y_1)\iff x_0^2+y_0^2=x_1^2+y_1^2.
+              </md>
+            </p>
+          </statement>
+        </task>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>X,Y</m> be spaces and give <m>X\times Y</m> the product topology. Prove that the projection maps <m>X\leftarrow X\times Y\to Y</m> 
+          are open maps.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <introduction>
+        <p>
+          For a space <m>X</m> and positive integer <m>n</m>, we write
+          <md>
+            \operatorname{Conf}_n(X) := \{(x_1,\ldots,x_n)\in X^n\mid x_i=x_j\implies i=j\} \subseteq X^n
+          </md>
+          for the <term>configuration space</term> of <m>n</m> labeled points in <m>X</m>. It is endowed with the subspace topology relative to 
+          <m>X^n</m>. The <term>unordered configuration space</term> of <m>n</m> points in <m>X</m> is the quotient
+          <md>
+            \operatorname{UConf}_n(X) := \operatorname{Conf}_n(X)/\sim
+          </md>
+          where <m>\mathbf x\sim \mathbf y\iff</m> the coordinates of <m>\mathbf y</m> are a permutation of the coordinates of <m>\mathbf x</m>. 
+        </p>
+        <p>
+          (Aside: If you know about group actions, then you can note that the permutation group on <m>n</m> letters, <m>\mathfrak S_n</m>, acts on 
+          <m>\operatorname{Conf}_n(X)</m> by <md>\sigma\cdot (x_1,\ldots,x_n) = (x_{\sigma 1},\ldots,x_{\sigma n}),</md> and the unordered 
+          configuration space is the quotient <m>\operatorname{UConf}_n(X) = \operatorname{Conf}_n(x)/\mathfrak S_n</m>.)
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Determine the homeomorphism type of <m>\operatorname{Conf}_2(S^1)</m>.
+          </p>
+        </statement>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Do your best to describe the topology of <m>\operatorname{UConf}_2(S^1)</m>.
+          </p>
+        </statement>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Which notation do you prefer: <m>\operatorname{UConf}_n(X)</m> or <m>\binom{X}{n}</m>?
+          </p>
+        </statement>
+      </task>
+    </exercise>
+
+  </page>
+</worksheet>

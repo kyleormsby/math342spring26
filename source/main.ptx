@@ -48,6 +48,7 @@
       <!-- Include homework files -->
       <xi:include href="./homework/homework-01.ptx"/>
       <xi:include href="./homework/homework-02.ptx"/>
+      <xi:include href="./homework/homework-03.ptx"/>
 
 
     </chapter>

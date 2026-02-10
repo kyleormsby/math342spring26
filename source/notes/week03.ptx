@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-03">
+  <title>Week 3</title>
+
+  <subsection>
+    <title>Monday</title>
+    <subsubsection xml:id="subsubsec-co-products">
+      <title>Pullbacks and pushouts</title>
+      <p>
+        We will now consider (binary) pullbacks and pushouts. The product of sets <m>X,Y</m> is their Cartesian product
+        <md>
+          X\times Y = \{(x,y)\mid x\in X,y\in Y\}.
+        </md>
+        The coproduct of sets <m>X,Y</m> is their disjoint union
+        <md>
+          X\amalg Y = X\times \{0\} \cup Y\times \{1\}.
+        </md>
+        The function of <m>0</m> and <m>1</m> is to "color" the sets so that <m>(x,0)</m> and <m>(y,1)</m> remain distinct, even if <m>x=y</m>.
+      </p>
+      <p>
+        These constructions come with special functions called projection and inclusion. On the product <m>X\times Y</m> we have 
+        <m>\operatorname{pr}_X\colon X\times Y\to X</m> and <m>\operatorname{pr}_Y\colon X\times Y\to Y</m> given by 
+        <m>\operatorname{pr}_X(x,y)=x</m> and <m>\operatorname{pr}_Y(x,y)=y</m>. Mapping into the corproduct <m>X\amalg Y</m> we have 
+        <m>\operatornme{inc}_X\colon X\to X\amalg Y</m> and <m>\operatorname{inc}_Y\colon Y\to X\amalg Y</m> given by 
+        <m>\operatorname{inc}_X(x) = (x,0)</m> and <m>\operatorname{inc}_Y(y) = (y,1)</m>.
+      </p>
+      <definition xml:id="def-co-prod">
+        <title>(Co)product topologies by universal property</title>
+        <statement>
+        <p>
+          Let <m>X,Y</m> be spaces. The <term>product</term> of <m>X</m> and <m>Y</m> is the space <m>X\times Y</m>
+          satisfies the following universal property:
+          <blockquote>
+            <p>
+              the projection maps <m>\operatorname{pr}_X</m> and <m>\operatorname{pr}_Y</m> are continuous and for any space <m>Z</m>, 
+              a 
+            </p>
+          </blockquote>
+          In this case, we call <m>q\colon X\to Z</m> a <term>quotient map</term>.
+        </p>
+      </statement>
+      </definition>
+    </subsubsection>
+
+  </subsection>
+  <subsection>
+    <title>Wednesday</title>
+    
+  </subsection>
+  <subsection>
+    <title>Friday</title>
+    
+  </subsection>
+</section>

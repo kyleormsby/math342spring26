@@ -908,17 +908,24 @@
       </p>
     </example>
     <example>
-      <title>The topology of <m>\mathbb{RP}^2</m></title>
+      <title>The topology of <m>\mathbb{RP}^n</m></title>
       <p>
-        The lines 
+        Give <m>\mathbb R^{n+1}</m> the coordinates <m>x_0,x_1,\ldots,x_n</m>. Every line through the origin in <m>\mathbb R^{n+1}</m> that is 
+        not contained in the <m>x_n=0</m> 
+        hyperplane passes through a unique point in the "upper hemisphere"
+        <md>
+          S^n_+ := \{x\in S^n\mid x_n\gt 0\}\cong \mathbb R^n.
+        </md>
+        The lines through the origin in the <m>x_n=0</m> hyperplane form a copy of <m>\mathbb{RP}^{n-1}</m>. In this fashion,
+        <md>
+          \mathbb{RP}^n \cong \mathbb R^n \cup \mathbb{RP}^{n-1}
+        </md>
+        where the copy of <m>\mathbb{RP}^{n-1}</m> is "at infinity". Unpacking this recursion, we also have
+        <md>
+          \mathbb{RP}^n \cong \mathbb R^n \cup \mathbb R^{n-1} \cup \cdots \cup \mathbb R^1 \cup \mathbb R^0
+        </md>
+        and the reader is invited to meditate upon how the pieces are glued together.
       </p>
-    </example>
-    <example>
-      <title>The space of unit cubes</title>
-      <p>
-        
-      </p>
-      
     </example>
   </subsection>
 </section>

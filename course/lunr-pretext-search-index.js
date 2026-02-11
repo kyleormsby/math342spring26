@@ -916,16 +916,142 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "2.3",
   "title": "Week 3",
-  "body": " Week 3   Monday   Pullbacks and pushouts  We will now consider (binary) pullbacks and pushouts. The product of sets is their Cartesian product The coproduct of sets is their disjoint union The function of and is to \"color\" the sets so that and remain distinct, even if .  These constructions come with special functions called projection and inclusion. On the product we have and given by and . Mapping into the corproduct we have and given by and .   (Co)product topologies by universal property   Let be spaces. The product of and is the space satisfies the following universal property:  the projection maps and are continuous and for any space , a  In this case, we call a quotient map .       Wednesday    Friday   "
+  "body": " Week 3   Monday   Real projective space  It is worthwhile for us to spend some more time contemplating real projective space. Our prior work tells us that is built from two pieces: the upper hemisphere which is homeomorphic to an open -ball and Euclidean -space, and a copy of . These pieces are glued together along the boundary of , which is .  As it turns out, it will be advantageous to package and its boundary into a single package, the closed -disk This space comes equipped with a continuous inclusion of its boundary which is compatible with the homeomorphism given by projection onto the first coordinates.  Each line through the origin in the hyperplane passes through the -sphere twice at antipodal points. It follows that which the reader may prove by contemplating   A commutative diagram relating , its antipodal quotient, the punctured space , the radial-scaling quotient, and .    From this, we see that the restriction of the quotient map to the copy of in the hyperplane is a continuous quotient map onto . It follows that we have the commutative diagram  A commutative square expressing how is the union of and along .     It turns out that is the \"initial\" space with which we can fill in the bottom right corner of the diagram. This means that is the pushout of and along , a concept we will make precise momentarily.   Coordinates for real projective space  We can write for the equivalence class of in As such, for all .  In particular, if , then Points like this form the copy of in the above depiction of .  Meanwhile, the complement of this locus consists of points of the form with . These form a copy of , precisely the one that appears in the top right corner of the diagram above.     Pushouts  We now work in an arbitrary category . A span in is a diagram of the form where are objects of and both arrows are morphisms of .   Span and cospan diagrams in categories  There is a category with only three objects — call them — and with exactly two non-identity morphisms, . (Make sure you understand how composition works in this category — there's not much to define or check!) A span in a category is the same thing as a functor . A cospan in is a functor , that is, a diagram in of shape .    Pushouts   The pushout of a span in a category — when it exists — is an object of equipped with morphisms such that the diagram  A commutative square with span in the top left and cospan  in the bottom right.   commutes in and if  A commutative square with span in the top left and cospan  in the bottom right.   is another commutative diagram in completing the original span to a square, then there is a unique morphism making the diagram  A commutative square with span in the top left and cospan  in the bottom right.   commute.     Pushouts are unique up to unique isomorphism  Prove that is unique up to unique isomorphism. This means that if , equipped with morphisms , is another object of satisfying the pushout universal property, then there is a unique isomorphism such that  A commutative square with span in the top left and cospan  in the bottom right.   commutes.   The reader may check that for sets , the pushout of the natural span is . This is one sense in which we think of pushouts as gluing the ends of a span together along the middle term, refined by the following proposition.  We can also see that the pushout of is , the disjoint union of and . Recall that , where the labels serve to separate and , ensuring there is no overlap among the two sets.   Pushouts in Set   The pushout of a span in is equipped with functions given by and .     Given another cospan completing the span to a commutative square, we define The reader may check that is well-defined (because the square involving commutes), that and , and that no other such function exists.      Wednesday   Pushouts in Top  We are now prepared to study pushouts in .    Given spaces and continuous functions , the pushout of and along (via and ) is the pushout of the span in .    Hmmm. That's not very satisfying, is it? And yet, via the universal property expressed in , it's exactly how we will construct continuous maps out of pushouts! And since pushouts are unique up to unique isomorphism, this definition guarantees that at most one pushout (up to unique homeomorphism compatible with the diagram) exists.  In order to get a better feel for pushouts in and guarantee their existence, we must provide an explicit construction.   Pushouts exist in Top   The pushout of a span in has underlying set given by the pushout of underlying sets, its topology consists of sets for which and are open.     The form of the underlying set is already guaranteed by , and the reader may check that the open sets above indeed form a topology. Let denote the associated space. Observe that and are guaranteed to be continuous.  Let be a topological space and suppose we are given continuous maps and such that . Since is the pushout of the underlying sets, there exists a unique function with and . It remains to show that is continuous.  Let be open. Then and Since and are continuous, both and are open in and , respectively. Therefore is open in by definition of the topology, which proves that is continuous. Uniqueness of as a continuous map follows from uniqueness of the underlying function in .  Thus together with and satisfies the pushout universal property in , so pushouts exist and are given by the stated construction.    Coproducts   The coproduct of spaces and , denoted , is the pushout of the unique span of the form . In particular, has underlying set the disjoint union of and and its open subsets are precisely those for which and are open.     The circle as a pushout  Recall that is the 0-sphere, which includes into as its boundary. The circle is the pushout of . Indeed, consists of two disjoint intervals — the north semicircle and south semicircle — glued together left endpoint to left endpoint and right endpoint to right endpoint. (It follows from definitions that the pushout admits a continuous bijection to . Later, we will have a general theorem guaranteeing a continuous bijection from a compact space to a Hausdorff space is a homeomorphism. We will write \"by \" to designate this caveat.)    Spheres as pushouts  Simiarly, the -sphere is the pushout of (by ). One copy of forms the upper hemisphere, and the other is the southern hemisphere, glued together along the equator .    Two pushout presentations of projective space  We have already discussed how to present as the pushout of . But we can also describe as the union of and There are homeomorphisms given by taking to either (when ) or (wnen ). The intersection is homeomorphic (via ) to . It follows (by ) that is also the pushout of a span of the form where the first map is the standard inclusion, and the latter is given by       Friday   "
 },
 {
-  "id": "def-co-prod",
+  "id": "subsubsec-real-projective-5",
   "level": "2",
-  "url": "notes-week-03.html#def-co-prod",
-  "type": "Definition",
+  "url": "notes-week-03.html#subsubsec-real-projective-5",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "pushout "
+},
+{
+  "id": "subsubsec-real-projective-6",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-real-projective-6",
+  "type": "Remark",
   "number": "2.3.1",
-  "title": "(Co)product topologies by universal property.",
-  "body": " (Co)product topologies by universal property   Let be spaces. The product of and is the space satisfies the following universal property:  the projection maps and are continuous and for any space , a  In this case, we call a quotient map .   "
+  "title": "Coordinates for real projective space.",
+  "body": " Coordinates for real projective space  We can write for the equivalence class of in As such, for all .  In particular, if , then Points like this form the copy of in the above depiction of .  Meanwhile, the complement of this locus consists of points of the form with . These form a copy of , precisely the one that appears in the top right corner of the diagram above.  "
+},
+{
+  "id": "subsubsec-pushout-2",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-pushout-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "span "
+},
+{
+  "id": "subsubsec-pushout-3",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-pushout-3",
+  "type": "Remark",
+  "number": "2.3.2",
+  "title": "Span and cospan diagrams in categories.",
+  "body": " Span and cospan diagrams in categories  There is a category with only three objects — call them — and with exactly two non-identity morphisms, . (Make sure you understand how composition works in this category — there's not much to define or check!) A span in a category is the same thing as a functor . A cospan in is a functor , that is, a diagram in of shape .  "
+},
+{
+  "id": "def-pushout",
+  "level": "2",
+  "url": "notes-week-03.html#def-pushout",
+  "type": "Definition",
+  "number": "2.3.3",
+  "title": "Pushouts.",
+  "body": " Pushouts   The pushout of a span in a category — when it exists — is an object of equipped with morphisms such that the diagram  A commutative square with span in the top left and cospan  in the bottom right.   commutes in and if  A commutative square with span in the top left and cospan  in the bottom right.   is another commutative diagram in completing the original span to a square, then there is a unique morphism making the diagram  A commutative square with span in the top left and cospan  in the bottom right.   commute.   "
+},
+{
+  "id": "subsubsec-pushout-5",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-pushout-5",
+  "type": "Checkpoint",
+  "number": "2.3.4",
+  "title": "Pushouts are unique up to unique isomorphism.",
+  "body": " Pushouts are unique up to unique isomorphism  Prove that is unique up to unique isomorphism. This means that if , equipped with morphisms , is another object of satisfying the pushout universal property, then there is a unique isomorphism such that  A commutative square with span in the top left and cospan  in the bottom right.   commutes.  "
+},
+{
+  "id": "prop-pushout-in-set",
+  "level": "2",
+  "url": "notes-week-03.html#prop-pushout-in-set",
+  "type": "Proposition",
+  "number": "2.3.5",
+  "title": "Pushouts in Set.",
+  "body": " Pushouts in Set   The pushout of a span in is equipped with functions given by and .   "
+},
+{
+  "id": "subsubsec-pushout-9",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-pushout-9",
+  "type": "Proof",
+  "number": "1",
+  "title": "",
+  "body": " Given another cospan completing the span to a commutative square, we define The reader may check that is well-defined (because the square involving commutes), that and , and that no other such function exists.  "
+},
+{
+  "id": "def-pushout-top",
+  "level": "2",
+  "url": "notes-week-03.html#def-pushout-top",
+  "type": "Definition",
+  "number": "2.3.6",
+  "title": "",
+  "body": "  Given spaces and continuous functions , the pushout of and along (via and ) is the pushout of the span in .   "
+},
+{
+  "id": "prop-pushout-in-top",
+  "level": "2",
+  "url": "notes-week-03.html#prop-pushout-in-top",
+  "type": "Proposition",
+  "number": "2.3.7",
+  "title": "Pushouts exist in Top.",
+  "body": " Pushouts exist in Top   The pushout of a span in has underlying set given by the pushout of underlying sets, its topology consists of sets for which and are open.   "
+},
+{
+  "id": "subsubsec-pushout-in-top-7",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-pushout-in-top-7",
+  "type": "Proof",
+  "number": "1",
+  "title": "",
+  "body": " The form of the underlying set is already guaranteed by , and the reader may check that the open sets above indeed form a topology. Let denote the associated space. Observe that and are guaranteed to be continuous.  Let be a topological space and suppose we are given continuous maps and such that . Since is the pushout of the underlying sets, there exists a unique function with and . It remains to show that is continuous.  Let be open. Then and Since and are continuous, both and are open in and , respectively. Therefore is open in by definition of the topology, which proves that is continuous. Uniqueness of as a continuous map follows from uniqueness of the underlying function in .  Thus together with and satisfies the pushout universal property in , so pushouts exist and are given by the stated construction.  "
+},
+{
+  "id": "def-coproduct-in-top",
+  "level": "2",
+  "url": "notes-week-03.html#def-coproduct-in-top",
+  "type": "Definition",
+  "number": "2.3.8",
+  "title": "Coproducts.",
+  "body": " Coproducts   The coproduct of spaces and , denoted , is the pushout of the unique span of the form . In particular, has underlying set the disjoint union of and and its open subsets are precisely those for which and are open.   "
+},
+{
+  "id": "subsubsec-pushout-in-top-9",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-pushout-in-top-9",
+  "type": "Example",
+  "number": "2.3.9",
+  "title": "The circle as a pushout.",
+  "body": " The circle as a pushout  Recall that is the 0-sphere, which includes into as its boundary. The circle is the pushout of . Indeed, consists of two disjoint intervals — the north semicircle and south semicircle — glued together left endpoint to left endpoint and right endpoint to right endpoint. (It follows from definitions that the pushout admits a continuous bijection to . Later, we will have a general theorem guaranteeing a continuous bijection from a compact space to a Hausdorff space is a homeomorphism. We will write \"by \" to designate this caveat.)  "
+},
+{
+  "id": "subsubsec-pushout-in-top-10",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-pushout-in-top-10",
+  "type": "Example",
+  "number": "2.3.10",
+  "title": "Spheres as pushouts.",
+  "body": " Spheres as pushouts  Simiarly, the -sphere is the pushout of (by ). One copy of forms the upper hemisphere, and the other is the southern hemisphere, glued together along the equator .  "
+},
+{
+  "id": "subsubsec-pushout-in-top-11",
+  "level": "2",
+  "url": "notes-week-03.html#subsubsec-pushout-in-top-11",
+  "type": "Example",
+  "number": "2.3.11",
+  "title": "Two pushout presentations of projective space.",
+  "body": " Two pushout presentations of projective space  We have already discussed how to present as the pushout of . But we can also describe as the union of and There are homeomorphisms given by taking to either (when ) or (wnen ). The intersection is homeomorphic (via ) to . It follows (by ) that is also the pushout of a span of the form where the first map is the standard inclusion, and the latter is given by   "
 },
 {
   "id": "homework-2",

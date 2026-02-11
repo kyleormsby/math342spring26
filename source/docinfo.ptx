@@ -19,6 +19,7 @@
   <!-- for those in the next element. -->
   <latex-image-preamble>
     \usepackage{tikz, pgfplots}
+    \usepackage{tikz-cd}
     \usetikzlibrary{positioning,matrix,arrows}
     \usetikzlibrary{shapes,decorations,shadows,fadings,patterns}
     \usetikzlibrary{decorations.markings}

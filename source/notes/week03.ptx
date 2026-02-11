@@ -5,49 +5,377 @@
 
   <subsection>
     <title>Monday</title>
-    <subsubsection xml:id="subsubsec-co-products">
-      <title>Pullbacks and pushouts</title>
+    <subsubsection xml:id="subsubsec-real-projective">
+      <title>Real projective space</title>
       <p>
-        We will now consider (binary) pullbacks and pushouts. The product of sets <m>X,Y</m> is their Cartesian product
-        <md>
-          X\times Y = \{(x,y)\mid x\in X,y\in Y\}.
-        </md>
-        The coproduct of sets <m>X,Y</m> is their disjoint union
-        <md>
-          X\amalg Y = X\times \{0\} \cup Y\times \{1\}.
-        </md>
-        The function of <m>0</m> and <m>1</m> is to "color" the sets so that <m>(x,0)</m> and <m>(y,1)</m> remain distinct, even if <m>x=y</m>.
+        It is worthwhile for us to spend some more time contemplating real projective space. Our prior work tells us that 
+        <m>\mathbb{RP}^n</m> is built from two pieces: the upper hemisphere <m>S^n_+\cong B^n\cong \mathbb R^n</m> which is 
+        homeomorphic to an open <m>n</m>-ball and Euclidean <m>n</m>-space, and a copy of <m>\mathbb{RP}^{n-1}</m>. These pieces 
+        are glued together along the boundary of <m>B^n</m>, which is <m>S^{n-1}</m>.
       </p>
       <p>
-        These constructions come with special functions called projection and inclusion. On the product <m>X\times Y</m> we have 
-        <m>\operatorname{pr}_X\colon X\times Y\to X</m> and <m>\operatorname{pr}_Y\colon X\times Y\to Y</m> given by 
-        <m>\operatorname{pr}_X(x,y)=x</m> and <m>\operatorname{pr}_Y(x,y)=y</m>. Mapping into the corproduct <m>X\amalg Y</m> we have 
-        <m>\operatornme{inc}_X\colon X\to X\amalg Y</m> and <m>\operatorname{inc}_Y\colon Y\to X\amalg Y</m> given by 
-        <m>\operatorname{inc}_X(x) = (x,0)</m> and <m>\operatorname{inc}_Y(y) = (y,1)</m>.
+        As it turns out, it will be advantageous to 
+        package <m>B^n</m> and its boundary <m>S^{n-1}</m> into a single package, the closed <m>n</m>-disk
+        <md>
+          D^n := \{x\in \mathbb R^n\mid \lVert x\rVert\le 1\}.
+        </md>
+        This space comes equipped with a continuous inclusion of its boundary <m>S^{n-1}\hookrightarrow D^n</m> which is compatible 
+        with the homeomorphism <m>S^n_{\ge 0}\cong D^n</m> given by projection onto the first <m>n</m> coordinates. 
       </p>
-      <definition xml:id="def-co-prod">
-        <title>(Co)product topologies by universal property</title>
-        <statement>
-        <p>
-          Let <m>X,Y</m> be spaces. The <term>product</term> of <m>X</m> and <m>Y</m> is the space <m>X\times Y</m>
-          satisfies the following universal property:
-          <blockquote>
+      
+      <p>
+        Each line through the origin in the <m>x_n=0</m> hyperplane passes through the <m>(n-1)</m>-sphere <m>S^{n-1}</m> twice at 
+        antipodal points. It follows that
+        <md>
+          \mathbb{RP}^{n-1}\cong S^{n-1}/(x\sim -x),
+        </md>
+        which the reader may prove by contemplating
+        <image width="80%">
+          <description>
             <p>
-              the projection maps <m>\operatorname{pr}_X</m> and <m>\operatorname{pr}_Y</m> are continuous and for any space <m>Z</m>, 
-              a 
+             A commutative diagram relating <m>S^{n-1}</m>, its antipodal quotient, the punctured space
+             <m>\mathbb{R}^n\setminus\{0\}</m>, the radial-scaling quotient, and <m>\mathbb{RP}^{n-1}</m>.
             </p>
-          </blockquote>
-          In this case, we call <m>q\colon X\to Z</m> a <term>quotient map</term>.
+          </description>
+          <latex-image>
+            \begin{tikzcd}
+            	{S^{n-1}} \amp {S^{n-1}/(x\sim -x)} \\
+            	{\mathbb R^n\smallsetminus\{0\}} \amp {(\mathbb R^n\smallsetminus \{0\})/(x\sim \lambda x)} \amp {\mathbb{RP}^{n-1}}
+            	\arrow[from=1-1, to=1-2]
+            	\arrow[hook, from=1-1, to=2-1]
+            	\arrow[from=1-2, to=2-2]
+            	\arrow[from=2-1, to=2-2]
+            	\arrow[equals, from=2-2, to=2-3]
+            \end{tikzcd}
+          </latex-image>
+        </image>
+        From this, we see that the restriction of the quotient map <m>\mathbb R^{n+1}\smallsetminus \{0\} \to \mathbb{RP}^n</m> to the 
+        copy of <m>S^{n-1}</m> in the <m>x_n=0</m> hyperplane is a continuous quotient map onto <m>\mathbb{RP}^{n-1}</m>. It follows 
+        that we have the commutative diagram
+        <image width="50%">
+          <description>
+            A commutative square expressing how <m>\mathbb{RP}^n</m> is the union of <m>D^n</m> and <m>\mathbb{RP}^{n-1}</m> 
+            along <m>S^{n-1}</m>.
+          </description>
+          <latex-image>
+            \begin{tikzcd}
+            	{S^{n-1}} \amp {\mathbb{RP}^{n-1}} \\
+            	{D^n} \amp {\mathbb{RP}^n.}
+            	\arrow[from=1-1, to=1-2]
+            	\arrow[hook, from=1-1, to=2-1]
+            	\arrow[hook, from=1-2, to=2-2]
+            	\arrow[from=2-1, to=2-2]
+            \end{tikzcd}
+          </latex-image>
+        </image>
+      </p>
+      <p>
+        It turns out that <m>\mathbb{RP}^n</m> is the "initial" space with which we can fill in the bottom right corner of the diagram. 
+        This means that <m>\mathbb{RP}^n</m> is the <term>pushout</term> of <m>D^n</m> and <m>\mathbb{RP}^{n-1}</m> along <m>S^{n-1}</m>, 
+        a concept we will make precise momentarily.
+      </p>
+      <remark>
+        <title>Coordinates for real projective space</title>
+        <p>
+          We can write <m>[x_0:x_1:\cdots:x_n]</m> for the equivalence class of 
+          <m>(x_0,x_1,\ldots,x_n)\in \mathbb R^{n+1}\smallsetminus \{0\}</m> in
+          <md>
+            \mathbb{RP}^n = (\mathbb{R}^{n+1}\smallsetminus \{0\})/\mathbb R^\times.
+          </md>
+          As such, <m>[x_0:\cdots:x_n] = [\lambda x_0:\cdots:\lambda x_n]</m> for all <m>\lambda\in \mathbb R^\times</m>.
         </p>
-      </statement>
-      </definition>
+        <p>
+          In particular, 
+          if <m>x_n\ne 0</m>, then
+          <md>
+            [x_0:x_1:\cdots:x_{n-1}:x_n] = [x_0/x_n:x_1/x_n:\cdots:x_{n-1}/x_n:1]. 
+          </md>
+          Points like this form the copy of <m>\mathbb R^n\cong B^n\subseteq D^n</m> in the above depiction of <m>\mathbb{RP}^n</m>.
+        </p>
+        <p>
+          Meanwhile, the complement of this locus consists of points of the form <m>[x_0:\cdots:x_{n-1}:0]</m> with 
+          <m>(x_0,\ldots,x_n)\ne 0</m>. These form a copy of <m>\mathbb{RP}^{n-1}</m>, precisely the one that appears in the top right 
+          corner of the diagram above.
+        </p>
+      </remark>
     </subsubsection>
-
+    <subsubsection xml:id="subsubsec-pushout">
+      <title>Pushouts</title>
+      <p>
+        We now work in an arbitrary category <m>\mathsf C</m>. A <term>span</term> in <m>\mathsf C</m> is a diagram of the form 
+        <m>X\leftarrow Z\to Y</m> where <m>X,Y,Z</m> are objects of <m>\mathsf C</m> and both arrows are morphisms of 
+        <m>\mathsf C</m>.
+      </p>
+      <remark>
+        <title>Span and cospan diagrams in categories</title>
+        <p>
+          There is a category <m>\mathsf S</m> with only three objects — call them <m>0,1,2</m> — and with exactly two non-identity 
+          morphisms, <m>1\leftarrow 0\to 2</m>. (Make sure you understand how composition works in this category — there's not much 
+          to define or check!) A span in a category <m>\mathsf C</m> is the same thing as a functor <m>\mathsf S\to \mathsf C</m>. 
+          A <term>cospan</term> in <m>\mathsf C</m> is a functor <m>\mathsf S^{\text{op}}\to \mathsf C</m>, that is, a diagram in 
+          <m>\mathsf C</m> of shape <m>X\to Z\leftarrow Y</m>.
+        </p>
+      </remark>
+      <definition xml:id="def-pushout">
+        <title>Pushouts</title>
+        <statement>
+          <p>
+            The <term>pushout</term> of a span in a category <m>\mathsf C</m> — when it exists — is an object <m>X\amalg_Y Z</m> of 
+            <m>\mathsf C</m> equipped with morphisms <m>X\xrightarrow{i_X} X\amalg_Y Z\xleftarrow{i_Y} Y</m> such that the diagram
+            <image width="50%">
+              <description>
+                A commutative square with span <m>X\leftarrow Z\to Y</m> in the top left and <term>cospan</term> 
+                <m>X\xrightarrow{i_X} X\amalg_Y Z\xleftarrow{i_Y} Y</m> in the bottom right.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  {Z} \amp {Y} \\
+                  {X} \amp {X\cup_Z Y}
+                  \arrow[from=1-1, to=1-2]
+                  \arrow[from=1-1, to=2-1]
+                  \arrow[from=1-2, to=2-2]
+                  \arrow[from=2-1, to=2-2]
+                \end{tikzcd}
+              </latex-image>
+            </image>
+            commutes in <m>\mathsf C</m> and if
+            <image width="40%">
+              <description>
+                A commutative square with span <m>X\leftarrow Z\to Y</m> in the top left and <term>cospan</term> 
+                <m>X\to W\leftarrow Y</m> in the bottom right.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  {Z} \amp {Y} \\
+                  {X} \amp {W}
+                  \arrow[from=1-1, to=1-2]
+                  \arrow[from=1-1, to=2-1]
+                  \arrow[from=1-2, to=2-2]
+                  \arrow[from=2-1, to=2-2]
+                \end{tikzcd}
+              </latex-image>
+            </image>
+            is another commutative diagram in <m>\mathsf C</m> completing the original span to a square, then there is a 
+            <alert>unique</alert> morphism <m>!\colon X\amalg_Y Z\to W</m> making the diagram
+            <image width="60%">
+              <description>
+                A commutative square with span <m>X\leftarrow Z\to Y</m> in the top left and <term>cospan</term> 
+                <m>X\to W\leftarrow Y</m> in the bottom right.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  Z \amp Y \\
+                  X \amp {X\amalg_ZY} \\
+                  \amp \amp W
+                  \arrow[from=1-1, to=1-2]
+                  \arrow[from=1-1, to=2-1]
+                  \arrow[from=1-2, to=2-2]
+                  \arrow[from=1-2, to=3-3]
+                  \arrow[from=2-1, to=2-2]
+                  \arrow[from=2-1, to=3-3]
+                  \arrow["{!}"{description}, from=2-2, to=3-3]
+                \end{tikzcd}
+              </latex-image>
+            </image>
+            commute.
+          </p>
+        </statement>
+      </definition>
+      <exercise>
+        <title>Pushouts are unique up to unique isomorphism</title>
+        <p>
+          Prove that <m>X\amalg_YZ</m> is unique up to unique isomorphism. This means that if <m>P</m>, equipped with morphisms 
+          <m>X\to P\leftarrow Y</m>, is another object of <m>\mathsf C</m> satisfying the pushout universal property, then there 
+          is a <alert>unique</alert> isomorphism <m>!\colon X\amalg_YZ\xrightarrow{\cong}P</m> such that
+          <image width="60%">
+            <description>
+              A commutative square with span <m>X\leftarrow Z\to Y</m> in the top left and <term>cospan</term> 
+              <m>X\to W\leftarrow Y</m> in the bottom right.
+            </description>
+            <latex-image>
+              \begin{tikzcd}
+                \amp {X\amalg_ZY} \\
+                X \amp\amp Y \\
+                \amp P
+                \arrow["{!}", from=1-2, to=3-2]
+                \arrow["{i_X}", from=2-1, to=1-2]
+                \arrow[from=2-1, to=3-2]
+                \arrow["{i_Y}"', from=2-3, to=1-2]
+                \arrow[from=2-3, to=3-2]
+              \end{tikzcd}
+            </latex-image>
+          </image>
+          commutes.
+        </p>
+      </exercise>
+      <p>
+        The reader may check that for sets <m>A,B\subseteq X</m>, the pushout of the natural span 
+        <m>A\hookleftarrow A\cap B\hookrightarrow B</m> is <m>A\cup B</m>. This is one sense in which we think of pushouts as 
+        <alert>gluing</alert> the ends of a span together along the middle term, refined by the following proposition.
+      </p>
+      <p>
+        We can also see that the pushout of <m>A\leftarrow\varnothing\to B</m> is <m>A\amalg B</m>, the disjoint union of <m>A</m> 
+        and <m>B</m>. Recall that <m>A\amalg B := A\times \{0\}\cup B\times \{1\}</m>, where the labels <m>0,1</m> serve to separate 
+        <m>A</m> and <m>B</m>, ensuring there is no overlap among the two sets.
+      </p>
+      <proposition xml:id="prop-pushout-in-set">
+        <title>Pushouts in Set</title>
+        <statement>
+          <p>
+            The pushout of a span <m>X\xleftarrow{f} Z\xrightarrow{g} Y</m> in <m>\mathsf{Set}</m> is
+            <md>
+              X\amalg_ZY = (X\amalg Y)/(f(z)\sim g(z))
+            </md>
+            equipped with functions <m>i_X,i_Y</m> given by <m>i_X(x) = [x]</m> and <m>i_Y(y) = [y]</m>.
+          </p>
+        </statement>
+      </proposition>
+      <proof>
+        <p>
+          Given another cospan <m>X\xrightarrow{s} W\xleftarrow{t} Y</m> completing the span <m>X\xleftarrow{f} Z\xrightarrow{g} Y</m> to 
+          a commutative square, we define
+          <md>
+            <mrow>!\colon X\amalg_ZY \amp \longrightarrow W</mrow>
+            <mrow>[a] \amp \longmapsto \begin{cases} s(a) \amp \text{if }a\in X,\\ t(a) \amp \text{if }a\in Y. </mrow>
+          </md>
+          The reader may check that <m>!</m> is well-defined (because the square involving <m>W</m> commutes), that 
+          <m>!\circ i_X = s</m> and <m>!\circ i_Y = t</m>, and that no other such function exists.
+        </p>
+      </proof>
+    </subsubsection>
   </subsection>
+
   <subsection>
     <title>Wednesday</title>
+    <subsubsection xml:id="subsubsec-pushout-in-top">
+      <title>Pushouts in Top</title>
+      <p>
+        We are now prepared to study pushouts in <m>\mathsf{Top}</m>.
+      </p>
+      <definition xml:id="def-pushout-top">
+        <statement>
+          <p>
+            Given spaces <m>X,Y,Z</m> and continuous functions <m>X\xleftarrow{f}Z\xrightarrow{g}Y</m>, the <term>pushout</term> 
+            of <m>X</m> and <m>Y</m> along <m>Z</m> (via <m>f</m> and <m>g</m>) is the pushout of the span 
+            <m>X\xleftarrow{f}Z\xrightarrow{g}Y</m> in <m>\mathsf{Top}</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Hmmm. That's not very satisfying, is it? And yet, via the universal property expressed in <xref ref="def-pushout" />, it's 
+        exactly how we will construct continuous maps out of pushouts! And since pushouts are unique up to unique isomorphism, 
+        this definition guarantees that at most one pushout (up to unique homeomorphism compatible with the diagram) exists.
+      </p>
+      <p>
+        In order to get a better feel for pushouts in <m>\mathsf{Top}</m> and guarantee their existence, we must provide an explicit 
+        construction.
+      </p>
+      <proposition xml:id="prop-pushout-in-top">
+        <title>Pushouts exist in Top</title>
+        <statement>
+          <p>
+            The pushout of a span <m>X\xleftarrow{f}Z\xrightarrow{g}Y</m> in <m>\mathsf{Top}</m> has underlying set given by the 
+            pushout of underlying sets,
+            <md>
+              X\amalg_ZY = (X\amalg Y)/(f(z)\sim g(z));
+            </md>
+            its topology consists of sets <m>U\subseteq X\amalg_ZY</m> for which <m>i_X^{-1}U\subseteq X</m> and 
+            <m>i_Y^{-1}U\subseteq Y</m> are open.
+          </p>
+        </statement>
+      </proposition>
+      <proof>
+        <p>
+          The form of the underlying set is already guaranteed by <xref ref="prop-pushout-in-set" />, and the reader may check that 
+          the open sets above indeed form a topology. Let <m>Q</m> denote the associated space. Observe that 
+          <m>i_X\colon X\to Q</m> and <m>i_Y\colon Y\to Q</m> are guaranteed to be continuous.
+        </p>
+        <p>
+          Let <m>W</m> be a topological space and suppose we are given continuous maps
+          <m>u:X\to W</m> and <m>v:Y\to W</m> such that <m>u\circ f=v\circ g</m>.
+          Since <m>Q</m> is the pushout of the underlying sets, there exists a unique function
+          <m>h:Q\to W</m> with <m>h\circ i_X=u</m> and <m>h\circ i_Y=v</m>.
+          It remains to show that <m>h</m> is continuous.
+        </p>
+
+        <p>
+          Let <m>V\subseteq W</m> be open.  Then
+          <md>
+            i_X^{-1}\bigl(h^{-1}V\bigr) = (h\circ i_X)^{-1}(V) = u^{-1}(V)
+          </md>
+          and
+          <md>
+            i_Y^{-1}\bigl(h^{-1}V\bigr) = (h\circ i_Y)^{-1}V = v^{-1}V.
+          </md>
+          Since <m>u</m> and <m>v</m> are continuous, both <m>u^{-1}V</m> and <m>v^{-1}V</m>
+          are open in <m>X</m> and <m>Y</m>, respectively.  Therefore <m>h^{-1}V</m> is open in <m>Q</m> by
+          definition of the topology, which proves that <m>h</m> is continuous.
+          Uniqueness of <m>h</m> as a continuous map follows from uniqueness of the underlying
+          function in <xref ref="prop-pushout-in-set" />.
+        </p>
+
+        <p>
+          Thus <m>Q</m> together with <m>i_X</m> and <m>i_Y</m> satisfies the pushout
+          universal property in <m>\mathsf{Top}</m>, so pushouts exist and are given by the stated
+          construction.
+        </p>
+      </proof>
+      <definition xml:id="def-coproduct-in-top">
+        <title>Coproducts</title>
+        <statement>
+          <p>
+            The <term>coproduct</term> of spaces <m>X</m> and <m>Y</m>, denoted <m>X\amalg Y</m>, is the pushout of the unique 
+            span of the form <m>X\leftarrow \varnothing\to Y</m>. In particular, <m>X\amalg Y</m> has underlying set the disjoint 
+            union of <m>X</m> and <m>Y</m> and its open subsets <m>U\subseteq X\amalg Y</m> are precisely those for which <m>U\cap X</m> 
+            and <m>U\cap Y</m> are open.
+          </p>
+        </statement>
+      </definition>
+      <example>
+        <title>The circle as a pushout</title>
+        <p>
+          Recall that <m>S^0 = \{\pm 1\}\subseteq \mathbb R</m> is the 0-sphere, which includes into <m>D^1 = [-1,1]</m> as its boundary. 
+          The circle <m>S^1</m> is the pushout of <m>D^1\leftarrow S^0\to D^1</m>. Indeed, <m>D^1\amalg_{S^0}D^1</m> consists of two 
+          disjoint intervals — the north semicircle and south semicircle — glued together left endpoint to left endpoint and right 
+          endpoint to right endpoint. (It follows from definitions that the pushout admits a continuous bijection to <m>S^1</m>. Later, 
+          we will have a general theorem guaranteeing a continuous bijection from a compact space to a Hausdorff space is a homeomorphism. 
+          We will write "by <m>C\to H</m>" to designate this caveat.)
+        </p>
+      </example>
+      <example>
+        <title>Spheres as pushouts</title>
+        <p>
+          Simiarly, the <m>n</m>-sphere is the pushout of <m>D^n\leftarrow S^{n-1}\to D^n</m> (by <m>C\to H</m>). One copy of <m>D^n</m> 
+          forms the upper hemisphere, and the other is the southern hemisphere, glued together along the equator <m>S^{n-1}</m>.
+        </p>
+      </example>
+      <example>
+        <title>Two pushout presentations of projective space</title>
+        <p>
+          We have already discussed how to present <m>\mathbb{RP}^n</m> as the pushout of 
+          <m>D^n\leftarrow S^{n-1}\to \mathbb{RP}^{n-1}</m>. But we can also describe <m>\mathbb{RP}^n</m> as the union of
+          <md>
+            U_0 = \{[x_0:x_1:\cdots:x_n]\mid x_0\ne 0\}
+          </md>
+          and
+          <md>
+            U_1 = \{[x_0:x_1:\cdots:x_n] \mid x_1\ne 0\}.
+          </md>
+          There are homeomorphisms <m>\varphi_i\colon U_i\xrightarrow{\cong}\mathbb R^n</m> given by taking <m>[x_0:x_1:\cdots:x_n]</m> to 
+          either <m>(x_1/x_0,\ldots,x_n/x_0)</m> (when <m>i=0</m>) or <m>(x_0/x_1,x_2/x_1,\ldots,x_n/x_1)</m> (wnen <m>i=1</m>). 
+          The intersection <m>U_0\cap U_1</m> is homeomorphic (via <m>\varphi_0</m>) to 
+          <m>(\mathbb R\smallsetminus \{0\})\times \mathbb R^{n-1}</m>. It follows (by <m>C\to H</m>) that <m>\mathbb{RP}^n</m> is also the 
+          pushout of a span of the form <m>\mathbb R^n\leftarrow (\mathbb R\smallsetminus \{0\})\times \mathbb R^{n-1}\to \mathbb R^n</m> 
+          where the first map is the standard inclusion, and the latter is given by
+          <md>
+            (u_1,u_2,\ldots,u_n)\longmapsto (1/u_1,u_2/u_1,\ldots,u_n/u_1).
+          </md>
+        </p>
+      </example>
+    </subsubsection>
     
   </subsection>
+
   <subsection>
     <title>Friday</title>
     

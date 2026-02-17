@@ -18,7 +18,7 @@
       <p>
         Alas — this is not the case. For instance, if <m>X</m> has the concrete topology, then our microscope is terrible: it 
         literally cannot zoom further than viewing all of <m>X</m> at once. More formally, we cannot find open sets 
-        <m>x\inU\subseteq X</m> and <m>y\in V\subseteq X</m> for which <m>U\cap V = \varnothing</m>. When we <alert>can</alert> 
+        <m>x\in U\subseteq X</m> and <m>y\in V\subseteq X</m> for which <m>U\cap V = \varnothing</m>. When we <alert>can</alert> 
         zoom in in this fashion, we say that <m>X</m> <term>separates points</term> (or is a <term>Hausdorff space</term>).
       </p>
       <definition xml:id="def-separate-points">
@@ -101,14 +101,11 @@
           </p>
         </statement>
       </lemma>
-
     </subsubsection>
-    
   </subsection>
 
   <subsection>
     <title>Wednesday</title>
-   
   </subsection>
 
   <subsection>

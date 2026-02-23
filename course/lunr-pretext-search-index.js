@@ -1279,6 +1279,42 @@ var ptx_lunr_docs = [
   "body": " Compact in Hausdorff is closed   Suppose is a space that separates points and is a compact subspace. Then is a closed.   "
 },
 {
+  "id": "notes-week-05",
+  "level": "1",
+  "url": "notes-week-05.html",
+  "type": "Section",
+  "number": "2.5",
+  "title": "Week 5",
+  "body": " Week 5   Monday   Topological induction  The following technique, topological induction , is an extremely useful proof strategy. In the near term, we will use it to prove that closed intervals of the form are compact. Later, we will use the same method to show is connected, and it can also be used to prove existence and uniqueness of homotopy lifts for covering spaces.   Topological induction   Let be a subset. Then if and only if it satisfies the following conditions:   base case   ,    downward closed  if and , then ,    topological induction  if , then there exists such that ,    supremal   .        It should be clear to the reader that satisfies the given conditions. For the converse, suppose that satisfies the conditions.  By the first condition, is nonempty. Since , we know that is bounded above by . By the least upper bound property for , the supremum of exists and is in .  Since is downwards closed, we must have or . But is supremal, so .  Finally, the topological induction property ensures that , whence .     Compactness of closed intervals in the real line    Inheritance of compactness    Separation of disjoint compact subspaces     Wednesday    Friday   "
+},
+{
+  "id": "subsubsec-topological-induction-2",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-topological-induction-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "topological induction "
+},
+{
+  "id": "thm-top-induction",
+  "level": "2",
+  "url": "notes-week-05.html#thm-top-induction",
+  "type": "Theorem",
+  "number": "2.5.1",
+  "title": "Topological induction.",
+  "body": " Topological induction   Let be a subset. Then if and only if it satisfies the following conditions:   base case   ,    downward closed  if and , then ,    topological induction  if , then there exists such that ,    supremal   .      "
+},
+{
+  "id": "subsubsec-topological-induction-4",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-topological-induction-4",
+  "type": "Proof",
+  "number": "1",
+  "title": "",
+  "body": " It should be clear to the reader that satisfies the given conditions. For the converse, suppose that satisfies the conditions.  By the first condition, is nonempty. Since , we know that is bounded above by . By the least upper bound property for , the supremum of exists and is in .  Since is downwards closed, we must have or . But is supremal, so .  Finally, the topological induction property ensures that , whence .  "
+},
+{
   "id": "homework-2",
   "level": "1",
   "url": "homework-2.html",

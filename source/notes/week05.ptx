@@ -6,7 +6,7 @@
   <subsection>
     <title>Monday</title>
     <subsubsection xml:id="subsubsec-topological-induction">
-      <title>Topological induction</title>
+      <title>Compactness via topological induction</title>
       <p>
         The following technique, <term>topological induction</term>, is an extremely useful proof strategy. In the near term, we will use 
         it to prove that closed intervals of the form <m>[a,b]\subseteq \mathbb R</m> are compact. Later, we will use the same method to 
@@ -65,14 +65,70 @@
           Finally, the topological induction property ensures that <m>\sup C=1</m>, whence <m>C = [0,1]</m>.
         </p>
       </proof>
-    </subsubsection>
-    <subsubsection xml:id="subsubsec-compact-intervals">
-      <title>Compactness of closed intervals in the real line</title>
+      <p>
+        We now provide the promised application of topological induction.
+      </p>
+      <theorem xml:id="thm-compact-closed-intervals">
+        <title>Compactness of closed intervals of the real line</title>
+        <statement>
+          <p>
+            If <m>a\le b</m> are real numbers, then <m>[a,,b]</m> is compact.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          If <m>a=b</m>, then <m>[a,b]=\{a\}</m> is compact since <m>a</m> is necessarily an element of some set in an open cover, and thus is covered 
+          by a subcover consisting of a single set.
+        </p>
+        <p>
+          Henceforth, assume <m>a\lt b</m> and let <m>\mathscr U = \{U_i\mid i\in I\}</m> be an open cover of <m>[a,b]</m>. The reader may check the 
+          following assertion:
+          <blockquote>
+            <p>
+              Let <m>x\in [a,b)</m>. Then there is an element <m>y\in (x,b]</m> and an element <m>i\in I</m> for which <m>[x,y]\subseteq U_i</m>.
+            </p>
+          </blockquote>
+        </p>
+        <p>
+          Now let
+          <md>
+            C := \{y\in [a,b]\mid [a,y]\text{ can be finitely covered by elements of }\mathscr U\}.
+          </md>
+          We employ topological induction to prove that <m>C = [a,b]</m>, whence <m>[a,b]</m> is compact. The above assertion applied to <m>x=a</m> 
+          reveals that <m>a\in C</m>. Downward closure is similarly straightforward: if <m>y\in C</m> and <m>a\le z\le y</m>, then <m>z\in C</m> because 
+          a finite subcover of <m>[a,y]</m> is automatically a finite subcover of <m>[a,z]</m>.
+        </p>
+        <p>
+          For the topological induction step, suppose that <m>y\in C</m>, meaning that <m>[a,y]</m> can be finitely covered by elements of <m>\mathscr U</m>. 
+          Fix a finite subcover of <m>[a,y]</m>. Then <m>y</m> is in some <m>U_i</m> within the finite subcover. But <m>U_i</m> is open, so <m>y+\varepsilon</m> 
+          is in <m>U_i</m> for some <m>\varepsilon \gt 0</m>.
+        </p>
+        <p>
+          Our final task is to show that <m>\sup C\in C</m>. We already know that <m>C = [a,\sup C)</m> or <m>[a,\sup C]</m>. Since <m>\mathscr U</m> is 
+          an open cover of <m>[a,b]</m>, there is some index <m>i_0\in I</m> for which <m>\sup C \in U_{i_0}</m>. By openness of <m>U_{i_0}</m>, there exists 
+          <m>z\in [a,\sup C)</m> such that <m>(z,\sup C]\subseteq U_{i_0}</m>. By definition of <m>C</m>, <m>[a,z]</m> is finitely covered by <m>\mathscr U</m>. 
+          This means there is a finite subset <m>S\subseteq I</m> for which
+          <md>
+            [a,z]\subseteq \bigcup_{i\in S} U_i.
+          </md>
+          Thus
+          <md>
+            [a,\sup C] = [a,z]\cup (z,\sup C]\subseteq \bigg(\bigcup_{i\in S}U_i\bigg)\cup U_{i_0}.
+          </md>
+          In particular, <m>[a,\sup C]</m> is finitely covered by <m>\mathscr U</m>, so <m>\sup C\in C</m>. By topological induction, <m>C=[a,b]</m>, which 
+          concludes our proof.
+        </p>
+      </proof>
+      
       
     </subsubsection>
     <subsubsection xml:id="subsubsec-inheritance-compactness">
       <title>Inheritance of compactness</title>
-      
+      <p>
+        
+      </p>
+
     </subsubsection>
     <subsubsection xml:id="subsubsec-sep-disjoint-compact">
       <title>Separation of disjoint compact subspaces</title>

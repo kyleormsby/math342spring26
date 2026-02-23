@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-05">
+  <title>Week 5</title>
+
+  <subsection>
+    <title>Monday</title>
+    <subsubsection xml:id="subsubsec-topological-induction">
+      <title>Topological induction</title>
+      <p>
+        The following technique, <term>topological induction</term>, is an extremely useful proof strategy. In the near term, we will use 
+        it to prove that closed intervals of the form <m>[a,b]\subseteq \mathbb R</m> are compact. Later, we will use the same method to 
+        show <m>[a,b]</m> is connected, and it can also be used to prove existence and uniqueness of homotopy lifts for covering spaces.
+      </p>
+      <theorem xml:id="thm-top-induction">
+        <title>Topological induction</title>
+        
+        
+        <statement>
+          <p>
+            Let <m>C\subseteq [0,1]</m>  be a subset. Then <m>C=[0,1]</m> if and only if it satisfies the following conditions:
+            <dl>
+              <li>
+                <title>base case</title>
+                <p>
+                  <m>0\in C</m>,
+                </p>
+              </li>
+              <li>
+                <title>downward closed</title>
+                <p>
+                  if <m>t\in C</m> and <m>s\in [0,t]</m>, then <m>s\in C</m>,  
+                </p>
+              </li>
+              <li>
+                <title>topological induction</title>
+                <p>
+                  if <m>t\in C\cap [0,1)</m>, then there exists <m>\varepsilon\gt 0</m> such that <m>t+\varepsilon\in C</m>,
+                </p>
+              </li>
+              <li>
+                <title>supremal</title>
+                <p>
+                  <m>\sup C\in C</m>.
+                </p>
+              </li>
+            </dl>
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          It should be clear to the reader that <m>[0,1]</m> satisfies the given conditions. For the converse, suppose that <m>C\subseteq [0,1]</m> 
+          satisfies the conditions.
+        </p>
+        <p>
+          By the first condition, <m>C</m> is nonempty. Since <m>C\subseteq [0,1]</m>, we know that <m>C</m> is bounded above by <m>1</m>. By 
+          the least upper bound property for <m>\mathbb R</m>, the supremum of <m>C</m> exists and is in <m>[0,1]</m>.
+        </p>
+        <p>
+          Since <m>C</m> is downwards closed, we must have <m>C = [0,\sup C)</m> or <m>C = [0,\sup C]</m>. But <m>C</m> is supremal, 
+          so <m>C = [0,\sup C]</m>.
+        </p>
+        <p>
+          Finally, the topological induction property ensures that <m>\sup C=1</m>, whence <m>C = [0,1]</m>.
+        </p>
+      </proof>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-compact-intervals">
+      <title>Compactness of closed intervals in the real line</title>
+      
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-inheritance-compactness">
+      <title>Inheritance of compactness</title>
+      
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-sep-disjoint-compact">
+      <title>Separation of disjoint compact subspaces</title>
+      
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title>Wednesday</title>
+  </subsection>
+  <subsection>
+    <title>Friday</title>
+    
+  </subsection>
+</section>

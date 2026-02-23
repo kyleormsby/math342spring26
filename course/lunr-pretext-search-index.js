@@ -1285,7 +1285,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "2.5",
   "title": "Week 5",
-  "body": " Week 5   Monday   Topological induction  The following technique, topological induction , is an extremely useful proof strategy. In the near term, we will use it to prove that closed intervals of the form are compact. Later, we will use the same method to show is connected, and it can also be used to prove existence and uniqueness of homotopy lifts for covering spaces.   Topological induction   Let be a subset. Then if and only if it satisfies the following conditions:   base case   ,    downward closed  if and , then ,    topological induction  if , then there exists such that ,    supremal   .        It should be clear to the reader that satisfies the given conditions. For the converse, suppose that satisfies the conditions.  By the first condition, is nonempty. Since , we know that is bounded above by . By the least upper bound property for , the supremum of exists and is in .  Since is downwards closed, we must have or . But is supremal, so .  Finally, the topological induction property ensures that , whence .     Compactness of closed intervals in the real line    Inheritance of compactness    Separation of disjoint compact subspaces     Wednesday    Friday   "
+  "body": " Week 5   Monday   Compactness via topological induction  The following technique, topological induction , is an extremely useful proof strategy. In the near term, we will use it to prove that closed intervals of the form are compact. Later, we will use the same method to show is connected, and it can also be used to prove existence and uniqueness of homotopy lifts for covering spaces.   Topological induction   Let be a subset. Then if and only if it satisfies the following conditions:   base case   ,    downward closed  if and , then ,    topological induction  if , then there exists such that ,    supremal   .        It should be clear to the reader that satisfies the given conditions. For the converse, suppose that satisfies the conditions.  By the first condition, is nonempty. Since , we know that is bounded above by . By the least upper bound property for , the supremum of exists and is in .  Since is downwards closed, we must have or . But is supremal, so .  Finally, the topological induction property ensures that , whence .   We now provide the promised application of topological induction.   Compactness of closed intervals of the real line   If are real numbers, then is compact.     If , then is compact since is necessarily an element of some set in an open cover, and thus is covered by a subcover consisting of a single set.  Henceforth, assume and let be an open cover of . The reader may check the following assertion:  Let . Then there is an element and an element for which .    Now let We employ topological induction to prove that , whence is compact. The above assertion applied to reveals that . Downward closure is similarly straightforward: if and , then because a finite subcover of is automatically a finite subcover of .  For the topological induction step, suppose that , meaning that can be finitely covered by elements of . Fix a finite subcover of . Then is in some within the finite subcover. But is open, so is in for some .  Our final task is to show that . We already know that or . Since is an open cover of , there is some index for which . By openness of , there exists such that . By definition of , is finitely covered by . This means there is a finite subset for which Thus In particular, is finitely covered by , so . By topological induction, , which concludes our proof.     Inheritance of compactness      Separation of disjoint compact subspaces     Wednesday    Friday   "
 },
 {
   "id": "subsubsec-topological-induction-2",
@@ -1313,6 +1313,24 @@ var ptx_lunr_docs = [
   "number": "1",
   "title": "",
   "body": " It should be clear to the reader that satisfies the given conditions. For the converse, suppose that satisfies the conditions.  By the first condition, is nonempty. Since , we know that is bounded above by . By the least upper bound property for , the supremum of exists and is in .  Since is downwards closed, we must have or . But is supremal, so .  Finally, the topological induction property ensures that , whence .  "
+},
+{
+  "id": "thm-compact-closed-intervals",
+  "level": "2",
+  "url": "notes-week-05.html#thm-compact-closed-intervals",
+  "type": "Theorem",
+  "number": "2.5.2",
+  "title": "Compactness of closed intervals of the real line.",
+  "body": " Compactness of closed intervals of the real line   If are real numbers, then is compact.   "
+},
+{
+  "id": "subsubsec-topological-induction-7",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-topological-induction-7",
+  "type": "Proof",
+  "number": "2",
+  "title": "",
+  "body": " If , then is compact since is necessarily an element of some set in an open cover, and thus is covered by a subcover consisting of a single set.  Henceforth, assume and let be an open cover of . The reader may check the following assertion:  Let . Then there is an element and an element for which .    Now let We employ topological induction to prove that , whence is compact. The above assertion applied to reveals that . Downward closure is similarly straightforward: if and , then because a finite subcover of is automatically a finite subcover of .  For the topological induction step, suppose that , meaning that can be finitely covered by elements of . Fix a finite subcover of . Then is in some within the finite subcover. But is open, so is in for some .  Our final task is to show that . We already know that or . Since is an open cover of , there is some index for which . By openness of , there exists such that . By definition of , is finitely covered by . This means there is a finite subset for which Thus In particular, is finitely covered by , so . By topological induction, , which concludes our proof.  "
 },
 {
   "id": "homework-2",

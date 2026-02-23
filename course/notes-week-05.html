@@ -253,8 +253,7 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-subsection">
 <div class="toc-title-box"><a href="notes-week-05.html#notes-week-05-2" class="internal"><span class="title">Monday</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-topological-induction" class="internal"><span class="title">Topological induction</span></a></div></li>
-<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-compact-intervals" class="internal"><span class="title">Compactness of closed intervals in the real line</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-topological-induction" class="internal"><span class="title">Compactness via topological induction</span></a></div></li>
 <li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-inheritance-compactness" class="internal"><span class="title">Inheritance of compactness</span></a></div></li>
 <li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-sep-disjoint-compact" class="internal"><span class="title">Separation of disjoint compact subspaces</span></a></div></li>
 </ul>
@@ -282,7 +281,7 @@ eBookConfig.enable_chatcodes =  false;
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Monday</span>
 </h3>
 <section class="subsubsection" id="subsubsec-topological-induction"><h4 class="heading hide-type">
-<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Topological induction</span>
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Compactness via topological induction</span>
 </h4>
 <div class="para" id="subsubsec-topological-induction-2">The following technique, <dfn class="terminology">topological induction</dfn>, is an extremely useful proof strategy. In the near term, we will use it to prove that closed intervals of the form <span class="process-math">\([a,b]\subseteq \mathbb R\)</span> are compact. Later, we will use the same method to show <span class="process-math">\([a,b]\)</span> is connected, and it can also be used to prove existence and uniqueness of homotopy lifts for covering spaces.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
@@ -321,12 +320,55 @@ eBookConfig.enable_chatcodes =  false;
 </div>
 <div class="para" id="subsubsec-topological-induction-4-4">Finally, the topological induction property ensures that <span class="process-math">\(\sup C=1\text{,}\)</span> whence <span class="process-math">\(C = [0,1]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1"><a href="#subsubsec-topological-induction-4" title="Copy heading and permalink for Proof 1" aria-label="Copy heading and permalink for Proof 1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Topological induction"><a href="#subsubsec-topological-induction" title="Copy heading and permalink for Subsubsection: Topological induction" aria-label="Copy heading and permalink for Subsubsection: Topological induction">🔗</a></div></section><section class="subsubsection" id="subsubsec-compact-intervals"><h4 class="heading hide-type">
-<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Compactness of closed intervals in the real line</span>
-</h4>
-<div class="autopermalink" data-description="Subsubsection: Compactness of closed intervals in the real line"><a href="#subsubsec-compact-intervals" title="Copy heading and permalink for Subsubsection: Compactness of closed intervals in the real line" aria-label="Copy heading and permalink for Subsubsection: Compactness of closed intervals in the real line">🔗</a></div></section><section class="subsubsection" id="subsubsec-inheritance-compactness"><h4 class="heading hide-type">
+<div class="autopermalink" data-description="Proof 1"><a href="#subsubsec-topological-induction-4" title="Copy heading and permalink for Proof 1" aria-label="Copy heading and permalink for Proof 1">🔗</a></div></article></details><div class="para" id="subsubsec-topological-induction-5">We now provide the promised application of topological induction.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-compact-closed-intervals"><h5 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.5.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Compactness of closed intervals of the real line.</span>
+</h5>
+<div class="para" id="thm-compact-closed-intervals-2-1">If <span class="process-math">\(a\le b\)</span> are real numbers, then <span class="process-math">\([a,,b]\)</span> is compact.<div class="autopermalink" data-description="Paragraph"><a href="#thm-compact-closed-intervals-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 2.5.2: Compactness of closed intervals of the real line"><a href="#thm-compact-closed-intervals" title="Copy heading and permalink for Theorem 2.5.2: Compactness of closed intervals of the real line" aria-label="Copy heading and permalink for Theorem 2.5.2: Compactness of closed intervals of the real line">🔗</a></div></article><details id="subsubsec-topological-induction-7" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="subsubsec-topological-induction-7-1">If <span class="process-math">\(a=b\text{,}\)</span> then <span class="process-math">\([a,b]=\{a\}\)</span> is compact since <span class="process-math">\(a\)</span> is necessarily an element of some set in an open cover, and thus is covered by a subcover consisting of a single set.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsubsec-topological-induction-7-2">Henceforth, assume <span class="process-math">\(a\lt b\)</span> and let <span class="process-math">\(\mathscr U = \{U_i\mid i\in I\}\)</span> be an open cover of <span class="process-math">\([a,b]\text{.}\)</span> The reader may check the following assertion: <blockquote class="blockquote" id="subsubsec-topological-induction-7-2-4">
+<div class="para" id="subsubsec-topological-induction-7-2-4-1">Let <span class="process-math">\(x\in [a,b)\text{.}\)</span> Then there is an element <span class="process-math">\(y\in (x,b]\)</span> and an element <span class="process-math">\(i\in I\)</span> for which <span class="process-math">\([x,y]\subseteq U_i\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-7-2-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Quotation"><a href="#subsubsec-topological-induction-7-2-4" title="Copy heading and permalink for Quotation" aria-label="Copy heading and permalink for Quotation">🔗</a></div>
+</blockquote>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-topological-induction-7-3">
+<div class="para">Now let</div>
+<div class="displaymath process-math" id="subsubsec-topological-induction-7-3-1">
+\begin{equation*}
+C := \{y\in [a,b]\mid [a,y]\text{ can be finitely covered by elements of }\mathscr U\}.
+\end{equation*}
+</div>
+<div class="para">We employ topological induction to prove that <span class="process-math">\(C = [a,b]\text{,}\)</span> whence <span class="process-math">\([a,b]\)</span> is compact. The above assertion applied to <span class="process-math">\(x=a\)</span> reveals that <span class="process-math">\(a\in C\text{.}\)</span> Downward closure is similarly straightforward: if <span class="process-math">\(y\in C\)</span> and <span class="process-math">\(a\le z\le y\text{,}\)</span> then <span class="process-math">\(z\in C\)</span> because a finite subcover of <span class="process-math">\([a,y]\)</span> is automatically a finite subcover of <span class="process-math">\([a,z]\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-7-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsubsec-topological-induction-7-4">For the topological induction step, suppose that <span class="process-math">\(y\in C\text{,}\)</span> meaning that <span class="process-math">\([a,y]\)</span> can be finitely covered by elements of <span class="process-math">\(\mathscr U\text{.}\)</span> Fix a finite subcover of <span class="process-math">\([a,y]\text{.}\)</span> Then <span class="process-math">\(y\)</span> is in some <span class="process-math">\(U_i\)</span> within the finite subcover. But <span class="process-math">\(U_i\)</span> is open, so <span class="process-math">\(y+\varepsilon\)</span> is in <span class="process-math">\(U_i\)</span> for some <span class="process-math">\(\varepsilon \gt 0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-7-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-topological-induction-7-5">
+<div class="para">Our final task is to show that <span class="process-math">\(\sup C\in C\text{.}\)</span> We already know that <span class="process-math">\(C = [a,\sup C)\)</span> or <span class="process-math">\([a,\sup C]\text{.}\)</span> Since <span class="process-math">\(\mathscr U\)</span> is an open cover of <span class="process-math">\([a,b]\text{,}\)</span> there is some index <span class="process-math">\(i_0\in I\)</span> for which <span class="process-math">\(\sup C \in U_{i_0}\text{.}\)</span> By openness of <span class="process-math">\(U_{i_0}\text{,}\)</span> there exists <span class="process-math">\(z\in [a,\sup C)\)</span> such that <span class="process-math">\((z,\sup C]\subseteq U_{i_0}\text{.}\)</span> By definition of <span class="process-math">\(C\text{,}\)</span> <span class="process-math">\([a,z]\)</span> is finitely covered by <span class="process-math">\(\mathscr U\text{.}\)</span> This means there is a finite subset <span class="process-math">\(S\subseteq I\)</span> for which</div>
+<div class="displaymath process-math" id="subsubsec-topological-induction-7-5-15">
+\begin{equation*}
+[a,z]\subseteq \bigcup_{i\in S} U_i.
+\end{equation*}
+</div>
+<div class="para">Thus</div>
+<div class="displaymath process-math" id="subsubsec-topological-induction-7-5-16">
+\begin{equation*}
+[a,\sup C] = [a,z]\cup (z,\sup C]\subseteq \bigg(\bigcup_{i\in S}U_i\bigg)\cup U_{i_0}.
+\end{equation*}
+</div>
+<div class="para">In particular, <span class="process-math">\([a,\sup C]\)</span> is finitely covered by <span class="process-math">\(\mathscr U\text{,}\)</span> so <span class="process-math">\(\sup C\in C\text{.}\)</span> By topological induction, <span class="process-math">\(C=[a,b]\text{,}\)</span> which concludes our proof.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-topological-induction-7-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2"><a href="#subsubsec-topological-induction-7" title="Copy heading and permalink for Proof 2" aria-label="Copy heading and permalink for Proof 2">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Compactness via topological induction"><a href="#subsubsec-topological-induction" title="Copy heading and permalink for Subsubsection: Compactness via topological induction" aria-label="Copy heading and permalink for Subsubsection: Compactness via topological induction">🔗</a></div></section><section class="subsubsection" id="subsubsec-inheritance-compactness"><h4 class="heading hide-type">
 <span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Inheritance of compactness</span>
 </h4>
+<div class="para" id="subsubsec-inheritance-compactness-2"><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-inheritance-compactness-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
 <div class="autopermalink" data-description="Subsubsection: Inheritance of compactness"><a href="#subsubsec-inheritance-compactness" title="Copy heading and permalink for Subsubsection: Inheritance of compactness" aria-label="Copy heading and permalink for Subsubsection: Inheritance of compactness">🔗</a></div></section><section class="subsubsection" id="subsubsec-sep-disjoint-compact"><h4 class="heading hide-type">
 <span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Separation of disjoint compact subspaces</span>
 </h4>

@@ -240,5 +240,52 @@
 
   <subsection>
     <title>Friday</title>
+    <p>
+      This was a lighter day. We defined compactness, proved a basic fact about compact subsets of point-separating spaces, and then 
+      watched this <url href="https://www.3blue1brown.com/lessons/inscribed-rect-v2">3Blue1Brown video</url> about inscribing rectangles in 
+      simple closed curves in the plane. Your identification of <m>\operatorname{UConf_2}(S^1)</m> with the Möbius band from Homework 03 
+      plays a crucial role in the argument!
+    </p>
+    <subsubsection xml:id="subsubsec-compact">
+      <title>A first glimpse of compactness</title>
+      <definition xml:id="def-compact">
+        <statement>
+          <p>
+            Given a space <m>X</m>, an <term>open cover</term> of <m>X</m> is a family of open subsets 
+            <m>\mathscr U = \{U_i\subseteq X\text{ open}\mid i\in I\}</m> for which
+            <md>
+              X = \bigcup_{i\in I} U_i.
+            </md>
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <p>
+         When <m>A\subseteq X</m> is a subspace, <m>\mathscr U = \{U_i\mid i\in I\}</m> is a family of open 
+         subsets of <m>X</m>, and <m>A\subseteq \bigcup_{i\in I}U_i</m>, we will still call <m>\mathscr U</m> 
+         an <term>open cover</term> of <m>A</m> even though <m>\{U_i\cap A\mid i\in I\}</m> is the true open 
+         cover of <m>A</m> (relative to the subspace topology).
+        </p>
+      </remark>
+      <p>
+        Here is our theorem for the day. It's a good one.
+      </p>
+      <theorem xml:id="thm-compact-hausdorff-closed">
+        <title>Compact in Hausdorff is closed</title>
+        
+        
+        <statement>
+          <p>
+            Suppose <m>X</m> is a space that separates points and <m>K\subseteq X</m> is a compact subspace. 
+            Then <m>K</m> is a closed.
+          </p>
+        </statement>
+      </theorem>
+      <p>
+        I sketched a proof of this theorem in class, but we will cover a more general result next week by which this follows 
+        as an easy corollary.
+      </p>
+      
+    </subsubsection>
   </subsection>
 </section>

@@ -126,20 +126,268 @@
     <subsubsection xml:id="subsubsec-inheritance-compactness">
       <title>Inheritance of compactness</title>
       <p>
-        
+        It can be challenging — or at least tedious — to directly demonstrate that a space is compact. Thankfully, there are a number 
+        of ways in which compactness can be inherited by subspaces of or constructions with compact spaces. We explore this 
+        phenomenon here.
       </p>
-
-    </subsubsection>
-    <subsubsection xml:id="subsubsec-sep-disjoint-compact">
-      <title>Separation of disjoint compact subspaces</title>
-      
+      <theorem xml:id="thm-closed-in-compact-is-compact">
+        <title>Closed subspaces of compact spaces are compact</title>
+        <statement>
+          <p>
+            Let <m>C\subseteq X</m> be a closed subspace of a compact space <m>X</m>. Then <m>C</m> is compact.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          Let <m>\mathscr U\subseteq \tau_X</m> be an open cover of <m>C</m>. Define
+          <md>
+            \tilde \mathscr U := \mathscr U \cup \{X\smallsetminus C\}
+          </md>
+          Since <m>C\subseteq \bigcup_{U\in \mathscr U}U</m>, <m>\tilde U</m> covers <m>X</m>. And since <m>C</m> is closed, 
+          <m>X\smallsetminus C</m> is open, and thus <m>\tilde \mathscr U</m> is an open cover of <m>X</m>.
+        </p>
+        <p>
+          By hypothesis, <m>X</m> is compact there exist <m>U_1,\ldots,U_n\in \tilde \mathscr U</m> such that
+          <md>
+            X = U_1\cup \cdots \cup U_n\cup (X\smalletminus C).
+          </md>
+          It follows that
+          <md>
+            C\subseteq U_1\cup \cdots \cup U_n.
+          </md>
+          As such, we have demonstrated that every open cover of <m>C</m> admits a finite subcover, <ie />, 
+          <m>C</m> is compact.
+        </p>
+      </proof>
+      <p>
+        Next, we will show that the continuous image of a compact set is compact. From analysis, we know that 
+        in metric topologies, compact is the same as closed and bounded, so this is a topological version of the 
+        extreme value theorem.
+      </p>
+      <theorem xml:id="thm-cts-image-compact">
+        <title>Topological extreme value theorem</title>
+        <statement>
+          <p>
+            Let <m>f\colon X\to Y</m> be a continuous map and suppose <m>K\subseteq X</m> is compact. Then 
+            <m>fK\subseteq Y</m> is compact.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          Let <m>\mathscr V\subseteq \tau_Y</m> be an open cover of <m>fK</m>. We aim to show that <m>\mathscr V</m> admits a finite subcover. 
+          Because <m>f</m> is continuous, for each <m>V\in \mathscr V</m>, <m>f^{-1}V\subseteq X</m> is open. Since 
+          <m>fK \subseteq \bigcup_{V\in \mathscr V}V</m>, we know that
+          <md>
+            K\subseteq \bigcup_{V\in \mathscr V}f^{-1}V
+          </md>
+          is an open cover of <m>K</m>.
+        </p>
+        <p>
+          By compactness of <m>K</m>, there exist <m>V_1,\ldots,V_n\in \mathscr V</m> such that
+          <md>
+            K\subseteq f^{-1}V_1\cup\cdots\cup f^{-1}V_n.
+          </md>
+          Applying <m>f</m>, we see that
+          <md>
+            fK\subseteq V_1\cup\cdots\cup V_n,
+          </md>
+          so <m>\{V_1,\ldots,V_n\}\subseteq \mathscr V</m> is a finite subcover.
+        </p>
+      </proof>
+      <p>
+        Next up: finite products of compacts spaces are compact. But to get there, we will need a result called the Tube Lemma.
+      </p>
+      <lemma xml:id="lem-tube-lemma">
+        <statement>
+          <p>
+            Let <m>X,Y</m> be spaces and suppose <m>Y</m> is compact. Let <m>x</m> be an element of <m>X</m> and suppose 
+            <m>W\subseteq X\times Y</m> is open and contains <m>\{x\}\times Y</m>. Then there is an open neighborhood 
+            <m>U\subseteq X</m> of <m>X</m> for which <m>U\times Y\subseteq W</m>.
+          </p>
+        </statement>
+      </lemma>
+      <proof>
+        <p>
+          By definition of the product topology, openness of <m>W</m> implies that there exist open sets <m>x\in U_x\subseteq X</m> 
+          and <m>y\in V_y\subseteq Y</m> for which <m>(x,y)\in U_x\times V_y\subseteq W</m>. This implies that 
+          <md>
+            \mathscr V := \{V_y\mid y\in Y\}\subseteq \tau_Y
+          </md>
+          is an open cover of <m>Y</m>.
+        </p>
+        <p>
+          Since <m>Y</m> is compact, there exist <m>y_1,\ldots,y_n\in Y</m> such that
+          <md>
+            Y = V_{y_1}\cup\cdots\cup V_{y_n}.
+          </md>
+          Take
+          <md>
+            U := U_{y_1}\cap\cdots\cap U_{y_n}.
+          </md>
+          As a finite intersection of open sets, <m>U</m> is open, and since <m>x\in U_x</m> for all <m>x</m>, <m>U</m> is 
+          an open neighborhood of <m>x</m>. Finally,
+          <md>
+            U\times Y\subseteq (U_{y_1}\times V_{y_1})\times\cdots\times(U_{y_n}\times V_{y_n})\subseteq W.
+          </md>
+        </p>
+      </proof>
+      <theorem xml:id="thm-compact-product">
+        <title>Finite products of compacts spaces are compact</title>
+        <statement>
+          <p>
+            Let <m>X_1,\ldots,X_n</m> be compact spaces. Then <m>X_1\times \cdots\times X_n</m> is compact.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          By induction, it suffices to prove that <m>X\times Y</m> is compact when <m>X,Y</m> are compact. 
+        </p>
+        <p>
+          Let <m>\mathscr A</m> be an open cover of <m>X\times Y</m>. For <m>x\in X</m>, consider the subspace 
+          <m>\{x\}\times Y\subseteq X\times Y</m>. Since <m>Y</m> is compact, so is <m>\{x\}\times Y\cong Y</m>. 
+          As such, there is a subcollection
+          <md>
+            \mathscr A_x = \{A_{x,1},\ldots,A_{x,n_x}\}\subseteq \mathscr A
+          </md>
+          for which
+          <md>
+            \{x\}\times Y\subseteq A_{x,1}\cup\cdots\cup A_{x,n_x}.
+          </md>
+          Applying the tube lemma to <m>A_{x,1}\cup\cdots\cup A_{x,n_x}</m> implies the existence of an open neighborhood 
+          <m>U_x\subseteq X</m> of <m>x</m> for which
+          <md>
+            U_x\times Y\subseteq A_{x,1}\cup\cdots\cup A_{x,n_x}.
+          </md>
+        </p>
+        <p>
+          Behold: <m>\{U_x\mid x\in X\}</m> is an open cover of <m>X</m>, and <m>X</m> is compact, so there exist 
+          <m>x_1,\ldots,x_k\in X</m> such that <m>U_{x_1}\cup\cdots\cup U_{x_k} = X</m>. It follows that
+          <md>
+            \{A_{x_i,j}\mid 1\le i\le k, 1\le j\le n_{x_i}\}\subseteq \mathscr A
+          </md>
+          is a finite subcover. This demonstrates that <m>X\times Y</m> is compact.
+        </p>
+      </proof>
     </subsubsection>
   </subsection>
   <subsection>
     <title>Wednesday</title>
+    <subsubsection xml:id="subsubsec-sep-disjoint-compact">
+      <title>Separation of disjoint compact subspaces</title>
+      <lemma xml:id="lem-sep-compact">
+        <title>Disjoint compact subspaces of a Hausdorff space can be separated</title>
+        <statement>
+          <p>
+            Let <m>K,L\subseteq X</m> be <alert>disjoint</alert> compact subspaces of a Hausdorff space <m>X</m>. 
+            Then there exist open sets <m>U,V\subseteq X</m> such that <m>K\subseteq U</m>, <m>L\subseteq V</m>, and 
+            <m>U\cap V=\varnothing</m>.
+          </p>
+        </statement>
+      </lemma>
+      <proof>
+        <title>Proof sketch</title>
+        <p>
+          The reader should fill in the details of the following sketch.
+          <ul>
+            <li>
+              <p>
+                If <m>K</m> or <m>L</m> is empty, then one of <m>U,V</m> can be empty and the other equal to <m>X</m>. Now assume 
+                both <m>K,L</m> are nonempty.
+              </p>
+            </li>
+            <li>
+              <p>
+                Fix <m>\ell\in L</m>. Given <m>k\in K</m> separate <m>k,\ell</m> with open neighborhoods 
+                <m>U_k,V_k\subseteq X</m>, respectively, where <m>U_k\cap V_k=\varnothing</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The set <m>\{U_k\mid k\in K\}</m> is an open cover of the compact space <m>K</m>, so there is 
+                a finite subset <m>S_\ell\subseteq K</m> such that
+                <md>
+                  \bigcup_{k\in S_\ell} U_k \supseteq K.
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                Take
+                <md>
+                  U_\ell := \bigcup_{k\in S_\ell} U_k\quad\text{and}\quad 
+                  V_\ell := \bigcup_{k\in S_\ell} V_k.
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                Verify that <m>V_\ell</m> is an open neighborhood of <m>\ell</m>, and thus 
+                <m>\{V_\ell\mid \ell\in \ell\}</m> is an open cover of <m>L</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                By compactness of <m>L</m>, there is a finite subset <m>T\subseteq L</m> such that 
+                <m>\bigcup_{\ell\in T} V_\ell\supseteq L</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Finally, check that
+                <md>
+                  U := \bigcup_{\ell\in T}U_\ell\quad\text{and}\quad V := \bigcup_{\ell\in T}V_\ell
+                </md>
+                form the desired separation of <m>K,L</m> by disjoint open sets.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </proof>
+    </subsubsection>
+    <p>
+      <xref ref="lem-sep-compact" /> immediately proves <xref ref="thm-closed-in-compact-is-compact" /> by taking 
+      <m>D</m> to be a singleton.
+    </p>
   </subsection>
   <subsection>
     <title>Friday</title>
+    <subsubsection xml:id="subsubsec-fund-thm-of-top">
+      <title>The fundamental theorem of topology</title>
+      <p>
+        The fundamental theorem of calculus allows us to compute definite integrals by evaluation of antiderivatives. The 
+        fundamental theorem of arithmetic asserts that integers have unique prime factorizations. The fundamental theorem of linear 
+        algebra should be the rank-nullity theorem but few are brave enough to say so. 
+        The fundamental theorem of algebra guarantees that nonconstant complex polynomials have a root (and thus 
+        <m>\mathbb C</m> is algebraically closed). 
+      </p>
+      <exercise>
+        <title>Fundamental theorems</title>
+        <p>
+          What theorems in other domains do you think deserve to be called <term>fundamental</term>?
+        </p>
+      </exercise>
+      <p>
+        The fundamental theorem of topology — <ie />, point-set topology — provides convenient conditions under which 
+        bijective continuous maps are homeomorphisms. We have already studied how such maps can fail to be homeomorphisms 
+        — remember <m>[0,1)\to S^1,~t\mapsto e^{2\pi i t}</m> and the identity map from the discrete to concrete topology — 
+        and we have experienced challenges producing explicit continuous inverse functions even when a continuous bijection 
+        is a homeomorphism. The fundamental theorem will at least partially rectify this situation, providing a rich class of 
+        (co)domains for which continuous bijections are necessarily homeomorphisms.
+      </p>
+      <theorem xml:id="thm-FTT">
+        <title>Fundamental theorem of topology</title>
+        <statement>
+          <p>
+            Suppose <m>X</m> is a compact space and <m>Y</m> separates points. Then any continuous bijection <m>X\to Y</m> is a 
+            homeomorphism.
+          </p>
+        </statement>
+      </theorem>
+      
+    </subsubsection>
     
   </subsection>
 </section>

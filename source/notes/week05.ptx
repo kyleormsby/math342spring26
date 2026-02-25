@@ -318,7 +318,7 @@
                 Take
                 <md>
                   U_\ell := \bigcup_{k\in S_\ell} U_k\quad\text{and}\quad 
-                  V_\ell := \bigcup_{k\in S_\ell} V_k.
+                  V_\ell := \bigcap_{k\in S_\ell} V_k.
                 </md>
               </p>
             </li>
@@ -338,7 +338,7 @@
               <p>
                 Finally, check that
                 <md>
-                  U := \bigcup_{\ell\in T}U_\ell\quad\text{and}\quad V := \bigcup_{\ell\in T}V_\ell
+                  U := \bigcap_{\ell\in T}U_\ell\quad\text{and}\quad V := \bigcup_{\ell\in T}V_\ell
                 </md>
                 form the desired separation of <m>K,L</m> by disjoint open sets.
               </p>

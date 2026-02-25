@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<worksheet>
+  <title>Homework 05</title>
+  <introduction>
+    <p>
+      <alert>Instructions:</alert> Complete all the exercises below and submit your work via 
+      <url href="https://www.gradescope.com/courses/1238540">Gradescope</url> by Monday March 2 at 10pm.
+    </p>
+  </introduction>
+
+  <page>
+    <exercise>
+      <statement>
+        <p>
+          Write two or more paragraphs describing the <alert>best</alert> ways to get stuck and unstuck on 
+          a math problem.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>f,g\colon \mathbb R^n\to \mathbb R</m> be two continuous maps. Suppose there is a number <m>N</m> 
+          such that <m>\lVert x\rVert \gt N</m> implies <m>g(x)\le 0</m> and <m>f(x)\ge 1</m>. Prove that the subspaces
+          <md>
+            \{x\in \mathbb R^n\mid f(x)=g(x)\}\quad\text{and}\quad \{x\in \mathbb R^n\mid f(x)\le g(x)\}
+          </md>
+          are compact.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <introduction>
+        <p>
+          For <m>X</m> a space, the <term>cone</term> on <m>X</m> is
+          <md>
+            CX := ([0,1]\times X)/{\sim}
+          </md>
+          where <m>(s,x)\sim (t,y)</m> means <m>(s,x)=(t,y)</m> or <m>s=t=0</m>.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Draw a picture of <m>CS^1</m>.
+          </p>
+        </statement>
+        </task>
+        <task>
+        <statement>
+          <p>
+            Prove that the map <m>f\colon CS^n\to D^{n+1}</m> given by <m>[(t,x)]\mapsto tx</m> is well-defined and continuous.
+          </p>
+        </statement>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Use the Fundamental Theorem of Topology to prove that <m>f\colon CS^n\to D^{n+1}</m> is a homeomorphism.
+          </p>
+        </statement>
+      </task>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>n\gt 0</m>. Prove that there is a homeomorphism <m>D^n/{\sim}\cong S^n</m> where <m>x\sim y</m> means 
+          <m>x=y</m> or <m>x,y\in S^{n-1}\subseteq D^n</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that
+          <md>
+            <mrow>s\colon [0,\infty) \amp \longrightarrow \mathbb R</mrow>
+            <mrow>t \amp \longmapsto (t-\lfloor t\rfloor)^{\lceil t\rceil}+\lfloor t\rfloor</mrow>
+          </md>
+          is continuous. Here <m>\lfloor~\rfloor</m> and <m>\lceil~\rceil</m> are the <term>floor</term> and <term>ceiling</term> 
+          functions, respectively.
+        </p>
+      </statement>
+    </exercise>
+  </page>
+</worksheet>

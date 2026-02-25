@@ -1285,7 +1285,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "2.5",
   "title": "Week 5",
-  "body": " Week 5   Monday   Compactness via topological induction  The following technique, topological induction , is an extremely useful proof strategy. In the near term, we will use it to prove that closed intervals of the form are compact. Later, we will use the same method to show is connected, and it can also be used to prove existence and uniqueness of homotopy lifts for covering spaces.   Topological induction   Let be a subset. Then if and only if it satisfies the following conditions:   base case   ,    downward closed  if and , then ,    topological induction  if , then there exists such that ,    supremal   .        It should be clear to the reader that satisfies the given conditions. For the converse, suppose that satisfies the conditions.  By the first condition, is nonempty. Since , we know that is bounded above by . By the least upper bound property for , the supremum of exists and is in .  Since is downwards closed, we must have or . But is supremal, so .  Finally, the topological induction property ensures that , whence .   We now provide the promised application of topological induction.   Compactness of closed intervals of the real line   If are real numbers, then is compact.     If , then is compact since is necessarily an element of some set in an open cover, and thus is covered by a subcover consisting of a single set.  Henceforth, assume and let be an open cover of . The reader may check the following assertion:  Let . Then there is an element and an element for which .    Now let We employ topological induction to prove that , whence is compact. The above assertion applied to reveals that . Downward closure is similarly straightforward: if and , then because a finite subcover of is automatically a finite subcover of .  For the topological induction step, suppose that , meaning that can be finitely covered by elements of . Fix a finite subcover of . Then is in some within the finite subcover. But is open, so is in for some .  Our final task is to show that . We already know that or . Since is an open cover of , there is some index for which . By openness of , there exists such that . By definition of , is finitely covered by . This means there is a finite subset for which Thus In particular, is finitely covered by , so . By topological induction, , which concludes our proof.     Inheritance of compactness      Separation of disjoint compact subspaces     Wednesday    Friday   "
+  "body": " Week 5   Monday   Compactness via topological induction  The following technique, topological induction , is an extremely useful proof strategy. In the near term, we will use it to prove that closed intervals of the form are compact. Later, we will use the same method to show is connected, and it can also be used to prove existence and uniqueness of homotopy lifts for covering spaces.   Topological induction   Let be a subset. Then if and only if it satisfies the following conditions:   base case   ,    downward closed  if and , then ,    topological induction  if , then there exists such that ,    supremal   .        It should be clear to the reader that satisfies the given conditions. For the converse, suppose that satisfies the conditions.  By the first condition, is nonempty. Since , we know that is bounded above by . By the least upper bound property for , the supremum of exists and is in .  Since is downwards closed, we must have or . But is supremal, so .  Finally, the topological induction property ensures that , whence .   We now provide the promised application of topological induction.   Compactness of closed intervals of the real line   If are real numbers, then is compact.     If , then is compact since is necessarily an element of some set in an open cover, and thus is covered by a subcover consisting of a single set.  Henceforth, assume and let be an open cover of . The reader may check the following assertion:  Let . Then there is an element and an element for which .    Now let We employ topological induction to prove that , whence is compact. The above assertion applied to reveals that . Downward closure is similarly straightforward: if and , then because a finite subcover of is automatically a finite subcover of .  For the topological induction step, suppose that , meaning that can be finitely covered by elements of . Fix a finite subcover of . Then is in some within the finite subcover. But is open, so is in for some .  Our final task is to show that . We already know that or . Since is an open cover of , there is some index for which . By openness of , there exists such that . By definition of , is finitely covered by . This means there is a finite subset for which Thus In particular, is finitely covered by , so . By topological induction, , which concludes our proof.     Inheritance of compactness  It can be challenging — or at least tedious — to directly demonstrate that a space is compact. Thankfully, there are a number of ways in which compactness can be inherited by subspaces of or constructions with compact spaces. We explore this phenomenon here.   Closed subspaces of compact spaces are compact   Let be a closed subspace of a compact space . Then is compact.     Let be an open cover of . Define Since , covers . And since is closed, is open, and thus is an open cover of .  By hypothesis, is compact there exist such that It follows that As such, we have demonstrated that every open cover of admits a finite subcover, , is compact.   Next, we will show that the continuous image of a compact set is compact. From analysis, we know that in metric topologies, compact is the same as closed and bounded, so this is a topological version of the extreme value theorem.   Topological extreme value theorem   Let be a continuous map and suppose is compact. Then is compact.     Let be an open cover of . We aim to show that admits a finite subcover. Because is continuous, for each , is open. Since , we know that is an open cover of .  By compactness of , there exist such that Applying , we see that so is a finite subcover.   Next up: finite products of compacts spaces are compact. But to get there, we will need a result called the Tube Lemma.    Let be spaces and suppose is compact. Let be an element of and suppose is open and contains . Then there is an open neighborhood of for which .     By definition of the product topology, openness of implies that there exist open sets and for which . This implies that is an open cover of .  Since is compact, there exist such that Take As a finite intersection of open sets, is open, and since for all , is an open neighborhood of . Finally,     Finite products of compacts spaces are compact   Let be compact spaces. Then is compact.     By induction, it suffices to prove that is compact when are compact.  Let be an open cover of . For , consider the subspace . Since is compact, so is . As such, there is a subcollection for which Applying the tube lemma to implies the existence of an open neighborhood of for which   Behold: is an open cover of , and is compact, so there exist such that . It follows that is a finite subcover. This demonstrates that is compact.      Wednesday   Separation of disjoint compact subspaces   Disjoint compact subspaces of a Hausdorff space can be separated   Let be disjoint compact subspaces of a Hausdorff space . Then there exist open sets such that , , and .     Proof sketch  The reader should fill in the details of the following sketch.   If or is empty, then one of can be empty and the other equal to . Now assume both are nonempty.    Fix . Given separate with open neighborhoods , respectively, where .    The set is an open cover of the compact space , so there is a finite subset such that     Take     Verify that is an open neighborhood of , and thus is an open cover of .    By compactness of , there is a finite subset such that .    Finally, check that form the desired separation of by disjoint open sets.        immediately proves by taking to be a singleton.    Friday   The fundamental theorem of topology  The fundamental theorem of calculus allows us to compute definite integrals by evaluation of antiderivatives. The fundamental theorem of arithmetic asserts that integers have unique prime factorizations. The fundamental theorem of linear algebra should be the rank-nullity theorem but few are brave enough to say so. The fundamental theorem of algebra guarantees that nonconstant complex polynomials have a root (and thus is algebraically closed).   Fundamental theorems  What theorems in other domains do you think deserve to be called fundamental ?   The fundamental theorem of topology — , point-set topology — provides convenient conditions under which bijective continuous maps are homeomorphisms. We have already studied how such maps can fail to be homeomorphisms — remember and the identity map from the discrete to concrete topology — and we have experienced challenges producing explicit continuous inverse functions even when a continuous bijection is a homeomorphism. The fundamental theorem will at least partially rectify this situation, providing a rich class of (co)domains for which continuous bijections are necessarily homeomorphisms.   Fundamental theorem of topology   Suppose is a compact space and separates points. Then any continuous bijection is a homeomorphism.      "
 },
 {
   "id": "subsubsec-topological-induction-2",
@@ -1331,6 +1331,114 @@ var ptx_lunr_docs = [
   "number": "2",
   "title": "",
   "body": " If , then is compact since is necessarily an element of some set in an open cover, and thus is covered by a subcover consisting of a single set.  Henceforth, assume and let be an open cover of . The reader may check the following assertion:  Let . Then there is an element and an element for which .    Now let We employ topological induction to prove that , whence is compact. The above assertion applied to reveals that . Downward closure is similarly straightforward: if and , then because a finite subcover of is automatically a finite subcover of .  For the topological induction step, suppose that , meaning that can be finitely covered by elements of . Fix a finite subcover of . Then is in some within the finite subcover. But is open, so is in for some .  Our final task is to show that . We already know that or . Since is an open cover of , there is some index for which . By openness of , there exists such that . By definition of , is finitely covered by . This means there is a finite subset for which Thus In particular, is finitely covered by , so . By topological induction, , which concludes our proof.  "
+},
+{
+  "id": "thm-closed-in-compact-is-compact",
+  "level": "2",
+  "url": "notes-week-05.html#thm-closed-in-compact-is-compact",
+  "type": "Theorem",
+  "number": "2.5.3",
+  "title": "Closed subspaces of compact spaces are compact.",
+  "body": " Closed subspaces of compact spaces are compact   Let be a closed subspace of a compact space . Then is compact.   "
+},
+{
+  "id": "subsubsec-inheritance-compactness-4",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-inheritance-compactness-4",
+  "type": "Proof",
+  "number": "1",
+  "title": "",
+  "body": " Let be an open cover of . Define Since , covers . And since is closed, is open, and thus is an open cover of .  By hypothesis, is compact there exist such that It follows that As such, we have demonstrated that every open cover of admits a finite subcover, , is compact.  "
+},
+{
+  "id": "thm-cts-image-compact",
+  "level": "2",
+  "url": "notes-week-05.html#thm-cts-image-compact",
+  "type": "Theorem",
+  "number": "2.5.4",
+  "title": "Topological extreme value theorem.",
+  "body": " Topological extreme value theorem   Let be a continuous map and suppose is compact. Then is compact.   "
+},
+{
+  "id": "subsubsec-inheritance-compactness-7",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-inheritance-compactness-7",
+  "type": "Proof",
+  "number": "2",
+  "title": "",
+  "body": " Let be an open cover of . We aim to show that admits a finite subcover. Because is continuous, for each , is open. Since , we know that is an open cover of .  By compactness of , there exist such that Applying , we see that so is a finite subcover.  "
+},
+{
+  "id": "lem-tube-lemma",
+  "level": "2",
+  "url": "notes-week-05.html#lem-tube-lemma",
+  "type": "Lemma",
+  "number": "2.5.5",
+  "title": "",
+  "body": "  Let be spaces and suppose is compact. Let be an element of and suppose is open and contains . Then there is an open neighborhood of for which .   "
+},
+{
+  "id": "subsubsec-inheritance-compactness-10",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-inheritance-compactness-10",
+  "type": "Proof",
+  "number": "3",
+  "title": "",
+  "body": " By definition of the product topology, openness of implies that there exist open sets and for which . This implies that is an open cover of .  Since is compact, there exist such that Take As a finite intersection of open sets, is open, and since for all , is an open neighborhood of . Finally,   "
+},
+{
+  "id": "thm-compact-product",
+  "level": "2",
+  "url": "notes-week-05.html#thm-compact-product",
+  "type": "Theorem",
+  "number": "2.5.6",
+  "title": "Finite products of compacts spaces are compact.",
+  "body": " Finite products of compacts spaces are compact   Let be compact spaces. Then is compact.   "
+},
+{
+  "id": "subsubsec-inheritance-compactness-12",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-inheritance-compactness-12",
+  "type": "Proof",
+  "number": "4",
+  "title": "",
+  "body": " By induction, it suffices to prove that is compact when are compact.  Let be an open cover of . For , consider the subspace . Since is compact, so is . As such, there is a subcollection for which Applying the tube lemma to implies the existence of an open neighborhood of for which   Behold: is an open cover of , and is compact, so there exist such that . It follows that is a finite subcover. This demonstrates that is compact.  "
+},
+{
+  "id": "lem-sep-compact",
+  "level": "2",
+  "url": "notes-week-05.html#lem-sep-compact",
+  "type": "Lemma",
+  "number": "2.5.7",
+  "title": "Disjoint compact subspaces of a Hausdorff space can be separated.",
+  "body": " Disjoint compact subspaces of a Hausdorff space can be separated   Let be disjoint compact subspaces of a Hausdorff space . Then there exist open sets such that , , and .   "
+},
+{
+  "id": "subsubsec-sep-disjoint-compact-3",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-sep-disjoint-compact-3",
+  "type": "Proof",
+  "number": "1",
+  "title": "Proof sketch.",
+  "body": " Proof sketch  The reader should fill in the details of the following sketch.   If or is empty, then one of can be empty and the other equal to . Now assume both are nonempty.    Fix . Given separate with open neighborhoods , respectively, where .    The set is an open cover of the compact space , so there is a finite subset such that     Take     Verify that is an open neighborhood of , and thus is an open cover of .    By compactness of , there is a finite subset such that .    Finally, check that form the desired separation of by disjoint open sets.     "
+},
+{
+  "id": "subsubsec-fund-thm-of-top-3",
+  "level": "2",
+  "url": "notes-week-05.html#subsubsec-fund-thm-of-top-3",
+  "type": "Checkpoint",
+  "number": "2.5.8",
+  "title": "Fundamental theorems.",
+  "body": " Fundamental theorems  What theorems in other domains do you think deserve to be called fundamental ?  "
+},
+{
+  "id": "thm-FTT",
+  "level": "2",
+  "url": "notes-week-05.html#thm-FTT",
+  "type": "Theorem",
+  "number": "2.5.9",
+  "title": "Fundamental theorem of topology.",
+  "body": " Fundamental theorem of topology   Suppose is a compact space and separates points. Then any continuous bijection is a homeomorphism.   "
 },
 {
   "id": "homework-2",

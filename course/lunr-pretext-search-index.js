@@ -1428,8 +1428,8 @@ var ptx_lunr_docs = [
   "url": "notes-week-06.html",
   "type": "Section",
   "number": "2.6",
-  "title": "Week 5",
-  "body": " Week 5   Monday   The fundamental theorem of topology  The fundamental theorem of calculus allows us to compute definite integrals by evaluation of antiderivatives. The fundamental theorem of arithmetic asserts that integers have unique prime factorizations. The fundamental theorem of linear algebra should be the rank-nullity theorem but few are brave enough to say so. The fundamental theorem of algebra guarantees that nonconstant complex polynomials have a root (and thus is algebraically closed).   Fundamental theorems  What theorems in other domains do you think deserve to be called fundamental ?   The fundamental theorem of topology — , point-set topology — provides convenient conditions under which bijective continuous maps are homeomorphisms. We have already studied how such maps can fail to be homeomorphisms — remember and the identity map from the discrete to concrete topology — and we have experienced challenges producing explicit continuous inverse functions even when a continuous bijection is a homeomorphism. The fundamental theorem will at least partially rectify this situation, providing a rich class of (co)domains for which continuous bijections are necessarily homeomorphisms.   Fundamental theorem of topology   Suppose is a compact space and separates points. Then any continuous bijection is a homeomorphism.     It suffices to prove that is a closed map, , that for all closed, is closed. Since is compact, each closed subspace of is compact. And since the continuous image of a compact set is compact, is compact. Finally, compact subspaces of spaces that separate points are necessarily closed, so is closed for all closed. This demonstrates that is a homeomorphism.     When do quotients separate points?    "
+  "title": "Week 6",
+  "body": " Week 6   Monday   The fundamental theorem of topology  The fundamental theorem of calculus allows us to compute definite integrals by evaluation of antiderivatives. The fundamental theorem of arithmetic asserts that integers have unique prime factorizations. The fundamental theorem of linear algebra should be the rank-nullity theorem but few are brave enough to say so. The fundamental theorem of algebra guarantees that nonconstant complex polynomials have a root (and thus is algebraically closed).   Fundamental theorems  What theorems in other domains do you think deserve to be called fundamental ?   The fundamental theorem of topology — , point-set topology — provides convenient conditions under which bijective continuous maps are homeomorphisms. We have already studied how such maps can fail to be homeomorphisms — remember and the identity map from the discrete to concrete topology — and we have experienced challenges producing explicit continuous inverse functions even when a continuous bijection is a homeomorphism. The fundamental theorem will at least partially rectify this situation, providing a rich class of (co)domains for which continuous bijections are necessarily homeomorphisms.   Fundamental theorem of topology   Suppose is a compact space and separates points. Then any continuous bijection is a homeomorphism.     It suffices to prove that is a closed map, , that for all closed, is closed. Since is compact, each closed subspace of is compact. And since the continuous image of a compact set is compact, is compact. Finally, compact subspaces of spaces that separate points are necessarily closed, so is closed for all closed. This demonstrates that is a homeomorphism.     When do quotients separate points?  To close out our study of compactness, we develop a condition under which quotient topologies separate points. As you saw in the homework, the line with two origins does not separate points despite being the quotient of a Hausdorff space.   Quotients that separate points   Suppose is a quotient map and define   Additional hypothesis!  Note the additional hypothesis — that is compact — in the converse theorem. Find an example demonstrating that this additional hypothesis is necessary.  If separates points, then is a closed subset of . If is compact and is closed, then separates points.     In the case of the line with two origins — realized as a quotient of — the set can be viewed as a subspace of the four disjoint planes , . Within , consists of the punctured diagonal consisting of with . This set is not closed, whence is not closed, and thus the line with two origins is not Hausdorff.    Proof of  The statement is vacuously true when has zero or one elements. Assume henceforth that has at least two distinct elements.  For the forwards direction, assume that separates points. We need to show that is closed. To this end, consider . Then . Since separates points, we may choose disjoint open neighborhoods of , respectively. Since is continuous and has the product topology, is an open neighborhood of in . We now show that Indeed, if is in the intersection, then , contradicting the disjointness of . We have now demonstrated that every has an open neighborhood that is a subset of , whence is closed, as desired.  For the backwards direction, assume is compact and is closed. I will sketch an argument for why this implies that the diagonal subspace is closed. In your homework, you proved that this is equivalent to separating points.    Step 1  Show that is a closed map. (You will need to use the hypothesis that is closed. It might be helpful to write .)    Step 2  Show that is a closed surjection, and then recall (or prove) that closed surjections are quotient maps.    Step 3  Since is a quotient map, a subset of is closed if and only if its preimage under is closed. The preimage of the diagonal subspace of under is exactly , which is closed by hypothesis.       "
 },
 {
   "id": "subsubsec-fund-thm-of-top-3",
@@ -1457,6 +1457,33 @@ var ptx_lunr_docs = [
   "number": "1",
   "title": "",
   "body": " It suffices to prove that is a closed map, , that for all closed, is closed. Since is compact, each closed subspace of is compact. And since the continuous image of a compact set is compact, is compact. Finally, compact subspaces of spaces that separate points are necessarily closed, so is closed for all closed. This demonstrates that is a homeomorphism.  "
+},
+{
+  "id": "thm-hausdorff-quotient",
+  "level": "2",
+  "url": "notes-week-06.html#thm-hausdorff-quotient",
+  "type": "Theorem",
+  "number": "2.6.3",
+  "title": "Quotients that separate points.",
+  "body": " Quotients that separate points   Suppose is a quotient map and define   Additional hypothesis!  Note the additional hypothesis — that is compact — in the converse theorem. Find an example demonstrating that this additional hypothesis is necessary.  If separates points, then is a closed subset of . If is compact and is closed, then separates points.   "
+},
+{
+  "id": "subsubsec-hausdorff-quotient-4",
+  "level": "2",
+  "url": "notes-week-06.html#subsubsec-hausdorff-quotient-4",
+  "type": "Example",
+  "number": "2.6.4",
+  "title": "",
+  "body": " In the case of the line with two origins — realized as a quotient of — the set can be viewed as a subspace of the four disjoint planes , . Within , consists of the punctured diagonal consisting of with . This set is not closed, whence is not closed, and thus the line with two origins is not Hausdorff.  "
+},
+{
+  "id": "subsubsec-hausdorff-quotient-5",
+  "level": "2",
+  "url": "notes-week-06.html#subsubsec-hausdorff-quotient-5",
+  "type": "Proof",
+  "number": "1",
+  "title": "Proof of Theorem 2.6.3.",
+  "body": " Proof of  The statement is vacuously true when has zero or one elements. Assume henceforth that has at least two distinct elements.  For the forwards direction, assume that separates points. We need to show that is closed. To this end, consider . Then . Since separates points, we may choose disjoint open neighborhoods of , respectively. Since is continuous and has the product topology, is an open neighborhood of in . We now show that Indeed, if is in the intersection, then , contradicting the disjointness of . We have now demonstrated that every has an open neighborhood that is a subset of , whence is closed, as desired.  For the backwards direction, assume is compact and is closed. I will sketch an argument for why this implies that the diagonal subspace is closed. In your homework, you proved that this is equivalent to separating points.    Step 1  Show that is a closed map. (You will need to use the hypothesis that is closed. It might be helpful to write .)    Step 2  Show that is a closed surjection, and then recall (or prove) that closed surjections are quotient maps.    Step 3  Since is a quotient map, a subset of is closed if and only if its preimage under is closed. The preimage of the diagonal subspace of under is exactly , which is closed by hypothesis.    "
 },
 {
   "id": "homework-2",

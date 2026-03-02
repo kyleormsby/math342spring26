@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="notes-week-06">
-  <title>Week 5</title>
+  <title>Week 6</title>
 
   <subsection>
     <title>Monday</title>
@@ -49,6 +49,113 @@
     </subsubsection>
     <subsubsection xml:id="subsubsec-hausdorff-quotient">
     <title>When do quotients separate points?</title>
-    </subsubsection>    
+    <p>
+      To close out our study of compactness, we develop a condition under which quotient topologies separate points. As you saw in the homework, 
+      the line with two origins does not separate points despite being the quotient of a Hausdorff space. 
+    </p>
+    <theorem xml:id="thm-hausdorff-quotient">
+      <title>Quotients that separate points</title>
+      <statement>
+        <p>
+          Suppose <m>q\colon X\to Z</m> is a quotient map and define
+          <md>
+            E_q := \{(x,y)\in X\times X\mid q(x)=q(y)\}.
+          </md>
+          <aside>
+            <title>Additional hypothesis!</title>
+            <p>
+              Note the additional hypothesis — that <m>X</m> is compact — in the converse theorem. Find an example demonstrating that 
+              this additional hypothesis is necessary.
+            </p>
+          </aside>
+          If <m>Z</m> separates points, then <m>E_q</m> is a closed subset of <m>X\times X</m>. If <m>X</m> is compact and 
+          <m>E_q\subseteq X\times X</m> is closed, then <m>Z</m> separates points.
+        </p>
+      </statement>
+    </theorem>
+    <example>
+      <p>
+      In the case of the line with two origins — realized as a quotient of <m>\mathbb R_1\amalg \mathbb R_2</m> — the set 
+      <m>E_q</m> can be viewed as a subspace of the four disjoint planes <m>\mathbb R_i\times\mathbb R_j</m>, <m>i,j=1,2</m>. 
+      Within <m>\mathbb R_1\times R_2</m>, <m>E_q</m> consists of the punctured diagonal consisting of <m>(x,x)\in \mathbb R^2</m> 
+      with <m>x\ne 0</m>. This set is not closed, whence <m>E_q</m> is not closed, and thus the line with two origins is not 
+      Hausdorff.
+      </p>
+    </example>
+    <proof>
+      <title>Proof of <xref ref="thm-hausdorff-quotient" /></title>
+      <p>
+        The statement is vacuously true when <m>Z</m> has zero or one elements. Assume henceforth that <m>Z</m> has at least two 
+        distinct elements.
+      </p>
+      <p>
+        For the forwards direction, assume that <m>Z</m> separates points. We need to show that <m>E_q</m> is closed. To this end, 
+        consider <m>(x,y)\in (X\times X)\smallsetminus E_q</m>. Then <m>q(x)\ne q(y)</m>. Since <m>Z</m> separates points, we may 
+        choose <m>V_x,V_y\subseteq Z</m> disjoint open neighborhoods of <m>x,y</m>, respectively. Since <m>q</m> is continuous and 
+        <m>X\times X</m> has the product topology, <m>q^{-1}V_x\times q^{-1}V_y</m> is an open neighborhood of <m>(x,y)</m> in 
+        <m>X\times X</m>. We now show that
+        <md>
+          E_q\cap (q^{-1}V_x\times q^{-1}V_y) = \varnothing.
+        </md>
+        Indeed, if <m>(x',y')</m> is in the intersection, then <m>q(x')=q(y')</m>, contradicting the disjointness of <m>V_x,V_y</m>. We 
+        have now demonstrated that every <m>(x,y)\in (X\times X)\smallsetminus E_q</m> has an open neighborhood that is a subset of 
+        <m>(X\times X)\smallsetminus E_q</m>, whence <m>E_q</m> is closed, as desired.
+      </p>
+      <p>
+        For the backwards direction, assume <m>X</m> is compact and <m>E_q\subseteq X\times X</m> is closed. I will sketch an argument 
+        for why this implies that the diagonal subspace <m>\{(z,z)\mid z\in Z\}\subseteq Z\times Z</m> is closed. In your homework, 
+        you proved that this is equivalent to separating points.
+      </p>
+      <dl>
+        <li>
+          <title>Step 1</title>
+          <p>
+            Show that <m>q</m> is a closed map. (You will need to use the hypothesis that <m>E_q</m> is closed. It might be helpful to 
+            write <m>q^{-1}qC = \operatorname{pr_1}(E_q\cap (X\times C)</m>.)
+          </p>
+        </li>
+        <li>
+          <title>Step 2</title>
+          <p>
+            Show that <m>q\times q\colon X\times X\to Z\times Z</m> is a closed surjection, and then recall (or prove) that closed 
+            surjections are quotient maps.
+          </p>
+        </li>
+        <li>
+          <title>Step 3</title>
+          <p>
+            Since <m>q\times q</m> is a quotient map, a subset of <m>Z\times Z</m> is closed if and only if its preimage under 
+            <m>q\times q</m> is closed. The preimage of the diagonal subspace of <m>Z\times Z</m> under <m>q</m> is exactly 
+            <m>E_q</m>, which is closed by hypothesis.
+          </p>
+        </li>
+      </dl>
+    </proof>
+    <example>
+      <title>Quotients that separate points</title>
+      <p>
+        Here is a brief list of quotient constructions that separate points according to the above theorem. You should identify 
+        <m>E_q</m> and verify that it is closed.
+        <ul>
+          <li>
+            <p>
+              For <m>A\subseteq X</m>, define <m>X/A</m> to be the quotient 
+              of <m>X</m> by the equivalence relation generated by <m>a\sim b</m> for all <m>a,b\in A</m>. We say that <m>X/A</m> 
+              <term>collapses</term> <m>A</m> to a point. Suppose <m>X</m> is compact and separates points and that <m>A\subseteq X</m> is closed. 
+              Then <m>X/A</m> separates points. It follows that <m>S^n\cong D^n/\partial D^n</m> separates points, as does the cone on any compact 
+              point-separating space.
+            </p>
+          </li>
+          <li>
+            <p>
+              Real projective space <m>\mathbb{RP}^n</m> can be realized as the quotient of <m>S^n</m> that identifies antipodal points. Since 
+              <m>S^n</m> is compact and separates points and <m>E_q = \{(x,\pm x)\mid x\in S^n\}</m> is closed — check this! —, we learn that 
+              <m>\mathbb{RP}^n</m> separates points.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </example>
+    </subsubsection> 
   </subsection>
 </section>

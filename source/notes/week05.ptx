@@ -142,15 +142,15 @@
         <p>
           Let <m>\mathscr U\subseteq \tau_X</m> be an open cover of <m>C</m>. Define
           <md>
-            \tilde \mathscr U := \mathscr U \cup \{X\smallsetminus C\}
+            \tilde{\mathscr U} := \mathscr U \cup \{X\smallsetminus C\}
           </md>
-          Since <m>C\subseteq \bigcup_{U\in \mathscr U}U</m>, <m>\tilde U</m> covers <m>X</m>. And since <m>C</m> is closed, 
-          <m>X\smallsetminus C</m> is open, and thus <m>\tilde \mathscr U</m> is an open cover of <m>X</m>.
+          Since <m>C\subseteq \bigcup_{U\in \mathscr U}U</m>, <m>\tilde{\mathscr U}</m> covers <m>X</m>. And since <m>C</m> is closed, 
+          <m>X\smallsetminus C</m> is open, and thus <m>\tilde{\mathscr U}</m> is an open cover of <m>X</m>.
         </p>
         <p>
-          By hypothesis, <m>X</m> is compact there exist <m>U_1,\ldots,U_n\in \tilde \mathscr U</m> such that
+          By hypothesis, <m>X</m> is compact there exist <m>U_1,\ldots,U_n\in \tilde{\mathscr U}</m> such that
           <md>
-            X = U_1\cup \cdots \cup U_n\cup (X\smalletminus C).
+            X = U_1\cup \cdots \cup U_n\cup (X\smallsetminus C).
           </md>
           It follows that
           <md>
@@ -354,40 +354,9 @@
   </subsection>
   <subsection>
     <title>Friday</title>
-    <subsubsection xml:id="subsubsec-fund-thm-of-top">
-      <title>The fundamental theorem of topology</title>
-      <p>
-        The fundamental theorem of calculus allows us to compute definite integrals by evaluation of antiderivatives. The 
-        fundamental theorem of arithmetic asserts that integers have unique prime factorizations. The fundamental theorem of linear 
-        algebra should be the rank-nullity theorem but few are brave enough to say so. 
-        The fundamental theorem of algebra guarantees that nonconstant complex polynomials have a root (and thus 
-        <m>\mathbb C</m> is algebraically closed). 
-      </p>
-      <exercise>
-        <title>Fundamental theorems</title>
-        <p>
-          What theorems in other domains do you think deserve to be called <term>fundamental</term>?
-        </p>
-      </exercise>
-      <p>
-        The fundamental theorem of topology — <ie />, point-set topology — provides convenient conditions under which 
-        bijective continuous maps are homeomorphisms. We have already studied how such maps can fail to be homeomorphisms 
-        — remember <m>[0,1)\to S^1,~t\mapsto e^{2\pi i t}</m> and the identity map from the discrete to concrete topology — 
-        and we have experienced challenges producing explicit continuous inverse functions even when a continuous bijection 
-        is a homeomorphism. The fundamental theorem will at least partially rectify this situation, providing a rich class of 
-        (co)domains for which continuous bijections are necessarily homeomorphisms.
-      </p>
-      <theorem xml:id="thm-FTT">
-        <title>Fundamental theorem of topology</title>
-        <statement>
-          <p>
-            Suppose <m>X</m> is a compact space and <m>Y</m> separates points. Then any continuous bijection <m>X\to Y</m> is a 
-            homeomorphism.
-          </p>
-        </statement>
-      </theorem>
-      
-    </subsubsection>
+    <p>
+      Class was canceled this day. The planned content will appear Monday of week 6.
+    </p>
     
   </subsection>
 </section>

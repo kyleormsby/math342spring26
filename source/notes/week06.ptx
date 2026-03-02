@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-06">
+  <title>Week 5</title>
+
+  <subsection>
+    <title>Monday</title>
+    <subsubsection xml:id="subsubsec-fund-thm-of-top">
+      <title>The fundamental theorem of topology</title>
+      <p>
+        The fundamental theorem of calculus allows us to compute definite integrals by evaluation of antiderivatives. The 
+        fundamental theorem of arithmetic asserts that integers have unique prime factorizations. The fundamental theorem of linear 
+        algebra should be the rank-nullity theorem but few are brave enough to say so. 
+        The fundamental theorem of algebra guarantees that nonconstant complex polynomials have a root (and thus 
+        <m>\mathbb C</m> is algebraically closed). 
+      </p>
+      <exercise>
+        <title>Fundamental theorems</title>
+        <p>
+          What theorems in other domains do you think deserve to be called <term>fundamental</term>?
+        </p>
+      </exercise>
+      <p>
+        The fundamental theorem of topology — <ie />, point-set topology — provides convenient conditions under which 
+        bijective continuous maps are homeomorphisms. We have already studied how such maps can fail to be homeomorphisms 
+        — remember <m>[0,1)\to S^1,~t\mapsto e^{2\pi i t}</m> and the identity map from the discrete to concrete topology — 
+        and we have experienced challenges producing explicit continuous inverse functions even when a continuous bijection 
+        is a homeomorphism. The fundamental theorem will at least partially rectify this situation, providing a rich class of 
+        (co)domains for which continuous bijections are necessarily homeomorphisms.
+      </p>
+      <theorem xml:id="thm-FTT">
+        <title>Fundamental theorem of topology</title>
+        <statement>
+          <p>
+            Suppose <m>X</m> is a compact space and <m>Y</m> separates points. Then any continuous bijection <m>X\to Y</m> is a 
+            homeomorphism.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          It suffices to prove that <m>f</m> is a closed map, <ie />, that for all <m>C\subseteq X</m> closed, <m>fC\subseteq Y</m> is closed. Since 
+          <m>X</m> is compact, each closed subspace <m>C</m> of <m>X</m> is compact. And since the continuous image of a compact set is compact, 
+          <m>fC\subseteq Y</m> is compact. Finally, compact subspaces of spaces that separate points are necessarily closed, so <m>fC\subseteq Y</m> is 
+          closed for all <m>C\subseteq X</m> closed. This demonstrates that <m>f</m> is a homeomorphism.
+        </p>
+      </proof>
+      
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-hausdorff-quotient">
+    <title>When do quotients separate points?</title>
+    </subsubsection>    
+  </subsection>
+</section>

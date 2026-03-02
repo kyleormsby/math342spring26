@@ -79,7 +79,8 @@
             <mrow>t \amp \longmapsto (t-\lfloor t\rfloor)^{\lceil t\rceil}+\lfloor t\rfloor</mrow>
           </md>
           is continuous. Here <m>\lfloor~\rfloor</m> and <m>\lceil~\rceil</m> are the <term>floor</term> and <term>ceiling</term> 
-          functions, respectively.
+          functions, respectively. (Instead of proving this statement directly, you might enjoy developing a lemma about when 
+          piecewise defined functions are continuous, and then applying that lemma in this case.)
         </p>
       </statement>
     </exercise>

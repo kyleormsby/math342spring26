@@ -341,8 +341,29 @@
             make the drawing task plausible if not strictly realistic, and this intuitiion is still valuable.
           </p>
         </statement>
-        
       </exercise>
+      <definition xml:id="def-path-connected">
+        <title>Path connectedness</title>
+        <statement>
+          <p>
+            A space <m>X</m> is called <term>path-connected</term> :iff <m>X\ne \varnothing</m> and, for all <m>x,y\in X</m> there is a path <m>\gamma\colon [0,1]\to X</m> 
+            with <m>\gamma(0)=x</m> and <m>\gamma(1)=y</m>.
+          </p>
+        </statement>
+      </definition>
+      <example>
+        <title>Convex subsets of Euclidean space are path-connected</title>
+        <statement>
+          <p>
+            A set <m>A\subseteq \mathbb R^n</m> is called <term>convex</term> :iff for all <m>x,y\in A</m>, the line segment joining <m>x</m> and <m>y</m> is 
+            a subset of <m>A</m>. In this case, we can take <m>\gamma\colon [0,1]\to A</m> to be given by
+            <md>
+              \gamma(t) = (1-t)x+ty
+            </md>
+            and this demonstrates that <m>A</m> is path-connected.
+          </p>
+        </statement>
+      </example>
     </subsubsection>
   </subsection>
 </section>

@@ -53,6 +53,61 @@
       To close out our study of compactness, we develop a condition under which quotient topologies separate points. As you saw in the homework, 
       the line with two origins does not separate points despite being the quotient of a Hausdorff space. 
     </p>
+    <p>
+      We need a prepatory lemma, though:
+    </p>
+    <lemma xml:id="lem-projection-closed-map">
+  <title>Projection from a product with a compact factor is a closed map</title>
+  <statement>
+    <p>
+      Let <m>X</m> and <m>Y</m> be topological spaces with <m>Y</m> compact. Then the projection
+      <m>\operatorname{pr}_1 \colon X \times Y \to X</m> is a closed map.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      Let <m>C \subseteq X \times Y</m> be closed; we must show that
+      <m>\operatorname{pr}_1(C)</m> is closed in <m>X</m>. Equivalently, we show that
+      <m>X \smallsetminus \operatorname{pr}_1(C)</m> is open, i.e. that every point
+      <m>x_0 \in X \smallsetminus \operatorname{pr}_1(C)</m> has an open neighborhood
+      disjoint from <m>\operatorname{pr}_1(C)</m>.
+    </p>
+    <p>
+      Fix such an <m>x_0</m>. The condition <m>x_0 \notin \operatorname{pr}_1(C)</m> means
+      that <m>\{x_0\} \times Y</m> and <m>C</m> are disjoint. Since <m>C</m> is closed,
+      its complement <m>(X \times Y) \smallsetminus C</m> is an open set that contains
+      <m>\{x_0\} \times Y</m>.
+    </p>
+    <p>
+      For each <m>y \in Y</m>, the point <m>(x_0, y)</m> lies in the open set
+      <m>(X \times Y) \smallsetminus C</m>, so by the definition of the product topology
+      there exist open sets <m>U_y \subseteq X</m> and <m>V_y \subseteq Y</m> such that
+      <md>
+        (x_0, y) \in U_y \times V_y \subseteq (X \times Y) \smallsetminus C.
+      </md>
+      The collection <m>\{V_y\}_{y \in Y}</m> is an open cover of <m>Y</m>. Since
+      <m>Y</m> is compact, there is a finite subcover
+      <m>V_{y_1}, \ldots, V_{y_n}</m>.
+    </p>
+    <p>
+      Set <m>U = U_{y_1} \cap \cdots \cap U_{y_n}</m>, which is a finite intersection of
+      open sets containing <m>x_0</m>, hence an open neighborhood of <m>x_0</m> in
+      <m>X</m>. We claim that <m>U \times Y \subseteq (X \times Y) \smallsetminus C</m>,
+      which will imply <m>U \cap \operatorname{pr}_1(C) = \varnothing</m> and complete
+      the proof.
+    </p>
+    <p>
+      Indeed, let <m>(x, y) \in U \times Y</m> be arbitrary. Since
+      <m>V_{y_1}, \ldots, V_{y_n}</m> cover <m>Y</m>, we have <m>y \in V_{y_k}</m> for
+      some <m>k</m>. Since <m>x \in U \subseteq U_{y_k}</m>, it follows that
+      <m>(x, y) \in U_{y_k} \times V_{y_k} \subseteq (X \times Y) \smallsetminus C</m>.
+      Hence <m>(x,y) \notin C</m>, as desired.
+    </p>
+  </proof>
+</lemma>
+    <p>
+      OK, on to our final theorem about Hausdorff quotients:
+    </p>
     <theorem xml:id="thm-hausdorff-quotient">
       <title>Quotients that separate points</title>
       <statement>
@@ -111,7 +166,7 @@
           <title>Step 1</title>
           <p>
             Show that <m>q</m> is a closed map. (You will need to use the hypothesis that <m>E_q</m> is closed. It might be helpful to 
-            write <m>q^{-1}qC = \operatorname{pr_1}(E_q\cap (X\times C)</m>.)
+            write <m>q^{-1}qC = \operatorname{pr_1}(E_q\cap (X\times C)</m> and to employ the above lemma.)
           </p>
         </li>
         <li>
@@ -157,5 +212,42 @@
       </p>
     </example>
     </subsubsection> 
+  </subsection>
+  <subsection>
+    <title>Wednesday</title>
+    <subsubsection xml:id="subsubsec-connectedness">
+      <title>Connectedness</title>
+      <p>
+        We now begin an exploration of a deep and important topological invariant: connectedness. You probably have an intuitive grasp 
+        of this concept already. The real line <m>\mathbb R</m> has "one piece" — <ie />, is connected — while the punctured line 
+        <m>\mathbb R\smallsetminus \{0\}</m> has "two pieces" — it is disconnected.
+      </p>
+      <p>
+        You have used connectivity before, though its fundamental role was probably cloaked in secrecy. For instance, the intermediate value theorem guarantees that, for a continuous 
+        function <m>f\colon \mathbb R\to \mathbb R</m>, if there exists real numbers <m>a\lt b</m> for which <m>f(a)\lt 0</m> and 
+        <m>f(b)\gt 0</m>, then there exists <m>a\lt x\lt b</m> for which <m>f(x)=0</m>. As we shall see, this is a consequence of <m>\mathbb R</m> being 
+        connected. Meanwhile, consider the continuous function <m>g\colon \mathbb R\smallsetminus \{0\}\to \mathbb R</m> given by <m>g(t)=1/t</m>. 
+        Despite <m>g(\pm 1)=\pm 1</m>, there is no <m>-1\lt x\lt 1</m> in <m>\mathbb R\smallsetminus \{0\}</m> for which <m>g(x)=0</m>. This is only possible 
+        because <m>\mathbb R\smallsetminus \{0\}</m> is not connected.
+      </p>
+      <definition xml:id="def-separation">
+        <title>Separation of a space</title>
+        <statement>
+          <p>
+            A <term>separation</term> of a space <m>X</m> is a partition of <m>X</m> by nonempty open subsets; that is, a pair of nonempty open sets 
+            <m>U,V\subseteq X</m> for which <m>U\cap V=\varnothing</m> and <m>U\cup V=X</m>.
+          </p>
+        </statement>
+      </definition>
+      <exercise>
+        <title>Separations as coproducts</title>
+        <statement>
+          <p>
+            Show that a space <m>X</m> has a separation if and only if <m>X\cong U\amalg V</m> for some spaces <m>U,V</m>.
+          </p>
+        </statement>
+      </exercise>
+      
+    </subsubsection>
   </subsection>
 </section>

@@ -364,6 +364,24 @@
           </p>
         </statement>
       </example>
+      <exercise>
+        <title>Star convex subsets of Euclidean space are path-connected</title>
+        <statement>
+          <p>
+            A set <m>A\subseteq \mathbb R^n</m> is called <term>star-convex</term> :iff there exists a point <m>x\in A</m> such that for every 
+            <m>y\in A</m> the line segment joining <m>x</m> and <m>y</m> is contained in <m>A</m>. Show that every star-convex subset of 
+            <m>\mathbb R^n</m> is path-connected.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <title>Spheres are path-connected</title>
+        <statement>
+          <p>
+            Demonstrate that for <m>n\ge 1</m>, the sphere <m>S^n</m> is path-connected. What about <m>S^0</m>?
+          </p>
+        </statement>
+      </exercise>
     </subsubsection>
   </subsection>
 </section>

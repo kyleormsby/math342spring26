@@ -383,5 +383,13 @@
         </statement>
       </exercise>
     </subsubsection>
+    <subsubsection xml:id="subsubsec-closed-interval-connected">
+      <title>Closed intervals are connected</title>
+      
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-pc-implies-c">
+      <title>Path-connected implies connected</title>
+      
+    </subsubsection>
   </subsection>
 </section>

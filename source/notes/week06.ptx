@@ -231,23 +231,118 @@
         because <m>\mathbb R\smallsetminus \{0\}</m> is not connected.
       </p>
       <definition xml:id="def-separation">
-        <title>Separation of a space</title>
+        <title>Separation of a space and (dis)connected spaces</title>
         <statement>
           <p>
             A <term>separation</term> of a space <m>X</m> is a partition of <m>X</m> by nonempty open subsets; that is, a pair of nonempty open sets 
             <m>U,V\subseteq X</m> for which <m>U\cap V=\varnothing</m> and <m>U\cup V=X</m>.
           </p>
+          <p>
+            A space <m>X</m> is <term>disconnected</term> :iff it admits a separation; a space <m>X</m> is <term>connected</term> :iff it is nonempty 
+            and does not admit a separation.
+          </p>
+          <aside>
+            <title>Is the empty set connected?</title>
+            <p>
+              The careful reader will note that, according to our definition, <m>\varnothing</m> is neither connected nor disconnected. This makes 
+              various statements easier to make later on, since we won't have to add quite as many "nonempty" clauses. A fun game for the reader 
+              — for some definition of fun — is to try and spot where calling <m>\varnothing</m> connected would falsify a claim.
+            </p>
+          </aside>
         </statement>
       </definition>
       <exercise>
         <title>Separations as coproducts</title>
         <statement>
           <p>
-            Show that a space <m>X</m> has a separation if and only if <m>X\cong U\amalg V</m> for some spaces <m>U,V</m>.
+            Show that a space <m>X</m> is disconnected if and only if <m>X\cong U\amalg V</m> for some nonempty spaces <m>U,V</m>. Equivalently, 
+            if a connected space <m>X</m> is homeomorphic to some <m>U\amalge V</m>, then it is homeomorphic to one of the summands via one of the 
+            canonical inclusions.
           </p>
         </statement>
       </exercise>
-      
+      <exercise>
+        <title>Checking connectivity</title>
+        <statement>
+          <p>
+            Verify that a nonempty space <m>X</m> is connected if and only if for all disjoint open subsets <m>U,V\subseteq X</m> for which 
+            <m>U\cup V=X</m>, either <m>U=\varnothing</m> or <m>V=\varnothing</m>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <title>Clopen subsets and separations</title>
+        <statement>
+          <p>
+            Check that a space <m>X</m> admits a separation if and only if it contains a nonempty proper clopen subset.
+          </p>
+        </statement>
+      </exercise>
+      <example>
+        <title>The punctured real line is disconnected</title>
+        <statement>
+          <p>
+            Let <m>X = \mathbb R\smallsetminus \{0\}</m> and take <m>U=\mathbb R_{\gt 0}</m>, <m>V = \mathbb R_{\lt 0}</m>. Then
+            <md>
+              \mathbb R\smallsetminus \{0\} = \mathbb R_{\gt 0}\amalg \mathbb R_{\lt 0}
+            </md>
+            is a separation of <m>\mathbb R\smallsetminus \{0\}</m>, so <m>\mathbb R\smallsetminus \{0\}</m> is disconnected.
+          </p>
+        </statement>
+      </example>
+      <example>
+        <title>Most discrete spaces are disconnected</title>
+        <statement>
+          <p>
+            If a discrete space <m>X</m> has at least two points, then <m>X</m> is disconnected. Indeed, pick some <m>x\in X</m> and observe that
+            <md>
+              X = \{x\}\amalg (X\smallsetminus \{x\})
+            </md>
+            is a separation of <m>X</m>.
+          </p>
+        </statement>
+      </example>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-path-connected">
+      <title>Paths and path connectedness</title>
+      <p>
+        There is another — but related — notion of connectedness phrased in terms of paths, which we now examine.
+      </p>
+      <definition xml:id="def-path">
+        <title>Paths</title>
+        <statement>
+          <p>
+            A <term>path</term> in a space <m>X</m> is a continuous function
+            <md>
+              \gamma\colon [0,1]\longrightarrow X
+            </md>
+            from the closed unit interval (viewed as a subspace of <m>\mathbb R</m>) to <m>X</m>.
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <title>How to think about paths</title>
+        <statement>
+          <p>
+            A path <m>\gamma\colon [0,1]\to X</m> provides points <m>\gamma(t)\in X</m> for each <m>t\in [0,1]</m>. We should think of <m>\gamma</m> as 
+            providing instructions for how to draw a curve in <m>X</m> where we start at time <m>0</m>, end at time <m>1</m>, and our pen is at <m>\gamma(t)</m> 
+            at time <m>t</m>. The continuity condition on <m>\gamma</m> guarantees that we can draw our path without lifting our pen.
+          </p>
+        </statement>
+      </remark>
+      <exercise>
+        <title>Really?</title>
+        <statement>
+          <p>
+            Can we really "draw" the "curve" / "path" described by <m>\gamma\colon [0,1]\to X</m>. Suppose <m>\gamma\colon [0,1]\to \mathbb R^2</m> takes 
+            values <m>\gamma(t)=(t,D(t))</m> where <m>D</m> is the 
+            <url href="https://www.quantamagazine.org/the-jagged-monstrous-function-that-broke-calculus-20250123/">Weierstrass devil function</url>. The curve 
+            described is the graph of <m>D</m> (restricted to <m>[0,1]</m>), and I think you will find the task difficult. Nonetheless, continuity does 
+            make the drawing task plausible if not strictly realistic, and this intuitiion is still valuable.
+          </p>
+        </statement>
+        
+      </exercise>
     </subsubsection>
   </subsection>
 </section>

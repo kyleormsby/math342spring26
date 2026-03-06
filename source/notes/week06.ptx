@@ -54,7 +54,7 @@
       the line with two origins does not separate points despite being the quotient of a Hausdorff space. 
     </p>
     <p>
-      We need a prepatory lemma, though:
+      We need a preparatory lemma, though:
     </p>
     <lemma xml:id="lem-projection-closed-map">
   <title>Projection from a product with a compact factor is a closed map</title>

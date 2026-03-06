@@ -603,7 +603,7 @@
           <li>
             <title>Construction</title>
             <p>
-              Provide a concrete desciption of the space and verify that it satisfies the universal property.
+              Provide a concrete description of the space and verify that it satisfies the universal property.
             </p>
           </li>
           <li>
@@ -768,7 +768,7 @@
     </p>
     <p>
       We write <m>\mathbb{RP}^n := (\mathbb R^{n+1}\smallsetminus \{0\})/\sim</m> and call this space 
-      <term>real projective <m>n</m>-space</term>. But we haven't pinned down the topology yet! The "collapsing" occuring in the quotient 
+      <term>real projective <m>n</m>-space</term>. But we haven't pinned down the topology yet! The "collapsing" occurring in the quotient 
       is far more dramatic here, and it is less clear what the resulting space "looks like".
     </p>
     <exercise>

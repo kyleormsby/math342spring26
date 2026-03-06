@@ -338,7 +338,7 @@
             values <m>\gamma(t)=(t,D(t))</m> where <m>D</m> is the 
             <url href="https://www.quantamagazine.org/the-jagged-monstrous-function-that-broke-calculus-20250123/">Weierstrass devil function</url>. The curve 
             described is the graph of <m>D</m> (restricted to <m>[0,1]</m>), and I think you will find the task difficult. Nonetheless, continuity does 
-            make the drawing task plausible if not strictly realistic, and this intuitiion is still valuable.
+            make the drawing task plausible if not strictly realistic, and this intuition is still valuable.
           </p>
         </statement>
       </exercise>
@@ -383,13 +383,130 @@
         </statement>
       </exercise>
     </subsubsection>
+  </subsection>
+  <subsection>
+    <title>Friday</title>
     <subsubsection xml:id="subsubsec-closed-interval-connected">
       <title>Closed intervals are connected</title>
-      
+      <theorem xml:id="thm-closed-interval-connected">
+        <title>Closed intervals are connected</title>
+        <statement>
+          <p>
+            For <m>a\le b</m>, the closed interval <m>[a,b]\subseteq \mathbb R</m> is connected.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          Let <m>U\subseteq [0,1]</m> be a nonempty subset that is both open and closed. Replacing <m>U</m> with <m>[0,1]\smallsetminus U</m> if 
+          necessary, we may assume that <m>0\in U</m>. We must demonstrate that <m>U=[0,1]</m>.
+        </p>
+        <p>
+          Consider
+          <md>
+            C := \{t\in [0,1]\mid [0,t]\subseteq U\} \subseteq [0,1]
+          </md>
+          and observe the following:
+          <ol>
+            <li>
+              <p>
+                The set <m>C</m> contains <m>0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since <m>C</m> is a bounded above nonempty subset of <m>\mathbb R</m>, <m>\sup C</m> exists.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>t\in C</m> and <m>0\le s\le t</m>, then <m>s\in C</m>. It follows that
+                <md>
+                  C = [0,\sup C)\qquad\text{or}\qquad C = [0,\sup C].
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                The supremum of <m>C</m> is a limit point of <m>C</m> and hence a limit point of <m>U</m>. Since <m>U</m> is closed by assumption, 
+                <m>\sup C\in U</m>. But then <m>[0,\sup C]\subseteq U</m>, so <m>\sup C\in C</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                To conclude, we show that <m>\sup C=1</m>. Let <m>t</m> be an element of <m>C\cap [0,1)</m>. Then <m>[0,t]\subseteq U</m>. Since <m>t\lt 1</m> 
+                and <m>U\subseteq [0,1]</m> is open, there exists <m>\varepsilon \gt 0</m> such that <m>(t-\varepsilon,t+\varepsilon)\subseteq U</m>. It follows 
+                that <m>[0,t+\varepsilon/2]\subseteq U</m>. In particular, <m>t+\varepsilon/2\in C</m>, whence no element of <m>C\cap [0,1)</m> is an upper bound 
+                of <m>C</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </proof>
     </subsubsection>
     <subsubsection xml:id="subsubsec-pc-implies-c">
       <title>Path-connected implies connected</title>
       
+      <corollary xml:id="cor-path-conn-implies-conn">
+        <title>Path-connected implies connected</title>
+        <statement>
+          <p>
+            If a space <m>X</m> is path-connected, then <m>X</m> is connected.
+          </p>
+        </statement>
+      </corollary>
+      <proof>
+        <p>
+          Suppose <m>X</m> is path-connected and <m>U\subseteq X</m> is a nonempty subset that is both closed and open. We need to prove that 
+          <m>U=X</m>.
+        </p>
+        <p>
+          Let <m>x\in U</m> — which we can do since <m>U</m> is nonempty — and let <m>y\in X</m>. Since <m>X</m> is path-connected, there is a continuous 
+          map <m>\gamma\colon [0,1]\to X</m> with <m>\gamma(0)=x</m> and <m>\gamma(1)=y</m>. Since <m>\gamma</m> is continuous, <m>\gamma^{-1}U\subseteq [0,1]</m> 
+          is both open and closed; moreover, <m>0\in \gamma^{-1}U</m> since <m>\gamma(0)=x\in U</m>, so <m>\gamma^{-1}U</m> is nonempty. Because 
+          <m>[0,1]</m> is connected, it follows that <m>\gamma^{-1}U = [0,1]</m>. In particular, <m>y=\gamma(1)</m> is in <m>U</m>. Since <m>y</m> was an arbitrary 
+          element of <m>X</m>, we learn that <m>U=X</m>, so <m>X</m> is connected, as desired.
+        </p>
+      </proof>
     </subsubsection>
+    <subsubsection xml:id="subsubsec-inheritance-of-connectedness">
+      <title>Inheritance of connectedness</title>
+      <theorem xml:id="thm-cts-image-connected">
+        <title>Continuous image of connected is connected</title>
+        <statement>
+          <p>
+            Let <m>f\colon X\to Y</m> be a continuous function. If <m>X</m> is connected, then so is <m>fX\subseteq Y</m>.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          Suppose that <m>U,V\subseteq fX</m> are disjoint and open with union <m>fX</m>. Then <m>X = f^{-1}U\amalg f^{-1}V</m>. Since <m>X</m> is connected, 
+          <m>f^{-1}U</m> or <m>f^{-1}V</m> is empty, implying that <m>U</m> or <m>V</m> is empty. We conclude that <m>U,V</m> do not form a separation of <m>fX</m> 
+          and thus no separation exists.
+        </p>
+      </proof>
+      <corollary xml:id="cor-ivt">
+      <title>Intermediate value theorem</title>
+      
+      
+      <statement>
+        <p>
+          
+        </p>
+      </statement>
+    </corollary>
+    <example>
+      <title>The circle is connected</title>
+      <statement>
+        <p>
+          Since <m>S^1</m> is the continuous image of <m>\mathbb R</m> under <m>t\mapsto e^{2\pi i t}</m>, we know that <m>S^1</m> is connected.
+        </p>
+      </statement>
+      
+    </example>
+    </subsubsection>
+    
+
   </subsection>
 </section>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-07">
+  <title>Week 7</title>
+
+  <subsection>
+    <title>Monday</title>
+    <p>
+      I held a review session on Monday.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Wednesday</title>
+    <p>
+      The take-home midterm was distributed on Wednesday. I did not hold class in order 
+      to give folks time to work on the exam.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Friday</title>
+        <subsubsection xml:id="subsubsec-connected-components">
+      <title>Connected components</title>
+      <p>
+        The notion of connectedness breaks any topological space into its <term>connected
+        components</term>, which we now define.
+      </p>
+      <definition xml:id="def-connected-components">
+        <title>Connected components</title>
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space. Declare <m>x\sim_{\mathrm{conn}} y</m> to mean
+            there is a connected subspace <m>A\subseteq X</m> for which <m>x,y\in A</m>. The
+            <term>set of connected components</term> is the set of equivalence classes:
+            <md>
+              [X] := X/{\sim_{\mathrm{conn}}}.
+            </md>
+            This set is regarded as a topological space via the quotient topology from the
+            surjection <m>X\xrightarrow{x\mapsto [x]_{\mathrm{conn}}} [X]</m>.
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <statement>
+          <p>
+            A connected component of a topological space <m>X</m> is an equivalence class
+            <m>C\subseteq X</m> with respect to <m>\sim_{\mathrm{conn}}</m>. Unpacking the definition,
+            two points lie in the same connected component if and only if they are both contained
+            in some connected subspace of <m>X</m>.
+          </p>
+        </statement>
+      </remark>
+      <definition xml:id="def-totally-disconnected">
+        <title>Totally disconnected spaces</title>
+        <statement>
+          <p>
+            A topological space <m>X</m> is <term>totally disconnected</term> if the quotient map
+            <m>X\to [X],~x\mapsto [x]_{\mathrm{conn}}</m> is a bijection ‚Äî equivalently, if the
+            only connected subspaces of <m>X</m> are singletons.
+          </p>
+        </statement>
+      </definition>
+      <example>
+        <statement>
+          <p>
+            We have <m>[S^0] = \bigl\{\{-1\},\{+1\}\bigr\}</m> and <m>[\mathbb{R}] = \{\mathbb{R}\}</m>.
+            The rationals <m>\mathbb{Q}</m> are totally disconnected.
+          </p>
+        </statement>
+      </example>
+      <lemma xml:id="lem-discrete-components-singletons">
+        <statement>
+          <p>
+            Let <m>D</m> be a discrete topological space. Every connected component of <m>D</m>
+            is a singleton.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            This is an exercise.
+          </p>
+        </proof>
+      </lemma>
+      <observation xml:id="obs-connected-iff-one-component">
+        <statement>
+          <p>
+            A topological space <m>X</m> is connected if and only if its set <m>[X]</m> of connected
+            components consists of a single element.
+          </p>
+        </statement>
+      </observation>
+      <theorem xml:id="thm-universal-property-components">
+        <title>Universal property of connected components</title>
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space. For each continuous map <m>f\colon X\to D</m> to a
+            discrete topological space, there is a unique continuous map
+            <m>\bar{f}\colon [X]\to D</m> for which <m>f(x) = \bar{f}([x]_{\mathrm{conn}})</m>:
+            <md>
+              X \xrightarrow{f} D, \quad X \xrightarrow{x\mapsto [x]} [X] \xrightarrow{\exists!\,\bar{f}} D.
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            By the universal property of the quotient topology, it suffices to verify that
+            <m>x\sim_{\mathrm{conn}} y</m> implies <m>f(x)=f(y)</m>. Suppose
+            <m>x\sim_{\mathrm{conn}} y</m>. Then there is a connected subspace <m>A\subseteq X</m>
+            with <m>x,y\in A</m>. Since the continuous image of a connected space is connected,
+            <m>f(A)\subseteq D</m> is connected. By <xref ref="lem-discrete-components-singletons" />,
+            <m>f(A)</m> is a singleton, so <m>f(x)=f(y)</m>.
+          </p>
+        </proof>
+      </theorem>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-path-components">
+      <title>Path-components and <m>\pi_0</m></title>
+      <definition xml:id="def-path-components">
+        <title>Path-components and <m>\pi_0</m></title>
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space.
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  For <m>x_0,x_1\in X</m>, declare <m>x_0\sim_{\mathrm{path}} x_1</m> to mean there
+                  exists a continuous map <m>\gamma\colon [0,1]\to X</m> with <m>\gamma(0)=x_0</m>
+                  and <m>\gamma(1)=x_1</m>. (That <m>\sim_{\mathrm{path}}</m> is an equivalence
+                  relation is the content of <xref ref="lem-path-equivalence-relation" />.)
+                </p>
+              </li>
+              <li>
+                <p>
+                  A <term>path-component</term> of <m>X</m> is an equivalence class with respect
+                  to <m>\sim_{\mathrm{path}}</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <term>set of path-components</term> of <m>X</m> is the quotient set
+                  <md>
+                    \pi_0(X) := X/{\sim_{\mathrm{path}}}.
+                  </md>
+                </p>
+              </li>
+              <li>
+                <p>
+                  We say <m>X</m> is <term>path-connected</term> if <m>\pi_0(X)</m> is a singleton.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </definition>
+      <lemma xml:id="lem-path-equivalence-relation">
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space. The relation <m>\sim_{\mathrm{path}}</m> is an
+            equivalence relation on <m>X</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            <em>Reflexivity.</em> For each <m>x\in X</m>, the constant map
+            <m>\mathrm{const}_x\colon [0,1]\to X</m> satisfies <m>\mathrm{const}_x(0)=x=\mathrm{const}_x(1)</m>,
+            so <m>x\sim_{\mathrm{path}} x</m>.
+          </p>
+          <p>
+            <em>Symmetry.</em> Suppose <m>x\sim_{\mathrm{path}} y</m>, witnessed by
+            <m>\gamma\colon [0,1]\to X</m>. The reverse path
+            <m>\bar\gamma\colon [0,1]\to X,~t\mapsto \gamma(1-t)</m> is continuous and satisfies
+            <m>\bar\gamma(0)=\gamma(1)=y</m> and <m>\bar\gamma(1)=\gamma(0)=x</m>, so
+            <m>y\sim_{\mathrm{path}} x</m>.
+          </p>
+          <p>
+            <em>Transitivity.</em> Suppose <m>x\sim_{\mathrm{path}} y</m> and
+            <m>y\sim_{\mathrm{path}} z</m>, witnessed by
+            <m>\alpha,\beta\colon [0,1]\to X</m> with <m>\alpha(0)=x</m>, <m>\alpha(1)=y=\beta(0)</m>,
+            and <m>\beta(1)=z</m>. The concatenation
+            <md>
+              \alpha\ast\beta\colon [0,1]\to X,\quad t\mapsto
+              \begin{cases} \alpha(2t) \amp \text{if } t\in [0,\tfrac{1}{2}], \\ \beta(2t-1) \amp \text{if } t\in [\tfrac{1}{2},1], \end{cases}
+            </md>
+            is continuous by the gluing lemma, with <m>(\alpha\ast\beta)(0)=x</m> and
+            <m>(\alpha\ast\beta)(1)=z</m>, so <m>x\sim_{\mathrm{path}} z</m>.
+          </p>
+        </proof>
+      </lemma>
+      <proposition xml:id="prop-pi0-functor">
+        <title>Functoriality of <m>\pi_0</m></title>
+        <statement>
+          <p>
+            Let <m>X</m>, <m>Y</m>, <m>Z</m> be topological spaces.
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  A continuous map <m>f\colon X\to Y</m> induces a map between sets
+                  <md>
+                    \pi_0(f)\colon \pi_0(X)\to\pi_0(Y),\quad [x]\mapsto [f(x)].
+                  </md>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\pi_0(\mathrm{id}_X) = \mathrm{id}_{\pi_0(X)}</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  For continuous maps <m>f\colon X\to Y</m> and <m>g\colon Y\to Z</m>,
+                  <md>
+                    \pi_0(g\circ f) = \pi_0(g)\circ\pi_0(f).
+                  </md>
+                </p>
+              </li>
+              <li>
+                <p>
+                  There is a canonical surjective map
+                  <md>
+                    X\to\pi_0(X),\quad x\mapsto [x],
+                  </md>
+                  assigning to each point its path-component.
+                </p>
+              </li>
+              <li>
+                <p>
+                  For <m>f\colon X\to Y</m> continuous, the diagram of sets
+                  <md>
+                    \begin{array}{ccc} X \amp \xrightarrow{f} \amp Y \\ \downarrow \amp \amp \downarrow \\ \pi_0(X) \amp \xrightarrow{\pi_0(f)} \amp \pi_0(Y) \end{array}
+                  </md>
+                  commutes.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </proposition>
+      <remark>
+        <statement>
+          <p>
+            Parts (1)‚Äì(3) of <xref ref="prop-pi0-functor" /> together assert that
+            <m>\pi_0\colon\mathbf{Top}\to\mathbf{Set}</m> is a functor.
+          </p>
+        </statement>
+      </remark>
+      <proposition xml:id="prop-surjection-pi0">
+        <statement>
+          <p>
+            Let <m>f\colon X\to Y</m> be a continuous surjection between topological spaces. Then
+            the induced map
+            <md>
+              \pi_0(f)\colon\pi_0(X)\to\pi_0(Y)
+            </md>
+            is surjective. In particular,
+            <m>\operatorname{Card}(\pi_0(X))\geq\operatorname{Card}(\pi_0(Y))</m>,
+            and <m>Y</m> is path-connected whenever <m>X</m> is.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Consider the commutative diagram of <xref ref="prop-pi0-functor" />(5). The vertical
+            maps are surjective by part (4), and the top horizontal map is surjective by assumption.
+            It follows that the bottom horizontal map is surjective.
+          </p>
+        </proof>
+      </proposition>
+      <proposition xml:id="prop-homeo-pi0-bijection">
+        <statement>
+          <p>
+            Let <m>f\colon X\to Y</m> be a homeomorphism between topological spaces. Then
+            <md>
+              \pi_0(f)\colon\pi_0(X)\xrightarrow{\;\cong\;}\pi_0(Y)
+            </md>
+            is a bijection. In particular, if
+            <m>\operatorname{Card}(\pi_0(X))\ne\operatorname{Card}(\pi_0(Y))</m>,
+            then <m>X</m> and <m>Y</m> are not homeomorphic.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Since <m>f</m> is a homeomorphism, there is a continuous inverse <m>f^{-1}\colon Y\to X</m>
+            with <m>f\circ f^{-1}=\mathrm{id}_Y</m> and <m>f^{-1}\circ f=\mathrm{id}_X</m>.
+            Applying parts (2) and (3) of <xref ref="prop-pi0-functor" />:
+            <md>
+              \pi_0(f)\circ\pi_0(f^{-1}) = \pi_0(f\circ f^{-1}) = \pi_0(\mathrm{id}_Y) = \mathrm{id}_{\pi_0(Y)},
+            </md>
+            and similarly <m>\pi_0(f^{-1})\circ\pi_0(f)=\mathrm{id}_{\pi_0(X)}</m>. Thus
+            <m>\pi_0(f^{-1})</m> is an inverse to <m>\pi_0(f)</m>.
+          </p>
+        </proof>
+      </proposition>
+      <corollary xml:id="cor-path-connected-via-subset">
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space and <m>A\subseteq X</m> a subspace. Suppose that
+            for each <m>x\in X</m> there is a path <m>\gamma\colon [0,1]\to X</m> with
+            <m>\gamma(0)=x</m> and <m>\gamma(1)\in A</m>. If <m>A</m> is path-connected, then
+            <m>X</m> is path-connected.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            This is an exercise.
+          </p>
+        </proof>
+      </corollary>
+      <proposition xml:id="prop-pi0-product">
+        <statement>
+          <p>
+            Let <m>X</m> and <m>Y</m> be topological spaces. The canonical map
+            <md>
+              \pi_0(X\times Y)\xrightarrow{\;\cong\;}\pi_0(X)\times\pi_0(Y),\quad [(x,y)]\mapsto ([x],[y]),
+            </md>
+            is a bijection.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            <em>Surjectivity.</em> For any <m>([x],[y])\in\pi_0(X)\times\pi_0(Y)</m>, the element
+            <m>[(x,y)]</m> maps to it, so the map is surjective.
+          </p>
+          <p>
+            <em>Injectivity.</em> Suppose <m>[(x,y)]</m> and <m>[(x',y')]</m> map to the same
+            element, so <m>[x]=[x']</m> in <m>\pi_0(X)</m> and <m>[y]=[y']</m> in <m>\pi_0(Y)</m>.
+            Choose paths <m>\alpha\colon [0,1]\to X</m> and <m>\beta\colon [0,1]\to Y</m> with
+            <m>\alpha(0)=x</m>, <m>\alpha(1)=x'</m>, <m>\beta(0)=y</m>, <m>\beta(1)=y'</m>. The
+            path
+            <md>
+              (\alpha,\beta)\colon [0,1]\to X\times Y,\quad t\mapsto (\alpha(t),\beta(t)),
+            </md>
+            is continuous (since each coordinate is) and connects <m>(x,y)</m> to <m>(x',y')</m>.
+            Thus <m>[(x,y)]=[(x',y')]</m>.
+          </p>
+        </proof>
+      </proposition>
+    </subsubsection>
+
+  </subsection>
+</section>

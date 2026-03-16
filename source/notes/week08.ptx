@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-08">
+  <title>Week 8</title>
+
+  <subsection>
+    <title>Monday</title>
+
+    <subsubsection xml:id="subsubsec-comparing-components">
+      <title>Comparing connected and path-components</title>
+      <p>
+        Recall that the connected components of a space <m>X</m> are the maximal connected subspaces
+        of <m>X</m>; we write <m>[X]</m> for the set of connected components. Similarly, the
+        path-components of <m>X</m> are the maximal path-connected subspaces, and we write
+        <m>\pi_0(X)</m> for the set of path-components. Our goal today is to compare these two
+        invariants and then study a local condition under which they agree.
+      </p>
+
+      <observation xml:id="obs-component-bijections">
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space.
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  The canonical map
+                  <md>
+                    \coprod_{C\in [X]} C \longrightarrow X, \qquad (C\ni x\mapsto x\in X),
+                  </md>
+                  is a continuous bijection.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The canonical map
+                  <md>
+                    \coprod_{P\in \pi_0(X)} P \longrightarrow X, \qquad (P\ni x\mapsto x\in X),
+                  </md>
+                  is a continuous bijection.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </observation>
+
+      <example xml:id="eg-Q-neither-connected">
+        <title><m>\mathbb{Q}</m> is neither connected nor path-connected</title>
+        <statement>
+          <p>
+            The rational numbers <m>\mathbb{Q}</m>, with the subspace topology from <m>\mathbb{R}</m>,
+            are neither connected nor path-connected.
+          </p>
+          <p>
+    We first show that <m>\mathbb{Q}</m> is disconnected. Fix any irrational number, say
+    <m>\alpha = \sqrt{2}</m>, and set
+    <md>
+      U = \mathbb{Q}\cap (-\infty,\alpha), \qquad V = \mathbb{Q}\cap (\alpha,\infty).
+    </md>
+    Both <m>U</m> and <m>V</m> are nonempty (e.g., <m>1\in U</m> and <m>2\in V</m>), and they
+    are open in <m>\mathbb{Q}</m> since each is the intersection of <m>\mathbb{Q}</m> with an
+    open interval. Since <m>\alpha\notin\mathbb{Q}</m>, we have <m>U\cup V = \mathbb{Q}</m>
+    and <m>U\cap V = \varnothing</m>, so this is a separation of <m>\mathbb{Q}</m>.
+  </p>
+  <p>
+    Since <m>\mathbb{Q}</m> is disconnected, it is not connected. It therefore cannot be
+    path-connected, by <xref ref="lem-compare-components" />(3).
+  </p>
+        </statement>
+      </example>
+
+      <lemma xml:id="lem-compare-components">
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space.
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  There is a commutative diagram of sets
+                  <md>
+                    \pi_0(X) \longrightarrow [X] \longleftarrow X,
+                  </md>
+                  where the maps out of <m>X</m> send each point to its respective component, and each
+                  map is a surjection.
+                </p>
+              </li>
+              <li>
+                <p>
+                  There is a bound on cardinalities:
+                  <md>
+                    \#\pi_0(X) \geq \#[X].
+                  </md>
+                </p>
+              </li>
+              <li>
+                <p>
+                  If <m>X</m> is path-connected, then <m>X</m> is connected.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            We first prove statement (1). Let <m>x,y\in X</m> and suppose <m>x\sim_{\mathrm{path}} y</m>,
+            <ie />, <m>x</m> and <m>y</m> lie in the same path-component. We must show that
+            <m>x\sim_{\mathrm{conn}} y</m>, <ie />, that <m>x</m> and <m>y</m> lie in the same
+            connected component. By definition of path-component, there is a continuous map
+            <m>\gamma\colon [0,1]\to X</m> with <m>\gamma(0)=x</m> and <m>\gamma(1)=y</m>. In
+            particular, <m>x,y\in\gamma([0,1])</m>. Since the continuous image of the connected space
+            <m>[0,1]</m> is connected, the subspace <m>\gamma([0,1])\subseteq X</m> is connected.
+            Therefore <m>x\sim_{\mathrm{conn}} y</m>, which shows the map
+            <m>\pi_0(X)\to [X]</m> is well-defined and that the diagram commutes. The maps from <m>X</m>
+            are surjections by construction, and it follows that the induced map
+            <m>\pi_0(X)\to [X]</m> is a surjection as well.
+          </p>
+          <p>
+            Statement (2) follows immediately from the surjectivity established in (1). Statement (3)
+            follows from (2): if <m>X</m> is path-connected then <m>\pi_0(X)</m> is a singleton, so
+            <m>[X]</m> is also a singleton, meaning <m>X</m> is connected.
+          </p>
+        </proof>
+      </lemma>
+
+      <example xml:id="eg-connected-not-path-connected">
+        <title>Connected but not path-connected spaces</title>
+        <statement>
+          <p>
+            The long line is an example of a connected topological space that is not path-connected.
+            The topologist's sine curve is another such example:
+            <md>
+              \bigl\{0\bigr\}\times D^1 \cup
+              \left\{\left(x,\,\sin\tfrac{1}{x}\right) \;\middle|\; x\gt 0\right\}
+              \;\subseteq\; \mathbb{R}^2.
+            </md>
+            In each case, <m>\pi_0(X)</m> and <m>[X]</m> have different cardinalities, witnessing the
+            strictness of the inequality in <xref ref="lem-compare-components" />(2).
+          </p>
+        </statement>
+      </example>
+
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-local-connectedness">
+      <title>Local connectedness</title>
+      <p>
+        We now discuss a universal property of connectedness. Unfortunately, it is possessed only by
+        topological spaces satisfying a local condition.
+      </p>
+      <p>
+        The following definition actually encodes two definitions at once: a
+        <em>locally connected</em> version and a <em>locally path-connected</em> version, obtained
+        by inserting or omitting the parenthetical <q>path-</q> throughout.
+      </p>
+
+      <definition xml:id="def-locally-connected">
+        <title>Local (path-)connectedness</title>
+        <statement>
+          <p>
+            A topological space <m>X</m> is <term>locally (path-)connected</term> :iff, for each
+            <m>x\in X</m> and each open subset <m>U\subseteq X</m> with <m>x\in U</m>, there is an
+            open subset <m>V\subseteq X</m> with <m>x\in V\subseteq U</m> and <m>V</m>
+            (path-)connected.
+          </p>
+          <p>
+            Equivalently, <m>X</m> is locally (path-)connected if there is a basis for its topology
+            consisting of (path-)connected open subspaces.
+          </p>
+        </statement>
+      </definition>
+
+      <example xml:id="eg-local-connectedness-examples">
+        <statement>
+          <p>
+            The topological space <m>\mathbb{Q}</m> is neither locally connected nor locally
+            path-connected. The topologist's sine curve is connected but not path-connected. The
+            topological space <m>\mathbb{R}^2\smallsetminus\{0\}</m> is both locally connected and
+            locally path-connected.
+          </p>
+        </statement>
+      </example>
+
+      <proposition xml:id="prop-locally-path-bijection">
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space. The following conditions on <m>X</m> imply one
+            another:
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  <m>X</m> is locally path-connected.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The canonical surjection <m>\pi_0(X)\to [X]</m> is a bijection.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            This is an exercise.
+          </p>
+        </proof>
+      </proposition>
+
+      <lemma xml:id="lem-locally-connected-open-components">
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space. Then <m>X</m> is locally (path-)connected if and
+            only if, for each open subset <m>U\subseteq X</m> and each (path-)connected component
+            <m>V\subseteq U</m>, the subset <m>V\subseteq X</m> is open.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            The path-connected case is analogous to the connected case, so we give only the latter.
+          </p>
+          <p>
+            Suppose <m>X</m> is locally connected. Let <m>U\subseteq X</m> be open and let
+            <m>C\subseteq U</m> be a connected component of <m>U</m>. We show <m>C</m> is open in
+            <m>X</m>. Let <m>x\in C</m>. By local connectedness, there is a connected open subset
+            <m>V\subseteq X</m> with <m>x\in V\subseteq U</m>. Since <m>x\in V\cap C</m> and
+            both <m>V</m> and <m>C</m> are connected subsets of <m>U</m>, the maximality of <m>C</m>
+            as a connected component gives <m>V\subseteq C</m>. Thus every point of <m>C</m> has an
+            open neighborhood contained in <m>C</m>, so <m>C</m> is open in <m>X</m>.
+          </p>
+          <p>
+            Conversely, suppose every connected component of every open subspace of <m>X</m> is open
+            in <m>X</m>. Let <m>x\in U</m> with <m>U\subseteq X</m> open. Let <m>C\subseteq U</m>
+            be the connected component of <m>U</m> containing <m>x</m>. Then <m>C</m> is open in
+            <m>X</m>, and <m>C</m> is connected with <m>x\in C\subseteq U</m>. This demonstrates
+            local connectedness.
+          </p>
+        </proof>
+      </lemma>
+
+      <corollary xml:id="cor-locally-connected-components-open">
+        <statement>
+          <p>
+            Let <m>X</m> be a locally connected topological space and let <m>V\subseteq X</m> be a
+            subset. Then <m>V</m> is open if and only if, for each connected component
+            <m>U\subseteq X</m>, the intersection <m>V\cap U\subseteq U</m> is open. In particular,
+            each connected component of <m>X</m> is open.
+          </p>
+        </statement>
+      </corollary>
+
+      <proposition xml:id="prop-locally-connected-equiv">
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space.
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  The following conditions on <m>X</m> are equivalent:
+                  <ol marker="a">
+                    <li><p><m>X</m> is locally connected.</p></li>
+                    <li><p>Each connected component <m>C\subseteq X</m> is open.</p></li>
+                    <li>
+                      <p>
+                        A subset <m>A\subseteq X</m> is open if and only if, for each connected
+                        component <m>C\subseteq X</m>, the subset <m>A\cap C\subseteq C</m> is open.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        The continuous bijection
+                        <md>
+                          \coprod_{C\in [X]} C \longrightarrow X, \qquad (C\ni x\mapsto x\in X),
+                        </md>
+                        is a homeomorphism.
+                      </p>
+                    </li>
+                    <li><p>The topological space <m>[X]</m> is discrete.</p></li>
+                  </ol>
+                </p>
+              </li>
+              <li>
+                <p>
+                  The following conditions on <m>X</m> are equivalent:
+                  <ol marker="a">
+                    <li><p><m>X</m> is locally path-connected.</p></li>
+                    <li><p>Each path-connected component <m>P\subseteq X</m> is open.</p></li>
+                    <li>
+                      <p>
+                        A subset <m>A\subseteq X</m> is open if and only if, for each path-connected
+                        component <m>P\subseteq X</m>, the subset <m>A\cap P\subseteq P</m> is open.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        The continuous bijection
+                        <md>
+                          \coprod_{P\in \pi_0(X)} P \longrightarrow X, \qquad (P\ni x\mapsto x\in X),
+                        </md>
+                        is a homeomorphism.
+                      </p>
+                    </li>
+                    <li><p>The topological space <m>\pi_0(X)</m> is discrete.</p></li>
+                  </ol>
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            This is an exercise.
+          </p>
+        </proof>
+      </proposition>
+
+      <remark xml:id="rem-topologist-sine-subspace">
+        <statement>
+          <p>
+            The topologist's sine curve demonstrates that a subspace of a locally (path-)connected
+            topological space need not itself be locally (path-)connected.
+          </p>
+        </statement>
+      </remark>
+
+    </subsubsection>
+
+  </subsection>
+
+  <subsection>
+    <title>Wednesday</title>
+  </subsection>
+
+  <subsection>
+    <title>Friday</title>
+  </subsection>
+
+</section>

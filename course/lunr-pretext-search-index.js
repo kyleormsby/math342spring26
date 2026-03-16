@@ -1693,6 +1693,267 @@ var ptx_lunr_docs = [
   "body": " The circle is connected   Since is the continuous image of under , we know that is connected.   "
 },
 {
+  "id": "notes-week-07",
+  "level": "1",
+  "url": "notes-week-07.html",
+  "type": "Section",
+  "number": "2.7",
+  "title": "Week 7",
+  "body": " Week 7   Monday  I held a review session on Monday.    Wednesday  The take-home midterm was distributed on Wednesday. I did not hold class in order to give folks time to work on the exam.    Friday   Connected components  The notion of connectedness breaks any topological space into its connected components , which we now define.   Connected components   Let be a topological space. Declare to mean there is a connected subspace for which . The set of connected components is the set of equivalence classes: This set is regarded as a topological space via the quotient topology from the surjection .      A connected component of a topological space is an equivalence class with respect to . Unpacking the definition, two points lie in the same connected component if and only if they are both contained in some connected subspace of .     Totally disconnected spaces   A topological space is totally disconnected if the quotient map is a bijection ‚Äî equivalently, if the only connected subspaces of are singletons.      We have and . The rationals are totally disconnected.      Let be a discrete topological space. Every connected component of is a singleton.    This is an exercise.      A topological space is connected if and only if its set of connected components consists of a single element.     Universal property of connected components   Let be a topological space. For each continuous map to a discrete topological space, there is a unique continuous map for which :     By the universal property of the quotient topology, it suffices to verify that implies . Suppose . Then there is a connected subspace with . Since the continuous image of a connected space is connected, is connected. By , is a singleton, so .      Path-components and   Path-components and   Let be a topological space.     For , declare to mean there exists a continuous map with and . (That is an equivalence relation is the content of .)    A path-component of is an equivalence class with respect to .    The set of path-components of is the quotient set     We say is path-connected if is a singleton.         Let be a topological space. The relation is an equivalence relation on .     Reflexivity. For each , the constant map satisfies , so .   Symmetry. Suppose , witnessed by . The reverse path is continuous and satisfies and , so .   Transitivity. Suppose and , witnessed by with , , and . The concatenation is continuous by the gluing lemma, with and , so .     Functoriality of   Let , , be topological spaces.     A continuous map induces a map between sets      .    For continuous maps and ,     There is a canonical surjective map assigning to each point its path-component.    For continuous, the diagram of sets commutes.         Parts (1)‚Äì(3) of together assert that is a functor.      Let be a continuous surjection between topological spaces. Then the induced map is surjective. In particular, , and is path-connected whenever is.    Consider the commutative diagram of (5). The vertical maps are surjective by part (4), and the top horizontal map is surjective by assumption. It follows that the bottom horizontal map is surjective.      Let be a homeomorphism between topological spaces. Then is a bijection. In particular, if , then and are not homeomorphic.    Since is a homeomorphism, there is a continuous inverse with and . Applying parts (2) and (3) of : and similarly . Thus is an inverse to .      Let be a topological space and a subspace. Suppose that for each there is a path with and . If is path-connected, then is path-connected.    This is an exercise.      Let and be topological spaces. The canonical map is a bijection.     Surjectivity. For any , the element maps to it, so the map is surjective.   Injectivity. Suppose and map to the same element, so in and in . Choose paths and with , , , . The path is continuous (since each coordinate is) and connects to . Thus .      "
+},
+{
+  "id": "subsubsec-connected-components-2",
+  "level": "2",
+  "url": "notes-week-07.html#subsubsec-connected-components-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "connected components "
+},
+{
+  "id": "def-connected-components",
+  "level": "2",
+  "url": "notes-week-07.html#def-connected-components",
+  "type": "Definition",
+  "number": "2.7.1",
+  "title": "Connected components.",
+  "body": " Connected components   Let be a topological space. Declare to mean there is a connected subspace for which . The set of connected components is the set of equivalence classes: This set is regarded as a topological space via the quotient topology from the surjection .   "
+},
+{
+  "id": "subsubsec-connected-components-4",
+  "level": "2",
+  "url": "notes-week-07.html#subsubsec-connected-components-4",
+  "type": "Remark",
+  "number": "2.7.2",
+  "title": "",
+  "body": "  A connected component of a topological space is an equivalence class with respect to . Unpacking the definition, two points lie in the same connected component if and only if they are both contained in some connected subspace of .   "
+},
+{
+  "id": "def-totally-disconnected",
+  "level": "2",
+  "url": "notes-week-07.html#def-totally-disconnected",
+  "type": "Definition",
+  "number": "2.7.3",
+  "title": "Totally disconnected spaces.",
+  "body": " Totally disconnected spaces   A topological space is totally disconnected if the quotient map is a bijection ‚Äî equivalently, if the only connected subspaces of are singletons.   "
+},
+{
+  "id": "subsubsec-connected-components-6",
+  "level": "2",
+  "url": "notes-week-07.html#subsubsec-connected-components-6",
+  "type": "Example",
+  "number": "2.7.4",
+  "title": "",
+  "body": "  We have and . The rationals are totally disconnected.   "
+},
+{
+  "id": "lem-discrete-components-singletons",
+  "level": "2",
+  "url": "notes-week-07.html#lem-discrete-components-singletons",
+  "type": "Lemma",
+  "number": "2.7.5",
+  "title": "",
+  "body": "  Let be a discrete topological space. Every connected component of is a singleton.    This is an exercise.   "
+},
+{
+  "id": "obs-connected-iff-one-component",
+  "level": "2",
+  "url": "notes-week-07.html#obs-connected-iff-one-component",
+  "type": "Observation",
+  "number": "2.7.6",
+  "title": "",
+  "body": "  A topological space is connected if and only if its set of connected components consists of a single element.   "
+},
+{
+  "id": "thm-universal-property-components",
+  "level": "2",
+  "url": "notes-week-07.html#thm-universal-property-components",
+  "type": "Theorem",
+  "number": "2.7.7",
+  "title": "Universal property of connected components.",
+  "body": " Universal property of connected components   Let be a topological space. For each continuous map to a discrete topological space, there is a unique continuous map for which :     By the universal property of the quotient topology, it suffices to verify that implies . Suppose . Then there is a connected subspace with . Since the continuous image of a connected space is connected, is connected. By , is a singleton, so .   "
+},
+{
+  "id": "def-path-components",
+  "level": "2",
+  "url": "notes-week-07.html#def-path-components",
+  "type": "Definition",
+  "number": "2.7.8",
+  "title": "Path-components and <span class=\"process-math\">\\(\\pi_0\\)<\/span>.",
+  "body": " Path-components and   Let be a topological space.     For , declare to mean there exists a continuous map with and . (That is an equivalence relation is the content of .)    A path-component of is an equivalence class with respect to .    The set of path-components of is the quotient set     We say is path-connected if is a singleton.      "
+},
+{
+  "id": "lem-path-equivalence-relation",
+  "level": "2",
+  "url": "notes-week-07.html#lem-path-equivalence-relation",
+  "type": "Lemma",
+  "number": "2.7.9",
+  "title": "",
+  "body": "  Let be a topological space. The relation is an equivalence relation on .     Reflexivity. For each , the constant map satisfies , so .   Symmetry. Suppose , witnessed by . The reverse path is continuous and satisfies and , so .   Transitivity. Suppose and , witnessed by with , , and . The concatenation is continuous by the gluing lemma, with and , so .   "
+},
+{
+  "id": "prop-pi0-functor",
+  "level": "2",
+  "url": "notes-week-07.html#prop-pi0-functor",
+  "type": "Proposition",
+  "number": "2.7.10",
+  "title": "Functoriality of <span class=\"process-math\">\\(\\pi_0\\)<\/span>.",
+  "body": " Functoriality of   Let , , be topological spaces.     A continuous map induces a map between sets      .    For continuous maps and ,     There is a canonical surjective map assigning to each point its path-component.    For continuous, the diagram of sets commutes.      "
+},
+{
+  "id": "subsubsec-path-components-5",
+  "level": "2",
+  "url": "notes-week-07.html#subsubsec-path-components-5",
+  "type": "Remark",
+  "number": "2.7.11",
+  "title": "",
+  "body": "  Parts (1)‚Äì(3) of together assert that is a functor.   "
+},
+{
+  "id": "prop-surjection-pi0",
+  "level": "2",
+  "url": "notes-week-07.html#prop-surjection-pi0",
+  "type": "Proposition",
+  "number": "2.7.12",
+  "title": "",
+  "body": "  Let be a continuous surjection between topological spaces. Then the induced map is surjective. In particular, , and is path-connected whenever is.    Consider the commutative diagram of (5). The vertical maps are surjective by part (4), and the top horizontal map is surjective by assumption. It follows that the bottom horizontal map is surjective.   "
+},
+{
+  "id": "prop-homeo-pi0-bijection",
+  "level": "2",
+  "url": "notes-week-07.html#prop-homeo-pi0-bijection",
+  "type": "Proposition",
+  "number": "2.7.13",
+  "title": "",
+  "body": "  Let be a homeomorphism between topological spaces. Then is a bijection. In particular, if , then and are not homeomorphic.    Since is a homeomorphism, there is a continuous inverse with and . Applying parts (2) and (3) of : and similarly . Thus is an inverse to .   "
+},
+{
+  "id": "cor-path-connected-via-subset",
+  "level": "2",
+  "url": "notes-week-07.html#cor-path-connected-via-subset",
+  "type": "Corollary",
+  "number": "2.7.14",
+  "title": "",
+  "body": "  Let be a topological space and a subspace. Suppose that for each there is a path with and . If is path-connected, then is path-connected.    This is an exercise.   "
+},
+{
+  "id": "prop-pi0-product",
+  "level": "2",
+  "url": "notes-week-07.html#prop-pi0-product",
+  "type": "Proposition",
+  "number": "2.7.15",
+  "title": "",
+  "body": "  Let and be topological spaces. The canonical map is a bijection.     Surjectivity. For any , the element maps to it, so the map is surjective.   Injectivity. Suppose and map to the same element, so in and in . Choose paths and with , , , . The path is continuous (since each coordinate is) and connects to . Thus .   "
+},
+{
+  "id": "notes-week-08",
+  "level": "1",
+  "url": "notes-week-08.html",
+  "type": "Section",
+  "number": "2.8",
+  "title": "Week 8",
+  "body": " Week 8   Monday   Comparing connected and path-components  Recall that the connected components of a space are the maximal connected subspaces of ; we write for the set of connected components. Similarly, the path-components of are the maximal path-connected subspaces, and we write for the set of path-components. Our goal today is to compare these two invariants and then study a local condition under which they agree.    Let be a topological space.     The canonical map is a continuous bijection.    The canonical map is a continuous bijection.        is neither connected nor path-connected   The rational numbers , with the subspace topology from , are neither connected nor path-connected.  We first show that is disconnected. Fix any irrational number, say , and set Both and are nonempty (e.g., and ), and they are open in since each is the intersection of with an open interval. Since , we have and , so this is a separation of .  Since is disconnected, it is not connected. It therefore cannot be path-connected, by (3).      Let be a topological space.     There is a commutative diagram of sets where the maps out of send each point to its respective component, and each map is a surjection.    There is a bound on cardinalities:     If is path-connected, then is connected.       We first prove statement (1). Let and suppose , , and lie in the same path-component. We must show that , , that and lie in the same connected component. By definition of path-component, there is a continuous map with and . In particular, . Since the continuous image of the connected space is connected, the subspace is connected. Therefore , which shows the map is well-defined and that the diagram commutes. The maps from are surjections by construction, and it follows that the induced map is a surjection as well.  Statement (2) follows immediately from the surjectivity established in (1). Statement (3) follows from (2): if is path-connected then is a singleton, so is also a singleton, meaning is connected.     Connected but not path-connected spaces   The long line is an example of a connected topological space that is not path-connected. The topologist's sine curve is another such example: In each case, and have different cardinalities, witnessing the strictness of the inequality in (2).      Local connectedness  We now discuss a universal property of connectedness. Unfortunately, it is possessed only by topological spaces satisfying a local condition.  The following definition actually encodes two definitions at once: a locally connected version and a locally path-connected version, obtained by inserting or omitting the parenthetical path- throughout.   Local (path-)connectedness   A topological space is locally (path-)connected :iff, for each and each open subset with , there is an open subset with and (path-)connected.  Equivalently, is locally (path-)connected if there is a basis for its topology consisting of (path-)connected open subspaces.      The topological space is neither locally connected nor locally path-connected. The topologist's sine curve is connected but not path-connected. The topological space is both locally connected and locally path-connected.      Let be a topological space. The following conditions on imply one another:      is locally path-connected.    The canonical surjection is a bijection.       This is an exercise.      Let be a topological space. Then is locally (path-)connected if and only if, for each open subset and each (path-)connected component , the subset is open.    The path-connected case is analogous to the connected case, so we give only the latter.  Suppose is locally connected. Let be open and let be a connected component of . We show is open in . Let . By local connectedness, there is a connected open subset with . Since and both and are connected subsets of , the maximality of as a connected component gives . Thus every point of has an open neighborhood contained in , so is open in .  Conversely, suppose every connected component of every open subspace of is open in . Let with open. Let be the connected component of containing . Then is open in , and is connected with . This demonstrates local connectedness.      Let be a locally connected topological space and let be a subset. Then is open if and only if, for each connected component , the intersection is open. In particular, each connected component of is open.      Let be a topological space.     The following conditions on are equivalent:  is locally connected.  Each connected component is open.   A subset is open if and only if, for each connected component , the subset is open.    The continuous bijection is a homeomorphism.   The topological space is discrete.      The following conditions on are equivalent:  is locally path-connected.  Each path-connected component is open.   A subset is open if and only if, for each path-connected component , the subset is open.    The continuous bijection is a homeomorphism.   The topological space is discrete.         This is an exercise.      The topologist's sine curve demonstrates that a subspace of a locally (path-)connected topological space need not itself be locally (path-)connected.       Wednesday    Friday   "
+},
+{
+  "id": "obs-component-bijections",
+  "level": "2",
+  "url": "notes-week-08.html#obs-component-bijections",
+  "type": "Observation",
+  "number": "2.8.1",
+  "title": "",
+  "body": "  Let be a topological space.     The canonical map is a continuous bijection.    The canonical map is a continuous bijection.      "
+},
+{
+  "id": "eg-Q-neither-connected",
+  "level": "2",
+  "url": "notes-week-08.html#eg-Q-neither-connected",
+  "type": "Example",
+  "number": "2.8.2",
+  "title": "<span class=\"process-math\">\\(\\mathbb{Q}\\)<\/span> is neither connected nor path-connected.",
+  "body": " is neither connected nor path-connected   The rational numbers , with the subspace topology from , are neither connected nor path-connected.  We first show that is disconnected. Fix any irrational number, say , and set Both and are nonempty (e.g., and ), and they are open in since each is the intersection of with an open interval. Since , we have and , so this is a separation of .  Since is disconnected, it is not connected. It therefore cannot be path-connected, by (3).   "
+},
+{
+  "id": "lem-compare-components",
+  "level": "2",
+  "url": "notes-week-08.html#lem-compare-components",
+  "type": "Lemma",
+  "number": "2.8.3",
+  "title": "",
+  "body": "  Let be a topological space.     There is a commutative diagram of sets where the maps out of send each point to its respective component, and each map is a surjection.    There is a bound on cardinalities:     If is path-connected, then is connected.       We first prove statement (1). Let and suppose , , and lie in the same path-component. We must show that , , that and lie in the same connected component. By definition of path-component, there is a continuous map with and . In particular, . Since the continuous image of the connected space is connected, the subspace is connected. Therefore , which shows the map is well-defined and that the diagram commutes. The maps from are surjections by construction, and it follows that the induced map is a surjection as well.  Statement (2) follows immediately from the surjectivity established in (1). Statement (3) follows from (2): if is path-connected then is a singleton, so is also a singleton, meaning is connected.   "
+},
+{
+  "id": "eg-connected-not-path-connected",
+  "level": "2",
+  "url": "notes-week-08.html#eg-connected-not-path-connected",
+  "type": "Example",
+  "number": "2.8.4",
+  "title": "Connected but not path-connected spaces.",
+  "body": " Connected but not path-connected spaces   The long line is an example of a connected topological space that is not path-connected. The topologist's sine curve is another such example: In each case, and have different cardinalities, witnessing the strictness of the inequality in (2).   "
+},
+{
+  "id": "def-locally-connected",
+  "level": "2",
+  "url": "notes-week-08.html#def-locally-connected",
+  "type": "Definition",
+  "number": "2.8.5",
+  "title": "Local (path-)connectedness.",
+  "body": " Local (path-)connectedness   A topological space is locally (path-)connected :iff, for each and each open subset with , there is an open subset with and (path-)connected.  Equivalently, is locally (path-)connected if there is a basis for its topology consisting of (path-)connected open subspaces.   "
+},
+{
+  "id": "eg-local-connectedness-examples",
+  "level": "2",
+  "url": "notes-week-08.html#eg-local-connectedness-examples",
+  "type": "Example",
+  "number": "2.8.6",
+  "title": "",
+  "body": "  The topological space is neither locally connected nor locally path-connected. The topologist's sine curve is connected but not path-connected. The topological space is both locally connected and locally path-connected.   "
+},
+{
+  "id": "prop-locally-path-bijection",
+  "level": "2",
+  "url": "notes-week-08.html#prop-locally-path-bijection",
+  "type": "Proposition",
+  "number": "2.8.7",
+  "title": "",
+  "body": "  Let be a topological space. The following conditions on imply one another:      is locally path-connected.    The canonical surjection is a bijection.       This is an exercise.   "
+},
+{
+  "id": "lem-locally-connected-open-components",
+  "level": "2",
+  "url": "notes-week-08.html#lem-locally-connected-open-components",
+  "type": "Lemma",
+  "number": "2.8.8",
+  "title": "",
+  "body": "  Let be a topological space. Then is locally (path-)connected if and only if, for each open subset and each (path-)connected component , the subset is open.    The path-connected case is analogous to the connected case, so we give only the latter.  Suppose is locally connected. Let be open and let be a connected component of . We show is open in . Let . By local connectedness, there is a connected open subset with . Since and both and are connected subsets of , the maximality of as a connected component gives . Thus every point of has an open neighborhood contained in , so is open in .  Conversely, suppose every connected component of every open subspace of is open in . Let with open. Let be the connected component of containing . Then is open in , and is connected with . This demonstrates local connectedness.   "
+},
+{
+  "id": "cor-locally-connected-components-open",
+  "level": "2",
+  "url": "notes-week-08.html#cor-locally-connected-components-open",
+  "type": "Corollary",
+  "number": "2.8.9",
+  "title": "",
+  "body": "  Let be a locally connected topological space and let be a subset. Then is open if and only if, for each connected component , the intersection is open. In particular, each connected component of is open.   "
+},
+{
+  "id": "prop-locally-connected-equiv",
+  "level": "2",
+  "url": "notes-week-08.html#prop-locally-connected-equiv",
+  "type": "Proposition",
+  "number": "2.8.10",
+  "title": "",
+  "body": "  Let be a topological space.     The following conditions on are equivalent:  is locally connected.  Each connected component is open.   A subset is open if and only if, for each connected component , the subset is open.    The continuous bijection is a homeomorphism.   The topological space is discrete.      The following conditions on are equivalent:  is locally path-connected.  Each path-connected component is open.   A subset is open if and only if, for each path-connected component , the subset is open.    The continuous bijection is a homeomorphism.   The topological space is discrete.         This is an exercise.   "
+},
+{
+  "id": "rem-topologist-sine-subspace",
+  "level": "2",
+  "url": "notes-week-08.html#rem-topologist-sine-subspace",
+  "type": "Remark",
+  "number": "2.8.11",
+  "title": "",
+  "body": "  The topologist's sine curve demonstrates that a subspace of a locally (path-)connected topological space need not itself be locally (path-)connected.   "
+},
+{
   "id": "homework-2",
   "level": "1",
   "url": "homework-2.html",

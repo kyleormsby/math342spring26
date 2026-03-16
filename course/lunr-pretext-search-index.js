@@ -2222,6 +2222,60 @@ var ptx_lunr_docs = [
   "number": "3.5.5",
   "title": "",
   "body": "  Prove that is continuous. Here and are the floor and ceiling functions, respectively. (Instead of proving this statement directly, you might enjoy developing a lemma about when piecewise defined functions are continuous, and then applying that lemma in this case.)   "
+},
+{
+  "id": "homework-7",
+  "level": "1",
+  "url": "homework-7.html",
+  "type": "Worksheet",
+  "number": "3.6",
+  "title": "Homework 06",
+  "body": " Homework 06    Instructions: Complete all the exercises below and submit your work via Gradescope by Monday March 30 at 10pm.      Recall that carries the discrete topology. For an arbitrary space , construct a bijection between continuous surjective maps and separations of . (Prove that your assignment is a bijeciton.)      Use a construction involving connected components to prove that is not homeomorphic to .      Let be a positive integer and let be a continuous map. Prove that there is a point satisfying .      Prove that .      Let be a topological space.     Prove that the map is a continuous bijection.      Prove that, if is locally connected, then this map is a homeomorphism.      Give an example of an for which this map is not a homeomorphism.      "
+},
+{
+  "id": "homework-7-3-1",
+  "level": "2",
+  "url": "homework-7.html#homework-7-3-1",
+  "type": "Worksheet Exercise",
+  "number": "3.6.1",
+  "title": "",
+  "body": "  Recall that carries the discrete topology. For an arbitrary space , construct a bijection between continuous surjective maps and separations of . (Prove that your assignment is a bijeciton.)   "
+},
+{
+  "id": "homework-7-3-2",
+  "level": "2",
+  "url": "homework-7.html#homework-7-3-2",
+  "type": "Worksheet Exercise",
+  "number": "3.6.2",
+  "title": "",
+  "body": "  Use a construction involving connected components to prove that is not homeomorphic to .   "
+},
+{
+  "id": "homework-7-3-3",
+  "level": "2",
+  "url": "homework-7.html#homework-7-3-3",
+  "type": "Worksheet Exercise",
+  "number": "3.6.3",
+  "title": "",
+  "body": "  Let be a positive integer and let be a continuous map. Prove that there is a point satisfying .   "
+},
+{
+  "id": "homework-7-3-4",
+  "level": "2",
+  "url": "homework-7.html#homework-7-3-4",
+  "type": "Worksheet Exercise",
+  "number": "3.6.4",
+  "title": "",
+  "body": "  Prove that .   "
+},
+{
+  "id": "homework-7-3-5",
+  "level": "2",
+  "url": "homework-7.html#homework-7-3-5",
+  "type": "Worksheet Exercise",
+  "number": "3.6.5",
+  "title": "",
+  "body": "  Let be a topological space.     Prove that the map is a continuous bijection.      Prove that, if is locally connected, then this map is a homeomorphism.      Give an example of an for which this map is not a homeomorphism.    "
 }
 ]
 

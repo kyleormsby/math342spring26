@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<worksheet>
+  <title>Homework 06</title>
+  <introduction>
+    <p>
+      <alert>Instructions:</alert> Complete all the exercises below and submit your work via 
+      <url href="https://www.gradescope.com/courses/1238540">Gradescope</url> by Monday March 30 at 10pm.
+    </p>
+  </introduction>
+
+  <page>
+    <exercise>
+      <statement>
+        <p>
+          Recall that <m>S^0 = \{\pm 1\}</m> carries the discrete topology. For an arbitrary space <m>X</m>, 
+          construct a bijection between continuous surjective 
+          maps <m>X\to S^0</m> and separations of <m>X</m>. (Prove that your assignment is a bijeciton.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Use a construction involving connected components to prove that <m>\mathbb R^2</m> is not homeomorphic to <m>\mathbb R</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+      <p>
+        Let <m>n</m> be a positive integer and let <m>f\colon S^n\to\mathbb R</m> be a continuous map. Prove that there is a point <m>p\in S^n</m> 
+        satisfying <m>f(p)=f(-p)</m>.
+      </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>\#\pi_0\operatorname{Conf}_n\mathbb R = n!</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <introduction>
+        <p>
+          Let <m>X</m> be a topological space.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Prove that the map
+            <md>
+              \coprod_{U\in [X]} U\longrightarrow X,\qquad x\longmapsto x
+            </md>
+            is a continuous bijection.
+          </p>
+        </statement>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Prove that, if <m>X</m> is locally connected, then this map is a homeomorphism.
+          </p>
+        </statement>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Give an example of an <m>X</m> for which this map is not a homeomorphism.
+          </p>
+        </statement>
+      </task>
+    </exercise>
+  </page>
+</worksheet>

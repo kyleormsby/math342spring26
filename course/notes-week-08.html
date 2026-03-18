@@ -316,7 +316,13 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-local-connectedness" class="internal"><span class="title">Local connectedness</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-3" class="internal"><span class="title">Wednesday</span></a></div></li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-natural-trans" class="internal"><span class="title">Natural transformations</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-adjunctions" class="internal"><span class="title">Adjunctions</span></a></div></li>
+</ul>
+</li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-4" class="internal"><span class="title">Friday</span></a></div></li>
 </ul>
 </li>
@@ -612,7 +618,203 @@ U = \mathbb{Q}\cap (-\infty,\alpha), \qquad V = \mathbb{Q}\cap (\alpha,\infty).
 <div class="autopermalink" data-description="Remark 2.8.11"><a href="#rem-topologist-sine-subspace" title="Copy heading and permalink for Remark 2.8.11" aria-label="Copy heading and permalink for Remark 2.8.11">🔗</a></div></article><div class="autopermalink" data-description="Subsubsection: Local connectedness"><a href="#subsubsec-local-connectedness" title="Copy heading and permalink for Subsubsection: Local connectedness" aria-label="Copy heading and permalink for Subsubsection: Local connectedness">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Monday"><a href="#notes-week-08-2" title="Copy heading and permalink for Subsection: Monday" aria-label="Copy heading and permalink for Subsection: Monday">🔗</a></div></section><section class="subsection" id="notes-week-08-3"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Wednesday</span>
 </h3>
-<div class="autopermalink" data-description="Subsection: Wednesday"><a href="#notes-week-08-3" title="Copy heading and permalink for Subsection: Wednesday" aria-label="Copy heading and permalink for Subsection: Wednesday">🔗</a></div></section><section class="subsection" id="notes-week-08-4"><h3 class="heading hide-type">
+<div class="para" id="notes-week-08-3-2">We are going to learn about adjunctions in order to motivate and explore properties of mapping spaces. To study adjunctions, we will first need natural transformations.<div class="autopermalink" data-description="Paragraph"><a href="#notes-week-08-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsubsection" id="subsubsec-natural-trans"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Natural transformations</span>
+</h4>
+<div class="para" id="subsubsec-natural-trans-2">We have adopted the perspective that <em class="alert">functors</em> are <em class="alert">invariants</em>. After all, a functor <span class="process-math">\(F\colon \mathsf C\to\mathsf D\)</span> takes <span class="process-math">\(x\cong y\)</span> to <span class="process-math">\(Fx\cong Fy\text{.}\)</span> Sloganeering a bit, when <span class="process-math">\(x\)</span> and <span class="process-math">\(y\)</span> are "the same", they receive "the same" invariant <span class="process-math">\(Fx\cong Fy\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-natural-trans-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsubsec-natural-trans-3">But when are two invariants (i.e. functors) "the same"? To answer this question, we need the following notion:<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-natural-trans-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-natural-trans"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Natural transformations.</span>
+</h5>
+<div class="para logical" id="def-natural-trans-2-1">
+<div class="para">Suppose <span class="process-math">\(F,G\colon \mathsf C\to \mathsf D\)</span> are functors from a category <span class="process-math">\(\mathsf C\)</span> to a category <span class="process-math">\(\mathsf D\text{.}\)</span> A <dfn class="terminology">natural transformation</dfn> <span class="process-math">\(\eta\colon F\implies G\)</span> from <span class="process-math">\(F\)</span> to <span class="process-math">\(G\)</span> consists of morphisms</div>
+<div class="displaymath process-math" id="def-natural-trans-2-1-8">
+\begin{equation*}
+\eta_x\colon Fx\to Gx
+\end{equation*}
+</div>
+<div class="para">in <span class="process-math">\(\mathsf D\)</span> for each object <span class="process-math">\(x\)</span> of <span class="process-math">\(\mathsf C\)</span> satisfying the following property: for any morphism <span class="process-math">\(f\colon x\to y\)</span> in <span class="process-math">\(\mathsf C\text{,}\)</span> the diagram <div class="image-box" style="width: 40%; margin-left: 30%; margin-right: 30%;">
+<img src="generated/latex-image/def-natural-trans-2-1-14.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="def-natural-trans-2-1-14-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="def-natural-trans-2-1-14-description"><div class="para" id="def-natural-trans-2-1-14-1-1">A commutative square with top row <span class="process-math">\(Ff\colon Fx\to Fy\text{,}\)</span> left vertical <span class="process-math">\(\eta_x\colon Fx\to Gx\text{,}\)</span> bottom row <span class="process-math">\(Gf\colon Gx\to Gy\text{,}\)</span> and right vertical <span class="process-math">\(\eta_y\colon Fy\to Gy\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-natural-trans-2-1-14-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div></details>
+</div> commutes. A natural transformation <span class="process-math">\(\eta\colon F\implies G\)</span> is a <dfn class="terminology">natural isomorphism</dfn> :iff each of its component morphisms <span class="process-math">\(\eta_x\colon Fx\cong Gx\)</span> is an isomorphism; in this case we write <span class="process-math">\(\eta\colon F\cong G\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-natural-trans-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.8.12: Natural transformations"><a href="#def-natural-trans" title="Copy heading and permalink for Definition 2.8.12: Natural transformations" aria-label="Copy heading and permalink for Definition 2.8.12: Natural transformations">🔗</a></div></article><details id="subsubsec-natural-trans-5" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.13</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Equivariance via natural transformations.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="subsubsec-natural-trans-5-2">Let <span class="process-math">\(G\)</span> be a group. There is an associated category <span class="process-math">\(*//G\)</span> with a unique object <span class="process-math">\(*\)</span> and, for each <span class="process-math">\(g\in G\)</span> a morphism <span class="process-math">\(g\colon *\to *\text{.}\)</span> The composition in this category is given by multiplication in the group.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-natural-trans-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-natural-trans-5-3">
+<div class="para">Now suppose <span class="process-math">\(A\colon *//G\to \mathsf{Set}\)</span> is a functor. This amounts to a single set <span class="process-math">\(A(*)\)</span> and, for each <span class="process-math">\(g\in G\text{,}\)</span> a function <span class="process-math">\(A(g)\colon A(*)\to A(*)\text{.}\)</span> Since functors respect composition, we also have</div>
+<div class="displaymath process-math" id="subsubsec-natural-trans-5-3-5">
+\begin{equation*}
+A(gh) = A(g)\circ A(h).
+\end{equation*}
+</div>
+<div class="para">For <span class="process-math">\(x\in A(*)\text{,}\)</span> we will use the shorthand <span class="process-math">\(g\cdot x := [A(g)](x)\text{.}\)</span> Then the above equation amounts to</div>
+<div class="displaymath process-math" id="subsubsec-natural-trans-5-3-8">
+\begin{equation*}
+(gh)\cdot x = g\cdot(h\cdot x)
+\end{equation*}
+</div>
+<div class="para">for each <span class="process-math">\(g,h\in G\text{,}\)</span> <span class="process-math">\(x\in A(*)\text{.}\)</span> We also know that functors preserve identities, so this further implies</div>
+<div class="displaymath process-math" id="subsubsec-natural-trans-5-3-11">
+\begin{equation*}
+e\cdot x = x
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(x\in A(*)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-natural-trans-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsubsec-natural-trans-5-4">You have encountered this structure before: <span class="process-math">\(A\)</span> is a <span class="process-math">\(G\)</span>-set. More generally, functors <span class="process-math">\(*//G\to \mathsf{C}\)</span> are <dfn class="terminology"><span class="process-math">\(G\)</span>-objects in <span class="process-math">\(\mathsf C\)</span></dfn>. When <span class="process-math">\(\mathsf C\)</span> is the category of vector spaces over a chosen field, this is a <span class="process-math">\(G\)</span>-representation.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-natural-trans-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-natural-trans-5-5">
+<div class="para">Suppose now that we have <span class="process-math">\(G\)</span>-sets <span class="process-math">\(A,B\colon *//G\to \mathsf{Set}\)</span> and a natural transformation <span class="process-math">\(\eta\colon A\implies B\text{.}\)</span> This means that we have a function <span class="process-math">\(\eta_*\colon A(*)\to B(*)\text{,}\)</span> and for each <span class="process-math">\(g\in G\)</span> and <span class="process-math">\(x\in A(*)\text{,}\)</span>
+</div>
+<div class="displaymath process-math" id="subsubsec-natural-trans-5-5-7">
+\begin{equation*}
+\eta_*(g\cdot x) = g\cdot \eta_*(x).
+\end{equation*}
+</div>
+<div class="para">In other words, <span class="process-math">\(\eta_*\)</span> is a <dfn class="terminology"><span class="process-math">\(G\)</span>-equivariant function</dfn> between <span class="process-math">\(G\)</span>-sets.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-natural-trans-5-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.8.13: Equivariance via natural transformations"><a href="#subsubsec-natural-trans-5" title="Copy heading and permalink for Example 2.8.13: Equivariance via natural transformations" aria-label="Copy heading and permalink for Example 2.8.13: Equivariance via natural transformations">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Natural transformations"><a href="#subsubsec-natural-trans" title="Copy heading and permalink for Subsubsection: Natural transformations" aria-label="Copy heading and permalink for Subsubsection: Natural transformations">🔗</a></div></section><section class="subsubsection" id="subsubsec-adjunctions"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Adjunctions</span>
+</h4>
+<div class="para" id="subsubsec-adjunctions-2">When you learned linear algebra, you were hopefully impressed by the utility of bases. If a vector space <span class="process-math">\(V\)</span> has basis <span class="process-math">\(B\text{,}\)</span> then linear transformations <span class="process-math">\(V\to W\)</span> are the same thing as functions <span class="process-math">\(B\to W\text{.}\)</span> This observation has a trove of applications, including the encoding of linear transformations as matrices. We can codify this behavior in the categorical language of adjunctions.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-adjunction"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Adjunctions.</span>
+</h5>
+<div class="para logical" id="def-adjunction-2-1">
+<div class="para">Let <span class="process-math">\(\mathsf C,\mathsf D\)</span> be categories. An <dfn class="terminology">adjunction</dfn> between <span class="process-math">\(\mathsf C,\mathsf D\)</span> consists of functors <span class="process-math">\(L\colon \mathsf C\to \mathsf D\)</span> and <span class="process-math">\(R\colon \mathsf D\to\mathsf C\)</span> along with isomorphisms</div>
+<div class="displaymath process-math" id="def-adjunction-2-1-6">
+\begin{align*}
+\mathsf D(Lx,y)\amp \xrightarrow{\cong} \mathsf C(x,Ry)\\
+f \amp \longmapsto \hat f
+\end{align*}
+</div>
+<div class="para">for each object <span class="process-math">\(x\)</span> of <span class="process-math">\(\mathsf C\)</span> and <span class="process-math">\(y\)</span> of <span class="process-math">\(\mathsf D\)</span> that are natural in both <span class="process-math">\(x\)</span> and <span class="process-math">\(y\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-adjunction-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="def-adjunction-2-2">We call <span class="process-math">\(L\)</span> <dfn class="terminology">left adjoint</dfn> to <span class="process-math">\(R\text{,}\)</span> <span class="process-math">\(R\)</span> <dfn class="terminology">right adjoint</dfn> to <span class="process-math">\(L\text{,}\)</span> and write <span class="process-math">\(L\dashv R\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-adjunction-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.8.14: Adjunctions"><a href="#def-adjunction" title="Copy heading and permalink for Definition 2.8.14: Adjunctions" aria-label="Copy heading and permalink for Definition 2.8.14: Adjunctions">🔗</a></div></article><div class="para" id="subsubsec-adjunctions-4">We will consider two motivating examples of adjoint functors: free <span class="process-math">\(\dashv\)</span> forgetful adjunctions, and the currying adjunction.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsubsec-adjunctions-5" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Free <span class="process-math">\(\dashv\)</span> forgetful adjunctions.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="subsubsec-adjunctions-5-2">Fix a field <span class="process-math">\(k\)</span> and let <span class="process-math">\(\mathsf{Vect}_k\)</span> denote the category of <span class="process-math">\(k\)</span>-vector spaces and linear transformations. The <dfn class="terminology">forgetful functor</dfn> <span class="process-math">\(U\colon \mathsf{Vect}_k\to \mathsf{Set}\)</span> takes a vector space <span class="process-math">\(V\)</span> to its <dfn class="terminology">underlying</dfn> set <span class="process-math">\(UV\)</span> and a linear transformation <span class="process-math">\(f\colon V\to W\)</span> to its underlying function <span class="process-math">\(Uf=f\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-adjunctions-5-3">
+<div class="para">The <dfn class="terminology">free functor</dfn> <span class="process-math">\(\operatorname{Free}_k\colon \mathsf{Set}\to \mathsf{Vect}_k\)</span> takes a set <span class="process-math">\(S\)</span> to the <span class="process-math">\(k\)</span>-vector space</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-5-3-5">
+\begin{equation*}
+\operatorname{Free}_kS := kS := \bigoplus_{s\in S} k\{s\}
+\end{equation*}
+</div>
+<div class="para">of (finite) formal <span class="process-math">\(k\)</span>-linear combinations of elements of <span class="process-math">\(S\text{.}\)</span> Given a function <span class="process-math">\(g\colon S\to T\text{,}\)</span> the linear transformation</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-5-3-9">
+\begin{equation*}
+\operatorname{Free}_kg\colon kS\longrightarrow kT
+\end{equation*}
+</div>
+<div class="para">takes <span class="process-math">\(\sum_s \lambda_ss\)</span> to <span class="process-math">\(\sum_s \lambda_sg(s)\text{.}\)</span> (Please recall a sufficient quantity of linear algebra to confirm that this construction is well-defined.)</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-adjunctions-5-4">
+<div class="para">These functors participate in an adjunction <span class="process-math">\(\operatorname{Free}_k\dashv U\text{.}\)</span> This means that we have a natural bijection</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-5-4-2">
+\begin{equation*}
+\mathsf{Vect}_k(\operatorname{Free}_kS,V)\xrightarrow{\cong} \mathsf{Set}(S,UV)
+\end{equation*}
+</div>
+<div class="para">given by restricting linear transformations <span class="process-math">\(f\colon \operatorname{Free}_kS\to V\)</span> to <span class="process-math">\(S\text{,}\)</span> i.e., <span class="process-math">\(\hat f := f|_S\text{.}\)</span> The inverse assignment takes a function <span class="process-math">\(g\colon S\to UV\)</span> to the linear transformation</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-5-4-8">
+\begin{align*}
+\hat g\colon \operatorname{Free}_kS\amp \longrightarrow V\\
+\sum_{s} \lambda_ss\amp\longmapsto \sum_s \lambda_s g(s).
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsubsec-adjunctions-5-5">If <span class="process-math">\(B\)</span> is a basis of vector space <span class="process-math">\(V\text{,}\)</span> then <span class="process-math">\(V\cong \operatorname{Free}_k B\text{,}\)</span> and this adjunction tells us that linear transformations from <span class="process-math">\(V\)</span> are determined by their action on a basis. This is typical of "free <span class="process-math">\(\dashv\)</span> forgetful" adjunctions, in which maps out of free objects in a category are determined by underlying functions on a generating set. The category of vector spaces is quite special, though, in that every object is free. This is part of what makes linear algebra much easier than, say, group theory.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-5-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.8.15: Free \dashv forgetful adjunctions"><a href="#subsubsec-adjunctions-5" title="Copy heading and permalink for Example 2.8.15: Free \dashv forgetful adjunctions" aria-label="Copy heading and permalink for Example 2.8.15: Free \dashv forgetful adjunctions">🔗</a></div></article></details><details id="subsubsec-adjunctions-6" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The currying adjunction.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="subsubsec-adjunctions-6-2">
+<div class="para">Let <span class="process-math">\(S\)</span> be a set and consider the functors</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-6-2-2">
+\begin{align*}
+S\times (-)\colon \mathsf{Set} \amp \longrightarrow \mathsf{Set}\\
+T \amp\longmapsto S\times T 
+\end{align*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-6-2-3">
+\begin{align*}
+(-)^S\colon \mathsf{Set}\amp \longrightarrow \mathsf{Set}\\
+T \amp\longmapsto T^S:=\mathsf{Set}(S,T). 
+\end{align*}
+</div>
+<div class="para">(The reader should take a moment to determine what these functors do on functions.)</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-adjunctions-6-3">
+<div class="para">The <dfn class="terminology">currying adjunction</dfn> <span class="process-math">\(S\times (-)\dashv (-)^S\)</span> is the natural isomorphism</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-6-3-3">
+\begin{align*}
+\mathsf{Set}(S\times T,U) = U^{S\times T} \amp \xrightarrow{\cong} (U^S)^T = \mathsf{Set}(T,U^S) \\
+(f\colon S\times T\to U) \amp \longmapsto (\hat f\colon T\to U^S;~t\mapsto f(-,t)).
+\end{align*}
+</div>
+<div class="para">Its inverse takes <span class="process-math">\(g\colon T\to U^S\)</span> to the function</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-6-3-5">
+\begin{align*}
+\hat g\colon S\times T \amp \longrightarrow U\\
+(s,t) \amp \longmapsto [g(t)](s).
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-6-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.8.16: The currying adjunction"><a href="#subsubsec-adjunctions-6" title="Copy heading and permalink for Example 2.8.16: The currying adjunction" aria-label="Copy heading and permalink for Example 2.8.16: The currying adjunction">🔗</a></div></article></details><details id="subsubsec-adjunctions-7" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Aside</span></h5></summary><aside class="aside aside-like knowl__content"><div class="para" id="subsubsec-adjunctions-7-1">The currying adjunction <span class="process-math">\(U^{S\times T}\cong (U^S)^T\)</span> <em class="alert">categorifies</em> the exponent identity <span class="process-math">\(u^{st}=(u^s)^t\)</span> among natural numbers. You might enjoy categorifying other exponent identities; for instance, <span class="process-math">\(u^{s+t}=u^su^t\)</span> arises from <span class="process-math">\(U^{S\amalg T}\cong U^S\times U^T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></aside></details><div class="para logical" id="subsubsec-adjunctions-8">
+<div class="para">The data of an adjunction <span class="process-math">\((L\colon\mathsf C\to \mathsf D\dashv (R\colon \mathsf D\to \mathsf C\)</span> is equivalent to a pair of natural transformations</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-8-2">
+\begin{equation*}
+\eta\colon \operatorname{id}_{\mathsf C}\longrightarrow RL\qquad\text{and}\qquad \varepsilon\colon LR\longrightarrow \operatorname{id}_{\mathsf D}.
+\end{equation*}
+</div>
+<div class="para">Given an object <span class="process-math">\(x\)</span> of <span class="process-math">\(\mathsf C\text{,}\)</span> the component</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-8-5">
+\begin{equation*}
+\eta_x\colon x\longrightarrow RLx
+\end{equation*}
+</div>
+<div class="para">of <span class="process-math">\(\eta\)</span> is the adjunct <span class="process-math">\(\widehat{\operatorname{id}_{Lx}}\)</span> of <span class="process-math">\(\operatorname{id}_{Lx}\colon Lx\to Lx\text{.}\)</span> Similarly, given an object <span class="process-math">\(y\)</span> of <span class="process-math">\(\mathsf D\text{,}\)</span> the component</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-8-11">
+\begin{equation*}
+\varepsilon_y\colon LRy\longrightarrow y
+\end{equation*}
+</div>
+<div class="para">of <span class="process-math">\(\varepsilon\)</span> is the adjunct <span class="process-math">\(\widehat{\operatorname{id}_{Ry}}\)</span> of <span class="process-math">\(\operatorname{id}_{Ry}\colon Ry\to Ry\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="subsubsec-adjunctions-9" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The currying unit and counit.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="subsubsec-adjunctions-9-2">The counit of the currying adjunction is <dfn class="terminology">evaluation</dfn>: \operatorname{eval}_ \amp 
+          The counit of the currying adjunction is evaluation:
+          \operatorname{eval}_ \amp 
+        \notag
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-9-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.8.17: The currying unit and counit"><a href="#subsubsec-adjunctions-9" title="Copy heading and permalink for Example 2.8.17: The currying unit and counit" aria-label="Copy heading and permalink for Example 2.8.17: The currying unit and counit">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Adjunctions"><a href="#subsubsec-adjunctions" title="Copy heading and permalink for Subsubsection: Adjunctions" aria-label="Copy heading and permalink for Subsubsection: Adjunctions">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Wednesday"><a href="#notes-week-08-3" title="Copy heading and permalink for Subsection: Wednesday" aria-label="Copy heading and permalink for Subsection: Wednesday">🔗</a></div></section><section class="subsection" id="notes-week-08-4"><h3 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Friday</span>
 </h3>
 <div class="autopermalink" data-description="Subsection: Friday"><a href="#notes-week-08-4" title="Copy heading and permalink for Subsection: Friday" aria-label="Copy heading and permalink for Subsection: Friday">🔗</a></div></section><div class="autopermalink" data-description="Section 2.8: Week 8"><a href="#notes-week-08" title="Copy heading and permalink for Section 2.8: Week 8" aria-label="Copy heading and permalink for Section 2.8: Week 8">🔗</a></div></section></div>

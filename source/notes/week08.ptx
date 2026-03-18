@@ -547,7 +547,16 @@
         <title>The currying unit and counit</title>
         <p>
           The counit of the currying adjunction is <term>evaluation</term>:
-          <mrow>\operatorname{eval}_ \amp </mrow>
+          <md>
+            <mrow>\operatorname{eval}\colon S\times T^S \amp \longrightarrow T </mrow>
+            <mrow>(s,f) \amp \longmapsto f(s).</mrow>
+          </md>
+          The unit is the <term>coevaluation</term> map
+          <md>
+            <mrow>\operatorname{coev}\colon U \amp\longrightarrow (S\times U)^S </mrow>
+            <mrow>u \amp \longmapsto ((-,u)\colon s\mapsto (s,u)). </mrow>
+          </md>
+          
         </p>
       </example>
     </subsubsection>

@@ -336,6 +336,221 @@
 
   <subsection>
     <title>Wednesday</title>
+    <p>
+      We are going to learn about adjunctions in order to motivate and explore properties of mapping spaces. To study adjunctions, 
+      we will first need natural transformations.
+    </p>
+    <subsubsection xml:id="subsubsec-natural-trans">
+      <title>Natural transformations</title>
+      <p>
+        We have adopted the perspective that <alert>functors</alert> are <alert>invariants</alert>. After all, a functor <m>F\colon \mathsf C\to\mathsf D</m> 
+        takes <m>x\cong y</m> to <m>Fx\cong Fy</m>. Sloganeering a bit, when <m>x</m> and <m>y</m> are "the same", they receive "the same" invariant <m>Fx\cong Fy</m>.
+      </p>
+      <p>
+        But when are two invariants (<ie /> functors) "the same"? To answer this question, we need the following notion:
+      </p>
+      <definition xml:id="def-natural-trans">
+        <title>Natural transformations</title>
+        
+        
+        <statement>
+          <p>
+            Suppose <m>F,G\colon \mathsf C\to \mathsf D</m> are functors from a category <m>\mathsf C</m> to a category <m>\mathsf D</m>. A <term>natural transformation</term> 
+            <m>\eta\colon F\implies G</m> from <m>F</m> to <m>G</m> consists of morphisms
+            <md>
+              \eta_x\colon Fx\to Gx
+            </md>
+            in <m>\mathsf D</m> for each object <m>x</m> of <m>\mathsf C</m> satisfying the following property: for any morphism <m>f\colon x\to y</m> in <m>\mathsf C</m>, 
+            the diagram
+            <image width="40%">
+              <description>
+                <p>
+                  A commutative square with top row <m>Ff\colon Fx\to Fy</m>, left vertical <m>\eta_x\colon Fx\to Gx</m>, bottom row <m>Gf\colon Gx\to Gy</m>, and right vertical 
+                  <m>\eta_y\colon Fy\to Gy</m>.
+                </p>
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  Fx \amp Fy \\
+                  Gx \amp Gy
+                  \arrow["Ff", from=1-1, to=1-2]
+                  \arrow["{\eta_x}"', from=1-1, to=2-1]
+                  \arrow["{\eta_y}", from=1-2, to=2-2]
+                  \arrow["Gf"', from=2-1, to=2-2]
+                \end{tikzcd}
+              </latex-image>
+            </image>
+            commutes. A natural transformation <m>\eta\colon F\implies G</m> is a <term>natural isomorphism</term> :iff each of its component morphisms <m>\eta_x\colon Fx\cong Gx</m> 
+            is an isomorphism; in this case we write <m>\eta\colon F\cong G</m>.
+          </p>
+        </statement>
+      </definition>
+      <example>
+        <title>Equivariance via natural transformations</title>
+        <p>
+          Let <m>G</m> be a group. There is an associated category <m>*//G</m> with a unique object <m>*</m> and, for each 
+          <m>g\in G</m> a morphism <m>g\colon *\to *</m>. The composition in this category is given by multiplication in the group.
+        </p>
+        <p>
+          Now suppose <m>A\colon *//G\to \mathsf{Set}</m> is a functor. This amounts to a single set <m>A(*)</m> and, for each <m>g\in G</m>, 
+          a function <m>A(g)\colon A(*)\to A(*)</m>. Since functors respect composition, we also have
+          <md>
+            A(gh) = A(g)\circ A(h).
+          </md>
+          For <m>x\in A(*)</m>, we will use the shorthand <m>g\cdot x := [A(g)](x)</m>. Then the above equation amounts to
+          <md>
+            (gh)\cdot x = g\cdot(h\cdot x)
+          </md>
+          for each <m>g,h\in G</m>, <m>x\in A(*)</m>. We also know that functors preserve identities, so this further implies
+          <md>
+            e\cdot x = x
+          </md>
+          for all <m>x\in A(*)</m>.
+        </p>
+        <p>
+          You have encountered this structure before: <m>A</m> is a <m>G</m>-set. More generally, functors <m>*//G\to \mathsf{C}</m> are 
+          <term><m>G</m>-objects in <m>\mathsf C</m></term>. When <m>\mathsf C</m> is the category of vector spaces over a chosen field, this 
+          is a <m>G</m>-representation.
+        </p>
+        <p>
+          Suppose now that we have <m>G</m>-sets <m>A,B\colon *//G\to \mathsf{Set}</m> and a natural transformation <m>\eta\colon A\implies B</m>. 
+          This means that we have a function <m>\eta_*\colon A(*)\to B(*)</m>, and for each <m>g\in G</m> and <m>x\in A(*)</m>,
+          <md>
+            \eta_*(g\cdot x) = g\cdot \eta_*(x).
+          </md>
+          In other words, <m>\eta_*</m> is a <term><m>G</m>-equivariant function</term> between <m>G</m>-sets.
+        </p>
+      </example>
+      
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-adjunctions">
+      <title>Adjunctions</title>
+      <p>
+        When you learned linear algebra, you were hopefully impressed by the utility of bases. If a vector space <m>V</m> has 
+        basis <m>B</m>, then linear transformations <m>V\to W</m> are the same thing as functions <m>B\to W</m>. This observation 
+        has a trove of applications, including the encoding of linear transformations as matrices. We can codify this behavior in the 
+        categorical language of adjunctions.
+      </p>
+      <definition xml:id="def-adjunction">
+        <title>Adjunctions</title>
+        <statement>
+          <p>
+            Let <m>\mathsf C,\mathsf D</m> be categories. An <term>adjunction</term> between <m>\mathsf C,\mathsf D</m> consists of functors 
+            <m>L\colon \mathsf C\to \mathsf D</m> and <m>R\colon \mathsf D\to\mathsf C</m> along with isomorphisms
+            <md>
+              <mrow>\mathsf D(Lx,y)\amp \xrightarrow{\cong} \mathsf C(x,Ry)</mrow>
+              <mrow>f \amp \longmapsto \hat f</mrow>
+            </md>
+            for each object <m>x</m> of <m>\mathsf C</m> and <m>y</m> of <m>\mathsf D</m> that are natural in both <m>x</m> and <m>y</m>.
+          </p>
+          <p>
+            We call <m>L</m> <term>left adjoint</term> to <m>R</m>, <m>R</m> <term>right adjoint</term> to <m>L</m>, and write <m>L\dashv R</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        We will consider two motivating examples of adjoint functors: free <m>\dashv</m> forgetful adjunctions, and the currying adjunction.
+      </p>
+      <example>
+        <title>Free <m>\dashv</m> forgetful adjunctions</title>
+        <p>
+          Fix a field <m>k</m> and let <m>\mathsf{Vect}_k</m> denote the category of <m>k</m>-vector spaces and linear transformations. 
+          The <term>forgetful functor</term> <m>U\colon \mathsf{Vect}_k\to \mathsf{Set}</m> takes a vector space <m>V</m> to its 
+          <term>underlying</term> set <m>UV</m> and a linear transformation <m>f\colon V\to W</m> to its underlying function <m>Uf=f</m>.
+        </p>
+        <p>
+          The <term>free functor</term> <m>\operatorname{Free}_k\colon \mathsf{Set}\to \mathsf{Vect}_k</m> takes a set <m>S</m> to the 
+          <m>k</m>-vector space
+          <md>
+            \operatorname{Free}_kS := kS := \bigoplus_{s\in S} k\{s\}
+          </md>
+          of (finite) formal <m>k</m>-linear combinations of elements of <m>S</m>. Given a function <m>g\colon S\to T</m>, the linear 
+          transformation
+          <md>
+            \operatorname{Free}_kg\colon kS\longrightarrow kT
+          </md>
+          takes <m>\sum_s \lambda_ss</m> to <m>\sum_s \lambda_sg(s)</m>. (Please recall a sufficient quantity of linear algebra to confirm 
+          that this construction is well-defined.)
+        </p>
+        <p>
+          These functors participate in an adjunction <m>\operatorname{Free}_k\dashv U</m>. This means that we have a natural bijection
+          <md>
+            \mathsf{Vect}_k(\operatorname{Free}_kS,V)\xrightarrow{\cong} \mathsf{Set}(S,UV)
+          </md>
+          given by restricting linear transformations <m>f\colon \operatorname{Free}_kS\to V</m> to <m>S</m>, <ie />, <m>\hat f := f|_S</m>. 
+          The inverse assignment takes a function <m>g\colon S\to UV</m> to the linear transformation
+          <md>
+            <mrow>\hat g\colon \operatorname{Free}_kS\amp \longrightarrow V</mrow>
+            <mrow> \sum_{s} \lambda_ss\amp\longmapsto \sum_s \lambda_s g(s).</mrow>
+          </md>
+        </p>
+        <p>
+          If <m>B</m> is a basis of vector space <m>V</m>, then <m>V\cong \operatorname{Free}_k B</m>, and this adjunction tells us that 
+          linear transformations from <m>V</m> are determined by their action on a basis. This is typical of "free <m>\dashv</m> forgetful" 
+          adjunctions, in which maps out of free objects in a category are determined by underlying functions on a generating set. The 
+          category of vector spaces is quite special, though, in that every object is free. This is part of what makes linear algebra much 
+          easier than, say, group theory.
+        </p>
+      </example>
+      <example>
+        <title>The currying adjunction</title>
+        <p>
+          Let <m>S</m> be a set and consider the functors
+          <md>
+            <mrow>S\times (-)\colon \mathsf{Set} \amp \longrightarrow \mathsf{Set}</mrow>
+            <mrow>T \amp\longmapsto S\times T </mrow>
+          </md>
+          and
+          <md>
+            <mrow>(-)^S\colon \mathsf{Set}\amp \longrightarrow \mathsf{Set}</mrow>
+            <mrow>T \amp\longmapsto T^S:=\mathsf{Set}(S,T). </mrow>
+          </md>
+          (The reader should take a moment to determine what these functors do on functions.)
+        </p>
+        <p>
+          The <term>currying adjunction</term> <m>S\times (-)\dashv (-)^S</m> is the natural isomorphism
+          <md>
+            <mrow>\mathsf{Set}(S\times T,U) = U^{S\times T} \amp \xrightarrow{\cong} (U^S)^T = \mathsf{Set}(T,U^S) </mrow>
+            <mrow>(f\colon S\times T\to U) \amp \longmapsto (\hat f\colon T\to U^S;~t\mapsto f(-,t)).</mrow>
+          </md>
+          Its inverse takes <m>g\colon T\to U^S</m> to the function
+          <md>
+            <mrow>\hat g\colon S\times T \amp \longrightarrow U</mrow>
+            <mrow>(s,t) \amp \longmapsto [g(t)](s).</mrow>
+          </md>
+        </p>
+      </example>
+      <aside>
+        <p>
+          The currying adjunction <m>U^{S\times T}\cong (U^S)^T</m> <alert>categorifies</alert> the exponent identity <m>u^{st}=(u^s)^t</m> 
+          among natural numbers. You might enjoy categorifying other exponent identities; for instance, <m>u^{s+t}=u^su^t</m> arises from 
+          <m>U^{S\amalg T}\cong U^S\times U^T</m>.
+        </p>
+      </aside>
+      <p>
+        The data of an adjunction <m>(L\colon\mathsf C\to \mathsf D\dashv (R\colon \mathsf D\to \mathsf C</m> is equivalent to a pair of natural transformations
+        <md>
+          \eta\colon \operatorname{id}_{\mathsf C}\longrightarrow RL\qquad\text{and}\qquad \varepsilon\colon LR\longrightarrow \operatorname{id}_{\mathsf D}.
+        </md>
+        Given an object <m>x</m> of <m>\mathsf C</m>, the component
+        <md>
+          \eta_x\colon x\longrightarrow RLx
+        </md>
+        of <m>\eta</m> is the adjunct <m>\widehat{\operatorname{id}_{Lx}}</m> of <m>\operatorname{id}_{Lx}\colon Lx\to Lx</m>. Similarly, 
+        given an object <m>y</m> of <m>\mathsf D</m>, the component
+        <md>
+          \varepsilon_y\colon LRy\longrightarrow y
+        </md>
+        of <m>\varepsilon</m> is the adjunct <m>\widehat{\operatorname{id}_{Ry}}</m> of <m>\operatorname{id}_{Ry}\colon Ry\to Ry</m>.
+      </p>
+      <example>
+        <title>The currying unit and counit</title>
+        <p>
+          The counit of the currying adjunction is <term>evaluation</term>:
+          <mrow>\operatorname{eval}_ \amp </mrow>
+        </p>
+      </example>
+    </subsubsection>
   </subsection>
 
   <subsection>

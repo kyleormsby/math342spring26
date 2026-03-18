@@ -808,10 +808,21 @@ T \amp\longmapsto T^S:=\mathsf{Set}(S,T).
 </div>
 <details id="subsubsec-adjunctions-9" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
 <span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The currying unit and counit.</span>
-</h5></summary><article class="example example-like knowl__content"><div class="para" id="subsubsec-adjunctions-9-2">The counit of the currying adjunction is <dfn class="terminology">evaluation</dfn>: \operatorname{eval}_ \amp 
-          The counit of the currying adjunction is evaluation:
-          \operatorname{eval}_ \amp 
-        \notag
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="subsubsec-adjunctions-9-2">
+<div class="para">The counit of the currying adjunction is <dfn class="terminology">evaluation</dfn>:</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-9-2-2">
+\begin{align*}
+\operatorname{eval}\colon S\times T^S \amp \longrightarrow T \\
+(s,f) \amp \longmapsto f(s).
+\end{align*}
+</div>
+<div class="para">The unit is the <dfn class="terminology">coevaluation</dfn> map</div>
+<div class="displaymath process-math" id="subsubsec-adjunctions-9-2-4">
+\begin{align*}
+\operatorname{coev}\colon U \amp\longrightarrow (S\times U)^S \\
+u \amp \longmapsto ((-,u)\colon s\mapsto (s,u)). 
+\end{align*}
+</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-9-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 2.8.17: The currying unit and counit"><a href="#subsubsec-adjunctions-9" title="Copy heading and permalink for Example 2.8.17: The currying unit and counit" aria-label="Copy heading and permalink for Example 2.8.17: The currying unit and counit">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Adjunctions"><a href="#subsubsec-adjunctions" title="Copy heading and permalink for Subsubsection: Adjunctions" aria-label="Copy heading and permalink for Subsubsection: Adjunctions">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Wednesday"><a href="#notes-week-08-3" title="Copy heading and permalink for Subsection: Wednesday" aria-label="Copy heading and permalink for Subsection: Wednesday">🔗</a></div></section><section class="subsection" id="notes-week-08-4"><h3 class="heading hide-type">

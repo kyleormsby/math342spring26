@@ -323,7 +323,14 @@ eBookConfig.enable_chatcodes =  false;
 <li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-adjunctions" class="internal"><span class="title">Adjunctions</span></a></div></li>
 </ul>
 </li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-4" class="internal"><span class="title">Friday</span></a></div></li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-unit-and-counit" class="internal"><span class="title">Units and counits of adjunctions</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-adjoints-Top-Set" class="internal"><span class="title">Adjoints to the forgetful functor from spaces to sets</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-stone-cech" class="internal"><span class="title">Stone-Čech compactification</span></a></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -783,52 +790,126 @@ T \amp\longmapsto T^S:=\mathsf{Set}(S,T).
 <div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-6-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Example 2.8.16: The currying adjunction"><a href="#subsubsec-adjunctions-6" title="Copy heading and permalink for Example 2.8.16: The currying adjunction" aria-label="Copy heading and permalink for Example 2.8.16: The currying adjunction">🔗</a></div></article></details><details id="subsubsec-adjunctions-7" class="aside aside-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Aside</span></h5></summary><aside class="aside aside-like knowl__content"><div class="para" id="subsubsec-adjunctions-7-1">The currying adjunction <span class="process-math">\(U^{S\times T}\cong (U^S)^T\)</span> <em class="alert">categorifies</em> the exponent identity <span class="process-math">\(u^{st}=(u^s)^t\)</span> among natural numbers. You might enjoy categorifying other exponent identities; for instance, <span class="process-math">\(u^{s+t}=u^su^t\)</span> arises from <span class="process-math">\(U^{S\amalg T}\cong U^S\times U^T\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div></aside></details><div class="para logical" id="subsubsec-adjunctions-8">
-<div class="para">The data of an adjunction <span class="process-math">\((L\colon\mathsf C\to \mathsf D\dashv (R\colon \mathsf D\to \mathsf C\)</span> is equivalent to a pair of natural transformations</div>
-<div class="displaymath process-math" id="subsubsec-adjunctions-8-2">
+</div></aside></details><div class="autopermalink" data-description="Subsubsection: Adjunctions"><a href="#subsubsec-adjunctions" title="Copy heading and permalink for Subsubsection: Adjunctions" aria-label="Copy heading and permalink for Subsubsection: Adjunctions">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Wednesday"><a href="#notes-week-08-3" title="Copy heading and permalink for Subsection: Wednesday" aria-label="Copy heading and permalink for Subsection: Wednesday">🔗</a></div></section><section class="subsection" id="notes-week-08-4"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Friday</span>
+</h3>
+<section class="subsubsection" id="subsubsec-unit-and-counit"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Units and counits of adjunctions</span>
+</h4>
+<div class="para logical" id="subsubsec-unit-and-counit-2">
+<div class="para">The data of an adjunction <span class="process-math">\((L\colon\mathsf C\to \mathsf D)\dashv (R\colon \mathsf D\to \mathsf C)\)</span> is equivalent to a pair of natural transformations</div>
+<div class="displaymath process-math" id="subsubsec-unit-and-counit-2-2">
 \begin{equation*}
 \eta\colon \operatorname{id}_{\mathsf C}\longrightarrow RL\qquad\text{and}\qquad \varepsilon\colon LR\longrightarrow \operatorname{id}_{\mathsf D}.
 \end{equation*}
 </div>
 <div class="para">Given an object <span class="process-math">\(x\)</span> of <span class="process-math">\(\mathsf C\text{,}\)</span> the component</div>
-<div class="displaymath process-math" id="subsubsec-adjunctions-8-5">
+<div class="displaymath process-math" id="subsubsec-unit-and-counit-2-5">
 \begin{equation*}
 \eta_x\colon x\longrightarrow RLx
 \end{equation*}
 </div>
 <div class="para">of <span class="process-math">\(\eta\)</span> is the adjunct <span class="process-math">\(\widehat{\operatorname{id}_{Lx}}\)</span> of <span class="process-math">\(\operatorname{id}_{Lx}\colon Lx\to Lx\text{.}\)</span> Similarly, given an object <span class="process-math">\(y\)</span> of <span class="process-math">\(\mathsf D\text{,}\)</span> the component</div>
-<div class="displaymath process-math" id="subsubsec-adjunctions-8-11">
+<div class="displaymath process-math" id="subsubsec-unit-and-counit-2-11">
 \begin{equation*}
 \varepsilon_y\colon LRy\longrightarrow y
 \end{equation*}
 </div>
 <div class="para">of <span class="process-math">\(\varepsilon\)</span> is the adjunct <span class="process-math">\(\widehat{\operatorname{id}_{Ry}}\)</span> of <span class="process-math">\(\operatorname{id}_{Ry}\colon Ry\to Ry\text{.}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-unit-and-counit-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<details id="subsubsec-adjunctions-9" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<details id="subsubsec-unit-and-counit-3" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
 <span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The currying unit and counit.</span>
-</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="subsubsec-adjunctions-9-2">
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="subsubsec-unit-and-counit-3-2">
 <div class="para">The counit of the currying adjunction is <dfn class="terminology">evaluation</dfn>:</div>
-<div class="displaymath process-math" id="subsubsec-adjunctions-9-2-2">
+<div class="displaymath process-math" id="subsubsec-unit-and-counit-3-2-2">
 \begin{align*}
 \operatorname{eval}\colon S\times T^S \amp \longrightarrow T \\
 (s,f) \amp \longmapsto f(s).
 \end{align*}
 </div>
 <div class="para">The unit is the <dfn class="terminology">coevaluation</dfn> map</div>
-<div class="displaymath process-math" id="subsubsec-adjunctions-9-2-4">
+<div class="displaymath process-math" id="subsubsec-unit-and-counit-3-2-4">
 \begin{align*}
 \operatorname{coev}\colon U \amp\longrightarrow (S\times U)^S \\
 u \amp \longmapsto ((-,u)\colon s\mapsto (s,u)). 
 \end{align*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjunctions-9-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-unit-and-counit-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Example 2.8.17: The currying unit and counit"><a href="#subsubsec-adjunctions-9" title="Copy heading and permalink for Example 2.8.17: The currying unit and counit" aria-label="Copy heading and permalink for Example 2.8.17: The currying unit and counit">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Adjunctions"><a href="#subsubsec-adjunctions" title="Copy heading and permalink for Subsubsection: Adjunctions" aria-label="Copy heading and permalink for Subsubsection: Adjunctions">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Wednesday"><a href="#notes-week-08-3" title="Copy heading and permalink for Subsection: Wednesday" aria-label="Copy heading and permalink for Subsection: Wednesday">🔗</a></div></section><section class="subsection" id="notes-week-08-4"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Friday</span>
-</h3>
-<div class="autopermalink" data-description="Subsection: Friday"><a href="#notes-week-08-4" title="Copy heading and permalink for Subsection: Friday" aria-label="Copy heading and permalink for Subsection: Friday">🔗</a></div></section><div class="autopermalink" data-description="Section 2.8: Week 8"><a href="#notes-week-08" title="Copy heading and permalink for Section 2.8: Week 8" aria-label="Copy heading and permalink for Section 2.8: Week 8">🔗</a></div></section></div>
+<div class="autopermalink" data-description="Example 2.8.17: The currying unit and counit"><a href="#subsubsec-unit-and-counit-3" title="Copy heading and permalink for Example 2.8.17: The currying unit and counit" aria-label="Copy heading and permalink for Example 2.8.17: The currying unit and counit">🔗</a></div></article></details><article class="theorem theorem-like" id="thm-triangle-ids"><h5 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Triangle identities.</span>
+</h5>
+<div class="para" id="thm-triangle-ids-2-1">Suppose <span class="process-math">\(L\dashv R\)</span> is an adjoint pair of functors between categories <span class="process-math">\(\mathsf C,\mathsf D\)</span> with unit and counit natural transformations <span class="process-math">\(\eta\colon \operatorname{id}_{\mathsf C}\implies RL\)</span> and <span class="process-math">\(\varepsilon\colon LR\implies \operatorname{id}_{\mathsf D}\text{.}\)</span> Then the triangles <div class="image-box" style="width: 60%; margin-left: 20%; margin-right: 20%;">
+<img src="generated/latex-image/thm-triangle-ids-2-1-5.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="thm-triangle-ids-2-1-5-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="thm-triangle-ids-2-1-5-description">Two commutative triangles of natural transformations. The first says that <span class="process-math">\(\varepsilon_{L(-)}\circ L\eta = \operatorname{id}_{L(-)}\)</span> and the second says that <span class="process-math">\(R\varepsilon\circ \eta_{R(-)} = \operatorname{id}_{R(-)}\text{.}\)</span>
+</div></details>
+</div> commute. Moreover, the data of natural transformations <span class="process-math">\(\eta,\varepsilon\)</span> satisfying these identities specifies the adjunction.<div class="autopermalink" data-description="Paragraph"><a href="#thm-triangle-ids-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 2.8.18: Triangle identities"><a href="#thm-triangle-ids" title="Copy heading and permalink for Theorem 2.8.18: Triangle identities" aria-label="Copy heading and permalink for Theorem 2.8.18: Triangle identities">🔗</a></div></article><details id="subsubsec-unit-and-counit-5" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="subsubsec-unit-and-counit-5-1">Exercise.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-unit-and-counit-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1"><a href="#subsubsec-unit-and-counit-5" title="Copy heading and permalink for Proof 1" aria-label="Copy heading and permalink for Proof 1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Units and counits of adjunctions"><a href="#subsubsec-unit-and-counit" title="Copy heading and permalink for Subsubsection: Units and counits of adjunctions" aria-label="Copy heading and permalink for Subsubsection: Units and counits of adjunctions">🔗</a></div></section><section class="subsubsection" id="subsubsec-adjoints-Top-Set"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Adjoints to the forgetful functor from spaces to sets</span>
+</h4>
+<div class="para" id="subsubsec-adjoints-Top-Set-2">There is a forgetful functor <span class="process-math">\(U\colon \mathsf{Top}\to \mathsf{Set}\)</span> given by <span class="process-math">\(U(X,\tau)=X\)</span> and <span class="process-math">\(Uf=f\text{.}\)</span> Curiously, it admits both left and right adjoints, which deserve to be called the "free" and "cofree" spaces on a set.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjoints-Top-Set-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-adjoints-Top-Set"><h5 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.8.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="thm-adjoints-Top-Set-1-1">There are adjoint functors <span class="process-math">\(D,C\colon \mathsf{Set}\to \mathsf{Top}\)</span> to the forgetful functor <span class="process-math">\(U\colon \mathsf{Top}\to \mathsf{Set}\)</span> of shape <span class="process-math">\(D\dashv U\dashv C\)</span> where <span class="process-math">\(D\)</span> takes a set to the discrete space on that set, and <span class="process-math">\(C\)</span> takes a set to the concrete space on that set; both functors are the identity on functions.<div class="autopermalink" data-description="Paragraph"><a href="#thm-adjoints-Top-Set-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 2.8.19"><a href="#thm-adjoints-Top-Set" title="Copy heading and permalink for Theorem 2.8.19" aria-label="Copy heading and permalink for Theorem 2.8.19">🔗</a></div></article><details id="subsubsec-adjoints-Top-Set-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para logical" id="subsubsec-adjoints-Top-Set-4-1">
+<div class="para">We need to show that for any set <span class="process-math">\(X\)</span> and space <span class="process-math">\(Y\text{,}\)</span>
+</div>
+<div class="displaymath process-math" id="subsubsec-adjoints-Top-Set-4-1-3">
+\begin{equation*}
+\mathsf{Top}(DX,Y)\cong \mathsf{Set}(X,UY)\qquad\text{and}\qquad\mathsf{Set}(UY,X)\cong \mathsf{Top}(Y,CX).
+\end{equation*}
+</div>
+<div class="para">Both adjunct maps are identities as all functions out of discrete spaces are continuous, and all functions into concrete spaces are continuous.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjoints-Top-Set-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1"><a href="#subsubsec-adjoints-Top-Set-4" title="Copy heading and permalink for Proof 1" aria-label="Copy heading and permalink for Proof 1">🔗</a></div></article></details><div class="para" id="subsubsec-adjoints-Top-Set-5">An important corollary of the existence of these adjoints is that all limits and colimits in spaces have underlying sets computed by the corresponding limits and colimits in sets. Here limits generalize constructions like product, and colimits generalize constructions like quotients, coproducts, and pushouts. I will say more about this phenomenon in class.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-adjoints-Top-Set-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Adjoints to the forgetful functor from spaces to sets"><a href="#subsubsec-adjoints-Top-Set" title="Copy heading and permalink for Subsubsection: Adjoints to the forgetful functor from spaces to sets" aria-label="Copy heading and permalink for Subsubsection: Adjoints to the forgetful functor from spaces to sets">🔗</a></div></section><section class="subsubsection" id="subsubsec-stone-cech"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Stone-Čech compactification</span>
+</h4>
+<div class="para logical" id="subsubsec-stone-cech-2">
+<div class="para">Let <span class="process-math">\(\mathsf{CH}\)</span> denote the category of compact Hausdorff spaces and continuous functions between them. There is a forgetful functor <span class="process-math">\(U\colon \mathsf{CH}\to \mathsf{Top}\)</span> that admits a left adjoint</div>
+<div class="displaymath process-math" id="subsubsec-stone-cech-2-3">
+\begin{equation*}
+\beta\colon \mathsf{Top}\longrightarrow \mathsf{CH}
+\end{equation*}
+</div>
+<div class="para">called <dfn class="terminology">Stone-Čech compactification</dfn>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-stone-cech-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-stone-cech-3">
+<div class="para">We will only be able to construct <span class="process-math">\(\beta\)</span> after we have studied function spaces, so we content ourselves with unpacking the consequences of <span class="process-math">\(\beta\dashv U\)</span> here. Foremost among these is the defining bijection</div>
+<div class="displaymath process-math" id="subsubsec-stone-cech-3-3">
+\begin{equation*}
+\mathsf{CH}(\beta X,Y)\cong \mathsf{Top}(X,UY) = \mathsf{Top}(X,Y)
+\end{equation*}
+</div>
+<div class="para">for <span class="process-math">\(X\)</span> a space and <span class="process-math">\(Y\)</span> a compact Hausdorff space; the equality holds because the space underlying <span class="process-math">\(Y\)</span> is just <span class="process-math">\(Y\text{.}\)</span> This says that a continuous map from <span class="process-math">\(X\)</span> to a compact Hausdorff space <span class="process-math">\(Y\)</span> is "the same" as a continuous map from <span class="process-math">\(\beta X\)</span> to <span class="process-math">\(Y\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-stone-cech-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-stone-cech-4">
+<div class="para">Since <span class="process-math">\(U\beta X = \beta X\text{,}\)</span> the unit for the <span class="process-math">\(\beta\dashv U\)</span> adjunction takes the form</div>
+<div class="displaymath process-math" id="subsubsec-stone-cech-4-3">
+\begin{equation*}
+\eta_X\colon X\longrightarrow \beta X.
+\end{equation*}
+</div>
+<div class="para">It is in fact the case that <span class="process-math">\(\eta_X\)</span> is an embedding (homeomorphism onto its image), and the adjunct of a map <span class="process-math">\(f\colon X\to Y\)</span> to a compact Hausdorff space is an extension of <span class="process-math">\(f\)</span> across <span class="process-math">\(\eta_X\text{:}\)</span> <div class="image-box" style="width: 40%; margin-left: 30%; margin-right: 30%;">
+<img src="generated/latex-image/subsubsec-stone-cech-4-8.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="subsubsec-stone-cech-4-8-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="subsubsec-stone-cech-4-8-description"><div class="para" id="subsubsec-stone-cech-4-8-1-1">A commutative triangle expressing <span class="process-math">\(f\)</span> as the composite <span class="process-math">\(\hat f\circ \eta_X\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-stone-cech-4-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div></details>
+</div>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-stone-cech-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Stone-Čech compactification"><a href="#subsubsec-stone-cech" title="Copy heading and permalink for Subsubsection: Stone-Čech compactification" aria-label="Copy heading and permalink for Subsubsection: Stone-Čech compactification">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Friday"><a href="#notes-week-08-4" title="Copy heading and permalink for Subsection: Friday" aria-label="Copy heading and permalink for Subsection: Friday">🔗</a></div></section><div class="autopermalink" data-description="Section 2.8: Week 8"><a href="#notes-week-08" title="Copy heading and permalink for Section 2.8: Week 8" aria-label="Copy heading and permalink for Section 2.8: Week 8">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="notes-week-07.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="homework.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>

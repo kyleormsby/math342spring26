@@ -527,8 +527,14 @@
           <m>U^{S\amalg T}\cong U^S\times U^T</m>.
         </p>
       </aside>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title>Friday</title>
+      <subsubsection xml:id="subsubsec-unit-and-counit">
+        <title>Units and counits of adjunctions</title>
       <p>
-        The data of an adjunction <m>(L\colon\mathsf C\to \mathsf D\dashv (R\colon \mathsf D\to \mathsf C</m> is equivalent to a pair of natural transformations
+        The data of an adjunction <m>(L\colon\mathsf C\to \mathsf D)\dashv (R\colon \mathsf D\to \mathsf C)</m> is equivalent to a pair of natural transformations
         <md>
           \eta\colon \operatorname{id}_{\mathsf C}\longrightarrow RL\qquad\text{and}\qquad \varepsilon\colon LR\longrightarrow \operatorname{id}_{\mathsf D}.
         </md>
@@ -556,14 +562,122 @@
             <mrow>\operatorname{coev}\colon U \amp\longrightarrow (S\times U)^S </mrow>
             <mrow>u \amp \longmapsto ((-,u)\colon s\mapsto (s,u)). </mrow>
           </md>
-          
         </p>
       </example>
+      <theorem xml:id="thm-triangle-ids">
+        <title>Triangle identities</title>
+        <statement>
+          <p>
+            Suppose <m>L\dashv R</m> is an adjoint pair of functors between categories <m>\mathsf C,\mathsf D</m> with  
+            unit and counit natural transformations <m>\eta\colon \operatorname{id}_{\mathsf C}\implies RL</m> and 
+            <m>\varepsilon\colon LR\implies \operatorname{id}_{\mathsf D}</m>. Then the triangles 
+            <image width="60%">
+              <description>
+                Two commutative triangles of natural transformations. The first says that 
+                <m>\varepsilon_{L(-)}\circ L\eta = \operatorname{id}_{L(-)}</m> and the second says that 
+                <m>R\varepsilon\circ \eta_{R(-)} = \operatorname{id}_{R(-)}</m>.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  L \amp LRL \amp R \amp RLR \\
+                  \amp L \amp\amp R
+                  \arrow["{L\eta}", Rightarrow, from=1-1, to=1-2]
+                  \arrow["{\operatorname{id}_{L(-)}}"', Rightarrow, from=1-1, to=2-2]
+                  \arrow["{\varepsilon_{L(-)}}", Rightarrow, from=1-2, to=2-2]
+                  \arrow["{\eta_{R(-)}}", Rightarrow, from=1-3, to=1-4]
+                  \arrow["{\operatorname{id}_{R(-)}}"', Rightarrow, from=1-3, to=2-4]
+                  \arrow["{R\varepsilon}", Rightarrow, from=1-4, to=2-4]
+                \end{tikzcd}
+              </latex-image>
+            </image>
+            commute. Moreover, the data of natural transformations <m>\eta,\varepsilon</m> satisfying these identities 
+            specifies the adjunction.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          Exercise.
+        </p>
+      </proof>
     </subsubsection>
-  </subsection>
-
-  <subsection>
-    <title>Friday</title>
+    <subsubsection xml:id="subsubsec-adjoints-Top-Set">
+      <title>Adjoints to the forgetful functor from spaces to sets</title>
+      <p>
+        There is a forgetful functor <m>U\colon \mathsf{Top}\to \mathsf{Set}</m> given by <m>U(X,\tau)=X</m> and <m>Uf=f</m>. 
+        Curiously, it admits both left and right adjoints, which deserve to be called the "free" and "cofree" spaces on a set. 
+      </p>
+      <theorem xml:id="thm-adjoints-Top-Set">
+        <statement>
+          <p>
+            There are adjoint functors <m>D,C\colon \mathsf{Set}\to \mathsf{Top}</m> to the forgetful functor 
+            <m>U\colon \mathsf{Top}\to \mathsf{Set}</m> of shape <m>D\dashv U\dashv C</m> where <m>D</m> takes a set to the 
+            discrete space on that set, and <m>C</m> takes a set to the concrete space on that set; both functors are the identity on 
+            functions.
+          </p>
+        </statement>
+      </theorem>
+      <proof>
+        <p>
+          We need to show that for any set <m>X</m> and space <m>Y</m>,
+          <md>
+            \mathsf{Top}(DX,Y)\cong \mathsf{Set}(X,UY)\qquad\text{and}\qquad\mathsf{Set}(UY,X)\cong \mathsf{Top}(Y,CX).
+          </md>
+          Both adjunct maps are identities as all functions out of discrete spaces are continuous, and all functions into concrete spaces 
+          are continuous.
+        </p>
+      </proof>
+      <p>
+        An important corollary of the existence of these adjoints is that all limits and colimits in spaces have underlying sets computed 
+        by the corresponding limits and colimits in sets. Here limits generalize constructions like product, and colimits generalize 
+        constructions like quotients, coproducts, and pushouts. I will say more about this phenomenon in class.
+      </p>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-stone-cech">
+      <title>Stone-Čech compactification</title>
+      <p>
+        Let <m>\mathsf{CH}</m> denote the category of compact Hausdorff spaces and continuous functions between them. 
+        There is a forgetful functor <m>U\colon \mathsf{CH}\to \mathsf{Top}</m> that admits a left adjoint
+        <md>
+          \beta\colon \mathsf{Top}\longrightarrow \mathsf{CH}
+        </md>
+        called <term>Stone-Čech compactification</term>.
+      </p>
+      <p>
+        We will only be able to construct <m>\beta</m> after we have studied function spaces, so we content ourselves with unpacking 
+        the consequences of <m>\beta\dashv U</m> here. Foremost among these is the defining bijection
+        <md>
+          \mathsf{CH}(\beta X,Y)\cong \mathsf{Top}(X,UY) = \mathsf{Top}(X,Y)
+        </md>
+        for <m>X</m> a space and <m>Y</m> a compact Hausdorff space; the equality holds because the space underlying <m>Y</m> is just <m>Y</m>. 
+        This says that a continuous map from <m>X</m> to a compact Hausdorff space <m>Y</m> is "the same" as a continuous map from <m>\beta X</m> 
+        to <m>Y</m>.
+      </p>
+      <p>
+        Since <m>U\beta X = \beta X</m>, the unit for the <m>\beta\dashv U</m> adjunction takes the form
+        <md>
+          \eta_X\colon X\longrightarrow \beta X.
+        </md>
+        It is in fact the case that <m>\eta_X</m> is an embedding (homeomorphism onto its image), and the adjunct of a map <m>f\colon X\to Y</m> 
+        to a compact Hausdorff space is an extension of <m>f</m> across <m>\eta_X</m>:
+        <image width="40%">
+          <description>
+            <p>
+              A commutative triangle expressing <m>f</m> as the composite <m>\hat f\circ \eta_X</m>.
+            </p>
+          </description>
+          <latex-image>
+            \begin{tikzcd}
+              X \amp Y. \\
+              {\beta X}
+              \arrow["f", from=1-1, to=1-2]
+              \arrow["{\eta_X}"', from=1-1, to=2-1]
+              \arrow["{\hat f}"', dashed, from=2-1, to=1-2]
+            \end{tikzcd}
+          </latex-image>
+        </image>
+      </p>
+    </subsubsection>
   </subsection>
 
 </section>

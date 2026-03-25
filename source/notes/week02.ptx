@@ -777,9 +777,11 @@
         The homeomorphism type of <m>\mathbb{RP}^1</m> is one you've encountered before. Can you see it? What about <m>\mathbb{RP}^2</m>?
       </p>
     </exercise>
-    With this motivation in mind, we now develop the quotient topology, following our usual pattern of universal property, 
-    construction, examples, and other contexts. All our constructions will be predicated upon a surjective function <m>q\colon X\to Z</m>, 
-    but the reader is invited to imagine <m>Z=X/\sim</m> where <m>x\sim x'</m> :iff <m>q(x)=q(x')</m>. 
+    <p>
+      With this motivation in mind, we now develop the quotient topology, following our usual pattern of universal property, 
+      construction, examples, and other contexts. All our constructions will be predicated upon a surjective function <m>q\colon X\to Z</m>, 
+      but the reader is invited to imagine <m>Z=X/\sim</m> where <m>x\sim x'</m> :iff <m>q(x)=q(x')</m>. 
+    </p>
     <definition xml:id="def-quotient-top">
       <title>Quotient topology by universal property</title>
       <statement>

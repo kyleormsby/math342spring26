@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-09">
+  <title>Week 9</title>
+  <subsection>
+    <title>Monday</title>
+    <p>
+      This class featured a discussion of mapping spaces, what they're good for, and what we might 
+      ask of them. Given its informal nature, I won't record notes here.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Wednesday</title>
+    <p>
+      Last week we introduced adjunctions and explored several examples: free <m>\dashv</m> forgetful
+      adjunctions, the currying adjunction in <m>\mathsf{Set}</m>, and the discrete <m>\dashv</m>
+      forgetful <m>\dashv</m> concrete adjunction for <m>\mathsf{Top}\to\mathsf{Set}</m>. Our goal
+      this week is to pursue the topological currying adjunction: equipping the set of continuous maps
+      <m>\mathsf{Top}(X,Y)</m> with a topology so that product and mapping space form an adjoint pair.
+    </p>
+
+    <subsubsection xml:id="subsubsec-motivation-mapping-spaces">
+      <title>Motivation: topologies on function spaces</title>
+      <p>
+        For topological spaces <m>X</m> and <m>Y</m>, the set <m>\mathsf{Top}(X,Y)</m> of continuous
+        maps from <m>X</m> to <m>Y</m> is just a set. Can we promote it to a topological space? And
+        if so, which topology should we choose?
+      </p>
+      <p>
+        Recall the currying adjunction in <m>\mathsf{Set}</m>: for a fixed set <m>S</m>, the functors
+        <m>S\times(-)</m> and <m>(-)^S = \mathsf{Set}(S,-)</m> satisfy
+        <md>
+          \mathsf{Set}(S\times T, U) \cong \mathsf{Set}(T, U^S).
+        </md>
+        We would like an analogous statement in <m>\mathsf{Top}</m>: for a fixed space <m>X</m>, we
+        want a topology on <m>\mathsf{Top}(X,Y)</m> — call the resulting space <m>Y^X</m> — so that
+        <md>
+          \mathsf{Top}(X\times Z, Y) \cong \mathsf{Top}(Z, Y^X)
+        </md>
+        for all spaces <m>Y</m> and <m>Z</m>. When such a topology exists, we call it an
+        <term>exponential topology</term> on <m>\mathsf{Top}(X,Y)</m>.
+      </p>
+      <p>
+        Let us unpack what this adjunction would mean concretely. Reading from left to right, a
+        continuous map <m>g\colon X\times Z\to Y</m> of two variables should curry to a continuous
+        map <m>\hat{g}\colon Z\to Y^X</m>; that is, continuously parametrized families of continuous
+        maps <m>X\to Y</m> should correspond to continuous maps into <m>Y^X</m>. Reading from right
+        to left, a continuous map <m>F\colon Z\to Y^X</m> should uncurry to a continuous map
+        <m>X\times Z\to Y</m>; the most basic instance of this (taking <m>Z = Y^X</m> and
+        <m>F = \mathrm{id}</m>) produces the <term>evaluation map</term>
+        <md>
+          \mathrm{ev}\colon X\times Y^X \longrightarrow Y, \qquad (x,f)\longmapsto f(x),
+        </md>
+        which should be continuous.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-splitting-conjoining">
+      <title>Splitting and conjoining topologies</title>
+      <p>
+        The discussion above suggests two properties a topology <m>\tau</m> on
+        <m>\mathsf{Top}(X,Y)</m> might have.
+      </p>
+      <definition xml:id="def-splitting-conjoining">
+        <title>Splitting and conjoining topologies</title>
+        <statement>
+          <p>
+            Let <m>X</m> and <m>Y</m> be topological spaces, and let <m>\tau</m> be a topology
+            on <m>\mathsf{Top}(X,Y)</m>.
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  <m>\tau</m> is <term>splitting</term> :iff, for every space <m>Z</m>, the
+                  continuity of <m>g\colon X\times Z\to Y</m> implies the continuity of the curried map
+                  <m>\hat{g}\colon Z\to (\mathsf{Top}(X,Y),\tau)</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\tau</m> is <term>conjoining</term> :iff, for every space <m>Z</m>, the
+                  continuity of <m>\hat{g}\colon Z\to (\mathsf{Top}(X,Y),\tau)</m> implies the
+                  continuity of the uncurried map <m>g\colon X\times Z\to Y</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+          <p>
+            A topology that is both splitting and conjoining is an <term>exponential topology</term>.
+          </p>
+        </statement>
+      </definition>
+      <lemma xml:id="lem-conjoining-iff-eval">
+        <statement>
+          <p>
+            A topology <m>\tau</m> on <m>\mathsf{Top}(X,Y)</m> is conjoining if and only if
+            the evaluation map <m>\mathrm{ev}\colon X\times (\mathsf{Top}(X,Y),\tau)\to Y</m>
+            is continuous.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Suppose <m>\mathrm{ev}</m> is continuous. Given a continuous
+            <m>\hat{g}\colon Z\to (\mathsf{Top}(X,Y),\tau)</m>, the uncurried map
+            <m>g = \mathrm{ev}\circ(\mathrm{id}_X\times\hat{g})</m> is a composition of continuous
+            maps, hence continuous.
+          </p>
+          <p>
+            Conversely, suppose <m>\tau</m> is conjoining. The identity map
+            <m>\mathrm{id}\colon (\mathsf{Top}(X,Y),\tau)\to (\mathsf{Top}(X,Y),\tau)</m>
+            is continuous, so the uncurried map — which is precisely <m>\mathrm{ev}</m> — is continuous.
+          </p>
+        </proof>
+      </lemma>
+      <lemma xml:id="lem-splitting-coarser-conjoining">
+        <statement>
+          <p>
+            Every splitting topology on <m>\mathsf{Top}(X,Y)</m> is coarser than every conjoining
+            topology.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>\tau</m> be splitting and <m>\tau'</m> be conjoining. Since
+            <m>\tau'</m> is conjoining, the evaluation map
+            <m>\mathrm{ev}\colon X\times(\mathsf{Top}(X,Y),\tau')\to Y</m> is continuous. Since
+            <m>\tau</m> is splitting, the curried map
+            <m>\mathrm{id}\colon (\mathsf{Top}(X,Y),\tau')\to (\mathsf{Top}(X,Y),\tau)</m>
+            is continuous, which means <m>\tau\subseteq\tau'</m>.
+          </p>
+        </proof>
+      </lemma>
+      <theorem xml:id="thm-exponential-unique">
+        <title>Uniqueness of exponential topologies</title>
+        <statement>
+          <p>
+            If an exponential topology on <m>\mathsf{Top}(X,Y)</m> exists, then it is unique.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            An exponential topology is both splitting and conjoining, so by
+            <xref ref="lem-splitting-coarser-conjoining" />, any two exponential topologies are each
+            coarser than the other.
+          </p>
+        </proof>
+      </theorem>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-compact-open-topology">
+      <title>The compact-open topology</title>
+      <p>
+        We now define the compact-open topology and show it is always splitting. The key question —
+        when is it also conjoining? — will be taken up on Friday.
+      </p>
+      <definition xml:id="def-compact-open">
+        <title>Compact-open topology</title>
+        <statement>
+          <p>
+            Let <m>X</m> and <m>Y</m> be topological spaces. For each compact subspace
+            <m>K\subseteq X</m> and each open subset <m>U\subseteq Y</m>, define
+            <md>
+              [K,U] := \{f\in\mathsf{Top}(X,Y)\mid f(K)\subseteq U\}.
+            </md>
+            The sets <m>[K,U]</m> form a subbasis for a topology on <m>\mathsf{Top}(X,Y)</m> called
+            the <term>compact-open topology</term>. We write <m>Y^X</m> for <m>\mathsf{Top}(X,Y)</m>
+            equipped with this topology.
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <statement>
+          <p>
+            The subbasis sets <m>[K,U]</m> form a <em>sub</em>basis, not generally a basis. Their
+            finite intersections
+            <md>
+              [K_1,U_1]\cap\cdots\cap [K_n,U_n]
+            </md>
+            form a basis.
+          </p>
+        </statement>
+      </remark>
+      <example xml:id="eg-compact-open-discrete">
+        <statement>
+          <p>
+            Let <m>X=\{1,\ldots,r\}</m> with the discrete topology and let <m>Y</m> be any topological
+            space. Then <m>\mathsf{Top}(X,Y) = Y^r</m> as a set. The compact subsets of <m>X</m> are
+            all subsets (since <m>X</m> is finite), and the subbasis sets <m>[\{k\},U] =
+            \{(y_1,\ldots,y_r)\mid y_k\in U\}</m> generate the product topology on <m>Y^r</m>. So in
+            this case the compact-open topology agrees with the (finite) product topology.
+          </p>
+          <p>
+            This observation will guide us toward the correct definition of the product topology for
+            arbitrary (possibly infinite) families of spaces.
+          </p>
+        </statement>
+      </example>
+      <theorem xml:id="thm-compact-open-splitting">
+        <title>The compact-open topology is splitting</title>
+        <statement>
+          <p>
+            For any spaces <m>X</m> and <m>Y</m>, the compact-open topology on
+            <m>\mathsf{Top}(X,Y)</m> is splitting.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>Z</m> be any space and suppose <m>g\colon X\times Z\to Y</m> is continuous. We need
+            to show that the curried map <m>\hat{g}\colon Z\to Y^X</m> is continuous. It suffices to
+            show that <m>\hat{g}^{-1}([K,U])</m> is open in <m>Z</m> for each compact
+            <m>K\subseteq X</m> and open <m>U\subseteq Y</m>. Now,
+            <m>\hat{g}^{-1}([K,U]) = \{z\in Z\mid g(K,z)\subseteq U\}</m>. Since <m>g</m> is
+            continuous, <m>g^{-1}(U)</m> is open in <m>X\times Z</m> and contains <m>K\times\{z\}</m>.
+            By the Tube Lemma, there are open sets <m>K\subseteq V</m> and <m>z\in W</m> with
+            <m>K\times\{z\}\subseteq V\times W\subseteq g^{-1}(U)</m>. Therefore
+            <m>z\in W\subseteq \hat{g}^{-1}([K,U])</m>.
+          </p>
+        </proof>
+      </theorem>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-product-via-compact-open">
+      <title>The product topology via mapping spaces</title>
+      <p>
+        So far in this course, we have only defined products of <em>finitely many</em> topological
+        spaces: given spaces <m>X_1,\ldots,X_n</m>, the product <m>X_1\times\cdots\times X_n</m>
+        carries the topology generated by products of open sets <m>U_1\times\cdots\times U_n</m>. The
+        compact-open topology gives us a conceptual way to extend this definition to arbitrary (possibly
+        infinite) products.
+      </p>
+      <p>
+        The key observation is <xref ref="eg-compact-open-discrete" />: when <m>A</m> is a finite
+        discrete space, the compact-open topology on <m>Y^A = \mathsf{Top}(A,Y)</m> recovers the
+        product topology on the finite product <m>Y^{|A|}</m>. But the definition of the compact-open
+        topology makes perfect sense when <m>A</m> is an <em>infinite</em> discrete set — and this
+        tells us what the right topology on an infinite product should be.
+      </p>
+      <p>
+        Let <m>A</m> be any set, equipped with the discrete topology. Since every function out of a
+        discrete space is continuous, we have <m>\mathsf{Top}(A,Y) = Y^A</m> as sets. The compact-open
+        subbasis sets are <m>[K,U]</m> for <m>K\subseteq A</m> compact and <m>U\subseteq Y</m> open.
+        Since <m>A</m> is discrete, its compact subsets are precisely its <em>finite</em> subsets. The
+        subbasis set <m>[\{\alpha\},U]</m> for a single element <m>\alpha\in A</m> is
+        <md>
+          [\{\alpha\},U] = \{f\in Y^A\mid f(\alpha)\in U\} = \mathrm{pr}_\alpha^{-1}(U),
+        </md>
+        where <m>\mathrm{pr}_\alpha\colon Y^A\to Y</m> is projection onto the <m>\alpha</m>-th
+        coordinate. In other words, the compact-open topology on <m>Y^A</m> is the coarsest topology
+        making every projection continuous. We promote this observation to a definition.
+      </p>
+      <definition xml:id="def-product-topology">
+        <title>Product topology</title>
+        <statement>
+          <p>
+            Let <m>\{Y_\alpha\}_{\alpha\in A}</m> be a family of topological spaces. The
+            <term>product topology</term> on the set <m>\prod_{\alpha\in A}Y_\alpha</m> is the
+            coarsest topology for which every projection map
+            <md>
+              \mathrm{pr}_\alpha\colon \prod_{\beta\in A}Y_\beta\longrightarrow Y_\alpha, \qquad
+              (y_\beta)_{\beta\in A}\longmapsto y_\alpha,
+            </md>
+            is continuous.
+          </p>
+          <p>
+            Equivalently, the product topology has subbasis
+            <md>
+              \bigl\{\mathrm{pr}_\alpha^{-1}(U)\mid \alpha\in A,\;U\subseteq Y_\alpha\text{ open}\bigr\}.
+            </md>
+            A basis consists of all finite intersections of these subbasis sets, <ie />, sets of the form
+            <md>
+              \mathrm{pr}_{\alpha_1}^{-1}(U_1)\cap\cdots\cap\mathrm{pr}_{\alpha_n}^{-1}(U_n)
+            </md>
+            where <m>\alpha_1,\ldots,\alpha_n\in A</m> and each <m>U_i\subseteq Y_{\alpha_i}</m> is
+            open.
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <statement>
+          <p>
+            When <m>Y_\alpha = Y</m> for all <m>\alpha</m>, the product <m>\prod_\alpha Y</m> is
+            the set <m>Y^A</m> of functions <m>A\to Y</m>. If <m>A</m> carries the discrete topology,
+            this is <m>\mathsf{Top}(A,Y)</m>, and the product topology is exactly the compact-open
+            topology, as argued above. For a general (non-discrete) space <m>X</m>, the product
+            topology on <m>Y^X</m> has subbasis sets <m>[\{x\},U] = \mathrm{pr}_x^{-1}(U)</m>
+            indexed by <em>singletons</em>, while the compact-open topology allows arbitrary compact
+            <m>K</m>. Since singletons are compact, the compact-open topology is always finer than the
+            product topology.
+          </p>
+        </statement>
+      </remark>
+      <p>
+        As always, we should ask: what is the universal property? The product topology is designed
+        exactly so that continuous maps <em>into</em> a product are determined by their coordinates.
+      </p>
+      <theorem xml:id="thm-product-universal-property">
+        <title>Universal property of products</title>
+        <statement>
+          <p>
+            Let <m>\{Y_\alpha\}_{\alpha\in A}</m> be a family of topological spaces. For any
+            topological space <m>Z</m>, a map
+            <md>
+              f\colon Z\longrightarrow \prod_{\alpha\in A}Y_\alpha
+            </md>
+            is continuous if and only if <m>\mathrm{pr}_\alpha\circ f\colon Z\to Y_\alpha</m> is
+            continuous for every <m>\alpha\in A</m>.
+          </p>
+          <p>
+            In other words, there is a bijection of sets
+            <md>
+              \mathsf{Top}\!\left(Z,\,\prod_{\alpha\in A}Y_\alpha\right) \xrightarrow{\;\cong\;}
+              \prod_{\alpha\in A}\mathsf{Top}(Z,Y_\alpha), \qquad f\longmapsto
+              (\mathrm{pr}_\alpha\circ f)_{\alpha\in A},
+            </md>
+            natural in <m>Z</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            The "only if" direction is immediate: if <m>f</m> is continuous, then
+            <m>\mathrm{pr}_\alpha\circ f</m> is a composition of continuous maps, hence continuous.
+          </p>
+          <p>
+            For the "if" direction, suppose <m>\mathrm{pr}_\alpha\circ f</m> is continuous for every
+            <m>\alpha</m>. To show <m>f</m> is continuous, it suffices to check preimages of subbasis
+            sets. For each subbasis set <m>\mathrm{pr}_\alpha^{-1}(U)</m> in the product, we have
+            <md>
+              f^{-1}\bigl(\mathrm{pr}_\alpha^{-1}(U)\bigr)
+              = (\mathrm{pr}_\alpha\circ f)^{-1}(U),
+            </md>
+            which is open in <m>Z</m> by the assumed continuity of
+            <m>\mathrm{pr}_\alpha\circ f</m>.
+          </p>
+        </proof>
+      </theorem>
+      <remark>
+        <statement>
+          <p>
+            The product topology is the <em>unique</em> topology on <m>\prod_\alpha Y_\alpha</m>
+            satisfying this universal property. Indeed, if <m>\tau</m> is any topology making the
+            projections continuous and satisfying the universal property, then the identity map
+            <m>\mathrm{id}\colon(\prod_\alpha Y_\alpha,\tau_{\mathrm{prod}})\to(\prod_\alpha
+            Y_\alpha,\tau)</m> is continuous (since each projection from the product topology is
+            continuous), and vice versa.
+          </p>
+        </statement>
+      </remark>
+      <p>
+        We record an important special case connecting back to our discussion of mapping spaces.
+      </p>
+      <corollary xml:id="cor-maps-into-product">
+        <statement>
+          <p>
+            Let <m>A</m> be a set (with discrete topology) and <m>Y</m> a topological space. For
+            any space <m>Z</m>, there is a natural bijection
+            <md>
+              \mathsf{Top}(Z,Y^A)\xrightarrow{\;\cong\;}\mathsf{Top}(Z,Y)^A,
+            </md>
+            where <m>Y^A = \prod_{\alpha\in A}Y</m> carries the product topology. That is, a continuous
+            map from <m>Z</m> into <m>Y^A</m> is the same thing as an <m>A</m>-indexed family of
+            continuous maps <m>Z\to Y</m>.
+          </p>
+        </statement>
+      </corollary>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-metrics-function-spaces">
+      <title>Metrics on function spaces</title>
+      <p>
+        When the target space <m>(Y,d)</m> is a metric space, one can define several natural topologies
+        on the set <m>\mathsf{Top}(X,Y)</m> via metrics or pseudometrics. For a subset
+        <m>A\subseteq X</m>, a map <m>f\colon X\to Y</m>, and <m>\varepsilon\gt 0</m>, write
+        <md>
+          \mathrm{B}_\varepsilon^A(f) := \{g\in\mathsf{Top}(X,Y)\mid \sup_{x\in A}d(f(x),g(x))\lt\varepsilon\}
+        </md>
+        for the <m>\varepsilon</m>-ball about <m>f</m> measured on <m>A</m>. Varying <m>A</m> yields
+        three topologies on <m>\mathsf{Top}(X,Y)</m>.
+      </p>
+      <p>
+        <ol>
+          <li>
+            <p>
+              <term>Pointwise convergence.</term> Take <m>A = \{x\}</m> for each <m>x\in X</m>. The
+              resulting topology <m>\tau_{\mathrm{pw}}</m> on <m>\mathsf{Top}(X,Y)</m> coincides with
+              the subspace topology from the product <m>Y^X = \prod_{x\in X}Y</m>. A sequence
+              <m>(f_n)</m> converges to <m>f</m> in this topology if and only if <m>f_n(x)\to f(x)</m>
+              for each <m>x\in X</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>Compact convergence.</term> Take <m>A = K</m> for each compact <m>K\subseteq X</m>.
+              The resulting topology <m>\tau_{\mathrm{cpt}}</m> is coarser than the uniform topology
+              and finer than the pointwise topology. A sequence <m>(f_n)</m> converges to <m>f</m> if
+              and only if <m>(f_n|_K)</m> converges uniformly to <m>f|_K</m> for every compact
+              <m>K\subseteq X</m>. When <m>Y</m> is a metric space, the compact convergence topology on
+              <m>\mathsf{Top}(X,Y)</m> agrees with the compact-open topology.
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>Uniform convergence.</term> Take <m>A = X</m>. When <m>X</m> is compact, this
+              agrees with the compact convergence topology (since <m>X</m> itself is compact). In
+              general, the uniform topology is finer: it requires convergence to be uniform over all of
+              <m>X</m> simultaneously. When <m>X</m> is compact, the <term>sup metric</term>
+              <m>d_\infty(f,g) := \sup_{x\in X}d(f(x),g(x))</m> defines the topology, and
+              <m>(\mathsf{Top}(X,Y),d_\infty)</m> is a metric space.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Summarizing: there is a chain of inclusions among topologies on <m>\mathsf{Top}(X,Y)</m>,
+        <md>
+          \tau_{\mathrm{pw}}\subseteq\tau_{\mathrm{cpt}}\subseteq\tau_{\mathrm{unif}},
+        </md>
+        and when <m>X</m> is compact, the latter two coincide. We omit the (straightforward but
+        somewhat technical) proofs that the compact convergence and compact-open topologies agree; see
+        Section 11.5 of the graduate notes for details. An important consequence of this agreement is
+        that a classical theorem — the uniform limit of continuous functions is continuous — can be
+        reinterpreted as saying that <m>\mathsf{Top}(X,Y)</m> is a closed subspace of the space of
+        all maps <m>X\to Y</m> in the compact convergence topology.
+      </p>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Friday</title>
+
+    <subsubsection xml:id="subsubsec-evaluation-continuous">
+      <title>Continuity of evaluation and the exponential adjunction</title>
+      <p>
+        On Wednesday we saw that the compact-open topology is always splitting. The question remains:
+        when is it conjoining? By <xref ref="lem-conjoining-iff-eval" />, this is equivalent to asking
+        when the evaluation map <m>\mathrm{ev}\colon X\times Y^X\to Y</m> is continuous. The answer
+        involves a familiar condition on <m>X</m>.
+      </p>
+      <lemma xml:id="lem-eval-continuous-lc">
+        <title>Continuity of the evaluation map</title>
+        <statement>
+          <p>
+            Let <m>X</m> and <m>Y</m> be topological spaces. If <m>X</m> is locally compact, then the
+            evaluation map
+            <md>
+              \mathrm{ev}\colon X\times Y^X \longrightarrow Y, \qquad (x,f)\longmapsto f(x),
+            </md>
+            is continuous, where <m>Y^X = \mathsf{Top}(X,Y)</m> carries the compact-open topology.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>U\subseteq Y</m> be open. We must show the preimage
+            <m>\mathrm{ev}^{-1}(U)\subseteq X\times Y^X</m> is open. Let
+            <m>(x,f)\in\mathrm{ev}^{-1}(U)</m>, so <m>f(x)\in U</m>. Since <m>f</m> is continuous,
+            <m>f^{-1}(U)</m> is an open neighborhood of <m>x</m> in <m>X</m>. Since <m>X</m> is locally
+            compact, there is a compact subspace <m>K\subseteq X</m> with
+            <md>
+              x\in\mathrm{Int}(K)\subseteq K\subseteq f^{-1}(U).
+            </md>
+            Then <m>f(K)\subseteq U</m>, so <m>f\in [K,U]</m>. The set
+            <m>\mathrm{Int}(K)\times [K,U]</m> is an open neighborhood of <m>(x,f)</m> in
+            <m>X\times Y^X</m>. For any <m>(x',f')</m> in this neighborhood, we have
+            <m>x'\in\mathrm{Int}(K)\subseteq K</m> and <m>f'(K)\subseteq U</m>, so
+            <m>f'(x')\in U</m>, confirming
+            <m>\mathrm{Int}(K)\times [K,U]\subseteq\mathrm{ev}^{-1}(U)</m>.
+          </p>
+        </proof>
+      </lemma>
+      <theorem xml:id="thm-compact-open-exponential">
+        <title>The exponential adjunction for locally compact spaces</title>
+        <statement>
+          <p>
+            Let <m>X</m> be a locally compact topological space and let <m>Y</m> be any topological
+            space. Then the compact-open topology on <m>\mathsf{Top}(X,Y)</m> is exponential. That
+            is, for every space <m>Z</m>, currying and uncurrying define inverse bijections
+            <md>
+              \mathsf{Top}(X\times Z, Y) \cong \mathsf{Top}(Z, Y^X)
+            </md>
+            that are natural in <m>Y</m> and <m>Z</m>. In the language of adjunctions, this says
+            <md>
+              X\times(-)\;\dashv\;(-)^X\colon\mathsf{Top}\longrightarrow\mathsf{Top}.
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            By <xref ref="thm-compact-open-splitting" />, the compact-open topology is splitting, and
+            by <xref ref="lem-eval-continuous-lc" /> and <xref ref="lem-conjoining-iff-eval" />, it is
+            conjoining when <m>X</m> is locally compact.
+          </p>
+        </proof>
+      </theorem>
+      <remark>
+        <statement>
+          <p>
+            The unit of the adjunction <m>X\times(-)\dashv(-)^X</m> is the <term>coevaluation</term>
+            map
+            <md>
+              \mathrm{coev}\colon Z\longrightarrow (Y^X)^Z,\qquad z\longmapsto (f\mapsto f(z))?
+            </md>
+            Wait — that doesn't quite parse! In fact, the unit at <m>Z</m> is a map
+            <m>\eta_Z\colon Z\to (X\times Z)^X</m> given by <m>\eta_Z(z) = (x\mapsto (x,z))</m>. The
+            counit is the evaluation map <m>\varepsilon_Y\colon X\times Y^X\to Y</m>. Verify the
+            triangle identities as an exercise!
+          </p>
+        </statement>
+      </remark>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-currying-applications">
+      <title>Applications of the exponential adjunction</title>
+      <p>
+        The exponential adjunction has many pleasant consequences. We record several here.
+      </p>
+      <corollary xml:id="cor-composition-continuous">
+        <title>Continuity of composition</title>
+        <statement>
+          <p>
+            Let <m>X</m>, <m>Y</m>, and <m>Z</m> be topological spaces with <m>X</m> and <m>Y</m>
+            locally compact. Then the composition map
+            <md>
+              \circ\colon Y^X\times Z^Y\longrightarrow Z^X, \qquad (f,g)\longmapsto g\circ f,
+            </md>
+            is continuous.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            The uncurrying of the composition map is the continuous map
+            <md>
+              X\times Y^X\times Z^Y \xrightarrow{\;\mathrm{ev}\times\mathrm{id}\;} Y\times Z^Y
+              \xrightarrow{\;\mathrm{ev}\;} Z, \qquad (x,f,g)\longmapsto g(f(x)).
+            </md>
+            Both evaluation maps are continuous (since <m>X</m> and <m>Y</m> are locally compact), as
+            are products and compositions of continuous maps.
+          </p>
+        </proof>
+      </corollary>
+      <corollary xml:id="cor-exponential-identity">
+        <title>Exponential law for mapping spaces</title>
+        <statement>
+          <p>
+            Let <m>X</m> and <m>Z</m> be locally compact and let <m>Y</m> be any space. The currying
+            bijection
+            <md>
+              Y^{X\times Z}\xrightarrow{\;\cong\;} (Y^X)^Z
+            </md>
+            is a homeomorphism. This categorifies the identity <m>y^{xz}=(y^x)^z</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            This is an exercise. (Hint: one can give a clean proof using the fact that both sides
+            represent the same functor, appealing to the Yoneda lemma.)
+          </p>
+        </proof>
+      </corollary>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-limitations">
+      <title>Limitations and the role of local compactness</title>
+      <p>
+        It is natural to ask how essential the hypothesis of local compactness is. The short answer: very.
+      </p>
+      <p>
+        The category <m>\mathsf{Top}</m> is <em>not</em> Cartesian closed: there is no way to
+        functorially equip <m>\mathsf{Top}(X,Y)</m> with a topology making the product-hom adjunction
+        work for all spaces <m>X</m>. Locally compact Hausdorff spaces are well-behaved in this
+        respect, but problems arise even for simple spaces.
+      </p>
+      <example xml:id="eg-R-infty-not-lc">
+        <statement>
+          <p>
+            Consider the colimit of the diagram
+            <md>
+              \mathbb{R}\hookrightarrow\mathbb{R}^2\hookrightarrow\mathbb{R}^3\hookrightarrow\cdots
+            </md>
+            in <m>\mathsf{Top}</m>. The resulting space <m>\mathbb{R}^\infty</m> is not locally compact,
+            so the exponential adjunction may fail for mapping spaces with domain
+            <m>\mathbb{R}^\infty</m>.
+          </p>
+        </statement>
+      </example>
+      <p>
+        One remedy is to restrict attention to a <term>convenient category</term> of topological
+        spaces — one that is Cartesian closed and contains all the spaces we care about. The category
+        of <term>compactly generated weakly Hausdorff</term> (CGWH) spaces is the standard choice. A
+        topological space <m>X</m> is <term>compactly generated</term> if <m>A\subseteq X</m> is open
+        whenever <m>A\cap K</m> is open in <m>K</m> for every compact <m>K\subseteq X</m>. Locally
+        compact spaces are compactly generated, and the CGWH category has enough structure to support
+        mapping spaces, quotients, and all the constructions we need for algebraic topology.
+      </p>
+      <p>
+        We will not develop the theory of CGWH spaces in this course, but it is good to be aware that
+        the exponential adjunction can be rescued by working in an appropriate subcategory. In
+        practice, all the spaces we encounter (manifolds, CW complexes, metric spaces, <etc />) are
+        locally compact Hausdorff, and the compact-open topology works beautifully for them.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-stone-cech-construction">
+      <title>Application: Stone-Čech compactification via mapping spaces</title>
+      <p>
+        Recall from <xref ref="subsubsec-stone-cech" /> that for any topological space <m>X</m>, the
+        Stone-Čech compactification <m>\beta X</m> is a compact Hausdorff space equipped with a
+        continuous map <m>\eta_X\colon X\to\beta X</m> such that every continuous map from <m>X</m>
+        to a compact Hausdorff space <m>Y</m> extends uniquely across <m>\eta_X</m>. With the
+        compact-open topology in hand, we can at least <em>describe</em> how one constructs
+        <m>\beta X</m>.
+      </p>
+      <p>
+        Consider the unit interval <m>[0,1]</m>, which is compact Hausdorff. For any completely
+        regular space <m>X</m>, the evaluation map
+        <md>
+          X\longrightarrow [0,1]^{\mathsf{Top}(X,[0,1])}, \qquad x\longmapsto (\mathrm{ev}_x\colon
+          f\mapsto f(x)),
+        </md>
+        is an embedding. The closure of the image is a compact Hausdorff space, and this is
+        <m>\beta X</m>.
+      </p>
+    </subsubsection>
+
+  </subsection>
+
+</section>

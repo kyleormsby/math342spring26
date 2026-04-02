@@ -2591,6 +2591,51 @@ var ptx_lunr_docs = [
   "number": "3.6.5",
   "title": "",
   "body": "  Let be a topological space.     Prove that the map is a continuous bijection.      Prove that, if is locally connected, then this map is a homeomorphism.      Give an example of an for which this map is not a homeomorphism.    "
+},
+{
+  "id": "homework-8",
+  "level": "1",
+  "url": "homework-8.html",
+  "type": "Worksheet",
+  "number": "3.7",
+  "title": "Homework 07",
+  "body": " Homework 07    Instructions: Complete all the exercises below and submit your work via Gradescope by Monday April 13 at 10pm.      Does mathematics contribute to human flourishing? State your opinion and explain why you hold it. (One-to-three paragraphs expected, but feel free to write more.)      Let be a space and let be a space that separates points. Show that the compact-open topology on separates points.      Let denote the space of real matrices, which is naturally identified with the Euclidean space . Write for the subspace of orthogonal matrices. Consider the function , . Prove that the restriction of this map to induces an embedding , , show that the curried map is an injective continuous function that is a homeomorphism onto its image. (You will probably want to use the Fundamental Theorem of Topology; please be thorough and careful.)      For , let be given by . Define Prove or disprove: is compact in the compact-open topology.     "
+},
+{
+  "id": "homework-8-3-1",
+  "level": "2",
+  "url": "homework-8.html#homework-8-3-1",
+  "type": "Worksheet Exercise",
+  "number": "3.7.1",
+  "title": "",
+  "body": "  Does mathematics contribute to human flourishing? State your opinion and explain why you hold it. (One-to-three paragraphs expected, but feel free to write more.)   "
+},
+{
+  "id": "homework-8-3-2",
+  "level": "2",
+  "url": "homework-8.html#homework-8-3-2",
+  "type": "Worksheet Exercise",
+  "number": "3.7.2",
+  "title": "",
+  "body": "  Let be a space and let be a space that separates points. Show that the compact-open topology on separates points.   "
+},
+{
+  "id": "homework-8-3-3",
+  "level": "2",
+  "url": "homework-8.html#homework-8-3-3",
+  "type": "Worksheet Exercise",
+  "number": "3.7.3",
+  "title": "",
+  "body": "  Let denote the space of real matrices, which is naturally identified with the Euclidean space . Write for the subspace of orthogonal matrices. Consider the function , . Prove that the restriction of this map to induces an embedding , , show that the curried map is an injective continuous function that is a homeomorphism onto its image. (You will probably want to use the Fundamental Theorem of Topology; please be thorough and careful.)   "
+},
+{
+  "id": "homework-8-3-4",
+  "level": "2",
+  "url": "homework-8.html#homework-8-3-4",
+  "type": "Worksheet Exercise",
+  "number": "3.7.4",
+  "title": "",
+  "body": "  For , let be given by . Define Prove or disprove: is compact in the compact-open topology.   "
 }
 ]
 

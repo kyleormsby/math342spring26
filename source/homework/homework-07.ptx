@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<worksheet>
+  <title>Homework 07</title>
+  <introduction>
+    <p>
+      <alert>Instructions:</alert> Complete all the exercises below and submit your work via
+      <url href="https://www.gradescope.com/courses/1238540">Gradescope</url> by Monday April 13 at 10pm.
+    </p>
+  </introduction>
+
+  <page>
+    <exercise>
+      <statement>
+        <p>
+          Does mathematics contribute to human flourishing? State your opinion and explain why you
+          hold it. (One-to-three paragraphs expected, but feel free to write more.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>X</m> be a space and let <m>Y</m> be a space that separates points. Show that the
+          compact-open topology on <m>\mathsf{Top}(X,Y)</m> separates points.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>\mathbb{R}^{n\times n}</m> denote the space of <m>n\times n</m> real matrices, which
+          is naturally identified with the Euclidean space <m>\mathbb{R}^{n^2}</m>. Write
+          <m>\mathrm{O}(n)\subseteq\mathbb{R}^{n\times n}</m> for the subspace of orthogonal matrices.
+          Consider the function
+          <m>\mathbb{R}^n\times\mathbb{R}^{n\times n}\to\mathbb{R}^n</m>,
+          <m>(x,A)\mapsto Ax</m>. Prove that the restriction of this map to
+          <m>\mathbb{R}^n\times\mathrm{O}(n)\to\mathbb{R}^n</m> induces an embedding
+          <m>\mathrm{O}(n)\hookrightarrow\mathsf{Top}(\mathbb{R}^n,\mathbb{R}^n)</m>, <ie />, show
+          that the curried map <m>\mathrm{O}(n)\to\mathsf{Top}(\mathbb{R}^n,\mathbb{R}^n)</m> is an
+          injective continuous function that is a homeomorphism onto its image. (You will probably want
+          to use the Fundamental Theorem of Topology; please be thorough and careful.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          For <m>a\ne 0</m>, let <m>f_a\colon [0,1]\to\mathbb{R}</m> be given by
+          <m>f_a(x) := 1 - \frac{x}{a}</m>. Define
+          <md>
+            \mathscr{F} := \{f_a\mid 0\lt a\le 1\}\subseteq\mathsf{Top}([0,1],\mathbb{R}).
+          </md>
+          Prove or disprove: <m>\mathscr{F}</m> is compact in the compact-open topology.
+        </p>
+      </statement>
+    </exercise>
+  </page>
+</worksheet>

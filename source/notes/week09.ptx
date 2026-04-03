@@ -220,6 +220,69 @@
       </theorem>
     </subsubsection>
 
+    <subsubsection xml:id="subsubsec-metrics-function-spaces">
+      <title>Metrics on function spaces</title>
+      <p>
+        When the target space <m>(Y,d)</m> is a metric space, one can define several natural topologies
+        on the set <m>\mathsf{Top}(X,Y)</m> via metrics or pseudometrics. For a subset
+        <m>A\subseteq X</m>, a map <m>f\colon X\to Y</m>, and <m>\varepsilon\gt 0</m>, write
+        <md>
+          \mathrm{B}_\varepsilon^A(f) := \{g\in\mathsf{Top}(X,Y)\mid \sup_{x\in A}d(f(x),g(x))\lt\varepsilon\}
+        </md>
+        for the <m>\varepsilon</m>-ball about <m>f</m> measured on <m>A</m>. Varying <m>A</m> yields
+        three topologies on <m>\mathsf{Top}(X,Y)</m>.
+      </p>
+      <p>
+        <ol>
+          <li>
+            <p>
+              <term>Pointwise convergence.</term> Take <m>A = \{x\}</m> for each <m>x\in X</m>. The
+              resulting topology <m>\tau_{\mathrm{pw}}</m> on <m>\mathsf{Top}(X,Y)</m> coincides with
+              the subspace topology from the product <m>Y^X = \prod_{x\in X}Y</m>. A sequence
+              <m>(f_n)</m> converges to <m>f</m> in this topology if and only if <m>f_n(x)\to f(x)</m>
+              for each <m>x\in X</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>Compact convergence.</term> Take <m>A = K</m> for each compact <m>K\subseteq X</m>.
+              The resulting topology <m>\tau_{\mathrm{cpt}}</m> is coarser than the uniform topology
+              and finer than the pointwise topology. A sequence <m>(f_n)</m> converges to <m>f</m> if
+              and only if <m>(f_n|_K)</m> converges uniformly to <m>f|_K</m> for every compact
+              <m>K\subseteq X</m>. When <m>Y</m> is a metric space, the compact convergence topology on
+              <m>\mathsf{Top}(X,Y)</m> agrees with the compact-open topology.
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>Uniform convergence.</term> Take <m>A = X</m>. When <m>X</m> is compact, this
+              agrees with the compact convergence topology (since <m>X</m> itself is compact). In
+              general, the uniform topology is finer: it requires convergence to be uniform over all of
+              <m>X</m> simultaneously. When <m>X</m> is compact, the <term>sup metric</term>
+              <m>d_\infty(f,g) := \sup_{x\in X}d(f(x),g(x))</m> defines the topology, and
+              <m>(\mathsf{Top}(X,Y),d_\infty)</m> is a metric space.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Summarizing: there is a chain of inclusions among topologies on <m>\mathsf{Top}(X,Y)</m>,
+        <md>
+          \tau_{\mathrm{pw}}\subseteq\tau_{\mathrm{cpt}}\subseteq\tau_{\mathrm{unif}},
+        </md>
+        and when <m>X</m> is compact, the latter two coincide. We omit the (straightforward but
+        somewhat technical) proofs that the compact convergence and compact-open topologies agree; see
+        Section 11.5 of the graduate notes for details. An important consequence of this agreement is
+        that a classical theorem — the uniform limit of continuous functions is continuous — can be
+        reinterpreted as saying that <m>\mathsf{Top}(X,Y)</m> is a closed subspace of the space of
+        all maps <m>X\to Y</m> in the compact convergence topology.
+      </p>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Friday</title>
+
     <subsubsection xml:id="subsubsec-product-via-compact-open">
       <title>The product topology via mapping spaces</title>
       <p>
@@ -365,76 +428,119 @@
       </corollary>
     </subsubsection>
 
-    <subsubsection xml:id="subsubsec-metrics-function-spaces">
-      <title>Metrics on function spaces</title>
+    <subsubsection xml:id="subsubsec-local-compactness">
+      <title>Local compactness</title>
       <p>
-        When the target space <m>(Y,d)</m> is a metric space, one can define several natural topologies
-        on the set <m>\mathsf{Top}(X,Y)</m> via metrics or pseudometrics. For a subset
-        <m>A\subseteq X</m>, a map <m>f\colon X\to Y</m>, and <m>\varepsilon\gt 0</m>, write
-        <md>
-          \mathrm{B}_\varepsilon^A(f) := \{g\in\mathsf{Top}(X,Y)\mid \sup_{x\in A}d(f(x),g(x))\lt\varepsilon\}
-        </md>
-        for the <m>\varepsilon</m>-ball about <m>f</m> measured on <m>A</m>. Varying <m>A</m> yields
-        three topologies on <m>\mathsf{Top}(X,Y)</m>.
+        On Wednesday we showed that the compact-open topology is always splitting. The question remains:
+        when is it conjoining? The answer hinges on a topological property called <term>local
+        compactness</term>. Before stating the main theorem, let us introduce this condition and
+        develop some intuition for it.
       </p>
+      <definition xml:id="def-locally-compact">
+        <title>Locally compact space</title>
+        <statement>
+          <p>
+            A topological space <m>X</m> is <term>locally compact</term> if for every point
+            <m>x\in X</m> and every open neighborhood <m>U</m> of <m>x</m>, there exists a compact
+            subspace <m>K\subseteq X</m> such that
+            <md>
+              x\in\mathrm{Int}(K)\subseteq K\subseteq U.
+            </md>
+            In other words, every point has a neighborhood basis of compact sets.
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <statement>
+          <p>
+            Some authors use a weaker definition, requiring only that every point has <em>some</em>
+            compact neighborhood. For Hausdorff spaces the two definitions are equivalent, and all
+            of our applications will be in the Hausdorff setting.
+          </p>
+        </statement>
+      </remark>
+      <example xml:id="eg-locally-compact-spaces">
+        <title>Locally compact spaces</title>
+        <statement>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  <term>Euclidean spaces.</term> <m>\mathbb{R}^n</m> is locally compact: given
+                  <m>x\in U\subseteq\mathbb{R}^n</m> with <m>U</m> open, choose <m>\varepsilon\gt 0</m>
+                  so that the open ball <m>B_\varepsilon(x)\subseteq U</m>, and take <m>K</m> to be
+                  the closed ball <m>\overline{B}_{\varepsilon/2}(x)</m>, which is compact by the
+                  Heine-Borel theorem.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Compact spaces.</term> Every compact space is locally compact: take
+                  <m>K = X</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Discrete spaces.</term> Every discrete space is locally compact: the singleton
+                  <m>\{x\}</m> is a compact (indeed finite) neighborhood of <m>x</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Open subsets of locally compact Hausdorff spaces.</term> If <m>X</m> is
+                  locally compact Hausdorff and <m>V\subseteq X</m> is open, then <m>V</m> is locally
+                  compact in the subspace topology.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Manifolds.</term> Every topological manifold is locally compact, since each
+                  point has a neighborhood homeomorphic to an open subset of <m>\mathbb{R}^n</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </example>
+      <example xml:id="eg-not-locally-compact">
+        <title>Spaces that are not locally compact</title>
+        <statement>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  <term>The rational numbers</term> <m>\mathbb{Q}</m> with the subspace topology inherited
+                  from <m>\mathbb{R}</m> are not locally compact. Indeed, a compact subset of
+                  <m>\mathbb{Q}</m> has empty interior in <m>\mathbb{Q}</m> (since every open interval
+                  in <m>\mathbb{Q}</m> is homeomorphic to <m>\mathbb{Q}</m>, which is not compact), so
+                  no point has a compact neighborhood with nonempty interior.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Infinite-dimensional spaces.</term> The space
+                  <m>\mathbb{R}^\infty = \bigcup_{n\ge 0}\mathbb{R}^n</m> (with the colimit topology) is
+                  not locally compact. Similarly, the Hilbert space <m>\ell^2</m> is not locally compact:
+                  the closed unit ball is not compact, and more generally no point has a compact
+                  neighborhood.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </example>
       <p>
-        <ol>
-          <li>
-            <p>
-              <term>Pointwise convergence.</term> Take <m>A = \{x\}</m> for each <m>x\in X</m>. The
-              resulting topology <m>\tau_{\mathrm{pw}}</m> on <m>\mathsf{Top}(X,Y)</m> coincides with
-              the subspace topology from the product <m>Y^X = \prod_{x\in X}Y</m>. A sequence
-              <m>(f_n)</m> converges to <m>f</m> in this topology if and only if <m>f_n(x)\to f(x)</m>
-              for each <m>x\in X</m>.
-            </p>
-          </li>
-          <li>
-            <p>
-              <term>Compact convergence.</term> Take <m>A = K</m> for each compact <m>K\subseteq X</m>.
-              The resulting topology <m>\tau_{\mathrm{cpt}}</m> is coarser than the uniform topology
-              and finer than the pointwise topology. A sequence <m>(f_n)</m> converges to <m>f</m> if
-              and only if <m>(f_n|_K)</m> converges uniformly to <m>f|_K</m> for every compact
-              <m>K\subseteq X</m>. When <m>Y</m> is a metric space, the compact convergence topology on
-              <m>\mathsf{Top}(X,Y)</m> agrees with the compact-open topology.
-            </p>
-          </li>
-          <li>
-            <p>
-              <term>Uniform convergence.</term> Take <m>A = X</m>. When <m>X</m> is compact, this
-              agrees with the compact convergence topology (since <m>X</m> itself is compact). In
-              general, the uniform topology is finer: it requires convergence to be uniform over all of
-              <m>X</m> simultaneously. When <m>X</m> is compact, the <term>sup metric</term>
-              <m>d_\infty(f,g) := \sup_{x\in X}d(f(x),g(x))</m> defines the topology, and
-              <m>(\mathsf{Top}(X,Y),d_\infty)</m> is a metric space.
-            </p>
-          </li>
-        </ol>
-      </p>
-      <p>
-        Summarizing: there is a chain of inclusions among topologies on <m>\mathsf{Top}(X,Y)</m>,
-        <md>
-          \tau_{\mathrm{pw}}\subseteq\tau_{\mathrm{cpt}}\subseteq\tau_{\mathrm{unif}},
-        </md>
-        and when <m>X</m> is compact, the latter two coincide. We omit the (straightforward but
-        somewhat technical) proofs that the compact convergence and compact-open topologies agree; see
-        Section 11.5 of the graduate notes for details. An important consequence of this agreement is
-        that a classical theorem — the uniform limit of continuous functions is continuous — can be
-        reinterpreted as saying that <m>\mathsf{Top}(X,Y)</m> is a closed subspace of the space of
-        all maps <m>X\to Y</m> in the compact convergence topology.
+        With local compactness in hand, we can now state and prove the key result: the compact-open
+        topology is conjoining — and therefore exponential — whenever the domain is locally compact.
       </p>
     </subsubsection>
-  </subsection>
-
-  <subsection>
-    <title>Friday</title>
 
     <subsubsection xml:id="subsubsec-evaluation-continuous">
       <title>Continuity of evaluation and the exponential adjunction</title>
       <p>
-        On Wednesday we saw that the compact-open topology is always splitting. The question remains:
-        when is it conjoining? By <xref ref="lem-conjoining-iff-eval" />, this is equivalent to asking
-        when the evaluation map <m>\mathrm{ev}\colon X\times Y^X\to Y</m> is continuous. The answer
-        involves a familiar condition on <m>X</m>.
+        By <xref ref="lem-conjoining-iff-eval" />, the compact-open topology is conjoining if and only
+        if the evaluation map <m>\mathrm{ev}\colon X\times Y^X\to Y</m> is continuous. We now show
+        that local compactness of the domain is exactly the right condition.
       </p>
       <lemma xml:id="lem-eval-continuous-lc">
         <title>Continuity of the evaluation map</title>
@@ -491,21 +597,6 @@
           </p>
         </proof>
       </theorem>
-      <remark>
-        <statement>
-          <p>
-            The unit of the adjunction <m>X\times(-)\dashv(-)^X</m> is the <term>coevaluation</term>
-            map
-            <md>
-              \mathrm{coev}\colon Z\longrightarrow (Y^X)^Z,\qquad z\longmapsto (f\mapsto f(z))?
-            </md>
-            Wait — that doesn't quite parse! In fact, the unit at <m>Z</m> is a map
-            <m>\eta_Z\colon Z\to (X\times Z)^X</m> given by <m>\eta_Z(z) = (x\mapsto (x,z))</m>. The
-            counit is the evaluation map <m>\varepsilon_Y\colon X\times Y^X\to Y</m>. Verify the
-            triangle identities as an exercise!
-          </p>
-        </statement>
-      </remark>
     </subsubsection>
 
     <subsubsection xml:id="subsubsec-currying-applications">

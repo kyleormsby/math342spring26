@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Week 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Topology">
+<meta property="book:author" content="Kyle Ormsby">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.13.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.56158f4758afd49f.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.46363294e9238f09.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.b12a7b3f0773ebcd.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner"><div class="title-container">
+<h1 class="heading"><a href="root-1-2.html"><span class="title">Topology</span> <span class="subtitle">MATH 342 Spring 2026</span></a></h1>
+<p class="byline">Kyle Ormsby</p>
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="embed-button" class="embed-button button" title="Embed this page"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe86f;</span><span class="name">Embed</span></button><div class="embed-popup hidden" id="embed-popup">
+<p>Copy the code below to embed this page in your own website or LMS page.</p>
+<div class="embed-code-container">
+<textarea class="embed-code-textbox" id="embed-code-textbox" readonly aria-label="textbox"><iframe src="https://example.com/embed" width="100%" height="1000"></iframe></textarea><button class="copy-embed-button button" id="copy-embed-button" title="Copy embed code"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe14d;</span><span class="name">Copy</span></button>
+</div>
+</div>
+<button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="notes-week-09.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="course-notes.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="homework.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="course-documents.html" class="internal"><span class="codenumber">1</span> <span class="title">Course Documents</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section">
+<div class="toc-title-box"><a href="syllabus.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Syllabus</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="syllabus.html#sec-course-info" class="internal"><span class="title">Course Information</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="course-notes.html" class="internal"><span class="codenumber">2</span> <span class="title">Course Notes</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-01.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Week 1</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-Monday" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-arena" class="internal"><span class="title">Welcome to the Generous Arena</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-define-top" class="internal"><span class="title">So what is a topology?</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-examples-top" class="internal"><span class="title">Examples of topologies</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-3-2" class="internal"><span class="title">Continuity</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-top-properties" class="internal"><span class="title">Topological properties</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-building-cts" class="internal"><span class="title">Building continuous functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-4" class="internal"><span class="title">Friday</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-02.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Week 2</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-2-2" class="internal"><span class="title">Topology from the categorical viewpoint</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#sec-categories" class="internal"><span class="title">Categories</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-functors" class="internal"><span class="title">Functors</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-more-functors" class="internal"><span class="title">More on functors</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-new-from-old" class="internal"><span class="title">New topologies from old</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-subspace" class="internal"><span class="title">The subspace topology</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-quotient" class="internal"><span class="title">The quotient topology</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-03.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Week 3</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-03.html#notes-week-03-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-03.html#subsubsec-real-projective" class="internal"><span class="title">Real projective space</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-03.html#subsubsec-pushout" class="internal"><span class="title">Pushouts</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-03.html#notes-week-03-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-03.html#subsubsec-pushout-in-top" class="internal"><span class="title">Pushouts in Top</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-03.html#subsubsec-product" class="internal"><span class="title">Categorical products and the product topology</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-03.html#notes-week-03-4" class="internal"><span class="title">Friday</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-04.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Week 4</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-04.html#notes-week-04-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-hausdorff" class="internal"><span class="title">Separation of points</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-04.html#notes-week-04-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-limit-points" class="internal"><span class="title">Closure and limit points</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-more-sequences" class="internal"><span class="title">Sequences and limits</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-seq-cts" class="internal"><span class="title">Sequences, closure, and continuity</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-04.html#notes-week-04-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-compact" class="internal"><span class="title">A first glimpse of compactness</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-05.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Week 5</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-05.html#notes-week-05-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-topological-induction" class="internal"><span class="title">Compactness via topological induction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-inheritance-compactness" class="internal"><span class="title">Inheritance of compactness</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-05.html#notes-week-05-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-sep-disjoint-compact" class="internal"><span class="title">Separation of disjoint compact subspaces</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-05.html#notes-week-05-4" class="internal"><span class="title">Friday</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-06.html" class="internal"><span class="codenumber">2.6</span> <span class="title">Week 6</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-06.html#notes-week-06-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-fund-thm-of-top" class="internal"><span class="title">The fundamental theorem of topology</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-hausdorff-quotient" class="internal"><span class="title">When do quotients separate points?</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-06.html#notes-week-06-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-connectedness" class="internal"><span class="title">Connectedness</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-path-connected" class="internal"><span class="title">Paths and path connectedness</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-06.html#notes-week-06-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-closed-interval-connected" class="internal"><span class="title">Closed intervals are connected</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-pc-implies-c" class="internal"><span class="title">Path-connected implies connected</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-inheritance-of-connectedness" class="internal"><span class="title">Inheritance of connectedness</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-07.html" class="internal"><span class="codenumber">2.7</span> <span class="title">Week 7</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-07.html#notes-week-07-2" class="internal"><span class="title">Monday</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-07.html#notes-week-07-3" class="internal"><span class="title">Wednesday</span></a></div></li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-07.html#notes-week-07-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-07.html#subsubsec-connected-components" class="internal"><span class="title">Connected components</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-07.html#subsubsec-path-components" class="internal"><span class="title">Path-components and <span class="process-math">\(\pi_0\)</span></span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-08.html" class="internal"><span class="codenumber">2.8</span> <span class="title">Week 8</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-comparing-components" class="internal"><span class="title">Comparing connected and path-components</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-local-connectedness" class="internal"><span class="title">Local connectedness</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-natural-trans" class="internal"><span class="title">Natural transformations</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-adjunctions" class="internal"><span class="title">Adjunctions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-unit-and-counit" class="internal"><span class="title">Units and counits of adjunctions</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-adjoints-Top-Set" class="internal"><span class="title">Adjoints to the forgetful functor from spaces to sets</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-stone-cech" class="internal"><span class="title">Stone-Čech compactification</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-09.html" class="internal"><span class="codenumber">2.9</span> <span class="title">Week 9</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-09.html#notes-week-09-2" class="internal"><span class="title">Monday</span></a></div></li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-09.html#notes-week-09-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-motivation-mapping-spaces" class="internal"><span class="title">Motivation: topologies on function spaces</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-splitting-conjoining" class="internal"><span class="title">Splitting and conjoining topologies</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-compact-open-topology" class="internal"><span class="title">The compact-open topology</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-metrics-function-spaces" class="internal"><span class="title">Metrics on function spaces</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-09.html#notes-week-09-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-product-via-compact-open" class="internal"><span class="title">The product topology via mapping spaces</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-local-compactness" class="internal"><span class="title">Local compactness</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-evaluation-continuous" class="internal"><span class="title">Continuity of evaluation and the exponential adjunction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-currying-applications" class="internal"><span class="title">Applications of the exponential adjunction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-limitations" class="internal"><span class="title">Limitations and the role of local compactness</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-stone-cech-construction" class="internal"><span class="title">Application: Stone-Čech compactification via mapping spaces</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="notes-week-10.html" class="internal"><span class="codenumber">2.10</span> <span class="title">Week 10</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-10.html#notes-week-10-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-homotopy-of-maps" class="internal"><span class="title">Homotopy of maps</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-homotopy-equivalence" class="internal"><span class="title">Homotopy equivalence</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-deformation-retracts" class="internal"><span class="title">Deformation retracts</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-homotopy-invariants" class="internal"><span class="title">Homotopy invariants</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-10.html#notes-week-10-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-cell-attachment" class="internal"><span class="title">Cell attachment via pushouts</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-cw-complexes" class="internal"><span class="title">CW complexes</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-cw-examples" class="internal"><span class="title">Examples of CW structures</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-subcomplexes-quotients" class="internal"><span class="title">Subcomplexes and quotients</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-10.html#notes-week-10-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-homotopy-extension" class="internal"><span class="title">The homotopy extension property</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-cellular-maps" class="internal"><span class="title">Cellular maps</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-suspension-and-cones" class="internal"><span class="title">Suspensions and cones</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-looking-ahead" class="internal"><span class="title">Looking ahead: from spaces to algebra</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="homework.html" class="internal"><span class="codenumber">3</span> <span class="title">Homework</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-2.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Homework 01</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-3.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Homework 02</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-4.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Homework 03</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-5.html" class="internal"><span class="codenumber">3.4</span> <span class="title">Homework 04</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-6.html" class="internal"><span class="codenumber">3.5</span> <span class="title">Homework 05</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-7.html" class="internal"><span class="codenumber">3.6</span> <span class="title">Homework 06</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-8.html" class="internal"><span class="codenumber">3.7</span> <span class="title">Homework 07</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="notes-week-10"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Week 10</span>
+</h2>
+<section class="subsection" id="notes-week-10-2"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Monday</span>
+</h3>
+<div class="para" id="notes-week-10-2-2">We now transition from point-set topology to algebraic topology. The central idea is to study topological spaces not just up to homeomorphism, but up to a coarser equivalence relation — <dfn class="terminology">homotopy equivalence</dfn> — that retains enough geometric information for many applications while being far more flexible. The compact-open topology from last week provides a conceptual bridge: since the compact-open topology is always splitting, a homotopy (a continuous map <span class="process-math">\(X\times[0,1]\to Y\)</span>) curries to a path in the mapping space <span class="process-math">\(Y^X\text{.}\)</span> When <span class="process-math">\(X\)</span> is locally compact, the exponential adjunction <span class="process-math">\(X\times(-)\dashv(-)^X\)</span> makes this a perfect correspondence.<div class="autopermalink" data-description="Paragraph"><a href="#notes-week-10-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsubsection" id="subsubsec-homotopy-of-maps"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homotopy of maps</span>
+</h4>
+<article class="definition definition-like" id="def-homotopy"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homotopy.</span>
+</h5>
+<div class="para logical" id="def-homotopy-2-1">
+<div class="para">Let <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> be topological spaces and let <span class="process-math">\(f_0,f_1\colon X\to Y\)</span> be continuous maps. A <dfn class="terminology">homotopy</dfn> from <span class="process-math">\(f_0\)</span> to <span class="process-math">\(f_1\)</span> is a continuous map</div>
+<div class="displaymath process-math" id="def-homotopy-2-1-7">
+\begin{equation*}
+h\colon X\times[0,1]\longrightarrow Y
+\end{equation*}
+</div>
+<div class="para">such that <span class="process-math">\(h(x,0)=f_0(x)\)</span> and <span class="process-math">\(h(x,1)=f_1(x)\)</span> for all <span class="process-math">\(x\in X\text{.}\)</span> When such a homotopy exists, we say <span class="process-math">\(f_0\)</span> and <span class="process-math">\(f_1\)</span> are <dfn class="terminology">homotopic</dfn> and write <span class="process-math">\(f_0\simeq f_1\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-homotopy-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.1: Homotopy"><a href="#def-homotopy" title="Copy heading and permalink for Definition 2.10.1: Homotopy" aria-label="Copy heading and permalink for Definition 2.10.1: Homotopy">🔗</a></div></article><div class="para" id="subsubsec-homotopy-of-maps-3">A homotopy is a continuous one-parameter family of maps: at time <span class="process-math">\(t=0\)</span> we have <span class="process-math">\(f_0\text{,}\)</span> at time <span class="process-math">\(t=1\)</span> we have <span class="process-math">\(f_1\text{,}\)</span> and the map varies continuously in between. Using the compact-open topology, we can connect homotopies to paths in the mapping space <span class="process-math">\(Y^X\text{.}\)</span> Since the compact-open topology is always splitting, a homotopy <span class="process-math">\(h\colon X\times[0,1]\to Y\)</span> curries to a continuous path <span class="process-math">\(\hat{h}\colon[0,1]\to Y^X\)</span> with <span class="process-math">\(\hat{h}(0)=f_0\)</span> and <span class="process-math">\(\hat{h}(1)=f_1\text{.}\)</span> Conversely, if <span class="process-math">\(X\)</span> is locally compact, then the compact-open topology is also conjoining, and every path in <span class="process-math">\(Y^X\)</span> uncurries to a homotopy. For general <span class="process-math">\(X\text{,}\)</span> however, the converse may fail: there can be paths in <span class="process-math">\(Y^X\)</span> that do not correspond to homotopies.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-of-maps-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="remark remark-like" id="subsubsec-homotopy-of-maps-4"><h5 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="subsubsec-homotopy-of-maps-4-1-1">It is sometimes important to require a homotopy to fix a subspace. If <span class="process-math">\(A\subseteq X\)</span> and <span class="process-math">\(f_0|_A = f_1|_A\text{,}\)</span> a <dfn class="terminology">homotopy relative to <span class="process-math">\(A\)</span></dfn> (or <dfn class="terminology">homotopy rel <span class="process-math">\(A\)</span></dfn>) is a homotopy <span class="process-math">\(h\)</span> such that <span class="process-math">\(h(a,t)=f_0(a)\)</span> for all <span class="process-math">\(a\in A\)</span> and all <span class="process-math">\(t\in[0,1]\text{.}\)</span> We write <span class="process-math">\(f_0\simeq f_1\;\mathrm{rel}\;A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-of-maps-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 2.10.2"><a href="#subsubsec-homotopy-of-maps-4" title="Copy heading and permalink for Remark 2.10.2" aria-label="Copy heading and permalink for Remark 2.10.2">🔗</a></div></article><article class="lemma theorem-like" id="lem-homotopy-equiv-rel"><h5 class="heading">
+<span class="type">Lemma</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homotopy is an equivalence relation.</span>
+</h5>
+<div class="para" id="lem-homotopy-equiv-rel-2-1">For any spaces <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\text{,}\)</span> the homotopy relation <span class="process-math">\(\simeq\)</span> is an equivalence relation on <span class="process-math">\(\mathsf{Top}(X,Y)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-homotopy-equiv-rel-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Lemma 2.10.3: Homotopy is an equivalence relation"><a href="#lem-homotopy-equiv-rel" title="Copy heading and permalink for Lemma 2.10.3: Homotopy is an equivalence relation" aria-label="Copy heading and permalink for Lemma 2.10.3: Homotopy is an equivalence relation">🔗</a></div></article><details id="lem-homotopy-equiv-rel-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="lem-homotopy-equiv-rel-3-1">
+<em class="emphasis">Reflexivity.</em> The constant homotopy <span class="process-math">\(h(x,t)=f(x)\)</span> shows <span class="process-math">\(f\simeq f\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-homotopy-equiv-rel-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="lem-homotopy-equiv-rel-3-2">
+<em class="emphasis">Symmetry.</em> If <span class="process-math">\(h\)</span> is a homotopy from <span class="process-math">\(f_0\)</span> to <span class="process-math">\(f_1\text{,}\)</span> then <span class="process-math">\(\bar{h}(x,t):=h(x,1-t)\)</span> is a homotopy from <span class="process-math">\(f_1\)</span> to <span class="process-math">\(f_0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-homotopy-equiv-rel-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="lem-homotopy-equiv-rel-3-3">
+<div class="para">
+<em class="emphasis">Transitivity.</em> If <span class="process-math">\(h\)</span> is a homotopy from <span class="process-math">\(f_0\)</span> to <span class="process-math">\(f_1\)</span> and <span class="process-math">\(h'\)</span> is a homotopy from <span class="process-math">\(f_1\)</span> to <span class="process-math">\(f_2\text{,}\)</span> then</div>
+<div class="displaymath process-math" id="lem-homotopy-equiv-rel-3-3-8">
+\begin{equation*}
+h''(x,t) := \begin{cases} h(x,2t) \amp \text{if } 0\le t\le\tfrac{1}{2},\\
+h'(x,2t-1) \amp \text{if } \tfrac{1}{2}\le t\le 1, \end{cases}
+\end{equation*}
+</div>
+<div class="para">is a homotopy from <span class="process-math">\(f_0\)</span> to <span class="process-math">\(f_2\text{.}\)</span> This is continuous by the gluing lemma (the two definitions agree at <span class="process-math">\(t=\tfrac{1}{2}\)</span> since <span class="process-math">\(h(x,1)=f_1(x)=h'(x,0)\)</span>).</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-homotopy-equiv-rel-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.3.1"><a href="#lem-homotopy-equiv-rel-3" title="Copy heading and permalink for Proof 2.10.3.1" aria-label="Copy heading and permalink for Proof 2.10.3.1">🔗</a></div></article></details><div class="para" id="subsubsec-homotopy-of-maps-6">The set of homotopy classes <span class="process-math">\([X,Y]:=\mathsf{Top}(X,Y)/{\simeq}\)</span> is one of the fundamental objects of algebraic topology. Homotopy is also compatible with composition.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-of-maps-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="lemma theorem-like" id="lem-homotopy-composition"><h5 class="heading">
+<span class="type">Lemma</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Composition respects homotopy.</span>
+</h5>
+<div class="para" id="lem-homotopy-composition-2-1">If <span class="process-math">\(f_0\simeq f_1\colon X\to Y\)</span> and <span class="process-math">\(g_0\simeq g_1\colon Y\to Z\text{,}\)</span> then <span class="process-math">\(g_0\circ f_0\simeq g_1\circ f_1\colon X\to Z\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-homotopy-composition-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Lemma 2.10.4: Composition respects homotopy"><a href="#lem-homotopy-composition" title="Copy heading and permalink for Lemma 2.10.4: Composition respects homotopy" aria-label="Copy heading and permalink for Lemma 2.10.4: Composition respects homotopy">🔗</a></div></article><details id="lem-homotopy-composition-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="lem-homotopy-composition-3-1">Let <span class="process-math">\(h\)</span> be a homotopy from <span class="process-math">\(f_0\)</span> to <span class="process-math">\(f_1\text{.}\)</span> Then <span class="process-math">\(g_0\circ h\)</span> is a homotopy from <span class="process-math">\(g_0\circ f_0\)</span> to <span class="process-math">\(g_0\circ f_1\text{.}\)</span> Now let <span class="process-math">\(h'\)</span> be a homotopy from <span class="process-math">\(g_0\)</span> to <span class="process-math">\(g_1\text{.}\)</span> The map <span class="process-math">\((x,t)\mapsto h'(f_1(x),t)\)</span> is a homotopy from <span class="process-math">\(g_0\circ f_1\)</span> to <span class="process-math">\(g_1\circ f_1\text{.}\)</span> Composing these two homotopies by transitivity gives <span class="process-math">\(g_0\circ f_0\simeq g_1\circ f_1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-homotopy-composition-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.4.1"><a href="#lem-homotopy-composition-3" title="Copy heading and permalink for Proof 2.10.4.1" aria-label="Copy heading and permalink for Proof 2.10.4.1">🔗</a></div></article></details><article class="remark remark-like" id="subsubsec-homotopy-of-maps-8"><h5 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="subsubsec-homotopy-of-maps-8-1-1">These two lemmas together say that there is a well-defined <dfn class="terminology">homotopy category</dfn> <span class="process-math">\(\mathsf{hTop}\)</span> whose objects are topological spaces and whose morphisms are homotopy classes of continuous maps. This is the natural home for algebraic topology.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-of-maps-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 2.10.5"><a href="#subsubsec-homotopy-of-maps-8" title="Copy heading and permalink for Remark 2.10.5" aria-label="Copy heading and permalink for Remark 2.10.5">🔗</a></div></article><details id="eg-homotopy-basic" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">First examples of homotopies.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-homotopy-basic-2-1">
+<ol class="decimal" id="eg-homotopy-basic-2-1-1">
+<li id="eg-homotopy-basic-2-1-1-1">
+<div class="para" id="eg-homotopy-basic-2-1-1-1-1">
+<dfn class="terminology">Straight-line homotopy.</dfn> Let <span class="process-math">\(f_0,f_1\colon X\to\mathbb{R}^n\)</span> be continuous. Then <span class="process-math">\(h(x,t):=(1-t)f_0(x)+tf_1(x)\)</span> is a homotopy from <span class="process-math">\(f_0\)</span> to <span class="process-math">\(f_1\text{.}\)</span> In particular, any two maps into <span class="process-math">\(\mathbb{R}^n\)</span> are homotopic.<div class="autopermalink" data-description="Paragraph"><a href="#eg-homotopy-basic-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg-homotopy-basic-2-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="eg-homotopy-basic-2-1-1-2">
+<div class="para" id="eg-homotopy-basic-2-1-1-2-1">
+<dfn class="terminology">Nullhomotopic maps.</dfn> A continuous map <span class="process-math">\(f\colon X\to Y\)</span> is <dfn class="terminology">nullhomotopic</dfn> if it is homotopic to a constant map. Every map into <span class="process-math">\(\mathbb{R}^n\)</span> is nullhomotopic.<div class="autopermalink" data-description="Paragraph"><a href="#eg-homotopy-basic-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg-homotopy-basic-2-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="eg-homotopy-basic-2-1-1-3">
+<div class="para" id="eg-homotopy-basic-2-1-1-3-1">
+<dfn class="terminology">Maps out of <span class="process-math">\(\mathbb{R}^n\text{.}\)</span></dfn> The identity map <span class="process-math">\(\mathrm{id}_{\mathbb{R}^n}\)</span> is homotopic to the constant map at the origin via <span class="process-math">\(h(x,t)=(1-t)x\text{.}\)</span> This is a homotopy that "contracts" all of <span class="process-math">\(\mathbb{R}^n\)</span> to the origin.<div class="autopermalink" data-description="Paragraph"><a href="#eg-homotopy-basic-2-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#eg-homotopy-basic-2-1-1-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-homotopy-basic-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.6: First examples of homotopies"><a href="#eg-homotopy-basic" title="Copy heading and permalink for Example 2.10.6: First examples of homotopies" aria-label="Copy heading and permalink for Example 2.10.6: First examples of homotopies">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Homotopy of maps"><a href="#subsubsec-homotopy-of-maps" title="Copy heading and permalink for Subsubsection: Homotopy of maps" aria-label="Copy heading and permalink for Subsubsection: Homotopy of maps">🔗</a></div></section><section class="subsubsection" id="subsubsec-homotopy-equivalence"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homotopy equivalence</span>
+</h4>
+<article class="definition definition-like" id="def-homotopy-equivalence"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homotopy equivalence.</span>
+</h5>
+<div class="para" id="def-homotopy-equivalence-2-1">A continuous map <span class="process-math">\(f\colon X\to Y\)</span> is a <dfn class="terminology">homotopy equivalence</dfn> if there exists a continuous map <span class="process-math">\(g\colon Y\to X\)</span> such that <span class="process-math">\(g\circ f\simeq\mathrm{id}_X\)</span> and <span class="process-math">\(f\circ g\simeq\mathrm{id}_Y\text{.}\)</span> In this case we say <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> are <dfn class="terminology">homotopy equivalent</dfn> (or have the same <dfn class="terminology">homotopy type</dfn>) and write <span class="process-math">\(X\simeq Y\text{.}\)</span> The map <span class="process-math">\(g\)</span> is a <dfn class="terminology">homotopy inverse</dfn> of <span class="process-math">\(f\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-homotopy-equivalence-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.7: Homotopy equivalence"><a href="#def-homotopy-equivalence" title="Copy heading and permalink for Definition 2.10.7: Homotopy equivalence" aria-label="Copy heading and permalink for Definition 2.10.7: Homotopy equivalence">🔗</a></div></article><div class="para" id="subsubsec-homotopy-equivalence-3">Every homeomorphism is a homotopy equivalence, but the converse is far from true. Homotopy equivalence is a much coarser relation: it identifies spaces that have the "same shape" in a flexible sense, even if they are not topologically identical.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-equivalence-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-contractible"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Contractible space.</span>
+</h5>
+<div class="para" id="def-contractible-2-1">A space <span class="process-math">\(X\)</span> is <dfn class="terminology">contractible</dfn> if it is homotopy equivalent to a point, i.e., if the identity map <span class="process-math">\(\mathrm{id}_X\)</span> is nullhomotopic. Equivalently, <span class="process-math">\(X\)</span> is contractible if there exists a point <span class="process-math">\(x_0\in X\)</span> and a continuous map <span class="process-math">\(h\colon X\times[0,1]\to X\)</span> with <span class="process-math">\(h(x,0)=x\)</span> and <span class="process-math">\(h(x,1)=x_0\)</span> for all <span class="process-math">\(x\in X\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-contractible-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.8: Contractible space"><a href="#def-contractible" title="Copy heading and permalink for Definition 2.10.8: Contractible space" aria-label="Copy heading and permalink for Definition 2.10.8: Contractible space">🔗</a></div></article><details id="eg-contractible" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Contractible spaces.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-contractible-2-1">
+<ol class="decimal" id="eg-contractible-2-1-1">
+<li id="eg-contractible-2-1-1-1">
+<div class="para" id="eg-contractible-2-1-1-1-1">
+<span class="process-math">\(\mathbb{R}^n\)</span> is contractible: the map <span class="process-math">\(h(x,t)=(1-t)x\)</span> contracts it to the origin.<div class="autopermalink" data-description="Paragraph"><a href="#eg-contractible-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg-contractible-2-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="eg-contractible-2-1-1-2">
+<div class="para" id="eg-contractible-2-1-1-2-1">More generally, any <dfn class="terminology">convex</dfn> subset <span class="process-math">\(C\subseteq\mathbb{R}^n\)</span> is contractible. In particular, every disk <span class="process-math">\(D^n\)</span> is contractible.<div class="autopermalink" data-description="Paragraph"><a href="#eg-contractible-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg-contractible-2-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="eg-contractible-2-1-1-3">
+<div class="para" id="eg-contractible-2-1-1-3-1">Any <dfn class="terminology">star-shaped</dfn> subset of <span class="process-math">\(\mathbb{R}^n\)</span> is contractible.<div class="autopermalink" data-description="Paragraph"><a href="#eg-contractible-2-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#eg-contractible-2-1-1-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-contractible-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.9: Contractible spaces"><a href="#eg-contractible" title="Copy heading and permalink for Example 2.10.9: Contractible spaces" aria-label="Copy heading and permalink for Example 2.10.9: Contractible spaces">🔗</a></div></article></details><details id="eg-noncontractible" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Non-contractible spaces.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="eg-noncontractible-2-1">The spheres <span class="process-math">\(S^n\)</span> for <span class="process-math">\(n\ge 0\)</span> are not contractible (and in particular not homotopy equivalent to a point). The proof that <span class="process-math">\(S^1\)</span> is not contractible requires the fundamental group or homology; we will be able to prove this in two weeks. That <span class="process-math">\(S^0=\{-1,+1\}\)</span> is not contractible is immediate: it is disconnected, and contractible spaces are path-connected (hence connected).<div class="autopermalink" data-description="Paragraph"><a href="#eg-noncontractible-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.10: Non-contractible spaces"><a href="#eg-noncontractible" title="Copy heading and permalink for Example 2.10.10: Non-contractible spaces" aria-label="Copy heading and permalink for Example 2.10.10: Non-contractible spaces">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Homotopy equivalence"><a href="#subsubsec-homotopy-equivalence" title="Copy heading and permalink for Subsubsection: Homotopy equivalence" aria-label="Copy heading and permalink for Subsubsection: Homotopy equivalence">🔗</a></div></section><section class="subsubsection" id="subsubsec-deformation-retracts"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Deformation retracts</span>
+</h4>
+<div class="para" id="subsubsec-deformation-retracts-2">The most common way to prove two spaces are homotopy equivalent is to show that one <em class="emphasis">deformation retracts</em> onto the other.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-deformation-retracts-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-retract"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Retract and retraction.</span>
+</h5>
+<div class="para" id="def-retract-2-1">Let <span class="process-math">\(A\subseteq X\)</span> be a subspace. A <dfn class="terminology">retraction</dfn> of <span class="process-math">\(X\)</span> onto <span class="process-math">\(A\)</span> is a continuous map <span class="process-math">\(r\colon X\to A\)</span> such that <span class="process-math">\(r(a)=a\)</span> for all <span class="process-math">\(a\in A\text{,}\)</span> i.e., <span class="process-math">\(r\circ\iota=\mathrm{id}_A\)</span> where <span class="process-math">\(\iota\colon A\hookrightarrow X\)</span> is the inclusion. If such a map exists, we call <span class="process-math">\(A\)</span> a <dfn class="terminology">retract</dfn> of <span class="process-math">\(X\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-retract-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.11: Retract and retraction"><a href="#def-retract" title="Copy heading and permalink for Definition 2.10.11: Retract and retraction" aria-label="Copy heading and permalink for Definition 2.10.11: Retract and retraction">🔗</a></div></article><article class="definition definition-like" id="def-deformation-retract"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Deformation retract.</span>
+</h5>
+<div class="para" id="def-deformation-retract-2-1">A subspace <span class="process-math">\(A\subseteq X\)</span> is a <dfn class="terminology">deformation retract</dfn> of <span class="process-math">\(X\)</span> if there exists a continuous map <span class="process-math">\(h\colon X\times[0,1]\to X\)</span> such that<div class="autopermalink" data-description="Paragraph"><a href="#def-deformation-retract-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="def-deformation-retract-2-2">
+<ol class="decimal" id="def-deformation-retract-2-2-1">
+<li id="def-deformation-retract-2-2-1-1">
+<div class="para" id="def-deformation-retract-2-2-1-1-1">
+<span class="process-math">\(h(x,0)=x\)</span> for all <span class="process-math">\(x\in X\text{,}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-deformation-retract-2-2-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#def-deformation-retract-2-2-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="def-deformation-retract-2-2-1-2">
+<div class="para" id="def-deformation-retract-2-2-1-2-1">
+<span class="process-math">\(h(x,1)\in A\)</span> for all <span class="process-math">\(x\in X\text{,}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-deformation-retract-2-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#def-deformation-retract-2-2-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="def-deformation-retract-2-2-1-3">
+<div class="para" id="def-deformation-retract-2-2-1-3-1">
+<span class="process-math">\(h(a,t)=a\)</span> for all <span class="process-math">\(a\in A\)</span> and all <span class="process-math">\(t\in[0,1]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-deformation-retract-2-2-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#def-deformation-retract-2-2-1-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-deformation-retract-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="def-deformation-retract-2-3">Such a map <span class="process-math">\(h\)</span> is a <dfn class="terminology">deformation retraction</dfn>. If only conditions (1) and (2) hold — so that <span class="process-math">\(r:=h(-,1)\colon X\to A\)</span> is a retraction and <span class="process-math">\(\iota\circ r\simeq\mathrm{id}_X\text{,}\)</span> but the homotopy is not required to fix <span class="process-math">\(A\)</span> pointwise — we call <span class="process-math">\(A\)</span> a <dfn class="terminology">weak deformation retract</dfn>.<div class="autopermalink" data-description="Paragraph"><a href="#def-deformation-retract-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.12: Deformation retract"><a href="#def-deformation-retract" title="Copy heading and permalink for Definition 2.10.12: Deformation retract" aria-label="Copy heading and permalink for Definition 2.10.12: Deformation retract">🔗</a></div></article><article class="lemma theorem-like" id="lem-deformation-retract-htpy-equiv"><h5 class="heading">
+<span class="type">Lemma</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.13</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="lem-deformation-retract-htpy-equiv-1-1">If <span class="process-math">\(A\)</span> is a deformation retract of <span class="process-math">\(X\text{,}\)</span> then the inclusion <span class="process-math">\(\iota\colon A\hookrightarrow X\)</span> is a homotopy equivalence with homotopy inverse <span class="process-math">\(r=h(-,1)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-deformation-retract-htpy-equiv-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Lemma 2.10.13"><a href="#lem-deformation-retract-htpy-equiv" title="Copy heading and permalink for Lemma 2.10.13" aria-label="Copy heading and permalink for Lemma 2.10.13">🔗</a></div></article><details id="lem-deformation-retract-htpy-equiv-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="lem-deformation-retract-htpy-equiv-2-1">We have <span class="process-math">\(r\circ\iota=\mathrm{id}_A\)</span> (since <span class="process-math">\(r\)</span> is a retraction) and <span class="process-math">\(\iota\circ r\simeq\mathrm{id}_X\)</span> (via the deformation retraction <span class="process-math">\(h\)</span>).<div class="autopermalink" data-description="Paragraph"><a href="#lem-deformation-retract-htpy-equiv-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.13.1"><a href="#lem-deformation-retract-htpy-equiv-2" title="Copy heading and permalink for Proof 2.10.13.1" aria-label="Copy heading and permalink for Proof 2.10.13.1">🔗</a></div></article></details><details id="eg-deformation-retracts" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Deformation retracts.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-deformation-retracts-2-1">
+<ol class="decimal" id="eg-deformation-retracts-2-1-1">
+<li id="eg-deformation-retracts-2-1-1-1">
+<div class="para" id="eg-deformation-retracts-2-1-1-1-1">
+<dfn class="terminology">Punctured Euclidean space.</dfn> <span class="process-math">\(\mathbb{R}^n\smallsetminus\{0\}\)</span> deformation retracts onto <span class="process-math">\(S^{n-1}\)</span> via <span class="process-math">\(h(x,t)=(1-t)x+t\frac{x}{|x|}\text{.}\)</span> At <span class="process-math">\(t=0\)</span> this is the identity, and at <span class="process-math">\(t=1\)</span> this is the radial projection <span class="process-math">\(x\mapsto x/|x|\text{.}\)</span> Points already on <span class="process-math">\(S^{n-1}\)</span> are fixed throughout. Thus <span class="process-math">\(\mathbb{R}^n\smallsetminus\{0\}\simeq S^{n-1}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg-deformation-retracts-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg-deformation-retracts-2-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="eg-deformation-retracts-2-1-1-2">
+<div class="para" id="eg-deformation-retracts-2-1-1-2-1">
+<dfn class="terminology">Möbius band.</dfn> The Möbius band deformation retracts onto its central circle (an embedded copy of <span class="process-math">\(S^1\)</span>), so the Möbius band is homotopy equivalent to <span class="process-math">\(S^1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg-deformation-retracts-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg-deformation-retracts-2-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="eg-deformation-retracts-2-1-1-3">
+<div class="para" id="eg-deformation-retracts-2-1-1-3-1">
+<dfn class="terminology">Figure-eight neighborhood.</dfn> The open set <span class="process-math">\(\mathbb{R}^2\smallsetminus\{p,q\}\)</span> (the plane with two points removed) deformation retracts onto a figure-eight — the wedge <span class="process-math">\(S^1\vee S^1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg-deformation-retracts-2-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#eg-deformation-retracts-2-1-1-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+<li id="eg-deformation-retracts-2-1-1-4">
+<div class="para" id="eg-deformation-retracts-2-1-1-4-1">
+<dfn class="terminology">Cylinder.</dfn> The cylinder <span class="process-math">\(X\times[0,1]\)</span> deformation retracts onto <span class="process-math">\(X\times\{0\}\cong X\)</span> via <span class="process-math">\(h((x,s),t)=(x,(1-t)s)\text{.}\)</span> More generally, for any subspace <span class="process-math">\(A\subseteq X\text{,}\)</span> the product <span class="process-math">\(A\times[0,1]\)</span> deformation retracts onto <span class="process-math">\(A\times\{0\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg-deformation-retracts-2-1-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4"><a href="#eg-deformation-retracts-2-1-1-4" title="Copy heading and permalink for Item 4" aria-label="Copy heading and permalink for Item 4">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-deformation-retracts-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.14: Deformation retracts"><a href="#eg-deformation-retracts" title="Copy heading and permalink for Example 2.10.14: Deformation retracts" aria-label="Copy heading and permalink for Example 2.10.14: Deformation retracts">🔗</a></div></article></details><div class="para" id="subsubsec-deformation-retracts-7">Deformation retracts give us a useful way to think about homotopy equivalence geometrically: two spaces are homotopy equivalent when one can be continuously deformed into the other. The following proposition makes this precise.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-deformation-retracts-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop-htpy-equiv-third-space"><h5 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="prop-htpy-equiv-third-space-1-1">Two spaces <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> are homotopy equivalent if and only if there exists a third space <span class="process-math">\(Z\)</span> containing both <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> as deformation retracts.<div class="autopermalink" data-description="Paragraph"><a href="#prop-htpy-equiv-third-space-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.10.15"><a href="#prop-htpy-equiv-third-space" title="Copy heading and permalink for Proposition 2.10.15" aria-label="Copy heading and permalink for Proposition 2.10.15">🔗</a></div></article><details id="prop-htpy-equiv-third-space-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-htpy-equiv-third-space-2-1">The "if" direction is clear: if <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> are both deformation retracts of <span class="process-math">\(Z\text{,}\)</span> then <span class="process-math">\(X\simeq Z\simeq Y\)</span> by <a href="notes-week-10.html#lem-deformation-retract-htpy-equiv" class="xref" data-knowl="./knowl/xref/lem-deformation-retract-htpy-equiv.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.10.13">Lemma 2.10.13</a>.<div class="autopermalink" data-description="Paragraph"><a href="#prop-htpy-equiv-third-space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="prop-htpy-equiv-third-space-2-2">For the "only if" direction, suppose <span class="process-math">\(f\colon X\to Y\)</span> is a homotopy equivalence. One can show that <span class="process-math">\(X\)</span> is a deformation retract of the <dfn class="terminology">mapping cylinder</dfn> <span class="process-math">\(M_f := (X\times[0,1])\amalg_f Y\text{,}\)</span> which is the pushout<div class="autopermalink" data-description="Paragraph"><a href="#prop-htpy-equiv-third-space-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="prop-htpy-equiv-third-space-2-3">
+<div class="displaymath process-math" id="prop-htpy-equiv-third-space-2-3-1">
+\begin{equation*}
+M_f := (X\times[0,1])\amalg Y\big/\!\sim, \qquad (x,0)\sim f(x),
+\end{equation*}
+</div>
+<div class="para">and <span class="process-math">\(Y\)</span> includes into <span class="process-math">\(M_f\)</span> as the subspace <span class="process-math">\(Y\hookrightarrow M_f\)</span> at the base. When <span class="process-math">\(f\)</span> is a homotopy equivalence, both <span class="process-math">\(X\cong X\times\{1\}\)</span> and <span class="process-math">\(Y\)</span> are deformation retracts of <span class="process-math">\(M_f\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-htpy-equiv-third-space-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.15.1"><a href="#prop-htpy-equiv-third-space-2" title="Copy heading and permalink for Proof 2.10.15.1" aria-label="Copy heading and permalink for Proof 2.10.15.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Deformation retracts"><a href="#subsubsec-deformation-retracts" title="Copy heading and permalink for Subsubsection: Deformation retracts" aria-label="Copy heading and permalink for Subsubsection: Deformation retracts">🔗</a></div></section><section class="subsubsection" id="subsubsec-homotopy-invariants"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homotopy invariants</span>
+</h4>
+<div class="para" id="subsubsec-homotopy-invariants-2">A <dfn class="terminology">homotopy invariant</dfn> is a quantity or structure assigned to topological spaces that is preserved by homotopy equivalences. We have already seen one.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-invariants-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop-pi0-homotopy-invariant"><h5 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="prop-pi0-homotopy-invariant-1-1">The functor <span class="process-math">\(\pi_0\colon\mathsf{Top}\to\mathsf{Set}\)</span> descends to the homotopy category: if <span class="process-math">\(f\simeq g\colon X\to Y\text{,}\)</span> then <span class="process-math">\(\pi_0(f)=\pi_0(g)\text{.}\)</span> Consequently, homotopy equivalent spaces have the same number of path-components.<div class="autopermalink" data-description="Paragraph"><a href="#prop-pi0-homotopy-invariant-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.10.16"><a href="#prop-pi0-homotopy-invariant" title="Copy heading and permalink for Proposition 2.10.16" aria-label="Copy heading and permalink for Proposition 2.10.16">🔗</a></div></article><details id="prop-pi0-homotopy-invariant-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-pi0-homotopy-invariant-2-1">Let <span class="process-math">\(h\colon X\times[0,1]\to Y\)</span> be a homotopy from <span class="process-math">\(f\)</span> to <span class="process-math">\(g\text{.}\)</span> For any <span class="process-math">\(x\in X\text{,}\)</span> the map <span class="process-math">\(t\mapsto h(x,t)\)</span> is a path from <span class="process-math">\(f(x)\)</span> to <span class="process-math">\(g(x)\)</span> in <span class="process-math">\(Y\text{.}\)</span> Thus <span class="process-math">\(f(x)\)</span> and <span class="process-math">\(g(x)\)</span> lie in the same path-component, so <span class="process-math">\(\pi_0(f)([x])=\pi_0(g)([x])\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-pi0-homotopy-invariant-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.16.1"><a href="#prop-pi0-homotopy-invariant-2" title="Copy heading and permalink for Proof 2.10.16.1" aria-label="Copy heading and permalink for Proof 2.10.16.1">🔗</a></div></article></details><div class="para" id="subsubsec-homotopy-invariants-4">Our goal over the remaining four weeks is to construct much richer homotopy invariants — the <dfn class="terminology">homology groups</dfn> <span class="process-math">\(H_n(X)\)</span> — that can distinguish spaces <span class="process-math">\(\pi_0\)</span> cannot. For instance, <span class="process-math">\(S^1\)</span> and <span class="process-math">\(D^2\)</span> are both path-connected (so <span class="process-math">\(\pi_0\)</span> sees no difference), but we will show <span class="process-math">\(H_1(S^1)\cong\mathbb{Z}\)</span> while <span class="process-math">\(H_1(D^2)=0\text{,}\)</span> proving they are not homotopy equivalent.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-invariants-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Homotopy invariants"><a href="#subsubsec-homotopy-invariants" title="Copy heading and permalink for Subsubsection: Homotopy invariants" aria-label="Copy heading and permalink for Subsubsection: Homotopy invariants">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Monday"><a href="#notes-week-10-2" title="Copy heading and permalink for Subsection: Monday" aria-label="Copy heading and permalink for Subsection: Monday">🔗</a></div></section><section class="subsection" id="notes-week-10-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Wednesday</span>
+</h3>
+<div class="para" id="notes-week-10-3-2">Having established the language of homotopy, we now introduce one of the most important classes of topological spaces in algebraic topology: <dfn class="terminology">CW complexes</dfn>. These are spaces built by iteratively attaching cells — a construction we already encountered when building spheres and projective spaces via pushouts in Week 3. CW complexes provide a class of spaces large enough to include all manifolds and most spaces arising in practice, yet structured enough that algebraic invariants (like homology) can be computed effectively.<div class="autopermalink" data-description="Paragraph"><a href="#notes-week-10-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsubsection" id="subsubsec-cell-attachment"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Cell attachment via pushouts</span>
+</h4>
+<div class="para" id="subsubsec-cell-attachment-2">Recall from <a href="notes-week-03.html" class="internal" title="Section 2.3: Week 3">Section 2.3</a> that a pushout in <span class="process-math">\(\mathsf{Top}\)</span> glues two spaces together along a common subspace. The fundamental building block of a CW complex is the operation of <dfn class="terminology">attaching an <span class="process-math">\(n\)</span>-cell</dfn>: given a space <span class="process-math">\(X\)</span> and a continuous map <span class="process-math">\(\varphi\colon S^{n-1}\to X\)</span> (the <dfn class="terminology">attaching map</dfn>), the space obtained by attaching an <span class="process-math">\(n\)</span>-cell along <span class="process-math">\(\varphi\)</span> is the pushout<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-cell-attachment-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-cell-attachment-3">
+<div class="displaymath process-math" id="subsubsec-cell-attachment-3-1">
+\begin{equation*}
+X\amalg_\varphi D^n \;:=\; X\amalg D^n\big/\!\sim, \qquad z\sim\varphi(z) \text{ for }
+z\in S^{n-1}=\partial D^n.
+\end{equation*}
+</div>
+<div class="para">In the language of pushouts, this is the pushout of the span <span class="process-math">\(X\xleftarrow{\varphi}S^{n-1}\xrightarrow{\iota}D^n\text{,}\)</span> where <span class="process-math">\(\iota\)</span> is the inclusion of the boundary sphere into the disk. The image of the interior of <span class="process-math">\(D^n\)</span> in the pushout is an <dfn class="terminology">open <span class="process-math">\(n\)</span>-cell</dfn>, homeomorphic to <span class="process-math">\(\mathbb{R}^n\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-cell-attachment-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-cell-attachment-4">
+<div class="para">More generally, we can attach several <span class="process-math">\(n\)</span>-cells simultaneously. Given a family of attaching maps <span class="process-math">\(\{\varphi_\alpha\colon S^{n-1}\to X\}_{\alpha\in A}\text{,}\)</span> we form the pushout</div>
+<div class="displaymath process-math" id="subsubsec-cell-attachment-4-3">
+\begin{equation*}
+X\amalg_{\{\varphi_\alpha\}}\!\left(\coprod_{\alpha\in A}D^n_\alpha\right)
+\;:=\; X\amalg\coprod_\alpha D^n_\alpha\Big/\!\sim, \qquad
+z\sim\varphi_\alpha(z) \text{ for } z\in\partial D^n_\alpha.
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-cell-attachment-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="eg-cell-attachment-sphere" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Spheres via cell attachment.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-cell-attachment-sphere-2-1">
+<div class="para">The sphere <span class="process-math">\(S^n\)</span> is obtained from a point <span class="process-math">\(e^0\)</span> by attaching a single <span class="process-math">\(n\)</span>-cell via the unique (constant) map <span class="process-math">\(\varphi\colon S^{n-1}\to e^0\text{.}\)</span> The resulting pushout is</div>
+<div class="displaymath process-math" id="eg-cell-attachment-sphere-2-1-5">
+\begin{equation*}
+S^n \;\cong\; e^0\amalg_\varphi D^n \;=\; D^n\big/\partial D^n,
+\end{equation*}
+</div>
+<div class="para">the disk with its boundary collapsed to a point. This gives <span class="process-math">\(S^n\)</span> a CW structure with exactly two cells: one <span class="process-math">\(0\)</span>-cell and one <span class="process-math">\(n\)</span>-cell.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-cell-attachment-sphere-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.17: Spheres via cell attachment"><a href="#eg-cell-attachment-sphere" title="Copy heading and permalink for Example 2.10.17: Spheres via cell attachment" aria-label="Copy heading and permalink for Example 2.10.17: Spheres via cell attachment">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Cell attachment via pushouts"><a href="#subsubsec-cell-attachment" title="Copy heading and permalink for Subsubsection: Cell attachment via pushouts" aria-label="Copy heading and permalink for Subsubsection: Cell attachment via pushouts">🔗</a></div></section><section class="subsubsection" id="subsubsec-cw-complexes"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">CW complexes</span>
+</h4>
+<article class="definition definition-like" id="def-cw-complex"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">CW complex.</span>
+</h5>
+<div class="para logical" id="def-cw-complex-2-1">
+<div class="para">A <dfn class="terminology">CW complex</dfn> is a topological space <span class="process-math">\(X\)</span> equipped with a filtration</div>
+<div class="displaymath process-math" id="def-cw-complex-2-1-3">
+\begin{equation*}
+X^0\subseteq X^1\subseteq X^2\subseteq\cdots\subseteq X = \bigcup_{n\ge 0}X^n
+\end{equation*}
+</div>
+<div class="para">constructed inductively as follows.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-cw-complex-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="def-cw-complex-2-2">
+<ol class="decimal" id="def-cw-complex-2-2-1">
+<li id="def-cw-complex-2-2-1-1">
+<div class="para" id="def-cw-complex-2-2-1-1-1">The <dfn class="terminology"><span class="process-math">\(0\)</span>-skeleton</dfn> <span class="process-math">\(X^0\)</span> is a discrete set of points (the <dfn class="terminology"><span class="process-math">\(0\)</span>-cells</dfn>).<div class="autopermalink" data-description="Paragraph"><a href="#def-cw-complex-2-2-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#def-cw-complex-2-2-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="def-cw-complex-2-2-1-2">
+<div class="para logical" id="def-cw-complex-2-2-1-2-1">
+<div class="para">For each <span class="process-math">\(n\ge 1\text{,}\)</span> the <dfn class="terminology"><span class="process-math">\(n\)</span>-skeleton</dfn> <span class="process-math">\(X^n\)</span> is obtained from <span class="process-math">\(X^{n-1}\)</span> by attaching a (possibly empty) collection of <span class="process-math">\(n\)</span>-cells. That is, <span class="process-math">\(X^n\)</span> is the pushout</div>
+<div class="displaymath process-math" id="def-cw-complex-2-2-1-2-1-7">
+\begin{equation*}
+X^n \;=\; X^{n-1}\amalg_{\{\varphi_\alpha\}}\!\left(
+\coprod_{\alpha\in A_n}D^n_\alpha\right)
+\end{equation*}
+</div>
+<div class="para">for some family of attaching maps <span class="process-math">\(\{\varphi_\alpha\colon S^{n-1}\to X^{n-1}\}_{\alpha\in A_n}\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-cw-complex-2-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#def-cw-complex-2-2-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="def-cw-complex-2-2-1-3">
+<div class="para" id="def-cw-complex-2-2-1-3-1">The space <span class="process-math">\(X\)</span> carries the <dfn class="terminology">weak topology</dfn> (also called the <dfn class="terminology">colimit topology</dfn>): a subset <span class="process-math">\(U\subseteq X\)</span> is open if and only if <span class="process-math">\(U\cap X^n\)</span> is open in <span class="process-math">\(X^n\)</span> for every <span class="process-math">\(n\text{.}\)</span> (If the construction terminates at some finite stage <span class="process-math">\(X=X^N\text{,}\)</span> this condition is automatic.)<div class="autopermalink" data-description="Paragraph"><a href="#def-cw-complex-2-2-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#def-cw-complex-2-2-1-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-cw-complex-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="def-cw-complex-2-3">The letters "CW" stand for <dfn class="terminology">closure-finite</dfn> (the closure of each cell meets only finitely many other cells) and <dfn class="terminology">weak topology</dfn>.<div class="autopermalink" data-description="Paragraph"><a href="#def-cw-complex-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.18: CW complex"><a href="#def-cw-complex" title="Copy heading and permalink for Definition 2.10.18: CW complex" aria-label="Copy heading and permalink for Definition 2.10.18: CW complex">🔗</a></div></article><article class="remark remark-like" id="subsubsec-cw-complexes-3"><h5 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="subsubsec-cw-complexes-3-1-1">Each <span class="process-math">\(n\)</span>-cell <span class="process-math">\(e^n_\alpha\)</span> comes equipped with a <dfn class="terminology">characteristic map</dfn> <span class="process-math">\(\Phi_\alpha\colon D^n\to X\)</span> (the composite <span class="process-math">\(D^n\hookrightarrow\coprod D^n_\alpha\to X^n\hookrightarrow X\)</span>) whose restriction to the interior of <span class="process-math">\(D^n\)</span> is a homeomorphism onto the open cell <span class="process-math">\(e^n_\alpha\text{,}\)</span> and whose restriction to <span class="process-math">\(S^{n-1}=\partial D^n\)</span> is the attaching map <span class="process-math">\(\varphi_\alpha\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-cw-complexes-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 2.10.19"><a href="#subsubsec-cw-complexes-3" title="Copy heading and permalink for Remark 2.10.19" aria-label="Copy heading and permalink for Remark 2.10.19">🔗</a></div></article><div class="para" id="subsubsec-cw-complexes-4">The pushout perspective makes the universal property of CW complexes transparent: a continuous map out of <span class="process-math">\(X^n\)</span> is determined by a continuous map out of <span class="process-math">\(X^{n-1}\)</span> together with continuous maps out of each <span class="process-math">\(D^n_\alpha\)</span> that agree with the given map on <span class="process-math">\(X^{n-1}\)</span> along the attaching maps. For finite-dimensional CW complexes, maps out of <span class="process-math">\(X\)</span> are built by induction on the skeletal filtration.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-cw-complexes-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: CW complexes"><a href="#subsubsec-cw-complexes" title="Copy heading and permalink for Subsubsection: CW complexes" aria-label="Copy heading and permalink for Subsubsection: CW complexes">🔗</a></div></section><section class="subsubsection" id="subsubsec-cw-examples"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Examples of CW structures</span>
+</h4>
+<details id="eg-cw-sphere" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.20</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Spheres.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="eg-cw-sphere-2-1">As noted in <a href="notes-week-10.html#eg-cell-attachment-sphere" class="xref" data-knowl="./knowl/xref/eg-cell-attachment-sphere.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 2.10.17: Spheres via cell attachment">Example 2.10.17</a>, <span class="process-math">\(S^n\)</span> has a CW structure with one <span class="process-math">\(0\)</span>-cell and one <span class="process-math">\(n\)</span>-cell: <span class="process-math">\(S^n = e^0\cup e^n\text{.}\)</span> Alternatively, <span class="process-math">\(S^n\)</span> admits a CW structure with two cells in each dimension up to <span class="process-math">\(n\text{:}\)</span> take <span class="process-math">\(S^n\subset\mathbb{R}^{n+1}\)</span> with the <span class="process-math">\(k\)</span>-skeleton <span class="process-math">\(S^k\subset S^n\)</span> (embedded via the first <span class="process-math">\(k+1\)</span> coordinates), where each <span class="process-math">\(S^k\)</span> is obtained from <span class="process-math">\(S^{k-1}\)</span> by attaching two <span class="process-math">\(k\)</span>-cells (the upper and lower open hemispheres).<div class="autopermalink" data-description="Paragraph"><a href="#eg-cw-sphere-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.20: Spheres"><a href="#eg-cw-sphere" title="Copy heading and permalink for Example 2.10.20: Spheres" aria-label="Copy heading and permalink for Example 2.10.20: Spheres">🔗</a></div></article></details><details id="eg-cw-projective-space" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.21</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Real projective space.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-cw-projective-space-2-1">
+<div class="para">Recall from Week 3 that <span class="process-math">\(\mathbb{R}P^n\)</span> is obtained from <span class="process-math">\(\mathbb{R}P^{n-1}\)</span> by attaching a single <span class="process-math">\(n\)</span>-cell. The attaching map <span class="process-math">\(\varphi\colon S^{n-1}\to\mathbb{R}P^{n-1}\)</span> is the antipodal quotient restricted to the boundary of the upper hemisphere. This gives <span class="process-math">\(\mathbb{R}P^n\)</span> a CW structure with exactly one cell in each dimension:</div>
+<div class="displaymath process-math" id="eg-cw-projective-space-2-1-6">
+\begin{equation*}
+\mathbb{R}P^n = e^0\cup e^1\cup\cdots\cup e^n.
+\end{equation*}
+</div>
+<div class="para">Taking the colimit, infinite real projective space <span class="process-math">\(\mathbb{R}P^\infty\)</span> is a CW complex with one cell in each dimension <span class="process-math">\(n\ge 0\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-cw-projective-space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.21: Real projective space"><a href="#eg-cw-projective-space" title="Copy heading and permalink for Example 2.10.21: Real projective space" aria-label="Copy heading and permalink for Example 2.10.21: Real projective space">🔗</a></div></article></details><details id="eg-cw-complex-projective" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.22</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex projective space.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-cw-complex-projective-2-1">
+<div class="para">Similarly, <span class="process-math">\(\mathbb{C}P^n\)</span> has a CW structure with one cell in each <em class="emphasis">even</em> dimension:</div>
+<div class="displaymath process-math" id="eg-cw-complex-projective-2-1-3">
+\begin{equation*}
+\mathbb{C}P^n = e^0\cup e^2\cup e^4\cup\cdots\cup e^{2n}.
+\end{equation*}
+</div>
+<div class="para">The attaching map <span class="process-math">\(S^{2k-1}\to\mathbb{C}P^{k-1}\)</span> sends a unit vector in <span class="process-math">\(\mathbb{C}^k\)</span> to the complex line it spans — this is the Hopf map when <span class="process-math">\(k=2\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-cw-complex-projective-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.22: Complex projective space"><a href="#eg-cw-complex-projective" title="Copy heading and permalink for Example 2.10.22: Complex projective space" aria-label="Copy heading and permalink for Example 2.10.22: Complex projective space">🔗</a></div></article></details><details id="eg-cw-torus" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.23</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The torus.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="eg-cw-torus-2-1">The torus <span class="process-math">\(T^2=S^1\times S^1\)</span> admits a CW structure with one <span class="process-math">\(0\)</span>-cell, two <span class="process-math">\(1\)</span>-cells <span class="process-math">\(a\)</span> and <span class="process-math">\(b\text{,}\)</span> and one <span class="process-math">\(2\)</span>-cell. The <span class="process-math">\(1\)</span>-skeleton is a wedge of two circles <span class="process-math">\(S^1\vee S^1\text{,}\)</span> and the single <span class="process-math">\(2\)</span>-cell is attached along the loop <span class="process-math">\(aba^{-1}b^{-1}\text{.}\)</span> One sees this from the standard identification of the torus as a square with opposite sides identified: the four corners of the square are all identified to the single <span class="process-math">\(0\)</span>-cell, the edges become the two <span class="process-math">\(1\)</span>-cells, and the interior of the square is the <span class="process-math">\(2\)</span>-cell.<div class="autopermalink" data-description="Paragraph"><a href="#eg-cw-torus-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.23: The torus"><a href="#eg-cw-torus" title="Copy heading and permalink for Example 2.10.23: The torus" aria-label="Copy heading and permalink for Example 2.10.23: The torus">🔗</a></div></article></details><details id="eg-cw-graphs" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.24</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Graphs.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="eg-cw-graphs-2-1">A <dfn class="terminology">graph</dfn> is a <span class="process-math">\(1\)</span>-dimensional CW complex: it has a discrete set of <span class="process-math">\(0\)</span>-cells (vertices) and a collection of <span class="process-math">\(1\)</span>-cells (edges), each attached to one or two vertices. Loops (edges attached at both ends to the same vertex) and multiple edges between the same pair of vertices are permitted.<div class="autopermalink" data-description="Paragraph"><a href="#eg-cw-graphs-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.24: Graphs"><a href="#eg-cw-graphs" title="Copy heading and permalink for Example 2.10.24: Graphs" aria-label="Copy heading and permalink for Example 2.10.24: Graphs">🔗</a></div></article></details><details id="eg-cw-surfaces" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.25</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Closed surfaces.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="eg-cw-surfaces-2-1">Every closed orientable surface <span class="process-math">\(\Sigma_g\)</span> of genus <span class="process-math">\(g\)</span> has a CW structure with one <span class="process-math">\(0\)</span>-cell, <span class="process-math">\(2g\)</span> one-cells <span class="process-math">\(a_1,b_1,\ldots,a_g,b_g\text{,}\)</span> and one <span class="process-math">\(2\)</span>-cell attached along <span class="process-math">\(a_1b_1a_1^{-1}b_1^{-1}\cdots
+a_gb_ga_g^{-1}b_g^{-1}\text{.}\)</span> The non-orientable surfaces admit similar descriptions with the appropriate identification words.<div class="autopermalink" data-description="Paragraph"><a href="#eg-cw-surfaces-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.25: Closed surfaces"><a href="#eg-cw-surfaces" title="Copy heading and permalink for Example 2.10.25: Closed surfaces" aria-label="Copy heading and permalink for Example 2.10.25: Closed surfaces">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Examples of CW structures"><a href="#subsubsec-cw-examples" title="Copy heading and permalink for Subsubsection: Examples of CW structures" aria-label="Copy heading and permalink for Subsubsection: Examples of CW structures">🔗</a></div></section><section class="subsubsection" id="subsubsec-subcomplexes-quotients"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Subcomplexes and quotients</span>
+</h4>
+<div class="para" id="subsubsec-subcomplexes-quotients-2">The pushout construction interacts well with the skeletal filtration, yielding several useful operations on CW complexes.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-subcomplexes-quotients-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-subcomplex"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.26</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Subcomplex.</span>
+</h5>
+<div class="para" id="def-subcomplex-2-1">A <dfn class="terminology">subcomplex</dfn> of a CW complex <span class="process-math">\(X\)</span> is a closed subspace <span class="process-math">\(A\subseteq X\)</span> that is a union of cells of <span class="process-math">\(X\text{.}\)</span> Equivalently, <span class="process-math">\(A\)</span> inherits a CW structure by taking <span class="process-math">\(A^n=A\cap X^n\text{.}\)</span> A <dfn class="terminology">CW pair</dfn> is a pair <span class="process-math">\((X,A)\)</span> where <span class="process-math">\(X\)</span> is a CW complex and <span class="process-math">\(A\)</span> is a subcomplex.<div class="autopermalink" data-description="Paragraph"><a href="#def-subcomplex-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.26: Subcomplex"><a href="#def-subcomplex" title="Copy heading and permalink for Definition 2.10.26: Subcomplex" aria-label="Copy heading and permalink for Definition 2.10.26: Subcomplex">🔗</a></div></article><article class="proposition theorem-like" id="prop-cw-quotient"><h5 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.27</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="prop-cw-quotient-1-1">If <span class="process-math">\((X,A)\)</span> is a CW pair, then the quotient space <span class="process-math">\(X/A\)</span> inherits a natural CW structure: it has the cells of <span class="process-math">\(X\smallsetminus A\)</span> plus one additional <span class="process-math">\(0\)</span>-cell (the image of <span class="process-math">\(A\)</span>).<div class="autopermalink" data-description="Paragraph"><a href="#prop-cw-quotient-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.10.27"><a href="#prop-cw-quotient" title="Copy heading and permalink for Proposition 2.10.27" aria-label="Copy heading and permalink for Proposition 2.10.27">🔗</a></div></article><details id="eg-cw-quotient-sphere" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.28</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para" id="eg-cw-quotient-sphere-1-1">Taking <span class="process-math">\(X=D^n\)</span> (one <span class="process-math">\(0\)</span>-cell, one <span class="process-math">\((n-1)\)</span>-cell, one <span class="process-math">\(n\)</span>-cell) and <span class="process-math">\(A=S^{n-1}=\partial D^n\)</span> (the subcomplex consisting of the <span class="process-math">\(0\)</span>-cell and the <span class="process-math">\((n-1)\)</span>-cell), the quotient <span class="process-math">\(D^n/S^{n-1}\cong S^n\)</span> has the CW structure with two cells <span class="process-math">\(e^0\cup e^n\text{,}\)</span> as expected.<div class="autopermalink" data-description="Paragraph"><a href="#eg-cw-quotient-sphere-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.28"><a href="#eg-cw-quotient-sphere" title="Copy heading and permalink for Example 2.10.28" aria-label="Copy heading and permalink for Example 2.10.28">🔗</a></div></article></details><div class="para" id="subsubsec-subcomplexes-quotients-6">The wedge sum and product also admit CW descriptions.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-subcomplexes-quotients-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop-cw-wedge-product"><h5 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.29</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para logical" id="prop-cw-wedge-product-1-1">
+<ol class="decimal" id="prop-cw-wedge-product-1-1-1">
+<li id="prop-cw-wedge-product-1-1-1-1">
+<div class="para" id="prop-cw-wedge-product-1-1-1-1-1">
+<dfn class="terminology">Wedge.</dfn> If <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> are CW complexes with chosen <span class="process-math">\(0\)</span>-cells <span class="process-math">\(x_0\)</span> and <span class="process-math">\(y_0\text{,}\)</span> then the wedge sum <span class="process-math">\(X\vee Y:=X\amalg Y/(x_0\sim y_0)\)</span> inherits a CW structure.<div class="autopermalink" data-description="Paragraph"><a href="#prop-cw-wedge-product-1-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#prop-cw-wedge-product-1-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="prop-cw-wedge-product-1-1-1-2">
+<div class="para" id="prop-cw-wedge-product-1-1-1-2-1">
+<dfn class="terminology">Product.</dfn> If <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> are CW complexes, then <span class="process-math">\(X\times Y\)</span> has a CW structure whose cells are the products <span class="process-math">\(e^m_\alpha\times e^n_\beta\)</span> of cells of <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\text{.}\)</span> (When both <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> have finitely many cells in each dimension, the product topology agrees with the CW topology; in general one must use the compactly generated refinement.)<div class="autopermalink" data-description="Paragraph"><a href="#prop-cw-wedge-product-1-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#prop-cw-wedge-product-1-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-cw-wedge-product-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.10.29"><a href="#prop-cw-wedge-product" title="Copy heading and permalink for Proposition 2.10.29" aria-label="Copy heading and permalink for Proposition 2.10.29">🔗</a></div></article><div class="autopermalink" data-description="Subsubsection: Subcomplexes and quotients"><a href="#subsubsec-subcomplexes-quotients" title="Copy heading and permalink for Subsubsection: Subcomplexes and quotients" aria-label="Copy heading and permalink for Subsubsection: Subcomplexes and quotients">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Wednesday"><a href="#notes-week-10-3" title="Copy heading and permalink for Subsection: Wednesday" aria-label="Copy heading and permalink for Subsection: Wednesday">🔗</a></div></section><section class="subsection" id="notes-week-10-4"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Friday</span>
+</h3>
+<section class="subsubsection" id="subsubsec-homotopy-extension"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The homotopy extension property</span>
+</h4>
+<div class="para" id="subsubsec-homotopy-extension-2">One of the key technical advantages of CW complexes is their excellent behavior with respect to homotopies. The fundamental result is the <dfn class="terminology">homotopy extension property</dfn>, which says that a homotopy defined on a subcomplex can always be extended to the ambient complex.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-extension-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-hep"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.30</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homotopy extension property.</span>
+</h5>
+<div class="para" id="def-hep-2-1">A pair <span class="process-math">\((X,A)\)</span> of topological spaces has the <dfn class="terminology">homotopy extension property</dfn> (HEP) if for every space <span class="process-math">\(Y\text{,}\)</span> every continuous map <span class="process-math">\(f\colon X\to Y\text{,}\)</span> and every homotopy <span class="process-math">\(h_A\colon A\times[0,1]\to Y\)</span> with <span class="process-math">\(h_A(-,0)=f|_A\text{,}\)</span> there exists a homotopy <span class="process-math">\(h\colon X\times[0,1]\to Y\)</span> extending <span class="process-math">\(h_A\)</span> with <span class="process-math">\(h(-,0)=f\text{.}\)</span> In other words, the dashed arrow exists making the following diagram commute: <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;">
+<img src="generated/latex-image/def-hep-2-1-10.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="def-hep-2-1-10-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="def-hep-2-1-10-description">The homotopy extension property diagram: <span class="process-math">\(A\)</span> includes into <span class="process-math">\(X\)</span> across the top, and both map down via <span class="process-math">\(i_0\colon x\mapsto(x,0)\)</span> into the products with <span class="process-math">\([0,1]\text{.}\)</span> The map <span class="process-math">\(f\colon X\to Y\)</span> and the partial homotopy <span class="process-math">\(h_A\colon A\times[0,1]\to Y\)</span> are given, and the HEP asserts the existence of <span class="process-math">\(h\colon X\times[0,1]\to Y\text{.}\)</span>
+</div></details>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-hep-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.30: Homotopy extension property"><a href="#def-hep" title="Copy heading and permalink for Definition 2.10.30: Homotopy extension property" aria-label="Copy heading and permalink for Definition 2.10.30: Homotopy extension property">🔗</a></div></article><div class="para" id="subsubsec-homotopy-extension-4">The HEP can be rephrased in terms of retracts. The pair <span class="process-math">\((X,A)\)</span> has the HEP if and only if <span class="process-math">\(X\times\{0\}\cup A\times[0,1]\)</span> is a retract of <span class="process-math">\(X\times[0,1]\text{.}\)</span> For cell attachments, this retract can be constructed explicitly.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-extension-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="lemma theorem-like" id="lem-disk-hep"><h5 class="heading">
+<span class="type">Lemma</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.31</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="lem-disk-hep-1-1">The pair <span class="process-math">\((D^n, S^{n-1})\)</span> has the homotopy extension property. Concretely, <span class="process-math">\(D^n\times\{0\}\cup S^{n-1}\times[0,1]\)</span> is a retract of <span class="process-math">\(D^n\times[0,1]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-disk-hep-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Lemma 2.10.31"><a href="#lem-disk-hep" title="Copy heading and permalink for Lemma 2.10.31" aria-label="Copy heading and permalink for Lemma 2.10.31">🔗</a></div></article><details id="lem-disk-hep-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="lem-disk-hep-2-1">Project radially from the point <span class="process-math">\((0,2)\in D^n\times\mathbb{R}\)</span> onto the subspace <span class="process-math">\(D^n\times\{0\}\cup S^{n-1}\times[0,1]\text{.}\)</span> This defines a retraction <span class="process-math">\(r\colon D^n\times[0,1]\to D^n\times\{0\}\cup S^{n-1}\times[0,1]\text{.}\)</span> The geometric picture: we project from a point "above" the cylinder onto its bottom face and lateral boundary. Here is an illustration in the case <span class="process-math">\(n=2\text{:}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-disk-hep-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="image-box" style="width: 65%; margin-left: 17.5%; margin-right: 17.5%;">
+<img src="generated/latex-image/lem-disk-hep-2-2.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="lem-disk-hep-2-2-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="lem-disk-hep-2-2-description">The radial projection retraction for the pair <span class="process-math">\((D^2, S^1)\text{.}\)</span> The cylinder <span class="process-math">\(D^2\times[0,1]\)</span> is shown with its bottom face and lateral boundary highlighted. A point <span class="process-math">\(p=(0,2)\)</span> above the cylinder projects radially onto <span class="process-math">\(D^2\times\{0\}\cup S^1\times[0,1]\text{,}\)</span> defining the retraction.</div></details>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.31.1"><a href="#lem-disk-hep-2" title="Copy heading and permalink for Proof 2.10.31.1" aria-label="Copy heading and permalink for Proof 2.10.31.1">🔗</a></div></article></details><article class="theorem theorem-like" id="thm-cw-hep"><h5 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.32</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">CW pairs have the homotopy extension property.</span>
+</h5>
+<div class="para" id="thm-cw-hep-2-1">If <span class="process-math">\((X,A)\)</span> is a CW pair, then <span class="process-math">\((X,A)\)</span> has the homotopy extension property.<div class="autopermalink" data-description="Paragraph"><a href="#thm-cw-hep-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 2.10.32: CW pairs have the homotopy extension property"><a href="#thm-cw-hep" title="Copy heading and permalink for Theorem 2.10.32: CW pairs have the homotopy extension property" aria-label="Copy heading and permalink for Theorem 2.10.32: CW pairs have the homotopy extension property">🔗</a></div></article><details id="thm-cw-hep-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-cw-hep-3-1">We construct the extension inductively over the skeletal filtration. It suffices to show that if <span class="process-math">\(X\)</span> is obtained from <span class="process-math">\(A\)</span> by attaching a single <span class="process-math">\(n\)</span>-cell via <span class="process-math">\(\varphi\colon S^{n-1}\to A\text{,}\)</span> then <span class="process-math">\((X,A)\)</span> has the HEP — the general case follows by induction on skeleta and a colimit argument.<div class="autopermalink" data-description="Paragraph"><a href="#thm-cw-hep-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="thm-cw-hep-3-2">Given <span class="process-math">\(f\colon X\to Y\)</span> and a homotopy <span class="process-math">\(h_A\colon A\times[0,1]\to Y\)</span> with <span class="process-math">\(h_A(-,0)=f|_A\text{,}\)</span> we need to extend to <span class="process-math">\(h\colon X\times[0,1]\to Y\text{.}\)</span> The restriction of <span class="process-math">\(f\)</span> to the cell <span class="process-math">\(D^n\)</span> and the homotopy <span class="process-math">\(h_A\)</span> on <span class="process-math">\(A\)</span> together define a map on <span class="process-math">\(D^n\times\{0\}\cup S^{n-1}\times[0,1]\)</span> (using <span class="process-math">\(h_A\circ(\varphi\times
+\mathrm{id})\)</span> on <span class="process-math">\(S^{n-1}\times[0,1]\)</span>). By <a href="notes-week-10.html#lem-disk-hep" class="xref" data-knowl="./knowl/xref/lem-disk-hep.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.10.31">Lemma 2.10.31</a>, this extends over <span class="process-math">\(D^n\times[0,1]\text{.}\)</span> The extensions on <span class="process-math">\(A\times[0,1]\)</span> and <span class="process-math">\(D^n\times[0,1]\)</span> are compatible on <span class="process-math">\(S^{n-1}\times[0,1]\)</span> by construction, so by the universal property of the pushout, they assemble into a homotopy <span class="process-math">\(h\colon X\times[0,1]\to Y\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-cw-hep-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.32.1"><a href="#thm-cw-hep-3" title="Copy heading and permalink for Proof 2.10.32.1" aria-label="Copy heading and permalink for Proof 2.10.32.1">🔗</a></div></article></details><div class="para" id="subsubsec-homotopy-extension-7">The homotopy extension property has several powerful consequences, which we record as corollaries.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homotopy-extension-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="corollary theorem-like" id="cor-contractible-subcomplex"><h5 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.33</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Collapsing contractible subcomplexes.</span>
+</h5>
+<div class="para" id="cor-contractible-subcomplex-2-1">If <span class="process-math">\((X,A)\)</span> is a CW pair and <span class="process-math">\(A\)</span> is contractible, then the quotient map <span class="process-math">\(q\colon X\to X/A\)</span> is a homotopy equivalence.<div class="autopermalink" data-description="Paragraph"><a href="#cor-contractible-subcomplex-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Corollary 2.10.33: Collapsing contractible subcomplexes"><a href="#cor-contractible-subcomplex" title="Copy heading and permalink for Corollary 2.10.33: Collapsing contractible subcomplexes" aria-label="Copy heading and permalink for Corollary 2.10.33: Collapsing contractible subcomplexes">🔗</a></div></article><details id="cor-contractible-subcomplex-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="cor-contractible-subcomplex-3-1">Since <span class="process-math">\(A\)</span> is contractible, there is a homotopy <span class="process-math">\(h_A\colon A\times[0,1]\to A\)</span> from <span class="process-math">\(\mathrm{id}_A\)</span> to a constant map. By the HEP, this extends to a homotopy <span class="process-math">\(h\colon X\times[0,1]\to X\)</span> starting at <span class="process-math">\(\mathrm{id}_X\text{.}\)</span> The map <span class="process-math">\(h(-,1)\)</span> sends all of <span class="process-math">\(A\)</span> to a single point, so it factors through <span class="process-math">\(X/A\text{,}\)</span> and one checks this yields a homotopy inverse for <span class="process-math">\(q\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#cor-contractible-subcomplex-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.33.1"><a href="#cor-contractible-subcomplex-3" title="Copy heading and permalink for Proof 2.10.33.1" aria-label="Copy heading and permalink for Proof 2.10.33.1">🔗</a></div></article></details><article class="corollary theorem-like" id="cor-homotopic-attaching"><h5 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.34</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homotopic attaching maps.</span>
+</h5>
+<div class="para" id="cor-homotopic-attaching-2-1">If <span class="process-math">\(\varphi_0,\varphi_1\colon S^{n-1}\to X\)</span> are homotopic attaching maps, then the resulting spaces <span class="process-math">\(X\amalg_{\varphi_0}D^n\)</span> and <span class="process-math">\(X\amalg_{\varphi_1}D^n\)</span> are homotopy equivalent.<div class="autopermalink" data-description="Paragraph"><a href="#cor-homotopic-attaching-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Corollary 2.10.34: Homotopic attaching maps"><a href="#cor-homotopic-attaching" title="Copy heading and permalink for Corollary 2.10.34: Homotopic attaching maps" aria-label="Copy heading and permalink for Corollary 2.10.34: Homotopic attaching maps">🔗</a></div></article><details id="cor-homotopic-attaching-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="cor-homotopic-attaching-3-1">Consider the space <span class="process-math">\(X\amalg_{\varphi_0}D^n\text{.}\)</span> The homotopy between <span class="process-math">\(\varphi_0\)</span> and <span class="process-math">\(\varphi_1\)</span> can be used, via the HEP for the pair <span class="process-math">\((D^n, S^{n-1})\text{,}\)</span> to construct a deformation of the attaching region. The mapping cylinder of the homotopy between attaching maps contains both spaces as deformation retracts.<div class="autopermalink" data-description="Paragraph"><a href="#cor-homotopic-attaching-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.34.1"><a href="#cor-homotopic-attaching-3" title="Copy heading and permalink for Proof 2.10.34.1" aria-label="Copy heading and permalink for Proof 2.10.34.1">🔗</a></div></article></details><details id="eg-collapsing-tree" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.35</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Collapsing a maximal tree in a graph.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-collapsing-tree-2-1">
+<div class="para">Let <span class="process-math">\(\Gamma\)</span> be a connected graph (a <span class="process-math">\(1\)</span>-dimensional CW complex). A <dfn class="terminology">maximal tree</dfn> <span class="process-math">\(T\subseteq\Gamma\)</span> is a contractible subgraph containing all vertices. By <a href="notes-week-10.html#cor-contractible-subcomplex" class="xref" data-knowl="./knowl/xref/cor-contractible-subcomplex.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.10.33: Collapsing contractible subcomplexes">Corollary 2.10.33</a>, <span class="process-math">\(\Gamma/T\)</span> is homotopy equivalent to <span class="process-math">\(\Gamma\text{.}\)</span> Since <span class="process-math">\(T\)</span> contains all vertices, the quotient <span class="process-math">\(\Gamma/T\)</span> has a single vertex, and each edge not in <span class="process-math">\(T\)</span> becomes a loop — so <span class="process-math">\(\Gamma/T\)</span> is a wedge of circles. If <span class="process-math">\(\Gamma\)</span> has <span class="process-math">\(V\)</span> vertices, <span class="process-math">\(E\)</span> edges, and <span class="process-math">\(T\)</span> contains <span class="process-math">\(V-1\)</span> edges (as any tree on <span class="process-math">\(V\)</span> vertices must), then</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/cor-contractible-subcomplex.html" id="eg-collapsing-tree-2-1-18">
+\begin{equation*}
+\Gamma\simeq\Gamma/T\cong\bigvee_{E-V+1}S^1.
+\end{equation*}
+</div>
+<div class="para">In particular, <span class="process-math">\(\Gamma\simeq\bigvee_k S^1\)</span> where <span class="process-math">\(k=1-\chi(\Gamma)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-collapsing-tree-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.35: Collapsing a maximal tree in a graph"><a href="#eg-collapsing-tree" title="Copy heading and permalink for Example 2.10.35: Collapsing a maximal tree in a graph" aria-label="Copy heading and permalink for Example 2.10.35: Collapsing a maximal tree in a graph">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: The homotopy extension property"><a href="#subsubsec-homotopy-extension" title="Copy heading and permalink for Subsubsection: The homotopy extension property" aria-label="Copy heading and permalink for Subsubsection: The homotopy extension property">🔗</a></div></section><section class="subsubsection" id="subsubsec-cellular-maps"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Cellular maps</span>
+</h4>
+<article class="definition definition-like" id="def-cellular-map"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.36</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Cellular map.</span>
+</h5>
+<div class="para" id="def-cellular-map-2-1">A continuous map <span class="process-math">\(f\colon X\to Y\)</span> between CW complexes is <dfn class="terminology">cellular</dfn> if <span class="process-math">\(f(X^n)\subseteq Y^n\)</span> for all <span class="process-math">\(n\ge 0\text{,}\)</span> i.e., <span class="process-math">\(f\)</span> preserves the skeletal filtrations.<div class="autopermalink" data-description="Paragraph"><a href="#def-cellular-map-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.36: Cellular map"><a href="#def-cellular-map" title="Copy heading and permalink for Definition 2.10.36: Cellular map" aria-label="Copy heading and permalink for Definition 2.10.36: Cellular map">🔗</a></div></article><div class="para" id="subsubsec-cellular-maps-3">Not every continuous map between CW complexes is cellular, but the following remarkable theorem — whose proof we will not give here — asserts that every map is <em class="emphasis">homotopic</em> to a cellular one.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-cellular-maps-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-cellular-approximation"><h5 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.37</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Cellular approximation theorem.</span>
+</h5>
+<div class="para" id="thm-cellular-approximation-2-1">Every continuous map <span class="process-math">\(f\colon X\to Y\)</span> between CW complexes is homotopic to a cellular map. Moreover, if <span class="process-math">\(f\)</span> is already cellular on a subcomplex <span class="process-math">\(A\subseteq X\text{,}\)</span> the homotopy can be taken to be rel <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-cellular-approximation-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 2.10.37: Cellular approximation theorem"><a href="#thm-cellular-approximation" title="Copy heading and permalink for Theorem 2.10.37: Cellular approximation theorem" aria-label="Copy heading and permalink for Theorem 2.10.37: Cellular approximation theorem">🔗</a></div></article><div class="para" id="subsubsec-cellular-maps-5">The cellular approximation theorem is analogous to the simplicial approximation theorem in combinatorial topology. It implies that for the purposes of homotopy theory, it costs nothing to assume our maps are cellular. We will make essential use of this when studying homology.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-cellular-maps-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="corollary theorem-like" id="cor-low-dim-homotopy"><h5 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.38</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Low-dimensional connectivity.</span>
+</h5>
+<div class="para" id="cor-low-dim-homotopy-2-1">If <span class="process-math">\(X\)</span> is a CW complex with <span class="process-math">\(X^n=X^0\)</span> for all <span class="process-math">\(n\le k\)</span> (i.e., <span class="process-math">\(X\)</span> has no cells of dimension <span class="process-math">\(1\)</span> through <span class="process-math">\(k\)</span>), then every map <span class="process-math">\(S^j\to X\)</span> with <span class="process-math">\(j\le k-1\)</span> is nullhomotopic.<div class="autopermalink" data-description="Paragraph"><a href="#cor-low-dim-homotopy-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Corollary 2.10.38: Low-dimensional connectivity"><a href="#cor-low-dim-homotopy" title="Copy heading and permalink for Corollary 2.10.38: Low-dimensional connectivity" aria-label="Copy heading and permalink for Corollary 2.10.38: Low-dimensional connectivity">🔗</a></div></article><details id="cor-low-dim-homotopy-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="cor-low-dim-homotopy-3-1">Give <span class="process-math">\(S^j\)</span> its standard CW structure. By the cellular approximation theorem, any continuous map <span class="process-math">\(f\colon S^j\to X\)</span> is homotopic to a cellular map <span class="process-math">\(g\colon S^j\to X\text{.}\)</span> Since <span class="process-math">\(g\)</span> is cellular, <span class="process-math">\(g(S^j)\subseteq X^j\text{.}\)</span> But <span class="process-math">\(X^j=X^0\)</span> is discrete and <span class="process-math">\(S^j\)</span> is connected (for <span class="process-math">\(j\ge 1\)</span>), so <span class="process-math">\(g\)</span> is constant.<div class="autopermalink" data-description="Paragraph"><a href="#cor-low-dim-homotopy-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.38.1"><a href="#cor-low-dim-homotopy-3" title="Copy heading and permalink for Proof 2.10.38.1" aria-label="Copy heading and permalink for Proof 2.10.38.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Cellular maps"><a href="#subsubsec-cellular-maps" title="Copy heading and permalink for Subsubsection: Cellular maps" aria-label="Copy heading and permalink for Subsubsection: Cellular maps">🔗</a></div></section><section class="subsubsection" id="subsubsec-suspension-and-cones"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Suspensions and cones</span>
+</h4>
+<div class="para" id="subsubsec-suspension-and-cones-2">Two constructions that arise frequently in algebraic topology — and that we will need for homology computations — are the cone and suspension.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-suspension-and-cones-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-cone-suspension"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.39</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Cone and (unreduced) suspension.</span>
+</h5>
+<div class="para" id="def-cone-suspension-2-1">Let <span class="process-math">\(X\)</span> be a topological space.<div class="autopermalink" data-description="Paragraph"><a href="#def-cone-suspension-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="def-cone-suspension-2-2">
+<ol class="decimal" id="def-cone-suspension-2-2-1">
+<li id="def-cone-suspension-2-2-1-1">
+<div class="para logical" id="def-cone-suspension-2-2-1-1-1">
+<div class="para">The <dfn class="terminology">cone</dfn> on <span class="process-math">\(X\)</span> is the quotient</div>
+<div class="displaymath process-math" id="def-cone-suspension-2-2-1-1-1-3">
+\begin{equation*}
+CX := X\times[0,1]\big/(X\times\{1\}).
+\end{equation*}
+</div>
+<div class="para">It is the space obtained by collapsing one end of the cylinder <span class="process-math">\(X\times[0,1]\)</span> to a point (the <dfn class="terminology">cone point</dfn>). The cone is always contractible.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-cone-suspension-2-2-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#def-cone-suspension-2-2-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="def-cone-suspension-2-2-1-2">
+<div class="para logical" id="def-cone-suspension-2-2-1-2-1">
+<div class="para">The <dfn class="terminology">(unreduced) suspension</dfn> of <span class="process-math">\(X\)</span> is the quotient</div>
+<div class="displaymath process-math" id="def-cone-suspension-2-2-1-2-1-3">
+\begin{equation*}
+\widetilde\Sigma X := X\times[0,1]\big/(X\times\{0\}\cup X\times\{1\})
+\;=\; CX\big/(X\times\{0\}),
+\end{equation*}
+</div>
+<div class="para">obtained by collapsing <em class="emphasis">both</em> ends of the cylinder to points (the <dfn class="terminology">north</dfn> and <dfn class="terminology">south poles</dfn>).</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-cone-suspension-2-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#def-cone-suspension-2-2-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-cone-suspension-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.10.39: Cone and (unreduced) suspension"><a href="#def-cone-suspension" title="Copy heading and permalink for Definition 2.10.39: Cone and (unreduced) suspension" aria-label="Copy heading and permalink for Definition 2.10.39: Cone and (unreduced) suspension">🔗</a></div></article><article class="remark remark-like" id="subsubsec-suspension-and-cones-4"><h5 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.40</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Reduced vs. unreduced suspension.</span>
+</h5>
+<div class="para logical" id="subsubsec-suspension-and-cones-4-2-1">
+<div class="para">If <span class="process-math">\((X,x_0)\)</span> is a <dfn class="terminology">pointed space</dfn> (a space equipped with a chosen basepoint), the <dfn class="terminology">reduced suspension</dfn> is the quotient</div>
+<div class="displaymath process-math" id="subsubsec-suspension-and-cones-4-2-1-4">
+\begin{equation*}
+\Sigma X := \widetilde\Sigma X\big/(\{x_0\}\times[0,1]),
+\end{equation*}
+</div>
+<div class="para">which further collapses the "longitude" through the basepoint to a point. Equivalently, <span class="process-math">\(\Sigma X = X\wedge S^1\text{,}\)</span> the smash product of <span class="process-math">\(X\)</span> with the circle (where <span class="process-math">\(X\wedge Y := X\times Y/(X\vee Y)\)</span> is the quotient of the product by the wedge). The reduced suspension is the standard suspension in the context of stable homotopy theory and generalized cohomology.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-suspension-and-cones-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="subsubsec-suspension-and-cones-4-2-2">For CW complexes with basepoint a <span class="process-math">\(0\)</span>-cell, the inclusion <span class="process-math">\(\{x_0\}\times[0,1]\hookrightarrow\widetilde\Sigma X\)</span> makes <span class="process-math">\(\{x_0\}\times[0,1]\)</span> a contractible subcomplex, so by <a href="notes-week-10.html#cor-contractible-subcomplex" class="xref" data-knowl="./knowl/xref/cor-contractible-subcomplex.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.10.33: Collapsing contractible subcomplexes">Corollary 2.10.33</a> the quotient map <span class="process-math">\(\widetilde\Sigma X\to\Sigma X\)</span> is a homotopy equivalence. In this course, we will primarily use the unreduced suspension <span class="process-math">\(\widetilde\Sigma X\text{,}\)</span> since we are not yet systematically working in the pointed category.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-suspension-and-cones-4-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 2.10.40: Reduced vs. unreduced suspension"><a href="#subsubsec-suspension-and-cones-4" title="Copy heading and permalink for Remark 2.10.40: Reduced vs. unreduced suspension" aria-label="Copy heading and permalink for Remark 2.10.40: Reduced vs. unreduced suspension">🔗</a></div></article><details id="eg-suspension-sphere" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.41</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-suspension-sphere-1-1">
+<div class="para">The suspension of <span class="process-math">\(S^n\)</span> is homeomorphic to <span class="process-math">\(S^{n+1}\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="eg-suspension-sphere-1-1-3">
+\begin{equation*}
+\widetilde\Sigma S^n\cong S^{n+1}.
+\end{equation*}
+</div>
+<div class="para">In particular, <span class="process-math">\(S^n\cong\widetilde\Sigma(S^{n-1})\cong\widetilde\Sigma^2(S^{n-2})\cong\cdots
+\cong\widetilde\Sigma^n(S^0)\text{,}\)</span> where <span class="process-math">\(\widetilde\Sigma^k\)</span> denotes the <span class="process-math">\(k\)</span>-fold iterated suspension. Since <span class="process-math">\(S^0=\{-1,+1\}\text{,}\)</span> this gives us an inductive construction of all spheres: each <span class="process-math">\(S^n\)</span> is the suspension of the previous one.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-suspension-sphere-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.10.41"><a href="#eg-suspension-sphere" title="Copy heading and permalink for Example 2.10.41" aria-label="Copy heading and permalink for Example 2.10.41">🔗</a></div></article></details><div class="para" id="subsubsec-suspension-and-cones-6">If <span class="process-math">\(X\)</span> is a CW complex, then both <span class="process-math">\(CX\)</span> and <span class="process-math">\(\widetilde\Sigma X\)</span> inherit CW structures. For <span class="process-math">\(\widetilde\Sigma X\text{:}\)</span> there are two new <span class="process-math">\(0\)</span>-cells (the poles), and for each <span class="process-math">\(n\)</span>-cell <span class="process-math">\(e^n_\alpha\)</span> of <span class="process-math">\(X\text{,}\)</span> the suspension contributes an <span class="process-math">\((n+1)\)</span>-cell <span class="process-math">\(e^{n+1}_\alpha\)</span> to <span class="process-math">\(\widetilde\Sigma X\text{.}\)</span> This observation will be essential when we compute the homology of spheres using the Mayer-Vietoris sequence.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-suspension-and-cones-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Suspensions and cones"><a href="#subsubsec-suspension-and-cones" title="Copy heading and permalink for Subsubsection: Suspensions and cones" aria-label="Copy heading and permalink for Subsubsection: Suspensions and cones">🔗</a></div></section><section class="subsubsection" id="subsubsec-looking-ahead"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Looking ahead: from spaces to algebra</span>
+</h4>
+<div class="para" id="subsubsec-looking-ahead-2">We now have the geometric machinery — CW complexes, homotopy equivalence, and the homotopy extension property — to begin constructing algebraic invariants. Next week, we will define <dfn class="terminology">singular homology</dfn>: for each space <span class="process-math">\(X\)</span> and each integer <span class="process-math">\(n\ge 0\text{,}\)</span> a group <span class="process-math">\(H_n(X)\)</span> that captures <span class="process-math">\(n\)</span>-dimensional "holes" in <span class="process-math">\(X\text{.}\)</span> The key features of homology will be:<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-looking-ahead-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsubsec-looking-ahead-3">
+<ol class="decimal" id="subsubsec-looking-ahead-3-1">
+<li id="subsubsec-looking-ahead-3-1-1">
+<div class="para" id="subsubsec-looking-ahead-3-1-1-1">
+<dfn class="terminology">Homotopy invariance.</dfn> If <span class="process-math">\(X\simeq Y\text{,}\)</span> then <span class="process-math">\(H_n(X)\cong H_n(Y)\)</span> for all <span class="process-math">\(n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-looking-ahead-3-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#subsubsec-looking-ahead-3-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="subsubsec-looking-ahead-3-1-2">
+<div class="para" id="subsubsec-looking-ahead-3-1-2-1">
+<dfn class="terminology">Dimension.</dfn> <span class="process-math">\(H_n(\mathrm{pt})=0\)</span> for <span class="process-math">\(n\ge 1\text{,}\)</span> and <span class="process-math">\(H_0(\mathrm{pt})\cong\mathbb{Z}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-looking-ahead-3-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#subsubsec-looking-ahead-3-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="subsubsec-looking-ahead-3-1-3">
+<div class="para" id="subsubsec-looking-ahead-3-1-3-1">
+<dfn class="terminology">Mayer-Vietoris.</dfn> For <span class="process-math">\(X=A\cup B\text{,}\)</span> there is a long exact sequence relating <span class="process-math">\(H_*(A\cap B)\text{,}\)</span> <span class="process-math">\(H_*(A)\oplus H_*(B)\text{,}\)</span> and <span class="process-math">\(H_*(X)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-looking-ahead-3-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#subsubsec-looking-ahead-3-1-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-looking-ahead-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsubsec-looking-ahead-4">Together with the CW structures we have built, these properties will let us compute <span class="process-math">\(H_*(S^n)\text{,}\)</span> prove the Brouwer fixed-point theorem (stated without proof back in Week 2), and much more.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-looking-ahead-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Looking ahead: from spaces to algebra"><a href="#subsubsec-looking-ahead" title="Copy heading and permalink for Subsubsection: Looking ahead: from spaces to algebra" aria-label="Copy heading and permalink for Subsubsection: Looking ahead: from spaces to algebra">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Friday"><a href="#notes-week-10-4" title="Copy heading and permalink for Subsection: Friday" aria-label="Copy heading and permalink for Subsection: Friday">🔗</a></div></section><div class="autopermalink" data-description="Section 2.10: Week 10"><a href="#notes-week-10" title="Copy heading and permalink for Section 2.10: Week 10" aria-label="Copy heading and permalink for Section 2.10: Week 10">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="notes-week-09.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="homework.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

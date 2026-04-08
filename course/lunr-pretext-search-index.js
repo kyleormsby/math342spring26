@@ -2305,6 +2305,465 @@ var ptx_lunr_docs = [
   "body": "convenient category compactly generated weakly Hausdorff compactly generated "
 },
 {
+  "id": "notes-week-10",
+  "level": "1",
+  "url": "notes-week-10.html",
+  "type": "Section",
+  "number": "2.10",
+  "title": "Week 10",
+  "body": " Week 10   Monday  We now transition from point-set topology to algebraic topology. The central idea is to study topological spaces not just up to homeomorphism, but up to a coarser equivalence relation — homotopy equivalence — that retains enough geometric information for many applications while being far more flexible. The compact-open topology from last week provides a conceptual bridge: since the compact-open topology is always splitting, a homotopy (a continuous map ) curries to a path in the mapping space . When is locally compact, the exponential adjunction makes this a perfect correspondence.   Homotopy of maps   Homotopy   Let and be topological spaces and let be continuous maps. A homotopy from to is a continuous map such that and for all . When such a homotopy exists, we say and are homotopic and write .    A homotopy is a continuous one-parameter family of maps: at time we have , at time we have , and the map varies continuously in between. Using the compact-open topology, we can connect homotopies to paths in the mapping space . Since the compact-open topology is always splitting, a homotopy curries to a continuous path with and . Conversely, if is locally compact, then the compact-open topology is also conjoining, and every path in uncurries to a homotopy. For general , however, the converse may fail: there can be paths in that do not correspond to homotopies.    It is sometimes important to require a homotopy to fix a subspace. If and , a homotopy relative to (or homotopy rel ) is a homotopy such that for all and all . We write .     Homotopy is an equivalence relation   For any spaces and , the homotopy relation is an equivalence relation on .     Reflexivity. The constant homotopy shows .   Symmetry. If is a homotopy from to , then is a homotopy from to .   Transitivity. If is a homotopy from to and is a homotopy from to , then is a homotopy from to . This is continuous by the gluing lemma (the two definitions agree at since ).    The set of homotopy classes is one of the fundamental objects of algebraic topology. Homotopy is also compatible with composition.   Composition respects homotopy   If and , then .    Let be a homotopy from to . Then is a homotopy from to . Now let be a homotopy from to . The map is a homotopy from to . Composing these two homotopies by transitivity gives .      These two lemmas together say that there is a well-defined homotopy category  whose objects are topological spaces and whose morphisms are homotopy classes of continuous maps. This is the natural home for algebraic topology.     First examples of homotopies       Straight-line homotopy. Let be continuous. Then is a homotopy from to . In particular, any two maps into are homotopic.     Nullhomotopic maps. A continuous map is nullhomotopic if it is homotopic to a constant map. Every map into is nullhomotopic.     Maps out of . The identity map is homotopic to the constant map at the origin via . This is a homotopy that \"contracts\" all of to the origin.         Homotopy equivalence   Homotopy equivalence   A continuous map is a homotopy equivalence if there exists a continuous map such that and . In this case we say and are homotopy equivalent (or have the same homotopy type ) and write . The map is a homotopy inverse of .    Every homeomorphism is a homotopy equivalence, but the converse is far from true. Homotopy equivalence is a much coarser relation: it identifies spaces that have the \"same shape\" in a flexible sense, even if they are not topologically identical.   Contractible space   A space is contractible if it is homotopy equivalent to a point, , if the identity map is nullhomotopic. Equivalently, is contractible if there exists a point and a continuous map with and for all .     Contractible spaces       is contractible: the map contracts it to the origin.    More generally, any convex subset is contractible. In particular, every disk is contractible.    Any star-shaped subset of is contractible.        Non-contractible spaces   The spheres for are not contractible (and in particular not homotopy equivalent to a point). The proof that is not contractible requires the fundamental group or homology; we will be able to prove this in two weeks. That is not contractible is immediate: it is disconnected, and contractible spaces are path-connected (hence connected).      Deformation retracts  The most common way to prove two spaces are homotopy equivalent is to show that one deformation retracts onto the other.   Retract and retraction   Let be a subspace. A retraction of onto is a continuous map such that for all , , where is the inclusion. If such a map exists, we call a retract of .     Deformation retract   A subspace is a deformation retract of if there exists a continuous map such that    for all ,  for all ,  for all and all .    Such a map is a deformation retraction . If only conditions (1) and (2) hold — so that is a retraction and , but the homotopy is not required to fix pointwise — we call a weak deformation retract .      If is a deformation retract of , then the inclusion is a homotopy equivalence with homotopy inverse .    We have (since is a retraction) and (via the deformation retraction ).     Deformation retracts       Punctured Euclidean space.  deformation retracts onto via . At this is the identity, and at this is the radial projection . Points already on are fixed throughout. Thus .     Möbius band. The Möbius band deformation retracts onto its central circle (an embedded copy of ), so the Möbius band is homotopy equivalent to .     Figure-eight neighborhood. The open set (the plane with two points removed) deformation retracts onto a figure-eight — the wedge .     Cylinder. The cylinder deformation retracts onto via . More generally, for any subspace , the product deformation retracts onto .       Deformation retracts give us a useful way to think about homotopy equivalence geometrically: two spaces are homotopy equivalent when one can be continuously deformed into the other. The following proposition makes this precise.    Two spaces and are homotopy equivalent if and only if there exists a third space containing both and as deformation retracts.    The \"if\" direction is clear: if and are both deformation retracts of , then by .  For the \"only if\" direction, suppose is a homotopy equivalence. One can show that is a deformation retract of the mapping cylinder  , which is the pushout    and includes into as the subspace at the base. When is a homotopy equivalence, both and are deformation retracts of .      Homotopy invariants  A homotopy invariant is a quantity or structure assigned to topological spaces that is preserved by homotopy equivalences. We have already seen one.    The functor descends to the homotopy category: if , then . Consequently, homotopy equivalent spaces have the same number of path-components.    Let be a homotopy from to . For any , the map is a path from to in . Thus and lie in the same path-component, so .    Our goal over the remaining four weeks is to construct much richer homotopy invariants — the homology groups  — that can distinguish spaces cannot. For instance, and are both path-connected (so sees no difference), but we will show while , proving they are not homotopy equivalent.     Wednesday  Having established the language of homotopy, we now introduce one of the most important classes of topological spaces in algebraic topology: CW complexes . These are spaces built by iteratively attaching cells — a construction we already encountered when building spheres and projective spaces via pushouts in Week 3. CW complexes provide a class of spaces large enough to include all manifolds and most spaces arising in practice, yet structured enough that algebraic invariants (like homology) can be computed effectively.   Cell attachment via pushouts  Recall from that a pushout in glues two spaces together along a common subspace. The fundamental building block of a CW complex is the operation of attaching an -cell : given a space and a continuous map (the attaching map ), the space obtained by attaching an -cell along is the pushout    In the language of pushouts, this is the pushout of the span , where is the inclusion of the boundary sphere into the disk. The image of the interior of in the pushout is an open -cell , homeomorphic to .  More generally, we can attach several -cells simultaneously. Given a family of attaching maps , we form the pushout    Spheres via cell attachment   The sphere is obtained from a point by attaching a single -cell via the unique (constant) map . The resulting pushout is the disk with its boundary collapsed to a point. This gives a CW structure with exactly two cells: one -cell and one -cell.      CW complexes   CW complex   A CW complex is a topological space equipped with a filtration constructed inductively as follows.     The -skeleton  is a discrete set of points (the -cells ).    For each , the -skeleton  is obtained from by attaching a (possibly empty) collection of -cells. That is, is the pushout for some family of attaching maps .    The space carries the weak topology (also called the colimit topology ): a subset is open if and only if is open in for every . (If the construction terminates at some finite stage , this condition is automatic.)     The letters \"CW\" stand for closure-finite (the closure of each cell meets only finitely many other cells) and weak topology .      Each -cell comes equipped with a characteristic map  (the composite ) whose restriction to the interior of is a homeomorphism onto the open cell , and whose restriction to is the attaching map .    The pushout perspective makes the universal property of CW complexes transparent: a continuous map out of is determined by a continuous map out of together with continuous maps out of each that agree with the given map on along the attaching maps. For finite-dimensional CW complexes, maps out of are built by induction on the skeletal filtration.    Examples of CW structures   Spheres   As noted in , has a CW structure with one -cell and one -cell: . Alternatively, admits a CW structure with two cells in each dimension up to : take with the -skeleton (embedded via the first coordinates), where each is obtained from by attaching two -cells (the upper and lower open hemispheres).     Real projective space   Recall from Week 3 that is obtained from by attaching a single -cell. The attaching map is the antipodal quotient restricted to the boundary of the upper hemisphere. This gives a CW structure with exactly one cell in each dimension: Taking the colimit, infinite real projective space is a CW complex with one cell in each dimension .     Complex projective space   Similarly, has a CW structure with one cell in each even dimension: The attaching map sends a unit vector in to the complex line it spans — this is the Hopf map when .     The torus   The torus admits a CW structure with one -cell, two -cells and , and one -cell. The -skeleton is a wedge of two circles , and the single -cell is attached along the loop . One sees this from the standard identification of the torus as a square with opposite sides identified: the four corners of the square are all identified to the single -cell, the edges become the two -cells, and the interior of the square is the -cell.     Graphs   A graph is a -dimensional CW complex: it has a discrete set of -cells (vertices) and a collection of -cells (edges), each attached to one or two vertices. Loops (edges attached at both ends to the same vertex) and multiple edges between the same pair of vertices are permitted.     Closed surfaces   Every closed orientable surface of genus has a CW structure with one -cell, one-cells , and one -cell attached along . The non-orientable surfaces admit similar descriptions with the appropriate identification words.      Subcomplexes and quotients  The pushout construction interacts well with the skeletal filtration, yielding several useful operations on CW complexes.   Subcomplex   A subcomplex of a CW complex is a closed subspace that is a union of cells of . Equivalently, inherits a CW structure by taking . A CW pair is a pair where is a CW complex and is a subcomplex.      If is a CW pair, then the quotient space inherits a natural CW structure: it has the cells of plus one additional -cell (the image of ).      Taking (one -cell, one -cell, one -cell) and (the subcomplex consisting of the -cell and the -cell), the quotient has the CW structure with two cells , as expected.    The wedge sum and product also admit CW descriptions.        Wedge. If and are CW complexes with chosen -cells and , then the wedge sum inherits a CW structure.     Product. If and are CW complexes, then has a CW structure whose cells are the products of cells of and . (When both and have finitely many cells in each dimension, the product topology agrees with the CW topology; in general one must use the compactly generated refinement.)          Friday   The homotopy extension property  One of the key technical advantages of CW complexes is their excellent behavior with respect to homotopies. The fundamental result is the homotopy extension property , which says that a homotopy defined on a subcomplex can always be extended to the ambient complex.   Homotopy extension property   A pair of topological spaces has the homotopy extension property (HEP) if for every space , every continuous map , and every homotopy with , there exists a homotopy extending with . In other words, the dashed arrow exists making the following diagram commute:  The homotopy extension property diagram: includes into across the top, and both map down via into the products with . The map and the partial homotopy are given, and the HEP asserts the existence of .       The HEP can be rephrased in terms of retracts. The pair has the HEP if and only if is a retract of . For cell attachments, this retract can be constructed explicitly.    The pair has the homotopy extension property. Concretely, is a retract of .    Project radially from the point onto the subspace . This defines a retraction . The geometric picture: we project from a point \"above\" the cylinder onto its bottom face and lateral boundary. Here is an illustration in the case :   The radial projection retraction for the pair . The cylinder is shown with its bottom face and lateral boundary highlighted. A point above the cylinder projects radially onto , defining the retraction.       CW pairs have the homotopy extension property   If is a CW pair, then has the homotopy extension property.    We construct the extension inductively over the skeletal filtration. It suffices to show that if is obtained from by attaching a single -cell via , then has the HEP — the general case follows by induction on skeleta and a colimit argument.  Given and a homotopy with , we need to extend to . The restriction of to the cell and the homotopy on together define a map on (using on ). By , this extends over . The extensions on and are compatible on by construction, so by the universal property of the pushout, they assemble into a homotopy .    The homotopy extension property has several powerful consequences, which we record as corollaries.   Collapsing contractible subcomplexes   If is a CW pair and is contractible, then the quotient map is a homotopy equivalence.    Since is contractible, there is a homotopy from to a constant map. By the HEP, this extends to a homotopy starting at . The map sends all of to a single point, so it factors through , and one checks this yields a homotopy inverse for .     Homotopic attaching maps   If are homotopic attaching maps, then the resulting spaces and are homotopy equivalent.    Consider the space . The homotopy between and can be used, via the HEP for the pair , to construct a deformation of the attaching region. The mapping cylinder of the homotopy between attaching maps contains both spaces as deformation retracts.     Collapsing a maximal tree in a graph   Let be a connected graph (a -dimensional CW complex). A maximal tree  is a contractible subgraph containing all vertices. By , is homotopy equivalent to . Since contains all vertices, the quotient has a single vertex, and each edge not in becomes a loop — so is a wedge of circles. If has vertices, edges, and contains edges (as any tree on vertices must), then In particular, where .      Cellular maps   Cellular map   A continuous map between CW complexes is cellular if for all , , preserves the skeletal filtrations.    Not every continuous map between CW complexes is cellular, but the following remarkable theorem — whose proof we will not give here — asserts that every map is homotopic to a cellular one.   Cellular approximation theorem   Every continuous map between CW complexes is homotopic to a cellular map. Moreover, if is already cellular on a subcomplex , the homotopy can be taken to be rel .    The cellular approximation theorem is analogous to the simplicial approximation theorem in combinatorial topology. It implies that for the purposes of homotopy theory, it costs nothing to assume our maps are cellular. We will make essential use of this when studying homology.   Low-dimensional connectivity   If is a CW complex with for all ( , has no cells of dimension through ), then every map with is nullhomotopic.    Give its standard CW structure. By the cellular approximation theorem, any continuous map is homotopic to a cellular map . Since is cellular, . But is discrete and is connected (for ), so is constant.      Suspensions and cones  Two constructions that arise frequently in algebraic topology — and that we will need for homology computations — are the cone and suspension.   Cone and (unreduced) suspension   Let be a topological space.     The cone on is the quotient It is the space obtained by collapsing one end of the cylinder to a point (the cone point ). The cone is always contractible.    The (unreduced) suspension of is the quotient obtained by collapsing both ends of the cylinder to points (the north and south poles ).        Reduced vs. unreduced suspension   If is a pointed space (a space equipped with a chosen basepoint), the reduced suspension is the quotient which further collapses the \"longitude\" through the basepoint to a point. Equivalently, , the smash product of with the circle (where is the quotient of the product by the wedge). The reduced suspension is the standard suspension in the context of stable homotopy theory and generalized cohomology.  For CW complexes with basepoint a -cell, the inclusion makes a contractible subcomplex, so by the quotient map is a homotopy equivalence. In this course, we will primarily use the unreduced suspension , since we are not yet systematically working in the pointed category.      The suspension of is homeomorphic to : In particular, , where denotes the -fold iterated suspension. Since , this gives us an inductive construction of all spheres: each is the suspension of the previous one.    If is a CW complex, then both and inherit CW structures. For : there are two new -cells (the poles), and for each -cell of , the suspension contributes an -cell to . This observation will be essential when we compute the homology of spheres using the Mayer-Vietoris sequence.    Looking ahead: from spaces to algebra  We now have the geometric machinery — CW complexes, homotopy equivalence, and the homotopy extension property — to begin constructing algebraic invariants. Next week, we will define singular homology : for each space and each integer , a group that captures -dimensional \"holes\" in . The key features of homology will be:      Homotopy invariance. If , then for all .     Dimension.  for , and .     Mayer-Vietoris. For , there is a long exact sequence relating , , and .     Together with the CW structures we have built, these properties will let us compute , prove the Brouwer fixed-point theorem (stated without proof back in Week 2), and much more.    "
+},
+{
+  "id": "notes-week-10-2-2",
+  "level": "2",
+  "url": "notes-week-10.html#notes-week-10-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homotopy equivalence "
+},
+{
+  "id": "def-homotopy",
+  "level": "2",
+  "url": "notes-week-10.html#def-homotopy",
+  "type": "Definition",
+  "number": "2.10.1",
+  "title": "Homotopy.",
+  "body": " Homotopy   Let and be topological spaces and let be continuous maps. A homotopy from to is a continuous map such that and for all . When such a homotopy exists, we say and are homotopic and write .   "
+},
+{
+  "id": "subsubsec-homotopy-of-maps-4",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-homotopy-of-maps-4",
+  "type": "Remark",
+  "number": "2.10.2",
+  "title": "",
+  "body": "  It is sometimes important to require a homotopy to fix a subspace. If and , a homotopy relative to (or homotopy rel ) is a homotopy such that for all and all . We write .   "
+},
+{
+  "id": "lem-homotopy-equiv-rel",
+  "level": "2",
+  "url": "notes-week-10.html#lem-homotopy-equiv-rel",
+  "type": "Lemma",
+  "number": "2.10.3",
+  "title": "Homotopy is an equivalence relation.",
+  "body": " Homotopy is an equivalence relation   For any spaces and , the homotopy relation is an equivalence relation on .     Reflexivity. The constant homotopy shows .   Symmetry. If is a homotopy from to , then is a homotopy from to .   Transitivity. If is a homotopy from to and is a homotopy from to , then is a homotopy from to . This is continuous by the gluing lemma (the two definitions agree at since ).   "
+},
+{
+  "id": "lem-homotopy-composition",
+  "level": "2",
+  "url": "notes-week-10.html#lem-homotopy-composition",
+  "type": "Lemma",
+  "number": "2.10.4",
+  "title": "Composition respects homotopy.",
+  "body": " Composition respects homotopy   If and , then .    Let be a homotopy from to . Then is a homotopy from to . Now let be a homotopy from to . The map is a homotopy from to . Composing these two homotopies by transitivity gives .   "
+},
+{
+  "id": "subsubsec-homotopy-of-maps-8",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-homotopy-of-maps-8",
+  "type": "Remark",
+  "number": "2.10.5",
+  "title": "",
+  "body": "  These two lemmas together say that there is a well-defined homotopy category  whose objects are topological spaces and whose morphisms are homotopy classes of continuous maps. This is the natural home for algebraic topology.   "
+},
+{
+  "id": "eg-homotopy-basic",
+  "level": "2",
+  "url": "notes-week-10.html#eg-homotopy-basic",
+  "type": "Example",
+  "number": "2.10.6",
+  "title": "First examples of homotopies.",
+  "body": " First examples of homotopies       Straight-line homotopy. Let be continuous. Then is a homotopy from to . In particular, any two maps into are homotopic.     Nullhomotopic maps. A continuous map is nullhomotopic if it is homotopic to a constant map. Every map into is nullhomotopic.     Maps out of . The identity map is homotopic to the constant map at the origin via . This is a homotopy that \"contracts\" all of to the origin.      "
+},
+{
+  "id": "def-homotopy-equivalence",
+  "level": "2",
+  "url": "notes-week-10.html#def-homotopy-equivalence",
+  "type": "Definition",
+  "number": "2.10.7",
+  "title": "Homotopy equivalence.",
+  "body": " Homotopy equivalence   A continuous map is a homotopy equivalence if there exists a continuous map such that and . In this case we say and are homotopy equivalent (or have the same homotopy type ) and write . The map is a homotopy inverse of .   "
+},
+{
+  "id": "def-contractible",
+  "level": "2",
+  "url": "notes-week-10.html#def-contractible",
+  "type": "Definition",
+  "number": "2.10.8",
+  "title": "Contractible space.",
+  "body": " Contractible space   A space is contractible if it is homotopy equivalent to a point, , if the identity map is nullhomotopic. Equivalently, is contractible if there exists a point and a continuous map with and for all .   "
+},
+{
+  "id": "eg-contractible",
+  "level": "2",
+  "url": "notes-week-10.html#eg-contractible",
+  "type": "Example",
+  "number": "2.10.9",
+  "title": "Contractible spaces.",
+  "body": " Contractible spaces       is contractible: the map contracts it to the origin.    More generally, any convex subset is contractible. In particular, every disk is contractible.    Any star-shaped subset of is contractible.      "
+},
+{
+  "id": "eg-noncontractible",
+  "level": "2",
+  "url": "notes-week-10.html#eg-noncontractible",
+  "type": "Example",
+  "number": "2.10.10",
+  "title": "Non-contractible spaces.",
+  "body": " Non-contractible spaces   The spheres for are not contractible (and in particular not homotopy equivalent to a point). The proof that is not contractible requires the fundamental group or homology; we will be able to prove this in two weeks. That is not contractible is immediate: it is disconnected, and contractible spaces are path-connected (hence connected).   "
+},
+{
+  "id": "def-retract",
+  "level": "2",
+  "url": "notes-week-10.html#def-retract",
+  "type": "Definition",
+  "number": "2.10.11",
+  "title": "Retract and retraction.",
+  "body": " Retract and retraction   Let be a subspace. A retraction of onto is a continuous map such that for all , , where is the inclusion. If such a map exists, we call a retract of .   "
+},
+{
+  "id": "def-deformation-retract",
+  "level": "2",
+  "url": "notes-week-10.html#def-deformation-retract",
+  "type": "Definition",
+  "number": "2.10.12",
+  "title": "Deformation retract.",
+  "body": " Deformation retract   A subspace is a deformation retract of if there exists a continuous map such that    for all ,  for all ,  for all and all .    Such a map is a deformation retraction . If only conditions (1) and (2) hold — so that is a retraction and , but the homotopy is not required to fix pointwise — we call a weak deformation retract .   "
+},
+{
+  "id": "lem-deformation-retract-htpy-equiv",
+  "level": "2",
+  "url": "notes-week-10.html#lem-deformation-retract-htpy-equiv",
+  "type": "Lemma",
+  "number": "2.10.13",
+  "title": "",
+  "body": "  If is a deformation retract of , then the inclusion is a homotopy equivalence with homotopy inverse .    We have (since is a retraction) and (via the deformation retraction ).   "
+},
+{
+  "id": "eg-deformation-retracts",
+  "level": "2",
+  "url": "notes-week-10.html#eg-deformation-retracts",
+  "type": "Example",
+  "number": "2.10.14",
+  "title": "Deformation retracts.",
+  "body": " Deformation retracts       Punctured Euclidean space.  deformation retracts onto via . At this is the identity, and at this is the radial projection . Points already on are fixed throughout. Thus .     Möbius band. The Möbius band deformation retracts onto its central circle (an embedded copy of ), so the Möbius band is homotopy equivalent to .     Figure-eight neighborhood. The open set (the plane with two points removed) deformation retracts onto a figure-eight — the wedge .     Cylinder. The cylinder deformation retracts onto via . More generally, for any subspace , the product deformation retracts onto .      "
+},
+{
+  "id": "prop-htpy-equiv-third-space",
+  "level": "2",
+  "url": "notes-week-10.html#prop-htpy-equiv-third-space",
+  "type": "Proposition",
+  "number": "2.10.15",
+  "title": "",
+  "body": "  Two spaces and are homotopy equivalent if and only if there exists a third space containing both and as deformation retracts.    The \"if\" direction is clear: if and are both deformation retracts of , then by .  For the \"only if\" direction, suppose is a homotopy equivalence. One can show that is a deformation retract of the mapping cylinder  , which is the pushout    and includes into as the subspace at the base. When is a homotopy equivalence, both and are deformation retracts of .   "
+},
+{
+  "id": "subsubsec-homotopy-invariants-2",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-homotopy-invariants-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homotopy invariant "
+},
+{
+  "id": "prop-pi0-homotopy-invariant",
+  "level": "2",
+  "url": "notes-week-10.html#prop-pi0-homotopy-invariant",
+  "type": "Proposition",
+  "number": "2.10.16",
+  "title": "",
+  "body": "  The functor descends to the homotopy category: if , then . Consequently, homotopy equivalent spaces have the same number of path-components.    Let be a homotopy from to . For any , the map is a path from to in . Thus and lie in the same path-component, so .   "
+},
+{
+  "id": "subsubsec-homotopy-invariants-4",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-homotopy-invariants-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homology groups "
+},
+{
+  "id": "notes-week-10-3-2",
+  "level": "2",
+  "url": "notes-week-10.html#notes-week-10-3-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "CW complexes "
+},
+{
+  "id": "subsubsec-cell-attachment-2",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-cell-attachment-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "attaching an -cell attaching map "
+},
+{
+  "id": "subsubsec-cell-attachment-3",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-cell-attachment-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "open -cell "
+},
+{
+  "id": "eg-cell-attachment-sphere",
+  "level": "2",
+  "url": "notes-week-10.html#eg-cell-attachment-sphere",
+  "type": "Example",
+  "number": "2.10.17",
+  "title": "Spheres via cell attachment.",
+  "body": " Spheres via cell attachment   The sphere is obtained from a point by attaching a single -cell via the unique (constant) map . The resulting pushout is the disk with its boundary collapsed to a point. This gives a CW structure with exactly two cells: one -cell and one -cell.   "
+},
+{
+  "id": "def-cw-complex",
+  "level": "2",
+  "url": "notes-week-10.html#def-cw-complex",
+  "type": "Definition",
+  "number": "2.10.18",
+  "title": "CW complex.",
+  "body": " CW complex   A CW complex is a topological space equipped with a filtration constructed inductively as follows.     The -skeleton  is a discrete set of points (the -cells ).    For each , the -skeleton  is obtained from by attaching a (possibly empty) collection of -cells. That is, is the pushout for some family of attaching maps .    The space carries the weak topology (also called the colimit topology ): a subset is open if and only if is open in for every . (If the construction terminates at some finite stage , this condition is automatic.)     The letters \"CW\" stand for closure-finite (the closure of each cell meets only finitely many other cells) and weak topology .   "
+},
+{
+  "id": "subsubsec-cw-complexes-3",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-cw-complexes-3",
+  "type": "Remark",
+  "number": "2.10.19",
+  "title": "",
+  "body": "  Each -cell comes equipped with a characteristic map  (the composite ) whose restriction to the interior of is a homeomorphism onto the open cell , and whose restriction to is the attaching map .   "
+},
+{
+  "id": "eg-cw-sphere",
+  "level": "2",
+  "url": "notes-week-10.html#eg-cw-sphere",
+  "type": "Example",
+  "number": "2.10.20",
+  "title": "Spheres.",
+  "body": " Spheres   As noted in , has a CW structure with one -cell and one -cell: . Alternatively, admits a CW structure with two cells in each dimension up to : take with the -skeleton (embedded via the first coordinates), where each is obtained from by attaching two -cells (the upper and lower open hemispheres).   "
+},
+{
+  "id": "eg-cw-projective-space",
+  "level": "2",
+  "url": "notes-week-10.html#eg-cw-projective-space",
+  "type": "Example",
+  "number": "2.10.21",
+  "title": "Real projective space.",
+  "body": " Real projective space   Recall from Week 3 that is obtained from by attaching a single -cell. The attaching map is the antipodal quotient restricted to the boundary of the upper hemisphere. This gives a CW structure with exactly one cell in each dimension: Taking the colimit, infinite real projective space is a CW complex with one cell in each dimension .   "
+},
+{
+  "id": "eg-cw-complex-projective",
+  "level": "2",
+  "url": "notes-week-10.html#eg-cw-complex-projective",
+  "type": "Example",
+  "number": "2.10.22",
+  "title": "Complex projective space.",
+  "body": " Complex projective space   Similarly, has a CW structure with one cell in each even dimension: The attaching map sends a unit vector in to the complex line it spans — this is the Hopf map when .   "
+},
+{
+  "id": "eg-cw-torus",
+  "level": "2",
+  "url": "notes-week-10.html#eg-cw-torus",
+  "type": "Example",
+  "number": "2.10.23",
+  "title": "The torus.",
+  "body": " The torus   The torus admits a CW structure with one -cell, two -cells and , and one -cell. The -skeleton is a wedge of two circles , and the single -cell is attached along the loop . One sees this from the standard identification of the torus as a square with opposite sides identified: the four corners of the square are all identified to the single -cell, the edges become the two -cells, and the interior of the square is the -cell.   "
+},
+{
+  "id": "eg-cw-graphs",
+  "level": "2",
+  "url": "notes-week-10.html#eg-cw-graphs",
+  "type": "Example",
+  "number": "2.10.24",
+  "title": "Graphs.",
+  "body": " Graphs   A graph is a -dimensional CW complex: it has a discrete set of -cells (vertices) and a collection of -cells (edges), each attached to one or two vertices. Loops (edges attached at both ends to the same vertex) and multiple edges between the same pair of vertices are permitted.   "
+},
+{
+  "id": "eg-cw-surfaces",
+  "level": "2",
+  "url": "notes-week-10.html#eg-cw-surfaces",
+  "type": "Example",
+  "number": "2.10.25",
+  "title": "Closed surfaces.",
+  "body": " Closed surfaces   Every closed orientable surface of genus has a CW structure with one -cell, one-cells , and one -cell attached along . The non-orientable surfaces admit similar descriptions with the appropriate identification words.   "
+},
+{
+  "id": "def-subcomplex",
+  "level": "2",
+  "url": "notes-week-10.html#def-subcomplex",
+  "type": "Definition",
+  "number": "2.10.26",
+  "title": "Subcomplex.",
+  "body": " Subcomplex   A subcomplex of a CW complex is a closed subspace that is a union of cells of . Equivalently, inherits a CW structure by taking . A CW pair is a pair where is a CW complex and is a subcomplex.   "
+},
+{
+  "id": "prop-cw-quotient",
+  "level": "2",
+  "url": "notes-week-10.html#prop-cw-quotient",
+  "type": "Proposition",
+  "number": "2.10.27",
+  "title": "",
+  "body": "  If is a CW pair, then the quotient space inherits a natural CW structure: it has the cells of plus one additional -cell (the image of ).   "
+},
+{
+  "id": "eg-cw-quotient-sphere",
+  "level": "2",
+  "url": "notes-week-10.html#eg-cw-quotient-sphere",
+  "type": "Example",
+  "number": "2.10.28",
+  "title": "",
+  "body": "  Taking (one -cell, one -cell, one -cell) and (the subcomplex consisting of the -cell and the -cell), the quotient has the CW structure with two cells , as expected.   "
+},
+{
+  "id": "prop-cw-wedge-product",
+  "level": "2",
+  "url": "notes-week-10.html#prop-cw-wedge-product",
+  "type": "Proposition",
+  "number": "2.10.29",
+  "title": "",
+  "body": "      Wedge. If and are CW complexes with chosen -cells and , then the wedge sum inherits a CW structure.     Product. If and are CW complexes, then has a CW structure whose cells are the products of cells of and . (When both and have finitely many cells in each dimension, the product topology agrees with the CW topology; in general one must use the compactly generated refinement.)      "
+},
+{
+  "id": "subsubsec-homotopy-extension-2",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-homotopy-extension-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homotopy extension property "
+},
+{
+  "id": "def-hep",
+  "level": "2",
+  "url": "notes-week-10.html#def-hep",
+  "type": "Definition",
+  "number": "2.10.30",
+  "title": "Homotopy extension property.",
+  "body": " Homotopy extension property   A pair of topological spaces has the homotopy extension property (HEP) if for every space , every continuous map , and every homotopy with , there exists a homotopy extending with . In other words, the dashed arrow exists making the following diagram commute:  The homotopy extension property diagram: includes into across the top, and both map down via into the products with . The map and the partial homotopy are given, and the HEP asserts the existence of .      "
+},
+{
+  "id": "lem-disk-hep",
+  "level": "2",
+  "url": "notes-week-10.html#lem-disk-hep",
+  "type": "Lemma",
+  "number": "2.10.31",
+  "title": "",
+  "body": "  The pair has the homotopy extension property. Concretely, is a retract of .    Project radially from the point onto the subspace . This defines a retraction . The geometric picture: we project from a point \"above\" the cylinder onto its bottom face and lateral boundary. Here is an illustration in the case :   The radial projection retraction for the pair . The cylinder is shown with its bottom face and lateral boundary highlighted. A point above the cylinder projects radially onto , defining the retraction.     "
+},
+{
+  "id": "thm-cw-hep",
+  "level": "2",
+  "url": "notes-week-10.html#thm-cw-hep",
+  "type": "Theorem",
+  "number": "2.10.32",
+  "title": "CW pairs have the homotopy extension property.",
+  "body": " CW pairs have the homotopy extension property   If is a CW pair, then has the homotopy extension property.    We construct the extension inductively over the skeletal filtration. It suffices to show that if is obtained from by attaching a single -cell via , then has the HEP — the general case follows by induction on skeleta and a colimit argument.  Given and a homotopy with , we need to extend to . The restriction of to the cell and the homotopy on together define a map on (using on ). By , this extends over . The extensions on and are compatible on by construction, so by the universal property of the pushout, they assemble into a homotopy .   "
+},
+{
+  "id": "cor-contractible-subcomplex",
+  "level": "2",
+  "url": "notes-week-10.html#cor-contractible-subcomplex",
+  "type": "Corollary",
+  "number": "2.10.33",
+  "title": "Collapsing contractible subcomplexes.",
+  "body": " Collapsing contractible subcomplexes   If is a CW pair and is contractible, then the quotient map is a homotopy equivalence.    Since is contractible, there is a homotopy from to a constant map. By the HEP, this extends to a homotopy starting at . The map sends all of to a single point, so it factors through , and one checks this yields a homotopy inverse for .   "
+},
+{
+  "id": "cor-homotopic-attaching",
+  "level": "2",
+  "url": "notes-week-10.html#cor-homotopic-attaching",
+  "type": "Corollary",
+  "number": "2.10.34",
+  "title": "Homotopic attaching maps.",
+  "body": " Homotopic attaching maps   If are homotopic attaching maps, then the resulting spaces and are homotopy equivalent.    Consider the space . The homotopy between and can be used, via the HEP for the pair , to construct a deformation of the attaching region. The mapping cylinder of the homotopy between attaching maps contains both spaces as deformation retracts.   "
+},
+{
+  "id": "eg-collapsing-tree",
+  "level": "2",
+  "url": "notes-week-10.html#eg-collapsing-tree",
+  "type": "Example",
+  "number": "2.10.35",
+  "title": "Collapsing a maximal tree in a graph.",
+  "body": " Collapsing a maximal tree in a graph   Let be a connected graph (a -dimensional CW complex). A maximal tree  is a contractible subgraph containing all vertices. By , is homotopy equivalent to . Since contains all vertices, the quotient has a single vertex, and each edge not in becomes a loop — so is a wedge of circles. If has vertices, edges, and contains edges (as any tree on vertices must), then In particular, where .   "
+},
+{
+  "id": "def-cellular-map",
+  "level": "2",
+  "url": "notes-week-10.html#def-cellular-map",
+  "type": "Definition",
+  "number": "2.10.36",
+  "title": "Cellular map.",
+  "body": " Cellular map   A continuous map between CW complexes is cellular if for all , , preserves the skeletal filtrations.   "
+},
+{
+  "id": "thm-cellular-approximation",
+  "level": "2",
+  "url": "notes-week-10.html#thm-cellular-approximation",
+  "type": "Theorem",
+  "number": "2.10.37",
+  "title": "Cellular approximation theorem.",
+  "body": " Cellular approximation theorem   Every continuous map between CW complexes is homotopic to a cellular map. Moreover, if is already cellular on a subcomplex , the homotopy can be taken to be rel .   "
+},
+{
+  "id": "cor-low-dim-homotopy",
+  "level": "2",
+  "url": "notes-week-10.html#cor-low-dim-homotopy",
+  "type": "Corollary",
+  "number": "2.10.38",
+  "title": "Low-dimensional connectivity.",
+  "body": " Low-dimensional connectivity   If is a CW complex with for all ( , has no cells of dimension through ), then every map with is nullhomotopic.    Give its standard CW structure. By the cellular approximation theorem, any continuous map is homotopic to a cellular map . Since is cellular, . But is discrete and is connected (for ), so is constant.   "
+},
+{
+  "id": "def-cone-suspension",
+  "level": "2",
+  "url": "notes-week-10.html#def-cone-suspension",
+  "type": "Definition",
+  "number": "2.10.39",
+  "title": "Cone and (unreduced) suspension.",
+  "body": " Cone and (unreduced) suspension   Let be a topological space.     The cone on is the quotient It is the space obtained by collapsing one end of the cylinder to a point (the cone point ). The cone is always contractible.    The (unreduced) suspension of is the quotient obtained by collapsing both ends of the cylinder to points (the north and south poles ).      "
+},
+{
+  "id": "subsubsec-suspension-and-cones-4",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-suspension-and-cones-4",
+  "type": "Remark",
+  "number": "2.10.40",
+  "title": "Reduced vs. unreduced suspension.",
+  "body": " Reduced vs. unreduced suspension   If is a pointed space (a space equipped with a chosen basepoint), the reduced suspension is the quotient which further collapses the \"longitude\" through the basepoint to a point. Equivalently, , the smash product of with the circle (where is the quotient of the product by the wedge). The reduced suspension is the standard suspension in the context of stable homotopy theory and generalized cohomology.  For CW complexes with basepoint a -cell, the inclusion makes a contractible subcomplex, so by the quotient map is a homotopy equivalence. In this course, we will primarily use the unreduced suspension , since we are not yet systematically working in the pointed category.   "
+},
+{
+  "id": "eg-suspension-sphere",
+  "level": "2",
+  "url": "notes-week-10.html#eg-suspension-sphere",
+  "type": "Example",
+  "number": "2.10.41",
+  "title": "",
+  "body": "  The suspension of is homeomorphic to : In particular, , where denotes the -fold iterated suspension. Since , this gives us an inductive construction of all spheres: each is the suspension of the previous one.   "
+},
+{
+  "id": "subsubsec-looking-ahead-2",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-looking-ahead-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "singular homology "
+},
+{
+  "id": "subsubsec-looking-ahead-3",
+  "level": "2",
+  "url": "notes-week-10.html#subsubsec-looking-ahead-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Homotopy invariance. Dimension. Mayer-Vietoris. "
+},
+{
   "id": "homework-2",
   "level": "1",
   "url": "homework-2.html",

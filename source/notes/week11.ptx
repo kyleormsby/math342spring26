@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-11">
+  <title>Week 11</title>
+
+  <subsection>
+    <title>Monday</title>
+    <p>
+      Last week we developed the language of homotopy, CW complexes, and the homotopy extension
+      property. This week we introduce <term>singular homology</term>, an algebraic invariant that
+      assigns to each topological space <m>X</m> a sequence of abelian groups
+      <m>H_0(X), H_1(X), H_2(X), \ldots</m> These groups detect "holes" of each dimension:
+      <m>H_0</m> counts connected components, <m>H_1</m> detects loops that do not bound,
+      <m>H_2</m> detects trapped cavities, and so on. Unlike the fundamental group, homology is
+      abelian and defined in all dimensions, making it both more computable and more broadly
+      applicable.
+    </p>
+    <p>
+      The construction proceeds in three stages: we define the <em>singular chain groups</em>
+      <m>C_n(X)</m>, organize them into a <em>chain complex</em> via a boundary operator
+      <m>\partial</m>, and then extract homology as the quotient
+      <m>H_n(X)=\ker\partial_n/\operatorname{im}\partial_{n+1}</m>.
+    </p>
+
+    <subsubsection xml:id="subsubsec-singular-simplices">
+      <title>Singular simplices and chain groups</title>
+      <definition xml:id="def-standard-simplex">
+        <title>Standard simplex</title>
+        <statement>
+          <p>
+            The <term>standard <m>n</m>-simplex</term> is the subspace
+            <md>
+              \Delta^n := \{(t_0,t_1,\ldots,t_n)\in\mathbb{R}^{n+1} \mid t_i\ge 0,\; \textstyle\sum_i t_i=1\} \subseteq\mathbb{R}^{n+1}.
+            </md>
+            We write <m>e_0,e_1,\ldots,e_n</m> for the vertices of <m>\Delta^n</m>, where
+            <m>e_i</m> is the point with <m>t_i=1</m> and all other coordinates zero. Thus
+            <m>\Delta^0</m> is a point, <m>\Delta^1</m> is a line segment, <m>\Delta^2</m> is a
+            triangle, and <m>\Delta^3</m> is a tetrahedron.
+          </p>
+        </statement>
+      </definition>
+      <definition xml:id="def-singular-simplex">
+        <title>Singular simplex</title>
+        <statement>
+          <p>
+            A <term>singular <m>n</m>-simplex</term> in a topological space <m>X</m> is a
+            continuous map <m>\sigma\colon\Delta^n\to X</m>. We emphasize that <m>\sigma</m> need
+            not be an embedding — it can collapse dimensions, have self-intersections, or be
+            constant. The word "singular" is used precisely to contrast with simplicial maps that
+            preserve combinatorial structure.
+          </p>
+        </statement>
+      </definition>
+      <definition xml:id="def-singular-chain-group">
+        <title>Singular chain group</title>
+        <statement>
+          <p>
+            The <term>singular chain group</term> <m>C_n(X)</m> is the free abelian group generated
+            by the set of all singular <m>n</m>-simplices in <m>X</m>:
+            <md>
+              C_n(X) := \bigoplus_{\sigma\colon\Delta^n\to X}\mathbb{Z}\cdot\sigma.
+            </md>
+            An element of <m>C_n(X)</m> is called a <term>singular <m>n</m>-chain</term>; it is a
+            finite formal <m>\mathbb{Z}</m>-linear combination
+            <m>\sum_i n_i\sigma_i</m> of singular <m>n</m>-simplices.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        The groups <m>C_n(X)</m> are typically enormous — even for <m>X</m> a single point, there
+        is one singular <m>n</m>-simplex (the constant map) for each <m>n\ge 0</m>. The
+        power of the theory lies not in the chain groups themselves but in the algebraic structure
+        imposed by the boundary operator.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-boundary-operator">
+      <title>The boundary operator</title>
+      <p>
+        The boundary operator is built from <em>face maps</em> that include
+        <m>\Delta^{n-1}</m> into <m>\Delta^n</m> as each of its <m>n+1</m> codimension-one faces.
+      </p>
+      <definition xml:id="def-face-map">
+        <title>Face map</title>
+        <statement>
+          <p>
+            For <m>0\le i\le n</m>, the <m>i</m>-th <term>face map</term>
+            <m>d_i\colon\Delta^{n-1}\to\Delta^n</m> is the affine-linear map that sends the
+            vertices <m>e_0,\ldots,e_{n-1}</m> of <m>\Delta^{n-1}</m> to the vertices
+            <m>e_0,\ldots,\widehat{e_i},\ldots,e_n</m> of <m>\Delta^n</m> (omitting
+            <m>e_i</m>), preserving order. In coordinates,
+            <md>
+              d_i(t_0,\ldots,t_{n-1}) = (t_0,\ldots,t_{i-1},0,t_i,\ldots,t_{n-1}).
+            </md>
+            The image of <m>d_i</m> is the face of <m>\Delta^n</m> opposite the vertex
+            <m>e_i</m>.
+          </p>
+        </statement>
+      </definition>
+      <definition xml:id="def-boundary-operator">
+        <title>Boundary operator</title>
+        <statement>
+          <p>
+            The <term>boundary operator</term>
+            <m>\partial_n\colon C_n(X)\to C_{n-1}(X)</m> is the homomorphism defined on
+            generators by
+            <md>
+              \partial_n(\sigma) := \sum_{i=0}^{n}(-1)^i\,\sigma\circ d_i
+            </md>
+            and extended linearly. The <m>i</m>-th term <m>\sigma\circ d_i</m> is the
+            <m>i</m>-th <term>face</term> of <m>\sigma</m>: the restriction of <m>\sigma</m> to
+            the face of <m>\Delta^n</m> opposite vertex <m>e_i</m>, viewed as a singular
+            <m>(n-1)</m>-simplex via the identification <m>d_i\colon\Delta^{n-1}\xrightarrow{\;\sim\;}\text{(face)}</m>.
+          </p>
+        </statement>
+      </definition>
+      <example xml:id="eg-boundary-low-dimensions">
+        <title>Boundary in low dimensions</title>
+        <statement>
+          <p>
+            For a singular <m>1</m>-simplex <m>\sigma\colon\Delta^1\to X</m> (a path from
+            <m>\sigma(e_0)</m> to <m>\sigma(e_1)</m>),
+            <md>
+              \partial_1(\sigma) = \sigma\circ d_0 - \sigma\circ d_1 = \sigma(e_1)-\sigma(e_0),
+            </md>
+            the formal difference of the endpoint and the starting point. For a singular
+            <m>2</m>-simplex <m>\sigma\colon\Delta^2\to X</m>,
+            <md>
+              \partial_2(\sigma) = \sigma\circ d_0 - \sigma\circ d_1 + \sigma\circ d_2,
+            </md>
+            the alternating sum of the three edges of the triangle.
+          </p>
+        </statement>
+      </example>
+      <p>
+        The most important property of the boundary operator is that applying it twice yields zero.
+      </p>
+      <lemma xml:id="lem-boundary-squared-zero">
+        <title><m>\partial^2=0</m></title>
+        <statement>
+          <p>
+            For all <m>n\ge 1</m>, <m>\partial_{n-1}\circ\partial_n=0</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            It suffices to check on a generator <m>\sigma\colon\Delta^n\to X</m>:
+            <md>
+              \partial_{n-1}(\partial_n(\sigma))
+              = \partial_{n-1}\Bigl(\sum_{i=0}^n(-1)^i\,\sigma\circ d_i\Bigr)
+              = \sum_{i=0}^n\sum_{j=0}^{n-1}(-1)^{i+j}\,\sigma\circ d_i\circ d_j.
+            </md>
+            The face maps satisfy the <term>simplicial identity</term>
+            <m>d_i\circ d_j=d_{j+1}\circ d_i</m> for <m>i\le j</m>. Splitting the double sum
+            into the regions <m>j\ge i</m> and <m>j\lt i</m> and reindexing the first using the
+            simplicial identity, one finds that every term in the region <m>j\ge i</m> cancels
+            with a term in the region <m>j\lt i</m> (with opposite sign), giving zero.
+          </p>
+          <p>
+            In more detail: in the sum, each pair of faces <m>(i,j)</m> with <m>i\le j</m>
+            contributes <m>(-1)^{i+j}\sigma\circ d_{j+1}\circ d_i</m>, which cancels with the
+            term <m>(-1)^{(j+1)+i}\sigma\circ d_{j+1}\circ d_i</m> arising from the pair
+            <m>(j+1,i)</m> with <m>i\lt j+1</m>. These signs differ by <m>(-1)</m>, so the
+            cancellation is exact.
+          </p>
+        </proof>
+      </lemma>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-chain-complexes-homology">
+      <title>Chain complexes and homology</title>
+      <p>
+        The relation <m>\partial^2=0</m> means that the image of <m>\partial_{n+1}</m> is always
+        contained in the kernel of <m>\partial_n</m>. This algebraic setup — a sequence of
+        abelian groups connected by maps whose composition is zero — is a <term>chain
+        complex</term>.
+      </p>
+      <definition xml:id="def-chain-complex">
+        <title>Chain complex</title>
+        <statement>
+          <p>
+            A <term>chain complex</term> <m>(C_\bullet,\partial)</m> is a sequence of abelian groups and
+            homomorphisms
+            <md>
+              \cdots \xrightarrow{\partial_{n+2}} C_{n+1} \xrightarrow{\partial_{n+1}} C_n
+              \xrightarrow{\partial_n} C_{n-1} \xrightarrow{\partial_{n-1}} \cdots
+              \xrightarrow{\partial_1} C_0 \xrightarrow{\partial_0} 0
+            </md>
+            satisfying <m>\partial_n\circ\partial_{n+1}=0</m> for all <m>n</m>. Elements of
+            <m>\ker\partial_n</m> are called <term><m>n</m>-cycles</term>, and elements of
+            <m>\operatorname{im}\partial_{n+1}</m> are called <term><m>n</m>-boundaries</term>.
+            We write <m>Z_n:=\ker\partial_n</m> and <m>B_n:=\operatorname{im}\partial_{n+1}</m>.
+          </p>
+        </statement>
+      </definition>
+      <definition xml:id="def-homology-group">
+        <title>Homology group</title>
+        <statement>
+          <p>
+            The <m>n</m>-th <term>homology group</term> of a chain complex
+            <m>(C_\bullet,\partial)</m> is
+            <md>
+              H_n(C_\bullet) := Z_n/B_n = \ker\partial_n\big/\operatorname{im}\partial_{n+1}.
+            </md>
+            Two <m>n</m>-cycles <m>z,z'\in Z_n</m> represent the same homology class if and only
+            if <m>z-z'\in B_n</m>, i.e., <m>z-z'=\partial_{n+1}(c)</m> for some
+            <m>(n+1)</m>-chain <m>c</m>. In this case we say <m>z</m> and <m>z'</m> are
+            <term>homologous</term>.
+          </p>
+        </statement>
+      </definition>
+      <definition xml:id="def-singular-homology">
+        <title>Singular homology</title>
+        <statement>
+          <p>
+            The <m>n</m>-th <term>singular homology group</term> of a topological space <m>X</m>
+            is the <m>n</m>-th homology group of its singular chain complex:
+            <md>
+              H_n(X) := H_n(C_\bullet(X),\partial) = \ker\bigl(\partial_n\colon C_n(X)\to C_{n-1}(X)\bigr)\big/\operatorname{im}\bigl(\partial_{n+1}\colon C_{n+1}(X)\to C_n(X)\bigr).
+            </md>
+          </p>
+        </statement>
+      </definition>
+      <p>
+        The intuition is: a homology class in <m>H_n(X)</m> is represented by an
+        <m>n</m>-chain whose boundary vanishes (a cycle), modulo those cycles that are themselves
+        boundaries of <m>(n+1)</m>-chains. A nonzero class in <m>H_n(X)</m> detects an
+        <m>n</m>-dimensional "hole" — an <m>n</m>-cycle that cannot be filled in.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-h-zero">
+      <title>Computation of <m>H_0</m></title>
+      <proposition xml:id="prop-h-zero">
+        <statement>
+          <p>
+            For any space <m>X</m>, <m>H_0(X)</m> is the free abelian group on the set of
+            path-components of <m>X</m>:
+            <md>
+              H_0(X)\cong\bigoplus_{\alpha\in\pi_0(X)}\mathbb{Z}.
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            A singular <m>0</m>-chain is a finite formal sum <m>\sum n_i\, p_i</m> of points
+            <m>p_i\in X</m> with integer coefficients. Since <m>C_{-1}(X)=0</m>, every
+            <m>0</m>-chain is a cycle, so <m>Z_0=C_0(X)</m>. A <m>0</m>-chain is a boundary
+            if and only if it lies in <m>\operatorname{im}(\partial_1)</m>. For any path
+            <m>\sigma\colon\Delta^1\to X</m>, we have
+            <m>\partial_1(\sigma)=\sigma(e_1)-\sigma(e_0)</m>, so the boundaries are generated by
+            formal differences <m>q-p</m> where <m>p</m> and <m>q</m> lie in the same
+            path-component.
+          </p>
+          <p>
+            It follows that two <m>0</m>-chains are homologous if and only if they have the same
+            total coefficient in each path-component. The map
+            <m>\varepsilon\colon C_0(X)\to\bigoplus_{\alpha}\mathbb{Z}</m> that sends a
+            <m>0</m>-chain to its vector of total coefficients by component therefore descends to
+            an isomorphism <m>H_0(X)\xrightarrow{\;\sim\;}\bigoplus_\alpha\mathbb{Z}</m>.
+          </p>
+        </proof>
+      </proposition>
+      <p>
+        In particular, if <m>X</m> is path-connected, then <m>H_0(X)\cong\mathbb{Z}</m>,
+        generated by the class of any point.
+      </p>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Wednesday</title>
+    <p>
+      Having set up the singular chain complex and computed <m>H_0</m>, we now develop the key
+      structural features of homology: functoriality, relative homology, and the long exact sequence
+      of a pair. These tools will allow us to compute homology groups by breaking spaces into
+      simpler pieces.
+    </p>
+
+    <subsubsection xml:id="subsubsec-functoriality">
+      <title>Functoriality</title>
+      <p>
+        A continuous map <m>f\colon X\to Y</m> induces a map on singular chains by composition:
+        each singular simplex <m>\sigma\colon\Delta^n\to X</m> is sent to
+        <m>f\circ\sigma\colon\Delta^n\to Y</m>. Extending linearly gives a homomorphism
+        <m>f_\sharp\colon C_n(X)\to C_n(Y)</m> for each <m>n</m>.
+      </p>
+      <lemma xml:id="lem-chain-map">
+        <statement>
+          <p>
+            The maps <m>f_\sharp\colon C_n(X)\to C_n(Y)</m> commute with the boundary operators:
+            <m>\partial_n\circ f_\sharp = f_\sharp\circ\partial_n</m>. That is, <m>f_\sharp</m>
+            is a <term>chain map</term>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            On a generator <m>\sigma\colon\Delta^n\to X</m>:
+            <md>
+              \partial_n(f_\sharp(\sigma))
+              = \partial_n(f\circ\sigma)
+              = \sum_i(-1)^i(f\circ\sigma)\circ d_i
+              = \sum_i(-1)^i f\circ(\sigma\circ d_i)
+              = f_\sharp\bigl(\partial_n(\sigma)\bigr).
+            </md>
+          </p>
+        </proof>
+      </lemma>
+      <p>
+        Since <m>f_\sharp</m> sends cycles to cycles and boundaries to boundaries, it descends to
+        a well-defined homomorphism on homology.
+      </p>
+      <definition xml:id="def-induced-map-homology">
+        <title>Induced map on homology</title>
+        <statement>
+          <p>
+            For a continuous map <m>f\colon X\to Y</m>, the <term>induced map</term>
+            <m>f_*\colon H_n(X)\to H_n(Y)</m> is defined by <m>f_*[z]:=[f_\sharp(z)]</m> for
+            any cycle <m>z\in Z_n(X)</m>.
+          </p>
+        </statement>
+      </definition>
+      <proposition xml:id="prop-functoriality">
+        <title>Functoriality of singular homology</title>
+        <statement>
+          <p>
+            Singular homology is a functor from the category of topological spaces and continuous
+            maps to the category of abelian groups and homomorphisms. Concretely:
+          </p>
+          <p>
+            (1) <m>(\mathrm{id}_X)_*=\mathrm{id}_{H_n(X)}</m> for all <m>n</m>.
+          </p>
+          <p>
+            (2) <m>(g\circ f)_*=g_*\circ f_*</m> for composable maps <m>f</m> and <m>g</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Both properties follow immediately from the corresponding identities at the chain
+            level: <m>(\mathrm{id}_X)_\sharp=\mathrm{id}_{C_n(X)}</m> and
+            <m>(g\circ f)_\sharp = g_\sharp\circ f_\sharp</m> (since
+            <m>(g\circ f)\circ\sigma = g\circ(f\circ\sigma)</m>).
+          </p>
+        </proof>
+      </proposition>
+      <p>
+        An immediate consequence: if <m>f\colon X\to Y</m> is a homeomorphism, then
+        <m>f_*\colon H_n(X)\to H_n(Y)</m> is an isomorphism for all <m>n</m>. Thus singular
+        homology groups are topological invariants. Next week we will strengthen this dramatically
+        by showing that <m>f_*</m> depends only on the homotopy class of <m>f</m>.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-relative-homology">
+      <title>Relative homology</title>
+      <p>
+        To compute homology, we need a way to break a space into pieces and relate their
+        homology groups. The first step is to define <em>relative</em> homology, which measures
+        the homology of <m>X</m> "modulo" a subspace <m>A</m>.
+      </p>
+      <definition xml:id="def-relative-chains">
+        <title>Relative chain groups</title>
+        <statement>
+          <p>
+            Let <m>A\subseteq X</m> be a subspace. The inclusion <m>\iota\colon A\hookrightarrow X</m>
+            induces an injection <m>\iota_\sharp\colon C_n(A)\hookrightarrow C_n(X)</m> (every
+            singular simplex in <m>A</m> is also a singular simplex in <m>X</m>). The
+            <term>relative chain group</term> is the quotient
+            <md>
+              C_n(X,A) := C_n(X)/C_n(A).
+            </md>
+            An element of <m>C_n(X,A)</m> is an equivalence class of <m>n</m>-chains in
+            <m>X</m>, where two chains are identified if their difference lies in <m>C_n(A)</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Since <m>\partial</m> sends <m>C_n(A)</m> into <m>C_{n-1}(A)</m> (the boundary of a
+        chain in <m>A</m> is a chain in <m>A</m>), the boundary operator descends to a
+        well-defined map <m>\bar{\partial}\colon C_n(X,A)\to C_{n-1}(X,A)</m>, and
+        <m>\bar{\partial}^2=0</m>.
+      </p>
+      <definition xml:id="def-relative-homology">
+        <title>Relative homology</title>
+        <statement>
+          <p>
+            The <m>n</m>-th <term>relative homology group</term> of the pair <m>(X,A)</m> is
+            <md>
+              H_n(X,A) := H_n\bigl(C_\bullet(X,A),\bar{\partial}\bigr) = \ker\bar{\partial}_n\big/\operatorname{im}\bar{\partial}_{n+1}.
+            </md>
+            A relative <m>n</m>-cycle is a chain in <m>X</m> whose boundary lies in
+            <m>A</m>. A relative <m>n</m>-boundary is a chain in <m>X</m> that equals a
+            boundary plus a chain supported in <m>A</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Relative homology should be thought of as measuring the homology of <m>X</m> with the
+        contribution of <m>A</m> "killed." For nice pairs, we will see that
+        <m>H_n(X,A)\cong\widetilde{H}_n(X/A)</m>, the reduced homology of the quotient.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-long-exact-sequence">
+      <title>The long exact sequence of a pair</title>
+      <p>
+        The relative chain groups fit into a short exact sequence of chain complexes
+        <md>
+          0\to C_\bullet(A)\xrightarrow{\;\iota_\sharp\;} C_\bullet(X)\xrightarrow{\;q\;} C_\bullet(X,A)\to 0,
+        </md>
+        where <m>\iota_\sharp</m> is the inclusion and <m>q</m> is the quotient map. A
+        fundamental result of homological algebra turns this into a long exact sequence on
+        homology.
+      </p>
+      <theorem xml:id="thm-les-pair">
+        <title>Long exact sequence of a pair</title>
+        <statement>
+          <p>
+            For any pair <m>(X,A)</m>, there is a long exact sequence
+            <md>
+              \cdots\to H_n(A)\xrightarrow{\;\iota_*\;} H_n(X)\xrightarrow{\;q_*\;} H_n(X,A)
+              \xrightarrow{\;\partial_*\;} H_{n-1}(A)\xrightarrow{\;\iota_*\;} H_{n-1}(X)\to\cdots
+            </md>
+            ending at <m>H_0(X,A)\to 0</m>. The maps <m>\iota_*</m> and <m>q_*</m> are
+            induced by the inclusion and quotient. The <term>connecting homomorphism</term>
+            <m>\partial_*\colon H_n(X,A)\to H_{n-1}(A)</m> is defined as follows: represent a
+            class <m>[\bar{z}]\in H_n(X,A)</m> by a chain <m>z\in C_n(X)</m> with
+            <m>\partial z\in C_{n-1}(A)</m>; then <m>\partial_*[\bar{z}]:=[\partial z]\in H_{n-1}(A)</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            This is an instance of the <term>snake lemma</term> (or equivalently, the long exact
+            sequence associated to a short exact sequence of chain complexes). We verify the key
+            steps.
+          </p>
+          <p>
+            <em>Well-definedness of <m>\partial_*</m>.</em> If <m>z\in C_n(X)</m> represents a
+            relative cycle, then <m>\partial z\in C_{n-1}(A)</m>. Moreover,
+            <m>\partial(\partial z)=0</m>, so <m>\partial z</m> is a cycle in <m>A</m>.
+            If we choose a different representative <m>z'=z+a+\partial w</m> where
+            <m>a\in C_n(A)</m> and <m>w\in C_{n+1}(X)</m>, then
+            <m>\partial z'=\partial z+\partial a+\partial^2 w=\partial z+\partial a</m>.
+            Since <m>\partial a\in C_{n-1}(A)</m> is a boundary in <m>A</m>, the class
+            <m>[\partial z']=[\partial z]\in H_{n-1}(A)</m>. So <m>\partial_*</m> is well-defined.
+          </p>
+          <p>
+            <em>Exactness.</em> We verify exactness at each of the three positions. At
+            <m>H_n(X)</m>: <m>q_*\circ\iota_*=0</m> since
+            <m>q\circ\iota_\sharp=0</m>. If <m>q_*[z]=0</m>, then <m>z=a+\partial w</m>
+            modulo <m>C_n(A)</m>, so <m>z-\partial w\in C_n(A)</m> and
+            <m>[z]=\iota_*[z-\partial w]</m>. At <m>H_n(X,A)</m>:
+            <m>\partial_*\circ q_*=0</m> since if <m>\bar{z}=q(z)</m> with
+            <m>z</m> a cycle in <m>X</m>, then <m>\partial z=0</m> so
+            <m>\partial_*[\bar{z}]=0</m>. If <m>\partial_*[\bar{z}]=0</m>, then
+            <m>\partial z=\partial a</m> for some <m>a\in C_n(A)</m>, so
+            <m>z-a</m> is a cycle in <m>X</m> and <m>q_*[z-a]=[\bar{z}]</m>. At
+            <m>H_{n-1}(A)</m>: <m>\iota_*\circ\partial_*=0</m> since
+            <m>\iota_\sharp(\partial z)=\partial z=\partial(\text{something in }C_n(X))</m>,
+            a boundary in <m>X</m>. If <m>\iota_*[a]=0</m>, then <m>a=\partial z</m> for
+            some <m>z\in C_n(X)</m>, and <m>\bar{z}</m> is a relative cycle with
+            <m>\partial_*[\bar{z}]=[a]</m>.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        As a diagram, one can visualize the passage from the short exact sequence of chain
+        complexes to the long exact sequence on homology via the connecting homomorphism:
+        <image width="85%">
+          <description>
+            A commutative diagram showing two consecutive rows of the short exact sequence of
+            chain complexes, with vertical boundary maps and the zig-zag connecting homomorphism
+            from <m>H_n(X,A)</m> back to <m>H_{n-1}(A)</m>.
+          </description>
+          <latex-image>
+            \begin{tikzcd}[column sep=small]
+              0 \arrow[r] \amp C_n(A) \arrow[r, "\iota_\sharp"] \arrow[d, "\partial"] \amp C_n(X) \arrow[r, "q"] \arrow[d, "\partial"] \amp C_n(X,A) \arrow[r] \arrow[d, "\bar\partial"] \arrow[dll, dashed, bend right=12, "\partial_*" description, crossing over] \amp 0 \\
+              0 \arrow[r] \amp C_{n-1}(A) \arrow[r, "\iota_\sharp"] \amp C_{n-1}(X) \arrow[r, "q"] \amp C_{n-1}(X,A) \arrow[r] \amp 0
+            \end{tikzcd}
+          </latex-image>
+        </image>
+        The dashed arrow represents the connecting homomorphism <m>\partial_*</m>: lift a
+        relative cycle to a chain in <m>X</m>, take its boundary, and observe that it lands in
+        <m>C_{n-1}(A)</m>.
+      </p>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Friday</title>
+    <p>
+      We conclude the week with reduced homology, the computation of the homology of a point
+      (and more generally contractible spaces), and the algebraic notion of chain homotopy,
+      which will be the engine behind homotopy invariance next week.
+    </p>
+
+    <subsubsection xml:id="subsubsec-reduced-homology">
+      <title>Reduced homology</title>
+      <p>
+        Singular homology assigns <m>H_0(\mathrm{pt})\cong\mathbb{Z}</m> to a point and
+        <m>H_n(\mathrm{pt})=0</m> for <m>n\ge 1</m> (as we will verify below). For many
+        purposes it is convenient to work with <term>reduced homology</term>, which adjusts
+        <m>H_0</m> so that a point has trivial homology in all degrees.
+      </p>
+      <definition xml:id="def-augmentation">
+        <title>Augmentation map</title>
+        <statement>
+          <p>
+            The <term>augmentation</term> is the homomorphism
+            <m>\varepsilon\colon C_0(X)\to\mathbb{Z}</m> defined by
+            <m>\varepsilon\bigl(\sum n_i\sigma_i\bigr)=\sum n_i</m>. One checks that
+            <m>\varepsilon\circ\partial_1=0</m> (since
+            <m>\varepsilon(\partial_1\sigma)=\varepsilon(\sigma(e_1)-\sigma(e_0))=1-1=0</m>),
+            so <m>\varepsilon</m> extends the singular chain complex to an
+            <term>augmented chain complex</term>:
+            <md>
+              \cdots\to C_1(X)\xrightarrow{\partial_1} C_0(X)\xrightarrow{\varepsilon}\mathbb{Z}\to 0.
+            </md>
+          </p>
+        </statement>
+      </definition>
+      <definition xml:id="def-reduced-homology">
+        <title>Reduced homology</title>
+        <statement>
+          <p>
+            The <term>reduced homology</term> groups of <m>X</m> are the homology groups of
+            the augmented chain complex:
+            <md>
+              \widetilde{H}_n(X) :=
+              \begin{cases}
+                H_n(X) \amp \text{if } n\ge 1,\\
+                \ker\varepsilon/\operatorname{im}\partial_1 \amp \text{if } n=0.
+              \end{cases}
+            </md>
+            Equivalently, <m>\widetilde{H}_0(X)\cong\ker\bigl(H_0(X)\xrightarrow{\varepsilon_*}\mathbb{Z}\bigr)</m>.
+            For a path-connected space, <m>H_0(X)\cong\mathbb{Z}</m> via <m>\varepsilon_*</m>,
+            so <m>\widetilde{H}_0(X)=0</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        The relationship between reduced and unreduced homology is simple: for nonempty <m>X</m>,
+        <m>H_n(X)\cong\widetilde{H}_n(X)</m> for <m>n\ge 1</m> and
+        <m>H_0(X)\cong\widetilde{H}_0(X)\oplus\mathbb{Z}</m>. Reduced homology is natural in
+        pointed spaces and behaves more cleanly in many exact sequences.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-homology-point">
+      <title>Homology of a point and contractible spaces</title>
+      <proposition xml:id="prop-homology-point">
+        <statement>
+          <p>
+            Let <m>\mathrm{pt}</m> denote the one-point space. Then
+            <m>\widetilde{H}_n(\mathrm{pt})=0</m> for all <m>n</m>. Equivalently,
+            <m>H_0(\mathrm{pt})\cong\mathbb{Z}</m> and <m>H_n(\mathrm{pt})=0</m> for
+            <m>n\ge 1</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            For each <m>n\ge 0</m>, there is exactly one singular <m>n</m>-simplex in
+            <m>\mathrm{pt}</m>: the constant map <m>\sigma_n\colon\Delta^n\to\mathrm{pt}</m>.
+            So <m>C_n(\mathrm{pt})\cong\mathbb{Z}</m>, generated by <m>\sigma_n</m>. The
+            boundary is
+            <md>
+              \partial_n(\sigma_n) = \sum_{i=0}^n(-1)^i\,\sigma_n\circ d_i = \sum_{i=0}^n(-1)^i\,\sigma_{n-1} = \begin{cases} \sigma_{n-1} \amp \text{if } n \text{ is even},\\ 0 \amp \text{if } n \text{ is odd}.\end{cases}
+            </md>
+            The augmented chain complex is therefore
+            <md>
+              \cdots \xrightarrow{1}\mathbb{Z}\xrightarrow{0}\mathbb{Z}\xrightarrow{1}\mathbb{Z}\xrightarrow{0}\mathbb{Z}\xrightarrow{1}\mathbb{Z}\to 0,
+            </md>
+            which is exact everywhere. Hence <m>\widetilde{H}_n(\mathrm{pt})=0</m> for all
+            <m>n</m>.
+          </p>
+        </proof>
+      </proposition>
+      <p>
+        We will show next week that homotopy equivalences induce isomorphisms on homology.
+        Combined with the computation above, this gives:
+      </p>
+      <corollary xml:id="cor-contractible-homology">
+        <statement>
+          <p>
+            If <m>X</m> is contractible, then <m>\widetilde{H}_n(X)=0</m> for all <m>n</m>.
+          </p>
+        </statement>
+      </corollary>
+      <p>
+        In particular, <m>\widetilde{H}_n(\mathbb{R}^k)=0</m>,
+        <m>\widetilde{H}_n(D^k)=0</m>, and <m>\widetilde{H}_n(\mathrm{cone}(Y))=0</m> for
+        all <m>n</m> and all <m>k</m>.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-chain-homotopies">
+      <title>Chain homotopies</title>
+      <p>
+        How does one show that two chain maps induce the same map on homology? The algebraic
+        counterpart of a topological homotopy is a <term>chain homotopy</term>.
+      </p>
+      <definition xml:id="def-chain-homotopy">
+        <title>Chain homotopy</title>
+        <statement>
+          <p>
+            Let <m>f_\sharp,g_\sharp\colon C_\bullet(X)\to C_\bullet(Y)</m> be chain maps. A
+            <term>chain homotopy</term> from <m>f_\sharp</m> to <m>g_\sharp</m> is a sequence
+            of homomorphisms <m>P_n\colon C_n(X)\to C_{n+1}(Y)</m> satisfying
+            <md>
+              \partial_{n+1}\circ P_n + P_{n-1}\circ\partial_n = g_\sharp - f_\sharp
+            </md>
+            for all <m>n</m>. If such a <m>P</m> exists, we say <m>f_\sharp</m> and
+            <m>g_\sharp</m> are <term>chain homotopic</term> and write
+            <m>f_\sharp\simeq g_\sharp</m>.
+            <image width="80%">
+              <description>
+                Diagram showing chain maps <m>f_\sharp</m> and <m>g_\sharp</m> from
+                <m>C_n(X)</m> to <m>C_n(Y)</m>, with the chain homotopy <m>P</m>
+                mapping diagonally from <m>C_n(X)</m> to <m>C_{n+1}(Y)</m>.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  \cdots \arrow[r] \amp C_{n+1}(X) \arrow[r, "\partial"] \arrow[d, shift left, "f_\sharp"] \arrow[d, shift right, "g_\sharp"'] \amp C_n(X) \arrow[r, "\partial"] \arrow[d, shift left, "f_\sharp"] \arrow[d, shift right, "g_\sharp"'] \arrow[dl, dashed, "P_n"] \amp C_{n-1}(X) \arrow[r] \arrow[d, shift left, "f_\sharp"] \arrow[d, shift right, "g_\sharp"'] \arrow[dl, dashed, "P_{n-1}"] \amp \cdots \\
+                  \cdots \arrow[r] \amp C_{n+1}(Y) \arrow[r, "\partial"] \amp C_n(Y) \arrow[r, "\partial"] \amp C_{n-1}(Y) \arrow[r] \amp \cdots
+                \end{tikzcd}
+              </latex-image>
+            </image>
+          </p>
+        </statement>
+      </definition>
+      <lemma xml:id="lem-chain-homotopy-homology">
+        <statement>
+          <p>
+            If <m>f_\sharp\simeq g_\sharp</m>, then <m>f_*=g_*\colon H_n(X)\to H_n(Y)</m> for
+            all <m>n</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>z\in C_n(X)</m> be a cycle (<m>\partial z=0</m>). Then
+            <md>
+              g_\sharp(z)-f_\sharp(z) = \partial P_n(z) + P_{n-1}(\partial z) = \partial P_n(z).
+            </md>
+            So <m>g_\sharp(z)</m> and <m>f_\sharp(z)</m> differ by a boundary, hence
+            <m>[g_\sharp(z)]=[f_\sharp(z)]</m> in <m>H_n(Y)</m>.
+          </p>
+        </proof>
+      </lemma>
+      <p>
+        The key theorem of next week — homotopy invariance of singular homology — amounts to
+        showing that if <m>f,g\colon X\to Y</m> are homotopic continuous maps, then the chain maps
+        <m>f_\sharp</m> and <m>g_\sharp</m> are chain homotopic. The chain homotopy will be
+        constructed using the <term>prism operator</term>, which decomposes the product
+        <m>\Delta^n\times[0,1]</m> into <m>(n+1)</m>-simplices — an algebraic incarnation of the
+        cylinder constructions we studied in week 10.
+      </p>
+    </subsubsection>
+  </subsection>
+
+</section>

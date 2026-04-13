@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<worksheet>
+  <title>Homework 08</title>
+  <introduction>
+    <p>
+      <alert>Instructions:</alert> Complete all the exercises below and submit your work via
+      <url href="https://www.gradescope.com/courses/1238540">Gradescope</url> by Monday April 20 at 10pm.
+    </p>
+  </introduction>
+
+  <page>
+    <exercise>
+      <introduction>
+        <p>
+          Let <m>X</m> be the letter <m>\mathsf{X}</m> in <m>\mathbb{R}^2</m>, viewed as the
+          union of the two line segments from <m>(-1,-1)</m> to <m>(1,1)</m> and from
+          <m>(-1,1)</m> to <m>(1,-1)</m>.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Describe a CW structure on <m>X</m> (specify the 0-cells, 1-cells, and attaching maps).
+          </p>
+        </statement>
+      </task>
+      <task>
+        <statement>
+          <p>
+            The space <m>X</m> is homotopy equivalent to a wedge of circles. How many circles?
+            Justify your answer using the result on collapsing maximal trees.
+          </p>
+        </statement>
+      </task>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Show that the Möbius band deformation retracts onto its central circle. (You may describe
+          the Möbius band as the quotient
+          <m>[0,1]\times[-1,1]\big/{\sim}</m> where <m>(0,y)\sim(1,-y)</m>, and the central circle
+          as the image of <m>[0,1]\times\{0\}</m>. Construct an explicit deformation retraction.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>f,g\colon X\to Y</m> be homotopic maps and let <m>r\colon Y\to Z</m> be a
+          continuous map. Prove that <m>r\circ f\simeq r\circ g</m>. (That is, post-composition
+          preserves the homotopy relation.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>\sigma\colon\Delta^2\to X</m> be a singular <m>2</m>-simplex. Write out the
+          singular <m>0</m>-chain <m>\partial_1(\partial_2(\sigma))</m> explicitly as a sum of
+          singular <m>0</m>-simplices (with signs), and verify directly that it equals zero.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>S=\{a,b\}</m> be the <term>Sierpiński space</term>: the topology is
+          <m>\{\varnothing,\{a\},\{a,b\}\}</m>. Compute <m>H_0(S)</m> directly from the
+          definition. (Determine all continuous maps <m>\Delta^1\to S</m>, use them to find the
+          group of <m>0</m>-boundaries <m>B_0</m>, and compute the quotient
+          <m>Z_0/B_0</m>.)
+        </p>
+      </statement>
+    </exercise>
+  </page>
+</worksheet>

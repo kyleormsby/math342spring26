@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-10">
+  <title>Week 10</title>
+
+  <subsection>
+    <title>Monday</title>
+    <p>
+      We now transition from point-set topology to algebraic topology. The central idea is to study
+      topological spaces not just up to homeomorphism, but up to a coarser equivalence relation —
+      <term>homotopy equivalence</term> — that retains enough geometric information for many
+      applications while being far more flexible. The compact-open topology from last week provides
+      a conceptual bridge: since the compact-open topology is always splitting, a homotopy (a
+      continuous map <m>X\times[0,1]\to Y</m>) curries to a path in the mapping space
+      <m>Y^X</m>. When <m>X</m> is locally compact, the exponential adjunction
+      <m>X\times(-)\dashv(-)^X</m> makes this a perfect correspondence.
+    </p>
+
+    <subsubsection xml:id="subsubsec-homotopy-of-maps">
+      <title>Homotopy of maps</title>
+      <definition xml:id="def-homotopy">
+        <title>Homotopy</title>
+        <statement>
+          <p>
+            Let <m>X</m> and <m>Y</m> be topological spaces and let <m>f_0,f_1\colon X\to Y</m>
+            be continuous maps. A <term>homotopy</term> from <m>f_0</m> to <m>f_1</m> is a
+            continuous map
+            <md>
+              h\colon X\times[0,1]\longrightarrow Y
+            </md>
+            such that <m>h(x,0)=f_0(x)</m> and <m>h(x,1)=f_1(x)</m> for all <m>x\in X</m>. When
+            such a homotopy exists, we say <m>f_0</m> and <m>f_1</m> are <term>homotopic</term>
+            and write <m>f_0\simeq f_1</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        A homotopy is a continuous one-parameter family of maps: at time <m>t=0</m> we have
+        <m>f_0</m>, at time <m>t=1</m> we have <m>f_1</m>, and the map varies continuously in
+        between. Using the compact-open topology, we can connect homotopies to paths in the
+        mapping space <m>Y^X</m>. Since the compact-open topology is always splitting, a
+        homotopy <m>h\colon X\times[0,1]\to Y</m> curries to a continuous path
+        <m>\hat{h}\colon[0,1]\to Y^X</m> with <m>\hat{h}(0)=f_0</m> and
+        <m>\hat{h}(1)=f_1</m>. Conversely, if <m>X</m> is locally compact, then the
+        compact-open topology is also conjoining, and every path in <m>Y^X</m> uncurries to
+        a homotopy. For general <m>X</m>, however, the converse may fail: there can be paths
+        in <m>Y^X</m> that do not correspond to homotopies.
+      </p>
+      <remark>
+        <statement>
+          <p>
+            It is sometimes important to require a homotopy to fix a subspace. If
+            <m>A\subseteq X</m> and <m>f_0|_A = f_1|_A</m>, a <term>homotopy relative to
+            <m>A</m></term> (or <term>homotopy rel <m>A</m></term>) is a homotopy <m>h</m> such
+            that <m>h(a,t)=f_0(a)</m> for all <m>a\in A</m> and all <m>t\in[0,1]</m>. We write
+            <m>f_0\simeq f_1\;\mathrm{rel}\;A</m>.
+          </p>
+        </statement>
+      </remark>
+      <lemma xml:id="lem-homotopy-equiv-rel">
+        <title>Homotopy is an equivalence relation</title>
+        <statement>
+          <p>
+            For any spaces <m>X</m> and <m>Y</m>, the homotopy relation <m>\simeq</m> is an
+            equivalence relation on <m>\mathsf{Top}(X,Y)</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            <em>Reflexivity.</em> The constant homotopy <m>h(x,t)=f(x)</m> shows
+            <m>f\simeq f</m>.
+          </p>
+          <p>
+            <em>Symmetry.</em> If <m>h</m> is a homotopy from <m>f_0</m> to <m>f_1</m>, then
+            <m>\bar{h}(x,t):=h(x,1-t)</m> is a homotopy from <m>f_1</m> to <m>f_0</m>.
+          </p>
+          <p>
+            <em>Transitivity.</em> If <m>h</m> is a homotopy from <m>f_0</m> to <m>f_1</m> and
+            <m>h'</m> is a homotopy from <m>f_1</m> to <m>f_2</m>, then
+            <md>
+              h''(x,t) := \begin{cases} h(x,2t) \amp \text{if } 0\le t\le\tfrac{1}{2},\\
+              h'(x,2t-1) \amp \text{if } \tfrac{1}{2}\le t\le 1, \end{cases}
+            </md>
+            is a homotopy from <m>f_0</m> to <m>f_2</m>. This is continuous by the gluing lemma
+            (the two definitions agree at <m>t=\tfrac{1}{2}</m> since
+            <m>h(x,1)=f_1(x)=h'(x,0)</m>).
+          </p>
+        </proof>
+      </lemma>
+      <p>
+        The set of homotopy classes <m>[X,Y]:=\mathsf{Top}(X,Y)/{\simeq}</m> is one of the
+        fundamental objects of algebraic topology. Homotopy is also compatible with composition.
+      </p>
+      <lemma xml:id="lem-homotopy-composition">
+        <title>Composition respects homotopy</title>
+        <statement>
+          <p>
+            If <m>f_0\simeq f_1\colon X\to Y</m> and <m>g_0\simeq g_1\colon Y\to Z</m>, then
+            <m>g_0\circ f_0\simeq g_1\circ f_1\colon X\to Z</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>h</m> be a homotopy from <m>f_0</m> to <m>f_1</m>. Then
+            <m>g_0\circ h</m> is a homotopy from <m>g_0\circ f_0</m> to <m>g_0\circ f_1</m>.
+            Now let <m>h'</m> be a homotopy from <m>g_0</m> to <m>g_1</m>. The map
+            <m>(x,t)\mapsto h'(f_1(x),t)</m> is a homotopy from <m>g_0\circ f_1</m> to
+            <m>g_1\circ f_1</m>. Composing these two homotopies by transitivity gives
+            <m>g_0\circ f_0\simeq g_1\circ f_1</m>.
+          </p>
+        </proof>
+      </lemma>
+      <remark>
+        <statement>
+          <p>
+            These two lemmas together say that there is a well-defined <term>homotopy
+            category</term> <m>\mathsf{hTop}</m> whose objects are topological spaces and whose
+            morphisms are homotopy classes of continuous maps. This is the natural home for
+            algebraic topology.
+          </p>
+        </statement>
+      </remark>
+      <example xml:id="eg-homotopy-basic">
+        <title>First examples of homotopies</title>
+        <statement>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  <term>Straight-line homotopy.</term> Let <m>f_0,f_1\colon X\to\mathbb{R}^n</m>
+                  be continuous. Then <m>h(x,t):=(1-t)f_0(x)+tf_1(x)</m> is a homotopy from
+                  <m>f_0</m> to <m>f_1</m>. In particular, any two maps into <m>\mathbb{R}^n</m>
+                  are homotopic.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Nullhomotopic maps.</term> A continuous map <m>f\colon X\to Y</m> is
+                  <term>nullhomotopic</term> if it is homotopic to a constant map. Every map into
+                  <m>\mathbb{R}^n</m> is nullhomotopic.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Maps out of <m>\mathbb{R}^n</m>.</term> The identity map
+                  <m>\mathrm{id}_{\mathbb{R}^n}</m> is homotopic to the constant map at the origin
+                  via <m>h(x,t)=(1-t)x</m>. This is a homotopy that "contracts" all of
+                  <m>\mathbb{R}^n</m> to the origin.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </example>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-homotopy-equivalence">
+      <title>Homotopy equivalence</title>
+      <definition xml:id="def-homotopy-equivalence">
+        <title>Homotopy equivalence</title>
+        <statement>
+          <p>
+            A continuous map <m>f\colon X\to Y</m> is a <term>homotopy equivalence</term> if
+            there exists a continuous map <m>g\colon Y\to X</m> such that
+            <m>g\circ f\simeq\mathrm{id}_X</m> and <m>f\circ g\simeq\mathrm{id}_Y</m>. In this
+            case we say <m>X</m> and <m>Y</m> are <term>homotopy equivalent</term> (or have the
+            same <term>homotopy type</term>) and write <m>X\simeq Y</m>. The map <m>g</m> is a
+            <term>homotopy inverse</term> of <m>f</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Every homeomorphism is a homotopy equivalence, but the converse is far from true. Homotopy
+        equivalence is a much coarser relation: it identifies spaces that have the "same shape" in a
+        flexible sense, even if they are not topologically identical.
+      </p>
+      <definition xml:id="def-contractible">
+        <title>Contractible space</title>
+        <statement>
+          <p>
+            A space <m>X</m> is <term>contractible</term> if it is homotopy equivalent to a point,
+            <ie />, if the identity map <m>\mathrm{id}_X</m> is nullhomotopic. Equivalently,
+            <m>X</m> is contractible if there exists a point <m>x_0\in X</m> and a continuous map
+            <m>h\colon X\times[0,1]\to X</m> with <m>h(x,0)=x</m> and <m>h(x,1)=x_0</m> for all
+            <m>x\in X</m>.
+          </p>
+        </statement>
+      </definition>
+      <example xml:id="eg-contractible">
+        <title>Contractible spaces</title>
+        <statement>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  <m>\mathbb{R}^n</m> is contractible: the map <m>h(x,t)=(1-t)x</m> contracts it
+                  to the origin.
+                </p>
+              </li>
+              <li>
+                <p>
+                  More generally, any <term>convex</term> subset <m>C\subseteq\mathbb{R}^n</m> is
+                  contractible. In particular, every disk <m>D^n</m> is contractible.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Any <term>star-shaped</term> subset of <m>\mathbb{R}^n</m> is contractible.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </example>
+      <example xml:id="eg-noncontractible">
+        <title>Non-contractible spaces</title>
+        <statement>
+          <p>
+            The spheres <m>S^n</m> for <m>n\ge 0</m> are not contractible (and in particular not
+            homotopy equivalent to a point). The proof that <m>S^1</m> is not contractible
+            requires the fundamental group or homology; we will be able to prove this in two weeks.
+            That <m>S^0=\{-1,+1\}</m> is not contractible is immediate: it is disconnected, and
+            contractible spaces are path-connected (hence connected).
+          </p>
+        </statement>
+      </example>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-deformation-retracts">
+      <title>Deformation retracts</title>
+      <p>
+        The most common way to prove two spaces are homotopy equivalent is to show that one
+        <em>deformation retracts</em> onto the other.
+      </p>
+      <definition xml:id="def-retract">
+        <title>Retract and retraction</title>
+        <statement>
+          <p>
+            Let <m>A\subseteq X</m> be a subspace. A <term>retraction</term> of <m>X</m> onto
+            <m>A</m> is a continuous map <m>r\colon X\to A</m> such that <m>r(a)=a</m> for all
+            <m>a\in A</m>, <ie />, <m>r\circ\iota=\mathrm{id}_A</m> where
+            <m>\iota\colon A\hookrightarrow X</m> is the inclusion. If such a map exists, we call
+            <m>A</m> a <term>retract</term> of <m>X</m>.
+          </p>
+        </statement>
+      </definition>
+      <definition xml:id="def-deformation-retract">
+        <title>Deformation retract</title>
+        <statement>
+          <p>
+            A subspace <m>A\subseteq X</m> is a <term>deformation retract</term> of <m>X</m> if
+            there exists a continuous map <m>h\colon X\times[0,1]\to X</m> such that
+          </p>
+          <p>
+            <ol>
+              <li><p><m>h(x,0)=x</m> for all <m>x\in X</m>,</p></li>
+              <li><p><m>h(x,1)\in A</m> for all <m>x\in X</m>,</p></li>
+              <li><p><m>h(a,t)=a</m> for all <m>a\in A</m> and all <m>t\in[0,1]</m>.</p></li>
+            </ol>
+          </p>
+          <p>
+            Such a map <m>h</m> is a <term>deformation retraction</term>. If only conditions
+            (1) and (2) hold — so that <m>r:=h(-,1)\colon X\to A</m> is a retraction and
+            <m>\iota\circ r\simeq\mathrm{id}_X</m>, but the homotopy is not required to fix
+            <m>A</m> pointwise — we call <m>A</m> a <term>weak deformation retract</term>.
+          </p>
+        </statement>
+      </definition>
+      <lemma xml:id="lem-deformation-retract-htpy-equiv">
+        <statement>
+          <p>
+            If <m>A</m> is a deformation retract of <m>X</m>, then the inclusion
+            <m>\iota\colon A\hookrightarrow X</m> is a homotopy equivalence with homotopy inverse
+            <m>r=h(-,1)</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            We have <m>r\circ\iota=\mathrm{id}_A</m> (since <m>r</m> is a retraction) and
+            <m>\iota\circ r\simeq\mathrm{id}_X</m> (via the deformation retraction <m>h</m>).
+          </p>
+        </proof>
+      </lemma>
+      <example xml:id="eg-deformation-retracts">
+        <title>Deformation retracts</title>
+        <statement>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  <term>Punctured Euclidean space.</term>
+                  <m>\mathbb{R}^n\smallsetminus\{0\}</m> deformation retracts onto
+                  <m>S^{n-1}</m> via <m>h(x,t)=(1-t)x+t\frac{x}{|x|}</m>. At <m>t=0</m> this is
+                  the identity, and at <m>t=1</m> this is the radial projection
+                  <m>x\mapsto x/|x|</m>. Points already on <m>S^{n-1}</m> are fixed throughout.
+                  Thus <m>\mathbb{R}^n\smallsetminus\{0\}\simeq S^{n-1}</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Möbius band.</term> The Möbius band deformation retracts onto its central
+                  circle (an embedded copy of <m>S^1</m>), so the Möbius band is homotopy
+                  equivalent to <m>S^1</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Figure-eight neighborhood.</term> The open set
+                  <m>\mathbb{R}^2\smallsetminus\{p,q\}</m> (the plane with two points removed)
+                  deformation retracts onto a figure-eight — the wedge <m>S^1\vee S^1</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Cylinder.</term> The cylinder <m>X\times[0,1]</m> deformation retracts
+                  onto <m>X\times\{0\}\cong X</m> via <m>h((x,s),t)=(x,(1-t)s)</m>. More
+                  generally, for any subspace <m>A\subseteq X</m>, the product
+                  <m>A\times[0,1]</m> deformation retracts onto <m>A\times\{0\}</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </example>
+      <p>
+        Deformation retracts give us a useful way to think about homotopy equivalence geometrically:
+        two spaces are homotopy equivalent when one can be continuously deformed into the other. The
+        following proposition makes this precise.
+      </p>
+      <proposition xml:id="prop-htpy-equiv-third-space">
+        <statement>
+          <p>
+            Two spaces <m>X</m> and <m>Y</m> are homotopy equivalent if and only if there exists
+            a third space <m>Z</m> containing both <m>X</m> and <m>Y</m> as deformation retracts.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            The "if" direction is clear: if <m>X</m> and <m>Y</m> are both deformation retracts
+            of <m>Z</m>, then <m>X\simeq Z\simeq Y</m> by
+            <xref ref="lem-deformation-retract-htpy-equiv" />.
+          </p>
+          <p>
+            For the "only if" direction, suppose <m>f\colon X\to Y</m> is a homotopy equivalence.
+            One can show that <m>X</m> is a deformation retract of the <term>mapping
+            cylinder</term> <m>M_f := (X\times[0,1])\amalg_f Y</m>, which is the pushout
+          </p>
+          <!-- TODO: PTX pushout diagram for mapping cylinder -->
+          <p>
+            <md>
+              M_f := (X\times[0,1])\amalg Y\big/\!\sim, \qquad (x,0)\sim f(x),
+            </md>
+            and <m>Y</m> includes into <m>M_f</m> as the subspace <m>Y\hookrightarrow M_f</m>
+            at the base. When <m>f</m> is a homotopy equivalence, both <m>X\cong X\times\{1\}</m>
+            and <m>Y</m> are deformation retracts of <m>M_f</m>.
+          </p>
+        </proof>
+      </proposition>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-homotopy-invariants">
+      <title>Homotopy invariants</title>
+      <p>
+        A <term>homotopy invariant</term> is a quantity or structure assigned to topological spaces
+        that is preserved by homotopy equivalences. We have already seen one.
+      </p>
+      <proposition xml:id="prop-pi0-homotopy-invariant">
+        <statement>
+          <p>
+            The functor <m>\pi_0\colon\mathsf{Top}\to\mathsf{Set}</m> descends to the homotopy
+            category: if <m>f\simeq g\colon X\to Y</m>, then <m>\pi_0(f)=\pi_0(g)</m>.
+            Consequently, homotopy equivalent spaces have the same number of path-components.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>h\colon X\times[0,1]\to Y</m> be a homotopy from <m>f</m> to <m>g</m>. For
+            any <m>x\in X</m>, the map <m>t\mapsto h(x,t)</m> is a path from <m>f(x)</m> to
+            <m>g(x)</m> in <m>Y</m>. Thus <m>f(x)</m> and <m>g(x)</m> lie in the same
+            path-component, so <m>\pi_0(f)([x])=\pi_0(g)([x])</m>.
+          </p>
+        </proof>
+      </proposition>
+      <p>
+        Our goal over the remaining four weeks is to construct much richer homotopy invariants —
+        the <term>homology groups</term> <m>H_n(X)</m> — that can distinguish spaces <m>\pi_0</m>
+        cannot. For instance, <m>S^1</m> and <m>D^2</m> are both path-connected (so <m>\pi_0</m>
+        sees no difference), but we will show <m>H_1(S^1)\cong\mathbb{Z}</m> while
+        <m>H_1(D^2)=0</m>, proving they are not homotopy equivalent.
+      </p>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Wednesday</title>
+    <p>
+      Having established the language of homotopy, we now introduce one of the most important classes
+      of topological spaces in algebraic topology: <term>CW complexes</term>. These are spaces built
+      by iteratively attaching cells — a construction we already encountered when building spheres
+      and projective spaces via pushouts in Week 3. CW complexes provide a class of spaces large
+      enough to include all manifolds and most spaces arising in practice, yet structured enough that
+      algebraic invariants (like homology) can be computed effectively.
+    </p>
+
+    <subsubsection xml:id="subsubsec-cell-attachment">
+      <title>Cell attachment via pushouts</title>
+      <p>
+        Recall from <xref ref="notes-week-03" /> that a pushout in <m>\mathsf{Top}</m> glues two
+        spaces together along a common subspace. The fundamental building block of a CW complex is
+        the operation of <term>attaching an <m>n</m>-cell</term>: given a space <m>X</m> and a
+        continuous map <m>\varphi\colon S^{n-1}\to X</m> (the <term>attaching map</term>), the
+        space obtained by attaching an <m>n</m>-cell along <m>\varphi</m> is the pushout
+      </p>
+      <!-- Pushout diagram for cell attachment -->
+      <p>
+        <md>
+          X\amalg_\varphi D^n \;:=\; X\amalg D^n\big/\!\sim, \qquad z\sim\varphi(z) \text{ for }
+          z\in S^{n-1}=\partial D^n.
+        </md>
+        In the language of pushouts, this is the pushout of the span
+        <m>X\xleftarrow{\varphi}S^{n-1}\xrightarrow{\iota}D^n</m>, where <m>\iota</m> is the
+        inclusion of the boundary sphere into the disk. The image of the interior of <m>D^n</m> in
+        the pushout is an <term>open <m>n</m>-cell</term>, homeomorphic to <m>\mathbb{R}^n</m>.
+      </p>
+      <p>
+        More generally, we can attach several <m>n</m>-cells simultaneously. Given a family of
+        attaching maps <m>\{\varphi_\alpha\colon S^{n-1}\to X\}_{\alpha\in A}</m>, we form the
+        pushout
+        <md>
+          X\amalg_{\{\varphi_\alpha\}}\!\left(\coprod_{\alpha\in A}D^n_\alpha\right)
+          \;:=\; X\amalg\coprod_\alpha D^n_\alpha\Big/\!\sim, \qquad
+          z\sim\varphi_\alpha(z) \text{ for } z\in\partial D^n_\alpha.
+        </md>
+      </p>
+      <example xml:id="eg-cell-attachment-sphere">
+        <title>Spheres via cell attachment</title>
+        <statement>
+          <p>
+            The sphere <m>S^n</m> is obtained from a point <m>e^0</m> by attaching a single
+            <m>n</m>-cell via the unique (constant) map <m>\varphi\colon S^{n-1}\to e^0</m>. The
+            resulting pushout is
+            <md>
+              S^n \;\cong\; e^0\amalg_\varphi D^n \;=\; D^n\big/\partial D^n,
+            </md>
+            the disk with its boundary collapsed to a point. This gives <m>S^n</m> a CW structure
+            with exactly two cells: one <m>0</m>-cell and one <m>n</m>-cell.
+          </p>
+        </statement>
+      </example>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-cw-complexes">
+      <title>CW complexes</title>
+      <definition xml:id="def-cw-complex">
+        <title>CW complex</title>
+        <statement>
+          <p>
+            A <term>CW complex</term> is a topological space <m>X</m> equipped with a filtration
+            <md>
+              X^0\subseteq X^1\subseteq X^2\subseteq\cdots\subseteq X = \bigcup_{n\ge 0}X^n
+            </md>
+            constructed inductively as follows.
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  The <term><m>0</m>-skeleton</term> <m>X^0</m> is a discrete set of points
+                  (the <term><m>0</m>-cells</term>).
+                </p>
+              </li>
+              <li>
+                <p>
+                  For each <m>n\ge 1</m>, the <term><m>n</m>-skeleton</term> <m>X^n</m> is
+                  obtained from <m>X^{n-1}</m> by attaching a (possibly empty) collection of
+                  <m>n</m>-cells. That is, <m>X^n</m> is the pushout
+                  <md>
+                    X^n \;=\; X^{n-1}\amalg_{\{\varphi_\alpha\}}\!\left(
+                    \coprod_{\alpha\in A_n}D^n_\alpha\right)
+                  </md>
+                  for some family of attaching maps
+                  <m>\{\varphi_\alpha\colon S^{n-1}\to X^{n-1}\}_{\alpha\in A_n}</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The space <m>X</m> carries the <term>weak topology</term> (also called the
+                  <term>colimit topology</term>): a subset <m>U\subseteq X</m> is open if and only
+                  if <m>U\cap X^n</m> is open in <m>X^n</m> for every <m>n</m>. (If the
+                  construction terminates at some finite stage <m>X=X^N</m>, this condition is
+                  automatic.)
+                </p>
+              </li>
+            </ol>
+          </p>
+          <p>
+            The letters "CW" stand for <term>closure-finite</term> (the closure of each cell meets
+            only finitely many other cells) and <term>weak topology</term>.
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <statement>
+          <p>
+            Each <m>n</m>-cell <m>e^n_\alpha</m> comes equipped with a <term>characteristic
+            map</term> <m>\Phi_\alpha\colon D^n\to X</m> (the composite
+            <m>D^n\hookrightarrow\coprod D^n_\alpha\to X^n\hookrightarrow X</m>) whose
+            restriction to the interior of <m>D^n</m> is a homeomorphism onto the open cell
+            <m>e^n_\alpha</m>, and whose restriction to <m>S^{n-1}=\partial D^n</m> is the
+            attaching map <m>\varphi_\alpha</m>.
+          </p>
+        </statement>
+      </remark>
+      <p>
+        The pushout perspective makes the universal property of CW complexes transparent: a
+        continuous map out of <m>X^n</m> is determined by a continuous map out of <m>X^{n-1}</m>
+        together with continuous maps out of each <m>D^n_\alpha</m> that agree with the given map
+        on <m>X^{n-1}</m> along the attaching maps. For finite-dimensional CW complexes, maps out
+        of <m>X</m> are built by induction on the skeletal filtration.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-cw-examples">
+      <title>Examples of CW structures</title>
+      <example xml:id="eg-cw-sphere">
+        <title>Spheres</title>
+        <statement>
+          <p>
+            As noted in <xref ref="eg-cell-attachment-sphere" />, <m>S^n</m> has a CW structure
+            with one <m>0</m>-cell and one <m>n</m>-cell: <m>S^n = e^0\cup e^n</m>.
+            Alternatively, <m>S^n</m> admits a CW structure with two cells in each dimension up to
+            <m>n</m>: take <m>S^n\subset\mathbb{R}^{n+1}</m> with the <m>k</m>-skeleton
+            <m>S^k\subset S^n</m> (embedded via the first <m>k+1</m> coordinates), where each
+            <m>S^k</m> is obtained from <m>S^{k-1}</m> by attaching two <m>k</m>-cells (the upper
+            and lower open hemispheres).
+          </p>
+        </statement>
+      </example>
+      <example xml:id="eg-cw-projective-space">
+        <title>Real projective space</title>
+        <statement>
+          <p>
+            Recall from Week 3 that <m>\mathbb{R}P^n</m> is obtained from
+            <m>\mathbb{R}P^{n-1}</m> by attaching a single <m>n</m>-cell. The attaching map
+            <m>\varphi\colon S^{n-1}\to\mathbb{R}P^{n-1}</m> is the antipodal quotient
+            restricted to the boundary of the upper hemisphere. This gives <m>\mathbb{R}P^n</m> a
+            CW structure with exactly one cell in each dimension:
+            <md>
+              \mathbb{R}P^n = e^0\cup e^1\cup\cdots\cup e^n.
+            </md>
+            Taking the colimit, infinite real projective space <m>\mathbb{R}P^\infty</m> is a CW
+            complex with one cell in each dimension <m>n\ge 0</m>.
+          </p>
+        </statement>
+      </example>
+      <example xml:id="eg-cw-complex-projective">
+        <title>Complex projective space</title>
+        <statement>
+          <p>
+            Similarly, <m>\mathbb{C}P^n</m> has a CW structure with one cell in each
+            <em>even</em> dimension:
+            <md>
+              \mathbb{C}P^n = e^0\cup e^2\cup e^4\cup\cdots\cup e^{2n}.
+            </md>
+            The attaching map <m>S^{2k-1}\to\mathbb{C}P^{k-1}</m> sends a unit vector in
+            <m>\mathbb{C}^k</m> to the complex line it spans — this is the Hopf map when
+            <m>k=2</m>.
+          </p>
+        </statement>
+      </example>
+      <example xml:id="eg-cw-torus">
+        <title>The torus</title>
+        <statement>
+          <p>
+            The torus <m>T^2=S^1\times S^1</m> admits a CW structure with one <m>0</m>-cell, two
+            <m>1</m>-cells <m>a</m> and <m>b</m>, and one <m>2</m>-cell. The
+            <m>1</m>-skeleton is a wedge of two circles <m>S^1\vee S^1</m>, and the single
+            <m>2</m>-cell is attached along the loop <m>aba^{-1}b^{-1}</m>. One sees this from
+            the standard identification of the torus as a square with opposite sides identified:
+            the four corners of the square are all identified to the single <m>0</m>-cell, the
+            edges become the two <m>1</m>-cells, and the interior of the square is the
+            <m>2</m>-cell.
+          </p>
+        </statement>
+      </example>
+      <example xml:id="eg-cw-graphs">
+        <title>Graphs</title>
+        <statement>
+          <p>
+            A <term>graph</term> is a <m>1</m>-dimensional CW complex: it has a discrete set of
+            <m>0</m>-cells (vertices) and a collection of <m>1</m>-cells (edges), each attached
+            to one or two vertices. Loops (edges attached at both ends to the same vertex) and
+            multiple edges between the same pair of vertices are permitted.
+          </p>
+        </statement>
+      </example>
+      <example xml:id="eg-cw-surfaces">
+        <title>Closed surfaces</title>
+        <statement>
+          <p>
+            Every closed orientable surface <m>\Sigma_g</m> of genus <m>g</m> has a CW structure
+            with one <m>0</m>-cell, <m>2g</m> one-cells <m>a_1,b_1,\ldots,a_g,b_g</m>, and one
+            <m>2</m>-cell attached along <m>a_1b_1a_1^{-1}b_1^{-1}\cdots
+            a_gb_ga_g^{-1}b_g^{-1}</m>. The non-orientable surfaces admit similar descriptions
+            with the appropriate identification words.
+          </p>
+        </statement>
+      </example>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-subcomplexes-quotients">
+      <title>Subcomplexes and quotients</title>
+      <p>
+        The pushout construction interacts well with the skeletal filtration, yielding several useful
+        operations on CW complexes.
+      </p>
+      <definition xml:id="def-subcomplex">
+        <title>Subcomplex</title>
+        <statement>
+          <p>
+            A <term>subcomplex</term> of a CW complex <m>X</m> is a closed subspace
+            <m>A\subseteq X</m> that is a union of cells of <m>X</m>. Equivalently, <m>A</m>
+            inherits a CW structure by taking <m>A^n=A\cap X^n</m>. A <term>CW pair</term> is a
+            pair <m>(X,A)</m> where <m>X</m> is a CW complex and <m>A</m> is a subcomplex.
+          </p>
+        </statement>
+      </definition>
+      <proposition xml:id="prop-cw-quotient">
+        <statement>
+          <p>
+            If <m>(X,A)</m> is a CW pair, then the quotient space <m>X/A</m> inherits a natural
+            CW structure: it has the cells of <m>X\smallsetminus A</m> plus one additional
+            <m>0</m>-cell (the image of <m>A</m>).
+          </p>
+        </statement>
+      </proposition>
+      <example xml:id="eg-cw-quotient-sphere">
+        <statement>
+          <p>
+            Taking <m>X=D^n</m> (one <m>0</m>-cell, one <m>(n-1)</m>-cell, one <m>n</m>-cell)
+            and <m>A=S^{n-1}=\partial D^n</m> (the subcomplex consisting of the <m>0</m>-cell and
+            the <m>(n-1)</m>-cell), the quotient <m>D^n/S^{n-1}\cong S^n</m> has the CW structure
+            with two cells <m>e^0\cup e^n</m>, as expected.
+          </p>
+        </statement>
+      </example>
+      <p>
+        The wedge sum and product also admit CW descriptions.
+      </p>
+      <proposition xml:id="prop-cw-wedge-product">
+        <statement>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  <term>Wedge.</term> If <m>X</m> and <m>Y</m> are CW complexes with chosen
+                  <m>0</m>-cells <m>x_0</m> and <m>y_0</m>, then the wedge sum
+                  <m>X\vee Y:=X\amalg Y/(x_0\sim y_0)</m> inherits a CW structure.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <term>Product.</term> If <m>X</m> and <m>Y</m> are CW complexes, then
+                  <m>X\times Y</m> has a CW structure whose cells are the products
+                  <m>e^m_\alpha\times e^n_\beta</m> of cells of <m>X</m> and <m>Y</m>. (When
+                  both <m>X</m> and <m>Y</m> have finitely many cells in each dimension, the
+                  product topology agrees with the CW topology; in general one must use the
+                  compactly generated refinement.)
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </proposition>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Friday</title>
+
+    <subsubsection xml:id="subsubsec-homotopy-extension">
+      <title>The homotopy extension property</title>
+      <p>
+        One of the key technical advantages of CW complexes is their excellent behavior with respect
+        to homotopies. The fundamental result is the <term>homotopy extension property</term>, which
+        says that a homotopy defined on a subcomplex can always be extended to the ambient complex.
+      </p>
+      <definition xml:id="def-hep">
+        <title>Homotopy extension property</title>
+        <statement>
+          <p>
+            A pair <m>(X,A)</m> of topological spaces has the <term>homotopy extension
+            property</term> (HEP) if for every space <m>Y</m>, every continuous map
+            <m>f\colon X\to Y</m>, and every homotopy <m>h_A\colon A\times[0,1]\to Y</m> with
+            <m>h_A(-,0)=f|_A</m>, there exists a homotopy <m>h\colon X\times[0,1]\to Y</m>
+            extending <m>h_A</m> with <m>h(-,0)=f</m>. In other words, the dashed arrow exists
+            making the following diagram commute:
+            <image width="50%">
+              <description>
+                The homotopy extension property diagram: <m>A</m> includes into <m>X</m> across
+                the top, and both map down via <m>i_0\colon x\mapsto(x,0)</m> into the products
+                with <m>[0,1]</m>. The map <m>f\colon X\to Y</m> and the partial homotopy
+                <m>h_A\colon A\times[0,1]\to Y</m> are given, and the HEP asserts the existence
+                of <m>h\colon X\times[0,1]\to Y</m>.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  A \arrow[r, hook] \arrow[d, "i_0"'] \amp X \arrow[d, "i_0"] \arrow[ddr, bend left, "f"] \\
+                  A\times{[0,1]} \arrow[r, hook] \arrow[drr, bend right, "h_A"'] \amp X\times{[0,1]} \arrow[dr, dashed, "\exists\, h" description] \\
+                  \amp \amp Y
+                \end{tikzcd}
+              </latex-image>
+            </image>
+          </p>
+        </statement>
+      </definition>
+      <proposition xml:id="prop-hep-retract">
+        <title>HEP via retractions</title>
+        <statement>
+          <p>
+            A pair <m>(X,A)</m> has the homotopy extension property if and only if
+            <m>X\times\{0\}\cup A\times[0,1]</m> is a retract of <m>X\times[0,1]</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Write <m>M_A := X\times\{0\}\cup A\times[0,1] \subseteq X\times[0,1]</m> and
+            let <m>j\colon M_A\hookrightarrow X\times[0,1]</m> denote the inclusion.
+          </p>
+          <p>
+            <em>(<m>\Leftarrow</m>)</em> Suppose <m>r\colon X\times[0,1]\to M_A</m> is a
+            retraction, so <m>r\circ j=\mathrm{id}_{M_A}</m>. Given a map
+            <m>f\colon X\to Y</m> and a homotopy <m>h_A\colon A\times[0,1]\to Y</m> with
+            <m>h_A(-,0)=f|_A</m>, define <m>g\colon M_A\to Y</m> by
+            <m>g|_{X\times\{0\}}=f</m> and <m>g|_{A\times[0,1]}=h_A</m>; these agree on the
+            overlap <m>A\times\{0\}</m> since <m>h_A(-,0)=f|_A</m>. Then
+            <m>h:=g\circ r\colon X\times[0,1]\to Y</m> is the desired extension:
+            <m>h(-,0)=g(r(-,0))=g(-,0)=f</m> since <m>r</m> fixes <m>X\times\{0\}</m>, and
+            <m>h|_{A\times[0,1]}=g\circ r|_{A\times[0,1]}=g|_{A\times[0,1]}=h_A</m> since
+            <m>r</m> fixes <m>M_A</m>.
+          </p>
+          <p>
+            As a diagram, the construction is:
+            <image width="55%">
+              <description>
+                Diagram showing the retraction-based construction of the homotopy extension.
+                The retraction <m>r</m> maps <m>X\times[0,1]</m> to <m>M_A</m>, and then
+                <m>g</m> maps <m>M_A</m> to <m>Y</m>. The composite <m>h=g\circ r</m>
+                gives the extension.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  M_A \arrow[r, hook, "j"] \arrow[dr, "g"'] \amp X\times{[0,1]} \arrow[d, dashed, "h=g\circ r"] \arrow[l, bend right, "r"'] \\
+                  \amp Y
+                \end{tikzcd}
+              </latex-image>
+            </image>
+          </p>
+          <p>
+            <em>(<m>\Rightarrow</m>)</em> Suppose <m>(X,A)</m> has the HEP. Apply it with
+            <m>Y:=M_A</m>, with <m>f\colon X\to M_A</m> given by <m>f(x):=(x,0)</m>
+            (the inclusion of the base), and with <m>h_A\colon A\times[0,1]\to M_A</m>
+            given by the identity <m>h_A(a,t):=(a,t)</m>. These are compatible since
+            <m>h_A(a,0)=(a,0)=f(a)</m>. The HEP produces an extension
+            <m>r\colon X\times[0,1]\to M_A</m>, and by construction
+            <m>r|_{M_A}=\mathrm{id}_{M_A}</m>, so <m>r</m> is a retraction.
+          </p>
+          <p>
+            The forward direction as a diagram: we apply the HEP with target <m>Y = M_A</m>,
+            <image width="55%">
+              <description>
+                The HEP diagram specialized to <m>Y=M_A</m>. The maps <m>f(x)=(x,0)</m>
+                and <m>h_A(a,t)=(a,t)</m> are the identity embeddings into <m>M_A</m>,
+                and the resulting extension <m>r</m> is the desired retraction.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  A \arrow[r, hook] \arrow[d, "i_0"'] \amp X \arrow[d, "i_0"] \arrow[ddr, bend left, "x\mapsto(x{,}0)"] \\
+                  A\times{[0,1]} \arrow[r, hook] \arrow[drr, bend right, "(a{,}t)\mapsto(a{,}t)"'] \amp X\times{[0,1]} \arrow[dr, dashed, "r"] \\
+                  \amp \amp M_A
+                \end{tikzcd}
+              </latex-image>
+            </image>
+            and the dashed arrow <m>r</m> is a retraction since it restricts to the identity
+            on <m>M_A</m>.
+          </p>
+        </proof>
+      </proposition>
+      <p>
+        The upshot is that verifying the HEP reduces to a purely geometric problem: construct a
+        retraction <m>r\colon X\times[0,1]\to X\times\{0\}\cup A\times[0,1]</m>. For cell
+        attachments, this retract can be constructed explicitly.
+      </p>
+      <lemma xml:id="lem-disk-hep">
+        <statement>
+          <p>
+            The pair <m>(D^n, S^{n-1})</m> has the homotopy extension property. Concretely,
+            <m>D^n\times\{0\}\cup S^{n-1}\times[0,1]</m> is a retract of
+            <m>D^n\times[0,1]</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Project radially from the point <m>(0,2)\in D^n\times\mathbb{R}</m> onto the subspace
+            <m>D^n\times\{0\}\cup S^{n-1}\times[0,1]</m>. This defines a retraction
+            <m>r\colon D^n\times[0,1]\to D^n\times\{0\}\cup S^{n-1}\times[0,1]</m>. The
+            geometric picture: we project from a point "above" the cylinder onto its bottom face
+            and lateral boundary. Here is an illustration in the case <m>n=2</m>:
+          </p>
+          <image width="65%">
+            <description>
+              The radial projection retraction for the pair <m>(D^2, S^1)</m>. The cylinder
+              <m>D^2\times[0,1]</m> is shown with its bottom face and lateral boundary
+              highlighted. A point <m>p=(0,2)</m> above the cylinder projects radially onto
+              <m>D^2\times\{0\}\cup S^1\times[0,1]</m>, defining the retraction.
+            </description>
+            <latex-image>
+              \begin{tikzpicture}[scale=1.8]
+                % Cylinder lateral surface (back half, light)
+                \draw[gray!40, fill=gray!5] (-1,0) -- (-1,2) arc(180:360:1 and 0.3) -- (1,0) arc(360:180:1 and 0.3);
+                % Bottom face
+                \draw[blue!30, fill=blue!10] (0,0) ellipse (1 and 0.3);
+                % Lateral boundary (front half)
+                \draw[red!60, thick] (-1,0) -- (-1,2);
+                \draw[red!60, thick] (1,0) -- (1,2);
+                % Top ellipse
+                \draw[gray!60] (0,2) ellipse (1 and 0.3);
+                % Lateral boundary (front half of top ellipse)
+                \draw[red!60, thick] (1,2) arc(0:-180:1 and 0.3);
+                % Bottom face outline
+                \draw[blue!60, thick] (0,0) ellipse (1 and 0.3);
+                % Point p above
+                \fill (0,3.6) circle (1.2pt) node[above] {$p=(0,2)$};
+                % Sample projection rays
+                \draw[densely dashed, gray!70] (0,3.6) -- (-1,1.4);
+                \draw[densely dashed, gray!70] (0,3.6) -- (1,1.0);
+                \draw[densely dashed, gray!70] (0,3.6) -- (0.5,0);
+                \draw[densely dashed, gray!70] (0,3.6) -- (-0.4,0);
+                % Point on lateral boundary
+                \fill[red!70] (-1,1.4) circle (1pt);
+                \fill[red!70] (1,1.0) circle (1pt);
+                % Points on bottom face
+                \fill[blue!70] (0.5,0) circle (1pt);
+                \fill[blue!70] (-0.4,0) circle (1pt);
+                % Labels
+                \node[right] at (1.15,1.0) {\small $S^1\times[0,1]$};
+                \node[below] at (0,-0.45) {\small $D^2\times\{0\}$};
+                \node[left] at (-1.4,1.0) {\small $D^2\times[0,1]$};
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+        </proof>
+      </lemma>
+      <theorem xml:id="thm-cw-hep">
+        <title>CW pairs have the homotopy extension property</title>
+        <statement>
+          <p>
+            If <m>(X,A)</m> is a CW pair, then <m>(X,A)</m> has the homotopy extension property.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            By <xref ref="prop-hep-retract" />, it suffices to show that
+            <m>X\times\{0\}\cup A\times[0,1]</m> is a retract of <m>X\times[0,1]</m>.
+            We build this retraction inductively over the skeletal filtration.
+          </p>
+          <p>
+            <em>Step 1: single cell attachment.</em>
+            Suppose <m>X=A\amalg_\varphi D^n</m> is obtained from <m>A</m> by attaching a
+            single <m>n</m>-cell via <m>\varphi\colon S^{n-1}\to A</m>. Write
+            <m>M_A := X\times\{0\}\cup A\times[0,1]</m>. The key observation is that
+            taking products with <m>[0,1]</m> preserves the pushout structure: the
+            cylinder <m>X\times[0,1]</m> is obtained by gluing
+            <m>D^n\times[0,1]</m> to <m>A\times[0,1]</m> along
+            <m>S^{n-1}\times[0,1]</m> via <m>\varphi\times\mathrm{id}</m>:
+            <image width="55%">
+              <description>
+                Pushout diagram showing that <m>X\times[0,1]</m> is the pushout of
+                <m>A\times[0,1]</m> and <m>D^n\times[0,1]</m> over
+                <m>S^{n-1}\times[0,1]</m>.
+              </description>
+              <latex-image>
+                \begin{tikzcd}
+                  S^{n-1}\times{[0,1]} \arrow[r, "\varphi\times\mathrm{id}"] \arrow[d, hook] \amp A\times{[0,1]} \arrow[d] \\
+                  D^n\times{[0,1]} \arrow[r] \amp X\times{[0,1]}
+                  \arrow[ul, phantom, "\ulcorner" very near end]
+                \end{tikzcd}
+              </latex-image>
+            </image>
+          </p>
+          <p>
+            By <xref ref="lem-disk-hep" />, there is a retraction
+            <m>r_D\colon D^n\times[0,1]\to D^n\times\{0\}\cup S^{n-1}\times[0,1]</m>.
+            Define <m>r_A\colon A\times[0,1]\to A\times[0,1]</m> to be the identity. On
+            the overlap <m>S^{n-1}\times[0,1]</m>, both maps agree: <m>r_D</m> restricts
+            to the identity on <m>S^{n-1}\times[0,1]</m> (since these points lie on the
+            lateral boundary, which is fixed by the retraction), and <m>r_A</m> is the
+            identity. By the universal property of the pushout, <m>r_A</m> and <m>r_D</m>
+            assemble into a single continuous map <m>r\colon X\times[0,1]\to M_A</m>:
+            <image width="70%">
+              <description>
+                Diagram showing how the retraction <m>r_A</m> on <m>A\times[0,1]</m>
+                and <m>r_D</m> on <m>D^n\times[0,1]</m> assemble via the pushout
+                universal property into the global retraction <m>r</m>.
+              </description>
+              <latex-image>
+                \begin{tikzcd}[column sep=large]
+                  S^{n-1}\times{[0,1]} \arrow[r, "\varphi\times\mathrm{id}"] \arrow[d, hook] \amp A\times{[0,1]} \arrow[d] \arrow[ddr, bend left, "r_A=\mathrm{id}"] \\
+                  D^n\times{[0,1]} \arrow[r] \arrow[drr, bend right, "r_D"'] \amp X\times{[0,1]} \arrow[dr, dashed, "\exists!\, r"] \\
+                  \amp \amp M_A
+                \end{tikzcd}
+              </latex-image>
+            </image>
+            Since <m>r_A</m> and <m>r_D</m> are both retractions onto their respective parts of
+            <m>M_A</m>, the map <m>r</m> is a retraction of <m>X\times[0,1]</m> onto <m>M_A</m>.
+          </p>
+          <p>
+            <em>Step 2: induction over skeleta.</em>
+            For a general CW pair <m>(X,A)</m>, write <m>X_k := A\cup X^{(k)}</m> for the
+            union of <m>A</m> with the <m>k</m>-skeleton of <m>X</m>. Each
+            <m>X_{k+1}</m> is obtained from <m>X_k</m> by attaching <m>(k+1)</m>-cells.
+            By Step 1 (applied to each cell and assembled via the pushout over the
+            disjoint union of attaching maps), the pair <m>(X_{k+1}, X_k)</m> has the HEP,
+            so there is a retraction
+            <m>r_k\colon X_{k+1}\times[0,1]\to X_{k+1}\times\{0\}\cup X_k\times[0,1]</m>.
+          </p>
+          <p>
+            Composing these retractions telescopically gives a retraction of
+            <m>X_k\times[0,1]</m> onto <m>X_k\times\{0\}\cup A\times[0,1]</m> for each
+            finite <m>k</m>. For the passage to <m>X = \bigcup_k X_k</m>, we use the fact that
+            <m>X</m> carries the weak topology with respect to the filtration
+            <m>\{X_k\}</m>: a map out of <m>X\times[0,1]</m> is continuous if and only if its
+            restriction to each <m>X_k\times[0,1]</m> is continuous. The retractions at each
+            stage are compatible (each extends the previous), so they assemble into a retraction
+            <m>r\colon X\times[0,1]\to X\times\{0\}\cup A\times[0,1]</m>.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        The homotopy extension property has several powerful consequences, which we record as
+        corollaries.
+      </p>
+      <corollary xml:id="cor-contractible-subcomplex">
+        <title>Collapsing contractible subcomplexes</title>
+        <statement>
+          <p>
+            If <m>(X,A)</m> is a CW pair and <m>A</m> is contractible, then the quotient map
+            <m>q\colon X\to X/A</m> is a homotopy equivalence.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Since <m>A</m> is contractible, there is a homotopy <m>h_A\colon A\times[0,1]\to A</m>
+            from <m>\mathrm{id}_A</m> to a constant map. By the HEP, this extends to a homotopy
+            <m>h\colon X\times[0,1]\to X</m> starting at <m>\mathrm{id}_X</m>. The map
+            <m>h(-,1)</m> sends all of <m>A</m> to a single point, so it factors through
+            <m>X/A</m>, and one checks this yields a homotopy inverse for <m>q</m>.
+          </p>
+        </proof>
+      </corollary>
+      <corollary xml:id="cor-homotopic-attaching">
+        <title>Homotopic attaching maps</title>
+        <statement>
+          <p>
+            If <m>\varphi_0,\varphi_1\colon S^{n-1}\to X</m> are homotopic attaching maps, then
+            the resulting spaces <m>X\amalg_{\varphi_0}D^n</m> and <m>X\amalg_{\varphi_1}D^n</m> are
+            homotopy equivalent.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Consider the space <m>X\amalg_{\varphi_0}D^n</m>. The homotopy between
+            <m>\varphi_0</m> and <m>\varphi_1</m> can be used, via the HEP for the pair
+            <m>(D^n, S^{n-1})</m>, to construct a deformation of the attaching region. The
+            mapping cylinder of the homotopy between attaching maps contains both spaces as
+            deformation retracts.
+          </p>
+        </proof>
+      </corollary>
+      <example xml:id="eg-collapsing-tree">
+        <title>Collapsing a maximal tree in a graph</title>
+        <statement>
+          <p>
+            Let <m>\Gamma</m> be a connected graph (a <m>1</m>-dimensional CW complex). A
+            <term>maximal tree</term> <m>T\subseteq\Gamma</m> is a contractible subgraph
+            containing all vertices. By <xref ref="cor-contractible-subcomplex" />,
+            <m>\Gamma/T</m> is homotopy equivalent to <m>\Gamma</m>. Since <m>T</m> contains all
+            vertices, the quotient <m>\Gamma/T</m> has a single vertex, and each edge not in
+            <m>T</m> becomes a loop — so <m>\Gamma/T</m> is a wedge of circles. If
+            <m>\Gamma</m> has <m>V</m> vertices, <m>E</m> edges, and <m>T</m> contains
+            <m>V-1</m> edges (as any tree on <m>V</m> vertices must), then
+            <md>
+              \Gamma\simeq\Gamma/T\cong\bigvee_{E-V+1}S^1.
+            </md>
+            In particular, <m>\Gamma\simeq\bigvee_k S^1</m> where <m>k=1-\chi(\Gamma)</m>.
+          </p>
+        </statement>
+      </example>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-cellular-maps">
+      <title>Cellular maps</title>
+      <definition xml:id="def-cellular-map">
+        <title>Cellular map</title>
+        <statement>
+          <p>
+            A continuous map <m>f\colon X\to Y</m> between CW complexes is <term>cellular</term>
+            if <m>f(X^n)\subseteq Y^n</m> for all <m>n\ge 0</m>, <ie />, <m>f</m> preserves the
+            skeletal filtrations.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Not every continuous map between CW complexes is cellular, but the following remarkable
+        theorem — whose proof we will not give here — asserts that every map is <em>homotopic</em>
+        to a cellular one.
+      </p>
+      <theorem xml:id="thm-cellular-approximation">
+        <title>Cellular approximation theorem</title>
+        <statement>
+          <p>
+            Every continuous map <m>f\colon X\to Y</m> between CW complexes is homotopic to a
+            cellular map. Moreover, if <m>f</m> is already cellular on a subcomplex
+            <m>A\subseteq X</m>, the homotopy can be taken to be rel <m>A</m>.
+          </p>
+        </statement>
+      </theorem>
+      <p>
+        The cellular approximation theorem is analogous to the simplicial approximation theorem in
+        combinatorial topology. It implies that for the purposes of homotopy theory, it costs nothing
+        to assume our maps are cellular. We will make essential use of this when studying homology.
+      </p>
+      <corollary xml:id="cor-low-dim-homotopy">
+        <title>Low-dimensional connectivity</title>
+        <statement>
+          <p>
+            If <m>X</m> is a CW complex with <m>X^n=X^0</m> for all <m>n\le k</m> (<ie />,
+            <m>X</m> has no cells of dimension <m>1</m> through <m>k</m>), then every map
+            <m>S^j\to X</m> with <m>j\le k-1</m> is nullhomotopic.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Give <m>S^j</m> its standard CW structure. By the cellular approximation theorem, any
+            continuous map <m>f\colon S^j\to X</m> is homotopic to a cellular map
+            <m>g\colon S^j\to X</m>. Since <m>g</m> is cellular, <m>g(S^j)\subseteq X^j</m>. But
+            <m>X^j=X^0</m> is discrete and <m>S^j</m> is connected (for <m>j\ge 1</m>), so
+            <m>g</m> is constant.
+          </p>
+        </proof>
+      </corollary>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-suspension-and-cones">
+      <title>Suspensions and cones</title>
+      <p>
+        Two constructions that arise frequently in algebraic topology — and that we will need for
+        homology computations — are the cone and suspension.
+      </p>
+      <definition xml:id="def-cone-suspension">
+        <title>Cone and (unreduced) suspension</title>
+        <statement>
+          <p>
+            Let <m>X</m> be a topological space.
+          </p>
+          <p>
+            <ol>
+              <li>
+                <p>
+                  The <term>cone</term> on <m>X</m> is the quotient
+                  <md>
+                    CX := X\times[0,1]\big/(X\times\{1\}).
+                  </md>
+                  It is the space obtained by collapsing one end of the cylinder
+                  <m>X\times[0,1]</m> to a point (the <term>cone point</term>). The cone is always
+                  contractible.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <term>(unreduced) suspension</term> of <m>X</m> is the quotient
+                  <md>
+                    \widetilde\Sigma X := X\times[0,1]\big/(X\times\{0\}\cup X\times\{1\})
+                    \;=\; CX\big/(X\times\{0\}),
+                  </md>
+                  obtained by collapsing <em>both</em> ends of the cylinder to points (the
+                  <term>north</term> and <term>south poles</term>).
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </definition>
+      <remark>
+        <title>Reduced vs. unreduced suspension</title>
+        <statement>
+          <p>
+            If <m>(X,x_0)</m> is a <term>pointed space</term> (a space equipped with a chosen
+            basepoint), the <term>reduced suspension</term> is the quotient
+            <md>
+              \Sigma X := \widetilde\Sigma X\big/(\{x_0\}\times[0,1]),
+            </md>
+            which further collapses the "longitude" through the basepoint to a point. Equivalently,
+            <m>\Sigma X = X\wedge S^1</m>, the smash product of <m>X</m> with the circle (where
+            <m>X\wedge Y := X\times Y/(X\vee Y)</m> is the quotient of the product by the wedge).
+            The reduced suspension is the standard suspension in the context of stable homotopy
+            theory and generalized cohomology.
+          </p>
+          <p>
+            For CW complexes with basepoint a <m>0</m>-cell, the inclusion
+            <m>\{x_0\}\times[0,1]\hookrightarrow\widetilde\Sigma X</m> makes
+            <m>\{x_0\}\times[0,1]</m> a contractible subcomplex, so by
+            <xref ref="cor-contractible-subcomplex" /> the quotient map
+            <m>\widetilde\Sigma X\to\Sigma X</m> is a homotopy equivalence. In this course,
+            we will primarily use the unreduced suspension <m>\widetilde\Sigma X</m>, since we
+            are not yet systematically working in the pointed category.
+          </p>
+        </statement>
+      </remark>
+      <example xml:id="eg-suspension-sphere">
+        <statement>
+          <p>
+            The suspension of <m>S^n</m> is homeomorphic to <m>S^{n+1}</m>:
+            <md>
+              \widetilde\Sigma S^n\cong S^{n+1}.
+            </md>
+            In particular,
+            <m>S^n\cong\widetilde\Sigma(S^{n-1})\cong\widetilde\Sigma^2(S^{n-2})\cong\cdots
+            \cong\widetilde\Sigma^n(S^0)</m>, where <m>\widetilde\Sigma^k</m> denotes the
+            <m>k</m>-fold iterated suspension. Since <m>S^0=\{-1,+1\}</m>, this gives us an
+            inductive construction of all spheres: each <m>S^n</m> is the suspension of the
+            previous one.
+          </p>
+        </statement>
+      </example>
+      <p>
+        If <m>X</m> is a CW complex, then both <m>CX</m> and <m>\widetilde\Sigma X</m> inherit
+        CW structures. For <m>\widetilde\Sigma X</m>: there are two new <m>0</m>-cells (the
+        poles), and for each <m>n</m>-cell <m>e^n_\alpha</m> of <m>X</m>, the suspension
+        contributes an <m>(n+1)</m>-cell <m>e^{n+1}_\alpha</m> to
+        <m>\widetilde\Sigma X</m>. This observation will be essential when we compute the
+        homology of spheres using the Mayer-Vietoris sequence.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-looking-ahead">
+      <title>Looking ahead: from spaces to algebra</title>
+      <p>
+        We now have the geometric machinery — CW complexes, homotopy equivalence, and the homotopy
+        extension property — to begin constructing algebraic invariants. Next week, we will define
+        <term>singular homology</term>: for each space <m>X</m> and each integer <m>n\ge 0</m>, a
+        group <m>H_n(X)</m> that captures <m>n</m>-dimensional "holes" in <m>X</m>. The key
+        features of homology will be:
+      </p>
+      <p>
+        <ol>
+          <li>
+            <p>
+              <term>Homotopy invariance.</term> If <m>X\simeq Y</m>, then
+              <m>H_n(X)\cong H_n(Y)</m> for all <m>n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>Dimension.</term> <m>H_n(\mathrm{pt})=0</m> for <m>n\ge 1</m>, and
+              <m>H_0(\mathrm{pt})\cong\mathbb{Z}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>Mayer-Vietoris.</term> For <m>X=A\cup B</m>, there is a long exact sequence
+              relating <m>H_*(A\cap B)</m>, <m>H_*(A)\oplus H_*(B)</m>, and <m>H_*(X)</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Together with the CW structures we have built, these properties will let us compute
+        <m>H_*(S^n)</m>, prove the Brouwer fixed-point theorem (stated without proof back in
+        Week 2), and much more.
+      </p>
+    </subsubsection>
+  </subsection>
+
+</section>

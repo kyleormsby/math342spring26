@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="proposition theorem-like"><h5 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.10.31</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">HEP via retractions.</span>
+</h5>
+<div class="para">A pair <span class="process-math">\((X,A)\)</span> has the homotopy extension property if and only if <span class="process-math">\(X\times\{0\}\cup A\times[0,1]\)</span> is a retract of <span class="process-math">\(X\times[0,1]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-hep-retract-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.10.31: HEP via retractions"><a href="#prop-hep-retract" title="Copy heading and permalink for Proposition 2.10.31: HEP via retractions" aria-label="Copy heading and permalink for Proposition 2.10.31: HEP via retractions">🔗</a></div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para">Write <span class="process-math">\(M_A := X\times\{0\}\cup A\times[0,1] \subseteq X\times[0,1]\)</span> and let <span class="process-math">\(j\colon M_A\hookrightarrow X\times[0,1]\)</span> denote the inclusion.<div class="autopermalink" data-description="Paragraph"><a href="#prop-hep-retract-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para">
+<em class="emphasis">(<span class="process-math">\(\Leftarrow\)</span>)</em> Suppose <span class="process-math">\(r\colon X\times[0,1]\to M_A\)</span> is a retraction, so <span class="process-math">\(r\circ j=\mathrm{id}_{M_A}\text{.}\)</span> Given a map <span class="process-math">\(f\colon X\to Y\)</span> and a homotopy <span class="process-math">\(h_A\colon A\times[0,1]\to Y\)</span> with <span class="process-math">\(h_A(-,0)=f|_A\text{,}\)</span> define <span class="process-math">\(g\colon M_A\to Y\)</span> by <span class="process-math">\(g|_{X\times\{0\}}=f\)</span> and <span class="process-math">\(g|_{A\times[0,1]}=h_A\text{;}\)</span> these agree on the overlap <span class="process-math">\(A\times\{0\}\)</span> since <span class="process-math">\(h_A(-,0)=f|_A\text{.}\)</span> Then <span class="process-math">\(h:=g\circ r\colon X\times[0,1]\to Y\)</span> is the desired extension: <span class="process-math">\(h(-,0)=g(r(-,0))=g(-,0)=f\)</span> since <span class="process-math">\(r\)</span> fixes <span class="process-math">\(X\times\{0\}\text{,}\)</span> and <span class="process-math">\(h|_{A\times[0,1]}=g\circ r|_{A\times[0,1]}=g|_{A\times[0,1]}=h_A\)</span> since <span class="process-math">\(r\)</span> fixes <span class="process-math">\(M_A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-hep-retract-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para">As a diagram, the construction is: <div class="image-box" style="width: 55%; margin-left: 22.5%; margin-right: 22.5%;">
+<img src="generated/latex-image/prop-hep-retract-3-3-1.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="prop-hep-retract-3-3-1-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="prop-hep-retract-3-3-1-description">Diagram showing the retraction-based construction of the homotopy extension. The retraction <span class="process-math">\(r\)</span> maps <span class="process-math">\(X\times[0,1]\)</span> to <span class="process-math">\(M_A\text{,}\)</span> and then <span class="process-math">\(g\)</span> maps <span class="process-math">\(M_A\)</span> to <span class="process-math">\(Y\text{.}\)</span> The composite <span class="process-math">\(h=g\circ r\)</span> gives the extension.</div></details>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-hep-retract-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para">
+<em class="emphasis">(<span class="process-math">\(\Rightarrow\)</span>)</em> Suppose <span class="process-math">\((X,A)\)</span> has the HEP. Apply it with <span class="process-math">\(Y:=M_A\text{,}\)</span> with <span class="process-math">\(f\colon X\to M_A\)</span> given by <span class="process-math">\(f(x):=(x,0)\)</span> (the inclusion of the base), and with <span class="process-math">\(h_A\colon A\times[0,1]\to M_A\)</span> given by the identity <span class="process-math">\(h_A(a,t):=(a,t)\text{.}\)</span> These are compatible since <span class="process-math">\(h_A(a,0)=(a,0)=f(a)\text{.}\)</span> The HEP produces an extension <span class="process-math">\(r\colon X\times[0,1]\to M_A\text{,}\)</span> and by construction <span class="process-math">\(r|_{M_A}=\mathrm{id}_{M_A}\text{,}\)</span> so <span class="process-math">\(r\)</span> is a retraction.<div class="autopermalink" data-description="Paragraph"><a href="#prop-hep-retract-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para">The forward direction as a diagram: we apply the HEP with target <span class="process-math">\(Y = M_A\text{,}\)</span> <div class="image-box" style="width: 55%; margin-left: 22.5%; margin-right: 22.5%;">
+<img src="generated/latex-image/prop-hep-retract-3-5-2.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="prop-hep-retract-3-5-2-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="prop-hep-retract-3-5-2-description">The HEP diagram specialized to <span class="process-math">\(Y=M_A\text{.}\)</span> The maps <span class="process-math">\(f(x)=(x,0)\)</span> and <span class="process-math">\(h_A(a,t)=(a,t)\)</span> are the identity embeddings into <span class="process-math">\(M_A\text{,}\)</span> and the resulting extension <span class="process-math">\(r\)</span> is the desired retraction.</div></details>
+</div> and the dashed arrow <span class="process-math">\(r\)</span> is a retraction since it restricts to the identity on <span class="process-math">\(M_A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-hep-retract-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.10.31.1"><a href="#prop-hep-retract-3" title="Copy heading and permalink for Proof 2.10.31.1" aria-label="Copy heading and permalink for Proof 2.10.31.1">🔗</a></div></article></details><span class="incontext"><a class="internal" href="notes-week-10.html#prop-hep-retract">in-context</a></span>
+</body>
+</html>

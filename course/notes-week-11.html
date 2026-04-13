@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Week 11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Topology">
+<meta property="book:author" content="Kyle Ormsby">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.13.3';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.b76b8eace4405b9e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.bbf2283c5c1d4f99.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.b12a7b3f0773ebcd.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner"><div class="title-container">
+<h1 class="heading"><a href="root-1-2.html"><span class="title">Topology</span> <span class="subtitle">MATH 342 Spring 2026</span></a></h1>
+<p class="byline">Kyle Ormsby</p>
+</div></div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="embed-button" class="embed-button button" title="Embed this page"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe86f;</span><span class="name">Embed</span></button><div class="embed-popup hidden" id="embed-popup">
+<p>Copy the code below to embed this page in your own website or LMS page.</p>
+<div class="embed-code-container">
+<textarea class="embed-code-textbox" id="embed-code-textbox" readonly aria-label="textbox"><iframe src="https://example.com/embed" width="100%" height="1000"></iframe></textarea><button class="copy-embed-button button" id="copy-embed-button" title="Copy embed code"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe14d;</span><span class="name">Copy</span></button>
+</div>
+</div>
+<button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="notes-week-10.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="course-notes.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="homework.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="course-documents.html" class="internal"><span class="codenumber">1</span> <span class="title">Course Documents</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section">
+<div class="toc-title-box"><a href="syllabus.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Syllabus</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="syllabus.html#sec-course-info" class="internal"><span class="title">Course Information</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="course-notes.html" class="internal"><span class="codenumber">2</span> <span class="title">Course Notes</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-01.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Week 1</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-Monday" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-arena" class="internal"><span class="title">Welcome to the Generous Arena</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-define-top" class="internal"><span class="title">So what is a topology?</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-examples-top" class="internal"><span class="title">Examples of topologies</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-3-2" class="internal"><span class="title">Continuity</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-top-properties" class="internal"><span class="title">Topological properties</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-01.html#subsubsec-building-cts" class="internal"><span class="title">Building continuous functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-01.html#notes-week-01-4" class="internal"><span class="title">Friday</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-02.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Week 2</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-2-2" class="internal"><span class="title">Topology from the categorical viewpoint</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#sec-categories" class="internal"><span class="title">Categories</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-functors" class="internal"><span class="title">Functors</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-more-functors" class="internal"><span class="title">More on functors</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-new-from-old" class="internal"><span class="title">New topologies from old</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-subspace" class="internal"><span class="title">The subspace topology</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-02.html#notes-week-02-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-02.html#subsubsec-quotient" class="internal"><span class="title">The quotient topology</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-03.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Week 3</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-03.html#notes-week-03-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-03.html#subsubsec-real-projective" class="internal"><span class="title">Real projective space</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-03.html#subsubsec-pushout" class="internal"><span class="title">Pushouts</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-03.html#notes-week-03-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-03.html#subsubsec-pushout-in-top" class="internal"><span class="title">Pushouts in Top</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-03.html#subsubsec-product" class="internal"><span class="title">Categorical products and the product topology</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-03.html#notes-week-03-4" class="internal"><span class="title">Friday</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-04.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Week 4</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-04.html#notes-week-04-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-hausdorff" class="internal"><span class="title">Separation of points</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-04.html#notes-week-04-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-limit-points" class="internal"><span class="title">Closure and limit points</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-more-sequences" class="internal"><span class="title">Sequences and limits</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-seq-cts" class="internal"><span class="title">Sequences, closure, and continuity</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-04.html#notes-week-04-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-04.html#subsubsec-compact" class="internal"><span class="title">A first glimpse of compactness</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-05.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Week 5</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-05.html#notes-week-05-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-topological-induction" class="internal"><span class="title">Compactness via topological induction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-inheritance-compactness" class="internal"><span class="title">Inheritance of compactness</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-05.html#notes-week-05-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-05.html#subsubsec-sep-disjoint-compact" class="internal"><span class="title">Separation of disjoint compact subspaces</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-05.html#notes-week-05-4" class="internal"><span class="title">Friday</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-06.html" class="internal"><span class="codenumber">2.6</span> <span class="title">Week 6</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-06.html#notes-week-06-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-fund-thm-of-top" class="internal"><span class="title">The fundamental theorem of topology</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-hausdorff-quotient" class="internal"><span class="title">When do quotients separate points?</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-06.html#notes-week-06-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-connectedness" class="internal"><span class="title">Connectedness</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-path-connected" class="internal"><span class="title">Paths and path connectedness</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-06.html#notes-week-06-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-closed-interval-connected" class="internal"><span class="title">Closed intervals are connected</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-pc-implies-c" class="internal"><span class="title">Path-connected implies connected</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-06.html#subsubsec-inheritance-of-connectedness" class="internal"><span class="title">Inheritance of connectedness</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-07.html" class="internal"><span class="codenumber">2.7</span> <span class="title">Week 7</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-07.html#notes-week-07-2" class="internal"><span class="title">Monday</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-07.html#notes-week-07-3" class="internal"><span class="title">Wednesday</span></a></div></li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-07.html#notes-week-07-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-07.html#subsubsec-connected-components" class="internal"><span class="title">Connected components</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-07.html#subsubsec-path-components" class="internal"><span class="title">Path-components and <span class="process-math">\(\pi_0\)</span></span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-08.html" class="internal"><span class="codenumber">2.8</span> <span class="title">Week 8</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-comparing-components" class="internal"><span class="title">Comparing connected and path-components</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-local-connectedness" class="internal"><span class="title">Local connectedness</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-natural-trans" class="internal"><span class="title">Natural transformations</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-adjunctions" class="internal"><span class="title">Adjunctions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-08.html#notes-week-08-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-unit-and-counit" class="internal"><span class="title">Units and counits of adjunctions</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-adjoints-Top-Set" class="internal"><span class="title">Adjoints to the forgetful functor from spaces to sets</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-08.html#subsubsec-stone-cech" class="internal"><span class="title">Stone-Čech compactification</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-09.html" class="internal"><span class="codenumber">2.9</span> <span class="title">Week 9</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="notes-week-09.html#notes-week-09-2" class="internal"><span class="title">Monday</span></a></div></li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-09.html#notes-week-09-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-motivation-mapping-spaces" class="internal"><span class="title">Motivation: topologies on function spaces</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-splitting-conjoining" class="internal"><span class="title">Splitting and conjoining topologies</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-compact-open-topology" class="internal"><span class="title">The compact-open topology</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-metrics-function-spaces" class="internal"><span class="title">Metrics on function spaces</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-09.html#notes-week-09-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-product-via-compact-open" class="internal"><span class="title">The product topology via mapping spaces</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-local-compactness" class="internal"><span class="title">Local compactness</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-evaluation-continuous" class="internal"><span class="title">Continuity of evaluation and the exponential adjunction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-currying-applications" class="internal"><span class="title">Applications of the exponential adjunction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-limitations" class="internal"><span class="title">Limitations and the role of local compactness</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-09.html#subsubsec-stone-cech-construction" class="internal"><span class="title">Application: Stone-Čech compactification via mapping spaces</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="notes-week-10.html" class="internal"><span class="codenumber">2.10</span> <span class="title">Week 10</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-10.html#notes-week-10-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-homotopy-of-maps" class="internal"><span class="title">Homotopy of maps</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-homotopy-equivalence" class="internal"><span class="title">Homotopy equivalence</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-deformation-retracts" class="internal"><span class="title">Deformation retracts</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-homotopy-invariants" class="internal"><span class="title">Homotopy invariants</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-10.html#notes-week-10-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-cell-attachment" class="internal"><span class="title">Cell attachment via pushouts</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-cw-complexes" class="internal"><span class="title">CW complexes</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-cw-examples" class="internal"><span class="title">Examples of CW structures</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-subcomplexes-quotients" class="internal"><span class="title">Subcomplexes and quotients</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-10.html#notes-week-10-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-homotopy-extension" class="internal"><span class="title">The homotopy extension property</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-cellular-maps" class="internal"><span class="title">Cellular maps</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-suspension-and-cones" class="internal"><span class="title">Suspensions and cones</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-10.html#subsubsec-looking-ahead" class="internal"><span class="title">Looking ahead: from spaces to algebra</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="notes-week-11.html" class="internal"><span class="codenumber">2.11</span> <span class="title">Week 11</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-11.html#notes-week-11-2" class="internal"><span class="title">Monday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-singular-simplices" class="internal"><span class="title">Singular simplices and chain groups</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-boundary-operator" class="internal"><span class="title">The boundary operator</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-chain-complexes-homology" class="internal"><span class="title">Chain complexes and homology</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-h-zero" class="internal"><span class="title">Computation of <span class="process-math">\(H_0\)</span></span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-11.html#notes-week-11-3" class="internal"><span class="title">Wednesday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-functoriality" class="internal"><span class="title">Functoriality</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-relative-homology" class="internal"><span class="title">Relative homology</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-long-exact-sequence" class="internal"><span class="title">The long exact sequence of a pair</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="notes-week-11.html#notes-week-11-4" class="internal"><span class="title">Friday</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-reduced-homology" class="internal"><span class="title">Reduced homology</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-homology-point" class="internal"><span class="title">Homology of a point and contractible spaces</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="notes-week-11.html#subsubsec-chain-homotopies" class="internal"><span class="title">Chain homotopies</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="homework.html" class="internal"><span class="codenumber">3</span> <span class="title">Homework</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-2.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Homework 01</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-3.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Homework 02</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-4.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Homework 03</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-5.html" class="internal"><span class="codenumber">3.4</span> <span class="title">Homework 04</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-6.html" class="internal"><span class="codenumber">3.5</span> <span class="title">Homework 05</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-7.html" class="internal"><span class="codenumber">3.6</span> <span class="title">Homework 06</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-8.html" class="internal"><span class="codenumber">3.7</span> <span class="title">Homework 07</span></a></div></li>
+<li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="homework-9.html" class="internal"><span class="codenumber">3.8</span> <span class="title">Homework 08</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="notes-week-11"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Week 11</span>
+</h2>
+<section class="subsection" id="notes-week-11-2"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Monday</span>
+</h3>
+<div class="para" id="notes-week-11-2-2">Last week we developed the language of homotopy, CW complexes, and the homotopy extension property. This week we introduce <dfn class="terminology">singular homology</dfn>, an algebraic invariant that assigns to each topological space <span class="process-math">\(X\)</span> a sequence of abelian groups <span class="process-math">\(H_0(X), H_1(X), H_2(X), \ldots\)</span> These groups detect "holes" of each dimension: <span class="process-math">\(H_0\)</span> counts connected components, <span class="process-math">\(H_1\)</span> detects loops that do not bound, <span class="process-math">\(H_2\)</span> detects trapped cavities, and so on. Unlike the fundamental group, homology is abelian and defined in all dimensions, making it both more computable and more broadly applicable.<div class="autopermalink" data-description="Paragraph"><a href="#notes-week-11-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="notes-week-11-2-3">The construction proceeds in three stages: we define the <em class="emphasis">singular chain groups</em> <span class="process-math">\(C_n(X)\text{,}\)</span> organize them into a <em class="emphasis">chain complex</em> via a boundary operator <span class="process-math">\(\partial\text{,}\)</span> and then extract homology as the quotient <span class="process-math">\(H_n(X)=\ker\partial_n/\operatorname{im}\partial_{n+1}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#notes-week-11-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsubsection" id="subsubsec-singular-simplices"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Singular simplices and chain groups</span>
+</h4>
+<article class="definition definition-like" id="def-standard-simplex"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Standard simplex.</span>
+</h5>
+<div class="para logical" id="def-standard-simplex-2-1">
+<div class="para">The <dfn class="terminology">standard <span class="process-math">\(n\)</span>-simplex</dfn> is the subspace</div>
+<div class="displaymath process-math" id="def-standard-simplex-2-1-2">
+\begin{equation*}
+\Delta^n := \{(t_0,t_1,\ldots,t_n)\in\mathbb{R}^{n+1} \mid t_i\ge 0,\; \textstyle\sum_i t_i=1\} \subseteq\mathbb{R}^{n+1}.
+\end{equation*}
+</div>
+<div class="para">We write <span class="process-math">\(e_0,e_1,\ldots,e_n\)</span> for the vertices of <span class="process-math">\(\Delta^n\text{,}\)</span> where <span class="process-math">\(e_i\)</span> is the point with <span class="process-math">\(t_i=1\)</span> and all other coordinates zero. Thus <span class="process-math">\(\Delta^0\)</span> is a point, <span class="process-math">\(\Delta^1\)</span> is a line segment, <span class="process-math">\(\Delta^2\)</span> is a triangle, and <span class="process-math">\(\Delta^3\)</span> is a tetrahedron.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-standard-simplex-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.1: Standard simplex"><a href="#def-standard-simplex" title="Copy heading and permalink for Definition 2.11.1: Standard simplex" aria-label="Copy heading and permalink for Definition 2.11.1: Standard simplex">🔗</a></div></article><article class="definition definition-like" id="def-singular-simplex"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Singular simplex.</span>
+</h5>
+<div class="para" id="def-singular-simplex-2-1">A <dfn class="terminology">singular <span class="process-math">\(n\)</span>-simplex</dfn> in a topological space <span class="process-math">\(X\)</span> is a continuous map <span class="process-math">\(\sigma\colon\Delta^n\to X\text{.}\)</span> We emphasize that <span class="process-math">\(\sigma\)</span> need not be an embedding — it can collapse dimensions, have self-intersections, or be constant. The word "singular" is used precisely to contrast with simplicial maps that preserve combinatorial structure.<div class="autopermalink" data-description="Paragraph"><a href="#def-singular-simplex-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.2: Singular simplex"><a href="#def-singular-simplex" title="Copy heading and permalink for Definition 2.11.2: Singular simplex" aria-label="Copy heading and permalink for Definition 2.11.2: Singular simplex">🔗</a></div></article><article class="definition definition-like" id="def-singular-chain-group"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Singular chain group.</span>
+</h5>
+<div class="para logical" id="def-singular-chain-group-2-1">
+<div class="para">The <dfn class="terminology">singular chain group</dfn> <span class="process-math">\(C_n(X)\)</span> is the free abelian group generated by the set of all singular <span class="process-math">\(n\)</span>-simplices in <span class="process-math">\(X\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="def-singular-chain-group-2-1-5">
+\begin{equation*}
+C_n(X) := \bigoplus_{\sigma\colon\Delta^n\to X}\mathbb{Z}\cdot\sigma.
+\end{equation*}
+</div>
+<div class="para">An element of <span class="process-math">\(C_n(X)\)</span> is called a <dfn class="terminology">singular <span class="process-math">\(n\)</span>-chain</dfn>; it is a finite formal <span class="process-math">\(\mathbb{Z}\)</span>-linear combination <span class="process-math">\(\sum_i n_i\sigma_i\)</span> of singular <span class="process-math">\(n\)</span>-simplices.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-singular-chain-group-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.3: Singular chain group"><a href="#def-singular-chain-group" title="Copy heading and permalink for Definition 2.11.3: Singular chain group" aria-label="Copy heading and permalink for Definition 2.11.3: Singular chain group">🔗</a></div></article><div class="para" id="subsubsec-singular-simplices-5">The groups <span class="process-math">\(C_n(X)\)</span> are typically enormous — even for <span class="process-math">\(X\)</span> a single point, there is one singular <span class="process-math">\(n\)</span>-simplex (the constant map) for each <span class="process-math">\(n\ge 0\text{.}\)</span> The power of the theory lies not in the chain groups themselves but in the algebraic structure imposed by the boundary operator.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-singular-simplices-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Singular simplices and chain groups"><a href="#subsubsec-singular-simplices" title="Copy heading and permalink for Subsubsection: Singular simplices and chain groups" aria-label="Copy heading and permalink for Subsubsection: Singular simplices and chain groups">🔗</a></div></section><section class="subsubsection" id="subsubsec-boundary-operator"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The boundary operator</span>
+</h4>
+<div class="para" id="subsubsec-boundary-operator-2">The boundary operator is built from <em class="emphasis">face maps</em> that include <span class="process-math">\(\Delta^{n-1}\)</span> into <span class="process-math">\(\Delta^n\)</span> as each of its <span class="process-math">\(n+1\)</span> codimension-one faces.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-boundary-operator-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-face-map"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Face map.</span>
+</h5>
+<div class="para logical" id="def-face-map-2-1">
+<div class="para">For <span class="process-math">\(0\le i\le n\text{,}\)</span> the <span class="process-math">\(i\)</span>-th <dfn class="terminology">face map</dfn> <span class="process-math">\(d_i\colon\Delta^{n-1}\to\Delta^n\)</span> is the affine-linear map that sends the vertices <span class="process-math">\(e_0,\ldots,e_{n-1}\)</span> of <span class="process-math">\(\Delta^{n-1}\)</span> to the vertices <span class="process-math">\(e_0,\ldots,\widehat{e_i},\ldots,e_n\)</span> of <span class="process-math">\(\Delta^n\)</span> (omitting <span class="process-math">\(e_i\)</span>), preserving order. In coordinates,</div>
+<div class="displaymath process-math" id="def-face-map-2-1-10">
+\begin{equation*}
+d_i(t_0,\ldots,t_{n-1}) = (t_0,\ldots,t_{i-1},0,t_i,\ldots,t_{n-1}).
+\end{equation*}
+</div>
+<div class="para">The image of <span class="process-math">\(d_i\)</span> is the face of <span class="process-math">\(\Delta^n\)</span> opposite the vertex <span class="process-math">\(e_i\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-face-map-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.4: Face map"><a href="#def-face-map" title="Copy heading and permalink for Definition 2.11.4: Face map" aria-label="Copy heading and permalink for Definition 2.11.4: Face map">🔗</a></div></article><article class="definition definition-like" id="def-boundary-operator"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Boundary operator.</span>
+</h5>
+<div class="para logical" id="def-boundary-operator-2-1">
+<div class="para">The <dfn class="terminology">boundary operator</dfn> <span class="process-math">\(\partial_n\colon C_n(X)\to C_{n-1}(X)\)</span> is the homomorphism defined on generators by</div>
+<div class="displaymath process-math" id="def-boundary-operator-2-1-3">
+\begin{equation*}
+\partial_n(\sigma) := \sum_{i=0}^{n}(-1)^i\,\sigma\circ d_i
+\end{equation*}
+</div>
+<div class="para">and extended linearly. The <span class="process-math">\(i\)</span>-th term <span class="process-math">\(\sigma\circ d_i\)</span> is the <span class="process-math">\(i\)</span>-th <dfn class="terminology">face</dfn> of <span class="process-math">\(\sigma\text{:}\)</span> the restriction of <span class="process-math">\(\sigma\)</span> to the face of <span class="process-math">\(\Delta^n\)</span> opposite vertex <span class="process-math">\(e_i\text{,}\)</span> viewed as a singular <span class="process-math">\((n-1)\)</span>-simplex via the identification <span class="process-math">\(d_i\colon\Delta^{n-1}\xrightarrow{\;\sim\;}\text{(face)}\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-boundary-operator-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.5: Boundary operator"><a href="#def-boundary-operator" title="Copy heading and permalink for Definition 2.11.5: Boundary operator" aria-label="Copy heading and permalink for Definition 2.11.5: Boundary operator">🔗</a></div></article><details id="eg-boundary-low-dimensions" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Boundary in low dimensions.</span>
+</h5></summary><article class="example example-like knowl__content"><div class="para logical" id="eg-boundary-low-dimensions-2-1">
+<div class="para">For a singular <span class="process-math">\(1\)</span>-simplex <span class="process-math">\(\sigma\colon\Delta^1\to X\)</span> (a path from <span class="process-math">\(\sigma(e_0)\)</span> to <span class="process-math">\(\sigma(e_1)\)</span>),</div>
+<div class="displaymath process-math" id="eg-boundary-low-dimensions-2-1-5">
+\begin{equation*}
+\partial_1(\sigma) = \sigma\circ d_0 - \sigma\circ d_1 = \sigma(e_1)-\sigma(e_0),
+\end{equation*}
+</div>
+<div class="para">the formal difference of the endpoint and the starting point. For a singular <span class="process-math">\(2\)</span>-simplex <span class="process-math">\(\sigma\colon\Delta^2\to X\text{,}\)</span>
+</div>
+<div class="displaymath process-math" id="eg-boundary-low-dimensions-2-1-8">
+\begin{equation*}
+\partial_2(\sigma) = \sigma\circ d_0 - \sigma\circ d_1 + \sigma\circ d_2,
+\end{equation*}
+</div>
+<div class="para">the alternating sum of the three edges of the triangle.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg-boundary-low-dimensions-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 2.11.6: Boundary in low dimensions"><a href="#eg-boundary-low-dimensions" title="Copy heading and permalink for Example 2.11.6: Boundary in low dimensions" aria-label="Copy heading and permalink for Example 2.11.6: Boundary in low dimensions">🔗</a></div></article></details><div class="para" id="subsubsec-boundary-operator-6">The most important property of the boundary operator is that applying it twice yields zero.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-boundary-operator-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="lemma theorem-like" id="lem-boundary-squared-zero"><h5 class="heading">
+<span class="type">Lemma</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(\partial^2=0\)</span>.</span>
+</h5>
+<div class="para" id="lem-boundary-squared-zero-2-1">For all <span class="process-math">\(n\ge 1\text{,}\)</span> <span class="process-math">\(\partial_{n-1}\circ\partial_n=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-boundary-squared-zero-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Lemma 2.11.7: \partial^2=0"><a href="#lem-boundary-squared-zero" title="Copy heading and permalink for Lemma 2.11.7: \partial^2=0" aria-label="Copy heading and permalink for Lemma 2.11.7: \partial^2=0">🔗</a></div></article><details id="lem-boundary-squared-zero-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para logical" id="lem-boundary-squared-zero-3-1">
+<div class="para">It suffices to check on a generator <span class="process-math">\(\sigma\colon\Delta^n\to X\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="lem-boundary-squared-zero-3-1-2">
+\begin{equation*}
+\partial_{n-1}(\partial_n(\sigma))
+= \partial_{n-1}\Bigl(\sum_{i=0}^n(-1)^i\,\sigma\circ d_i\Bigr)
+= \sum_{i=0}^n\sum_{j=0}^{n-1}(-1)^{i+j}\,\sigma\circ d_i\circ d_j.
+\end{equation*}
+</div>
+<div class="para">The face maps satisfy the <dfn class="terminology">simplicial identity</dfn> <span class="process-math">\(d_i\circ d_j=d_{j+1}\circ d_i\)</span> for <span class="process-math">\(i\le j\text{.}\)</span> Splitting the double sum into the regions <span class="process-math">\(j\ge i\)</span> and <span class="process-math">\(j\lt i\)</span> and reindexing the first using the simplicial identity, one finds that every term in the region <span class="process-math">\(j\ge i\)</span> cancels with a term in the region <span class="process-math">\(j\lt i\)</span> (with opposite sign), giving zero.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-boundary-squared-zero-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="lem-boundary-squared-zero-3-2">In more detail: in the sum, each pair of faces <span class="process-math">\((i,j)\)</span> with <span class="process-math">\(i\le j\)</span> contributes <span class="process-math">\((-1)^{i+j}\sigma\circ d_{j+1}\circ d_i\text{,}\)</span> which cancels with the term <span class="process-math">\((-1)^{(j+1)+i}\sigma\circ d_{j+1}\circ d_i\)</span> arising from the pair <span class="process-math">\((j+1,i)\)</span> with <span class="process-math">\(i\lt j+1\text{.}\)</span> These signs differ by <span class="process-math">\((-1)\text{,}\)</span> so the cancellation is exact.<div class="autopermalink" data-description="Paragraph"><a href="#lem-boundary-squared-zero-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.11.7.1"><a href="#lem-boundary-squared-zero-3" title="Copy heading and permalink for Proof 2.11.7.1" aria-label="Copy heading and permalink for Proof 2.11.7.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: The boundary operator"><a href="#subsubsec-boundary-operator" title="Copy heading and permalink for Subsubsection: The boundary operator" aria-label="Copy heading and permalink for Subsubsection: The boundary operator">🔗</a></div></section><section class="subsubsection" id="subsubsec-chain-complexes-homology"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Chain complexes and homology</span>
+</h4>
+<div class="para" id="subsubsec-chain-complexes-homology-2">The relation <span class="process-math">\(\partial^2=0\)</span> means that the image of <span class="process-math">\(\partial_{n+1}\)</span> is always contained in the kernel of <span class="process-math">\(\partial_n\text{.}\)</span> This algebraic setup — a sequence of abelian groups connected by maps whose composition is zero — is a <dfn class="terminology">chain complex</dfn>.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-chain-complexes-homology-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-chain-complex"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Chain complex.</span>
+</h5>
+<div class="para logical" id="def-chain-complex-2-1">
+<div class="para">A <dfn class="terminology">chain complex</dfn> <span class="process-math">\((C_\bullet,\partial)\)</span> is a sequence of abelian groups and homomorphisms</div>
+<div class="displaymath process-math" id="def-chain-complex-2-1-3">
+\begin{equation*}
+\cdots \xrightarrow{\partial_{n+2}} C_{n+1} \xrightarrow{\partial_{n+1}} C_n
+\xrightarrow{\partial_n} C_{n-1} \xrightarrow{\partial_{n-1}} \cdots
+\xrightarrow{\partial_1} C_0 \xrightarrow{\partial_0} 0
+\end{equation*}
+</div>
+<div class="para">satisfying <span class="process-math">\(\partial_n\circ\partial_{n+1}=0\)</span> for all <span class="process-math">\(n\text{.}\)</span> Elements of <span class="process-math">\(\ker\partial_n\)</span> are called <dfn class="terminology"><span class="process-math">\(n\)</span>-cycles</dfn>, and elements of <span class="process-math">\(\operatorname{im}\partial_{n+1}\)</span> are called <dfn class="terminology"><span class="process-math">\(n\)</span>-boundaries</dfn>. We write <span class="process-math">\(Z_n:=\ker\partial_n\)</span> and <span class="process-math">\(B_n:=\operatorname{im}\partial_{n+1}\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-chain-complex-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.8: Chain complex"><a href="#def-chain-complex" title="Copy heading and permalink for Definition 2.11.8: Chain complex" aria-label="Copy heading and permalink for Definition 2.11.8: Chain complex">🔗</a></div></article><article class="definition definition-like" id="def-homology-group"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homology group.</span>
+</h5>
+<div class="para logical" id="def-homology-group-2-1">
+<div class="para">The <span class="process-math">\(n\)</span>-th <dfn class="terminology">homology group</dfn> of a chain complex <span class="process-math">\((C_\bullet,\partial)\)</span> is</div>
+<div class="displaymath process-math" id="def-homology-group-2-1-4">
+\begin{equation*}
+H_n(C_\bullet) := Z_n/B_n = \ker\partial_n\big/\operatorname{im}\partial_{n+1}.
+\end{equation*}
+</div>
+<div class="para">Two <span class="process-math">\(n\)</span>-cycles <span class="process-math">\(z,z'\in Z_n\)</span> represent the same homology class if and only if <span class="process-math">\(z-z'\in B_n\text{,}\)</span> i.e., <span class="process-math">\(z-z'=\partial_{n+1}(c)\)</span> for some <span class="process-math">\((n+1)\)</span>-chain <span class="process-math">\(c\text{.}\)</span> In this case we say <span class="process-math">\(z\)</span> and <span class="process-math">\(z'\)</span> are <dfn class="terminology">homologous</dfn>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-homology-group-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.9: Homology group"><a href="#def-homology-group" title="Copy heading and permalink for Definition 2.11.9: Homology group" aria-label="Copy heading and permalink for Definition 2.11.9: Homology group">🔗</a></div></article><article class="definition definition-like" id="def-singular-homology"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Singular homology.</span>
+</h5>
+<div class="para logical" id="def-singular-homology-2-1">
+<div class="para">The <span class="process-math">\(n\)</span>-th <dfn class="terminology">singular homology group</dfn> of a topological space <span class="process-math">\(X\)</span> is the <span class="process-math">\(n\)</span>-th homology group of its singular chain complex:</div>
+<div class="displaymath process-math" id="def-singular-homology-2-1-5">
+\begin{equation*}
+H_n(X) := H_n(C_\bullet(X),\partial) = \ker\bigl(\partial_n\colon C_n(X)\to C_{n-1}(X)\bigr)\big/\operatorname{im}\bigl(\partial_{n+1}\colon C_{n+1}(X)\to C_n(X)\bigr).
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-singular-homology-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.10: Singular homology"><a href="#def-singular-homology" title="Copy heading and permalink for Definition 2.11.10: Singular homology" aria-label="Copy heading and permalink for Definition 2.11.10: Singular homology">🔗</a></div></article><div class="para" id="subsubsec-chain-complexes-homology-6">The intuition is: a homology class in <span class="process-math">\(H_n(X)\)</span> is represented by an <span class="process-math">\(n\)</span>-chain whose boundary vanishes (a cycle), modulo those cycles that are themselves boundaries of <span class="process-math">\((n+1)\)</span>-chains. A nonzero class in <span class="process-math">\(H_n(X)\)</span> detects an <span class="process-math">\(n\)</span>-dimensional "hole" — an <span class="process-math">\(n\)</span>-cycle that cannot be filled in.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-chain-complexes-homology-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Chain complexes and homology"><a href="#subsubsec-chain-complexes-homology" title="Copy heading and permalink for Subsubsection: Chain complexes and homology" aria-label="Copy heading and permalink for Subsubsection: Chain complexes and homology">🔗</a></div></section><section class="subsubsection" id="subsubsec-h-zero"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Computation of <span class="process-math">\(H_0\)</span></span>
+</h4>
+<article class="proposition theorem-like" id="prop-h-zero"><h5 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para logical" id="prop-h-zero-1-1">
+<div class="para">For any space <span class="process-math">\(X\text{,}\)</span> <span class="process-math">\(H_0(X)\)</span> is the free abelian group on the set of path-components of <span class="process-math">\(X\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="prop-h-zero-1-1-4">
+\begin{equation*}
+H_0(X)\cong\bigoplus_{\alpha\in\pi_0(X)}\mathbb{Z}.
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-h-zero-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.11.11"><a href="#prop-h-zero" title="Copy heading and permalink for Proposition 2.11.11" aria-label="Copy heading and permalink for Proposition 2.11.11">🔗</a></div></article><details id="prop-h-zero-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-h-zero-2-1">A singular <span class="process-math">\(0\)</span>-chain is a finite formal sum <span class="process-math">\(\sum n_i\, p_i\)</span> of points <span class="process-math">\(p_i\in X\)</span> with integer coefficients. Since <span class="process-math">\(C_{-1}(X)=0\text{,}\)</span> every <span class="process-math">\(0\)</span>-chain is a cycle, so <span class="process-math">\(Z_0=C_0(X)\text{.}\)</span> A <span class="process-math">\(0\)</span>-chain is a boundary if and only if it lies in <span class="process-math">\(\operatorname{im}(\partial_1)\text{.}\)</span> For any path <span class="process-math">\(\sigma\colon\Delta^1\to X\text{,}\)</span> we have <span class="process-math">\(\partial_1(\sigma)=\sigma(e_1)-\sigma(e_0)\text{,}\)</span> so the boundaries are generated by formal differences <span class="process-math">\(q-p\)</span> where <span class="process-math">\(p\)</span> and <span class="process-math">\(q\)</span> lie in the same path-component.<div class="autopermalink" data-description="Paragraph"><a href="#prop-h-zero-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="prop-h-zero-2-2">It follows that two <span class="process-math">\(0\)</span>-chains are homologous if and only if they have the same total coefficient in each path-component. The map <span class="process-math">\(\varepsilon\colon C_0(X)\to\bigoplus_{\alpha}\mathbb{Z}\)</span> that sends a <span class="process-math">\(0\)</span>-chain to its vector of total coefficients by component therefore descends to an isomorphism <span class="process-math">\(H_0(X)\xrightarrow{\;\sim\;}\bigoplus_\alpha\mathbb{Z}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-h-zero-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.11.11.1"><a href="#prop-h-zero-2" title="Copy heading and permalink for Proof 2.11.11.1" aria-label="Copy heading and permalink for Proof 2.11.11.1">🔗</a></div></article></details><div class="para" id="subsubsec-h-zero-3">In particular, if <span class="process-math">\(X\)</span> is path-connected, then <span class="process-math">\(H_0(X)\cong\mathbb{Z}\text{,}\)</span> generated by the class of any point.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-h-zero-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Computation of H_0"><a href="#subsubsec-h-zero" title="Copy heading and permalink for Subsubsection: Computation of H_0" aria-label="Copy heading and permalink for Subsubsection: Computation of H_0">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Monday"><a href="#notes-week-11-2" title="Copy heading and permalink for Subsection: Monday" aria-label="Copy heading and permalink for Subsection: Monday">🔗</a></div></section><section class="subsection" id="notes-week-11-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Wednesday</span>
+</h3>
+<div class="para" id="notes-week-11-3-2">Having set up the singular chain complex and computed <span class="process-math">\(H_0\text{,}\)</span> we now develop the key structural features of homology: functoriality, relative homology, and the long exact sequence of a pair. These tools will allow us to compute homology groups by breaking spaces into simpler pieces.<div class="autopermalink" data-description="Paragraph"><a href="#notes-week-11-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsubsection" id="subsubsec-functoriality"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Functoriality</span>
+</h4>
+<div class="para" id="subsubsec-functoriality-2">A continuous map <span class="process-math">\(f\colon X\to Y\)</span> induces a map on singular chains by composition: each singular simplex <span class="process-math">\(\sigma\colon\Delta^n\to X\)</span> is sent to <span class="process-math">\(f\circ\sigma\colon\Delta^n\to Y\text{.}\)</span> Extending linearly gives a homomorphism <span class="process-math">\(f_\sharp\colon C_n(X)\to C_n(Y)\)</span> for each <span class="process-math">\(n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-functoriality-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="lemma theorem-like" id="lem-chain-map"><h5 class="heading">
+<span class="type">Lemma</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="lem-chain-map-1-1">The maps <span class="process-math">\(f_\sharp\colon C_n(X)\to C_n(Y)\)</span> commute with the boundary operators: <span class="process-math">\(\partial_n\circ f_\sharp = f_\sharp\circ\partial_n\text{.}\)</span> That is, <span class="process-math">\(f_\sharp\)</span> is a <dfn class="terminology">chain map</dfn>.<div class="autopermalink" data-description="Paragraph"><a href="#lem-chain-map-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Lemma 2.11.12"><a href="#lem-chain-map" title="Copy heading and permalink for Lemma 2.11.12" aria-label="Copy heading and permalink for Lemma 2.11.12">🔗</a></div></article><details id="lem-chain-map-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para logical" id="lem-chain-map-2-1">
+<div class="para">On a generator <span class="process-math">\(\sigma\colon\Delta^n\to X\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="lem-chain-map-2-1-2">
+\begin{equation*}
+\partial_n(f_\sharp(\sigma))
+= \partial_n(f\circ\sigma)
+= \sum_i(-1)^i(f\circ\sigma)\circ d_i
+= \sum_i(-1)^i f\circ(\sigma\circ d_i)
+= f_\sharp\bigl(\partial_n(\sigma)\bigr).
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-chain-map-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.11.12.1"><a href="#lem-chain-map-2" title="Copy heading and permalink for Proof 2.11.12.1" aria-label="Copy heading and permalink for Proof 2.11.12.1">🔗</a></div></article></details><div class="para" id="subsubsec-functoriality-4">Since <span class="process-math">\(f_\sharp\)</span> sends cycles to cycles and boundaries to boundaries, it descends to a well-defined homomorphism on homology.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-functoriality-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-induced-map-homology"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.13</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Induced map on homology.</span>
+</h5>
+<div class="para" id="def-induced-map-homology-2-1">For a continuous map <span class="process-math">\(f\colon X\to Y\text{,}\)</span> the <dfn class="terminology">induced map</dfn> <span class="process-math">\(f_*\colon H_n(X)\to H_n(Y)\)</span> is defined by <span class="process-math">\(f_*[z]:=[f_\sharp(z)]\)</span> for any cycle <span class="process-math">\(z\in Z_n(X)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#def-induced-map-homology-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.13: Induced map on homology"><a href="#def-induced-map-homology" title="Copy heading and permalink for Definition 2.11.13: Induced map on homology" aria-label="Copy heading and permalink for Definition 2.11.13: Induced map on homology">🔗</a></div></article><article class="proposition theorem-like" id="prop-functoriality"><h5 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Functoriality of singular homology.</span>
+</h5>
+<div class="para" id="prop-functoriality-2-1">Singular homology is a functor from the category of topological spaces and continuous maps to the category of abelian groups and homomorphisms. Concretely:<div class="autopermalink" data-description="Paragraph"><a href="#prop-functoriality-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="prop-functoriality-2-2">(1) <span class="process-math">\((\mathrm{id}_X)_*=\mathrm{id}_{H_n(X)}\)</span> for all <span class="process-math">\(n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-functoriality-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="prop-functoriality-2-3">(2) <span class="process-math">\((g\circ f)_*=g_*\circ f_*\)</span> for composable maps <span class="process-math">\(f\)</span> and <span class="process-math">\(g\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-functoriality-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.11.14: Functoriality of singular homology"><a href="#prop-functoriality" title="Copy heading and permalink for Proposition 2.11.14: Functoriality of singular homology" aria-label="Copy heading and permalink for Proposition 2.11.14: Functoriality of singular homology">🔗</a></div></article><details id="prop-functoriality-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-functoriality-3-1">Both properties follow immediately from the corresponding identities at the chain level: <span class="process-math">\((\mathrm{id}_X)_\sharp=\mathrm{id}_{C_n(X)}\)</span> and <span class="process-math">\((g\circ f)_\sharp = g_\sharp\circ f_\sharp\)</span> (since <span class="process-math">\((g\circ f)\circ\sigma = g\circ(f\circ\sigma)\)</span>).<div class="autopermalink" data-description="Paragraph"><a href="#prop-functoriality-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.11.14.1"><a href="#prop-functoriality-3" title="Copy heading and permalink for Proof 2.11.14.1" aria-label="Copy heading and permalink for Proof 2.11.14.1">🔗</a></div></article></details><div class="para" id="subsubsec-functoriality-7">An immediate consequence: if <span class="process-math">\(f\colon X\to Y\)</span> is a homeomorphism, then <span class="process-math">\(f_*\colon H_n(X)\to H_n(Y)\)</span> is an isomorphism for all <span class="process-math">\(n\text{.}\)</span> Thus singular homology groups are topological invariants. Next week we will strengthen this dramatically by showing that <span class="process-math">\(f_*\)</span> depends only on the homotopy class of <span class="process-math">\(f\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-functoriality-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Functoriality"><a href="#subsubsec-functoriality" title="Copy heading and permalink for Subsubsection: Functoriality" aria-label="Copy heading and permalink for Subsubsection: Functoriality">🔗</a></div></section><section class="subsubsection" id="subsubsec-relative-homology"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Relative homology</span>
+</h4>
+<div class="para" id="subsubsec-relative-homology-2">To compute homology, we need a way to break a space into pieces and relate their homology groups. The first step is to define <em class="emphasis">relative</em> homology, which measures the homology of <span class="process-math">\(X\)</span> "modulo" a subspace <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-relative-homology-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-relative-chains"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Relative chain groups.</span>
+</h5>
+<div class="para logical" id="def-relative-chains-2-1">
+<div class="para">Let <span class="process-math">\(A\subseteq X\)</span> be a subspace. The inclusion <span class="process-math">\(\iota\colon A\hookrightarrow X\)</span> induces an injection <span class="process-math">\(\iota_\sharp\colon C_n(A)\hookrightarrow C_n(X)\)</span> (every singular simplex in <span class="process-math">\(A\)</span> is also a singular simplex in <span class="process-math">\(X\)</span>). The <dfn class="terminology">relative chain group</dfn> is the quotient</div>
+<div class="displaymath process-math" id="def-relative-chains-2-1-7">
+\begin{equation*}
+C_n(X,A) := C_n(X)/C_n(A).
+\end{equation*}
+</div>
+<div class="para">An element of <span class="process-math">\(C_n(X,A)\)</span> is an equivalence class of <span class="process-math">\(n\)</span>-chains in <span class="process-math">\(X\text{,}\)</span> where two chains are identified if their difference lies in <span class="process-math">\(C_n(A)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-relative-chains-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.15: Relative chain groups"><a href="#def-relative-chains" title="Copy heading and permalink for Definition 2.11.15: Relative chain groups" aria-label="Copy heading and permalink for Definition 2.11.15: Relative chain groups">🔗</a></div></article><div class="para" id="subsubsec-relative-homology-4">Since <span class="process-math">\(\partial\)</span> sends <span class="process-math">\(C_n(A)\)</span> into <span class="process-math">\(C_{n-1}(A)\)</span> (the boundary of a chain in <span class="process-math">\(A\)</span> is a chain in <span class="process-math">\(A\)</span>), the boundary operator descends to a well-defined map <span class="process-math">\(\bar{\partial}\colon C_n(X,A)\to C_{n-1}(X,A)\text{,}\)</span> and <span class="process-math">\(\bar{\partial}^2=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-relative-homology-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-relative-homology"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Relative homology.</span>
+</h5>
+<div class="para logical" id="def-relative-homology-2-1">
+<div class="para">The <span class="process-math">\(n\)</span>-th <dfn class="terminology">relative homology group</dfn> of the pair <span class="process-math">\((X,A)\)</span> is</div>
+<div class="displaymath process-math" id="def-relative-homology-2-1-4">
+\begin{equation*}
+H_n(X,A) := H_n\bigl(C_\bullet(X,A),\bar{\partial}\bigr) = \ker\bar{\partial}_n\big/\operatorname{im}\bar{\partial}_{n+1}.
+\end{equation*}
+</div>
+<div class="para">A relative <span class="process-math">\(n\)</span>-cycle is a chain in <span class="process-math">\(X\)</span> whose boundary lies in <span class="process-math">\(A\text{.}\)</span> A relative <span class="process-math">\(n\)</span>-boundary is a chain in <span class="process-math">\(X\)</span> that equals a boundary plus a chain supported in <span class="process-math">\(A\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-relative-homology-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.16: Relative homology"><a href="#def-relative-homology" title="Copy heading and permalink for Definition 2.11.16: Relative homology" aria-label="Copy heading and permalink for Definition 2.11.16: Relative homology">🔗</a></div></article><div class="para" id="subsubsec-relative-homology-6">Relative homology should be thought of as measuring the homology of <span class="process-math">\(X\)</span> with the contribution of <span class="process-math">\(A\)</span> "killed." For nice pairs, we will see that <span class="process-math">\(H_n(X,A)\cong\widetilde{H}_n(X/A)\text{,}\)</span> the reduced homology of the quotient.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-relative-homology-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Relative homology"><a href="#subsubsec-relative-homology" title="Copy heading and permalink for Subsubsection: Relative homology" aria-label="Copy heading and permalink for Subsubsection: Relative homology">🔗</a></div></section><section class="subsubsection" id="subsubsec-long-exact-sequence"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The long exact sequence of a pair</span>
+</h4>
+<div class="para logical" id="subsubsec-long-exact-sequence-2">
+<div class="para">The relative chain groups fit into a short exact sequence of chain complexes</div>
+<div class="displaymath process-math" id="subsubsec-long-exact-sequence-2-1">
+\begin{equation*}
+0\to C_\bullet(A)\xrightarrow{\;\iota_\sharp\;} C_\bullet(X)\xrightarrow{\;q\;} C_\bullet(X,A)\to 0,
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(\iota_\sharp\)</span> is the inclusion and <span class="process-math">\(q\)</span> is the quotient map. A fundamental result of homological algebra turns this into a long exact sequence on homology.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-long-exact-sequence-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="thm-les-pair"><h5 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Long exact sequence of a pair.</span>
+</h5>
+<div class="para logical" id="thm-les-pair-2-1">
+<div class="para">For any pair <span class="process-math">\((X,A)\text{,}\)</span> there is a long exact sequence</div>
+<div class="displaymath process-math" id="thm-les-pair-2-1-2">
+\begin{equation*}
+\cdots\to H_n(A)\xrightarrow{\;\iota_*\;} H_n(X)\xrightarrow{\;q_*\;} H_n(X,A)
+\xrightarrow{\;\partial_*\;} H_{n-1}(A)\xrightarrow{\;\iota_*\;} H_{n-1}(X)\to\cdots
+\end{equation*}
+</div>
+<div class="para">ending at <span class="process-math">\(H_0(X,A)\to 0\text{.}\)</span> The maps <span class="process-math">\(\iota_*\)</span> and <span class="process-math">\(q_*\)</span> are induced by the inclusion and quotient. The <dfn class="terminology">connecting homomorphism</dfn> <span class="process-math">\(\partial_*\colon H_n(X,A)\to H_{n-1}(A)\)</span> is defined as follows: represent a class <span class="process-math">\([\bar{z}]\in H_n(X,A)\)</span> by a chain <span class="process-math">\(z\in C_n(X)\)</span> with <span class="process-math">\(\partial z\in C_{n-1}(A)\text{;}\)</span> then <span class="process-math">\(\partial_*[\bar{z}]:=[\partial z]\in H_{n-1}(A)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#thm-les-pair-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 2.11.17: Long exact sequence of a pair"><a href="#thm-les-pair" title="Copy heading and permalink for Theorem 2.11.17: Long exact sequence of a pair" aria-label="Copy heading and permalink for Theorem 2.11.17: Long exact sequence of a pair">🔗</a></div></article><details id="thm-les-pair-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-les-pair-3-1">This is an instance of the <dfn class="terminology">snake lemma</dfn> (or equivalently, the long exact sequence associated to a short exact sequence of chain complexes). We verify the key steps.<div class="autopermalink" data-description="Paragraph"><a href="#thm-les-pair-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="thm-les-pair-3-2">
+<em class="emphasis">Well-definedness of <span class="process-math">\(\partial_*\text{.}\)</span></em> If <span class="process-math">\(z\in C_n(X)\)</span> represents a relative cycle, then <span class="process-math">\(\partial z\in C_{n-1}(A)\text{.}\)</span> Moreover, <span class="process-math">\(\partial(\partial z)=0\text{,}\)</span> so <span class="process-math">\(\partial z\)</span> is a cycle in <span class="process-math">\(A\text{.}\)</span> If we choose a different representative <span class="process-math">\(z'=z+a+\partial w\)</span> where <span class="process-math">\(a\in C_n(A)\)</span> and <span class="process-math">\(w\in C_{n+1}(X)\text{,}\)</span> then <span class="process-math">\(\partial z'=\partial z+\partial a+\partial^2 w=\partial z+\partial a\text{.}\)</span> Since <span class="process-math">\(\partial a\in C_{n-1}(A)\)</span> is a boundary in <span class="process-math">\(A\text{,}\)</span> the class <span class="process-math">\([\partial z']=[\partial z]\in H_{n-1}(A)\text{.}\)</span> So <span class="process-math">\(\partial_*\)</span> is well-defined.<div class="autopermalink" data-description="Paragraph"><a href="#thm-les-pair-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="thm-les-pair-3-3">
+<em class="emphasis">Exactness.</em> We verify exactness at each of the three positions. At <span class="process-math">\(H_n(X)\text{:}\)</span> <span class="process-math">\(q_*\circ\iota_*=0\)</span> since <span class="process-math">\(q\circ\iota_\sharp=0\text{.}\)</span> If <span class="process-math">\(q_*[z]=0\text{,}\)</span> then <span class="process-math">\(z=a+\partial w\)</span> modulo <span class="process-math">\(C_n(A)\text{,}\)</span> so <span class="process-math">\(z-\partial w\in C_n(A)\)</span> and <span class="process-math">\([z]=\iota_*[z-\partial w]\text{.}\)</span> At <span class="process-math">\(H_n(X,A)\text{:}\)</span> <span class="process-math">\(\partial_*\circ q_*=0\)</span> since if <span class="process-math">\(\bar{z}=q(z)\)</span> with <span class="process-math">\(z\)</span> a cycle in <span class="process-math">\(X\text{,}\)</span> then <span class="process-math">\(\partial z=0\)</span> so <span class="process-math">\(\partial_*[\bar{z}]=0\text{.}\)</span> If <span class="process-math">\(\partial_*[\bar{z}]=0\text{,}\)</span> then <span class="process-math">\(\partial z=\partial a\)</span> for some <span class="process-math">\(a\in C_n(A)\text{,}\)</span> so <span class="process-math">\(z-a\)</span> is a cycle in <span class="process-math">\(X\)</span> and <span class="process-math">\(q_*[z-a]=[\bar{z}]\text{.}\)</span> At <span class="process-math">\(H_{n-1}(A)\text{:}\)</span> <span class="process-math">\(\iota_*\circ\partial_*=0\)</span> since <span class="process-math">\(\iota_\sharp(\partial z)=\partial z=\partial(\text{something in }C_n(X))\text{,}\)</span> a boundary in <span class="process-math">\(X\text{.}\)</span> If <span class="process-math">\(\iota_*[a]=0\text{,}\)</span> then <span class="process-math">\(a=\partial z\)</span> for some <span class="process-math">\(z\in C_n(X)\text{,}\)</span> and <span class="process-math">\(\bar{z}\)</span> is a relative cycle with <span class="process-math">\(\partial_*[\bar{z}]=[a]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-les-pair-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.11.17.1"><a href="#thm-les-pair-3" title="Copy heading and permalink for Proof 2.11.17.1" aria-label="Copy heading and permalink for Proof 2.11.17.1">🔗</a></div></article></details><div class="para" id="subsubsec-long-exact-sequence-4">As a diagram, one can visualize the passage from the short exact sequence of chain complexes to the long exact sequence on homology via the connecting homomorphism: <div class="image-box" style="width: 85%; margin-left: 7.5%; margin-right: 7.5%;">
+<img src="generated/latex-image/subsubsec-long-exact-sequence-4-1.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="subsubsec-long-exact-sequence-4-1-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="subsubsec-long-exact-sequence-4-1-description">A commutative diagram showing two consecutive rows of the short exact sequence of chain complexes, with vertical boundary maps and the zig-zag connecting homomorphism from <span class="process-math">\(H_n(X,A)\)</span> back to <span class="process-math">\(H_{n-1}(A)\text{.}\)</span>
+</div></details>
+</div> The dashed arrow represents the connecting homomorphism <span class="process-math">\(\partial_*\text{:}\)</span> lift a relative cycle to a chain in <span class="process-math">\(X\text{,}\)</span> take its boundary, and observe that it lands in <span class="process-math">\(C_{n-1}(A)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-long-exact-sequence-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: The long exact sequence of a pair"><a href="#subsubsec-long-exact-sequence" title="Copy heading and permalink for Subsubsection: The long exact sequence of a pair" aria-label="Copy heading and permalink for Subsubsection: The long exact sequence of a pair">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Wednesday"><a href="#notes-week-11-3" title="Copy heading and permalink for Subsection: Wednesday" aria-label="Copy heading and permalink for Subsection: Wednesday">🔗</a></div></section><section class="subsection" id="notes-week-11-4"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Friday</span>
+</h3>
+<div class="para" id="notes-week-11-4-2">We conclude the week with reduced homology, the computation of the homology of a point (and more generally contractible spaces), and the algebraic notion of chain homotopy, which will be the engine behind homotopy invariance next week.<div class="autopermalink" data-description="Paragraph"><a href="#notes-week-11-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="subsubsection" id="subsubsec-reduced-homology"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Reduced homology</span>
+</h4>
+<div class="para" id="subsubsec-reduced-homology-2">Singular homology assigns <span class="process-math">\(H_0(\mathrm{pt})\cong\mathbb{Z}\)</span> to a point and <span class="process-math">\(H_n(\mathrm{pt})=0\)</span> for <span class="process-math">\(n\ge 1\)</span> (as we will verify below). For many purposes it is convenient to work with <dfn class="terminology">reduced homology</dfn>, which adjusts <span class="process-math">\(H_0\)</span> so that a point has trivial homology in all degrees.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-reduced-homology-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-augmentation"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Augmentation map.</span>
+</h5>
+<div class="para logical" id="def-augmentation-2-1">
+<div class="para">The <dfn class="terminology">augmentation</dfn> is the homomorphism <span class="process-math">\(\varepsilon\colon C_0(X)\to\mathbb{Z}\)</span> defined by <span class="process-math">\(\varepsilon\bigl(\sum n_i\sigma_i\bigr)=\sum n_i\text{.}\)</span> One checks that <span class="process-math">\(\varepsilon\circ\partial_1=0\)</span> (since <span class="process-math">\(\varepsilon(\partial_1\sigma)=\varepsilon(\sigma(e_1)-\sigma(e_0))=1-1=0\)</span>), so <span class="process-math">\(\varepsilon\)</span> extends the singular chain complex to an <dfn class="terminology">augmented chain complex</dfn>:</div>
+<div class="displaymath process-math" id="def-augmentation-2-1-8">
+\begin{equation*}
+\cdots\to C_1(X)\xrightarrow{\partial_1} C_0(X)\xrightarrow{\varepsilon}\mathbb{Z}\to 0.
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-augmentation-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.18: Augmentation map"><a href="#def-augmentation" title="Copy heading and permalink for Definition 2.11.18: Augmentation map" aria-label="Copy heading and permalink for Definition 2.11.18: Augmentation map">🔗</a></div></article><article class="definition definition-like" id="def-reduced-homology"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Reduced homology.</span>
+</h5>
+<div class="para logical" id="def-reduced-homology-2-1">
+<div class="para">The <dfn class="terminology">reduced homology</dfn> groups of <span class="process-math">\(X\)</span> are the homology groups of the augmented chain complex:</div>
+<div class="displaymath process-math" id="def-reduced-homology-2-1-3">
+\begin{equation*}
+\widetilde{H}_n(X) :=
+\begin{cases}
+H_n(X) \amp \text{if } n\ge 1,\\
+\ker\varepsilon/\operatorname{im}\partial_1 \amp \text{if } n=0.
+\end{cases}
+\end{equation*}
+</div>
+<div class="para">Equivalently, <span class="process-math">\(\widetilde{H}_0(X)\cong\ker\bigl(H_0(X)\xrightarrow{\varepsilon_*}\mathbb{Z}\bigr)\text{.}\)</span> For a path-connected space, <span class="process-math">\(H_0(X)\cong\mathbb{Z}\)</span> via <span class="process-math">\(\varepsilon_*\text{,}\)</span> so <span class="process-math">\(\widetilde{H}_0(X)=0\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-reduced-homology-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.19: Reduced homology"><a href="#def-reduced-homology" title="Copy heading and permalink for Definition 2.11.19: Reduced homology" aria-label="Copy heading and permalink for Definition 2.11.19: Reduced homology">🔗</a></div></article><div class="para" id="subsubsec-reduced-homology-5">The relationship between reduced and unreduced homology is simple: for nonempty <span class="process-math">\(X\text{,}\)</span> <span class="process-math">\(H_n(X)\cong\widetilde{H}_n(X)\)</span> for <span class="process-math">\(n\ge 1\)</span> and <span class="process-math">\(H_0(X)\cong\widetilde{H}_0(X)\oplus\mathbb{Z}\text{.}\)</span> Reduced homology is natural in pointed spaces and behaves more cleanly in many exact sequences.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-reduced-homology-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Reduced homology"><a href="#subsubsec-reduced-homology" title="Copy heading and permalink for Subsubsection: Reduced homology" aria-label="Copy heading and permalink for Subsubsection: Reduced homology">🔗</a></div></section><section class="subsubsection" id="subsubsec-homology-point"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homology of a point and contractible spaces</span>
+</h4>
+<article class="proposition theorem-like" id="prop-homology-point"><h5 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.20</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="prop-homology-point-1-1">Let <span class="process-math">\(\mathrm{pt}\)</span> denote the one-point space. Then <span class="process-math">\(\widetilde{H}_n(\mathrm{pt})=0\)</span> for all <span class="process-math">\(n\text{.}\)</span> Equivalently, <span class="process-math">\(H_0(\mathrm{pt})\cong\mathbb{Z}\)</span> and <span class="process-math">\(H_n(\mathrm{pt})=0\)</span> for <span class="process-math">\(n\ge 1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-homology-point-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 2.11.20"><a href="#prop-homology-point" title="Copy heading and permalink for Proposition 2.11.20" aria-label="Copy heading and permalink for Proposition 2.11.20">🔗</a></div></article><details id="prop-homology-point-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop-homology-point-2-1">
+<div class="para">For each <span class="process-math">\(n\ge 0\text{,}\)</span> there is exactly one singular <span class="process-math">\(n\)</span>-simplex in <span class="process-math">\(\mathrm{pt}\text{:}\)</span> the constant map <span class="process-math">\(\sigma_n\colon\Delta^n\to\mathrm{pt}\text{.}\)</span> So <span class="process-math">\(C_n(\mathrm{pt})\cong\mathbb{Z}\text{,}\)</span> generated by <span class="process-math">\(\sigma_n\text{.}\)</span> The boundary is</div>
+<div class="displaymath process-math" id="prop-homology-point-2-1-7">
+\begin{equation*}
+\partial_n(\sigma_n) = \sum_{i=0}^n(-1)^i\,\sigma_n\circ d_i = \sum_{i=0}^n(-1)^i\,\sigma_{n-1} = \begin{cases} \sigma_{n-1} \amp \text{if } n \text{ is even},\\ 0 \amp \text{if } n \text{ is odd}.\end{cases}
+\end{equation*}
+</div>
+<div class="para">The augmented chain complex is therefore</div>
+<div class="displaymath process-math" id="prop-homology-point-2-1-8">
+\begin{equation*}
+\cdots \xrightarrow{1}\mathbb{Z}\xrightarrow{0}\mathbb{Z}\xrightarrow{1}\mathbb{Z}\xrightarrow{0}\mathbb{Z}\xrightarrow{1}\mathbb{Z}\to 0,
+\end{equation*}
+</div>
+<div class="para">which is exact everywhere. Hence <span class="process-math">\(\widetilde{H}_n(\mathrm{pt})=0\)</span> for all <span class="process-math">\(n\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-homology-point-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.11.20.1"><a href="#prop-homology-point-2" title="Copy heading and permalink for Proof 2.11.20.1" aria-label="Copy heading and permalink for Proof 2.11.20.1">🔗</a></div></article></details><div class="para" id="subsubsec-homology-point-3">We will show next week that homotopy equivalences induce isomorphisms on homology. Combined with the computation above, this gives:<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homology-point-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="corollary theorem-like" id="cor-contractible-homology"><h5 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.21</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="cor-contractible-homology-1-1">If <span class="process-math">\(X\)</span> is contractible, then <span class="process-math">\(\widetilde{H}_n(X)=0\)</span> for all <span class="process-math">\(n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#cor-contractible-homology-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Corollary 2.11.21"><a href="#cor-contractible-homology" title="Copy heading and permalink for Corollary 2.11.21" aria-label="Copy heading and permalink for Corollary 2.11.21">🔗</a></div></article><div class="para" id="subsubsec-homology-point-5">In particular, <span class="process-math">\(\widetilde{H}_n(\mathbb{R}^k)=0\text{,}\)</span> <span class="process-math">\(\widetilde{H}_n(D^k)=0\text{,}\)</span> and <span class="process-math">\(\widetilde{H}_n(\mathrm{cone}(Y))=0\)</span> for all <span class="process-math">\(n\)</span> and all <span class="process-math">\(k\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-homology-point-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Homology of a point and contractible spaces"><a href="#subsubsec-homology-point" title="Copy heading and permalink for Subsubsection: Homology of a point and contractible spaces" aria-label="Copy heading and permalink for Subsubsection: Homology of a point and contractible spaces">🔗</a></div></section><section class="subsubsection" id="subsubsec-chain-homotopies"><h4 class="heading hide-type">
+<span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Chain homotopies</span>
+</h4>
+<div class="para" id="subsubsec-chain-homotopies-2">How does one show that two chain maps induce the same map on homology? The algebraic counterpart of a topological homotopy is a <dfn class="terminology">chain homotopy</dfn>.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-chain-homotopies-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="def-chain-homotopy"><h5 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.22</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Chain homotopy.</span>
+</h5>
+<div class="para logical" id="def-chain-homotopy-2-1">
+<div class="para">Let <span class="process-math">\(f_\sharp,g_\sharp\colon C_\bullet(X)\to C_\bullet(Y)\)</span> be chain maps. A <dfn class="terminology">chain homotopy</dfn> from <span class="process-math">\(f_\sharp\)</span> to <span class="process-math">\(g_\sharp\)</span> is a sequence of homomorphisms <span class="process-math">\(P_n\colon C_n(X)\to C_{n+1}(Y)\)</span> satisfying</div>
+<div class="displaymath process-math" id="def-chain-homotopy-2-1-6">
+\begin{equation*}
+\partial_{n+1}\circ P_n + P_{n-1}\circ\partial_n = g_\sharp - f_\sharp
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(n\text{.}\)</span> If such a <span class="process-math">\(P\)</span> exists, we say <span class="process-math">\(f_\sharp\)</span> and <span class="process-math">\(g_\sharp\)</span> are <dfn class="terminology">chain homotopic</dfn> and write <span class="process-math">\(f_\sharp\simeq g_\sharp\text{.}\)</span> <div class="image-box" style="width: 80%; margin-left: 10%; margin-right: 10%;">
+<img src="generated/latex-image/def-chain-homotopy-2-1-13.svg" role="img" class="contained" alt="described in detail following the image" aria-describedby="def-chain-homotopy-2-1-13-description"><details class="image-description" aria-live="polite"><summary title="details"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span></summary><div id="def-chain-homotopy-2-1-13-description">Diagram showing chain maps <span class="process-math">\(f_\sharp\)</span> and <span class="process-math">\(g_\sharp\)</span> from <span class="process-math">\(C_n(X)\)</span> to <span class="process-math">\(C_n(Y)\text{,}\)</span> with the chain homotopy <span class="process-math">\(P\)</span> mapping diagonally from <span class="process-math">\(C_n(X)\)</span> to <span class="process-math">\(C_{n+1}(Y)\text{.}\)</span>
+</div></details>
+</div>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#def-chain-homotopy-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 2.11.22: Chain homotopy"><a href="#def-chain-homotopy" title="Copy heading and permalink for Definition 2.11.22: Chain homotopy" aria-label="Copy heading and permalink for Definition 2.11.22: Chain homotopy">🔗</a></div></article><article class="lemma theorem-like" id="lem-chain-homotopy-homology"><h5 class="heading">
+<span class="type">Lemma</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.11.23</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h5>
+<div class="para" id="lem-chain-homotopy-homology-1-1">If <span class="process-math">\(f_\sharp\simeq g_\sharp\text{,}\)</span> then <span class="process-math">\(f_*=g_*\colon H_n(X)\to H_n(Y)\)</span> for all <span class="process-math">\(n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-chain-homotopy-homology-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Lemma 2.11.23"><a href="#lem-chain-homotopy-homology" title="Copy heading and permalink for Lemma 2.11.23" aria-label="Copy heading and permalink for Lemma 2.11.23">🔗</a></div></article><details id="lem-chain-homotopy-homology-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para logical" id="lem-chain-homotopy-homology-2-1">
+<div class="para">Let <span class="process-math">\(z\in C_n(X)\)</span> be a cycle (<span class="process-math">\(\partial z=0\)</span>). Then</div>
+<div class="displaymath process-math" id="lem-chain-homotopy-homology-2-1-3">
+\begin{equation*}
+g_\sharp(z)-f_\sharp(z) = \partial P_n(z) + P_{n-1}(\partial z) = \partial P_n(z).
+\end{equation*}
+</div>
+<div class="para">So <span class="process-math">\(g_\sharp(z)\)</span> and <span class="process-math">\(f_\sharp(z)\)</span> differ by a boundary, hence <span class="process-math">\([g_\sharp(z)]=[f_\sharp(z)]\)</span> in <span class="process-math">\(H_n(Y)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-chain-homotopy-homology-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 2.11.23.1"><a href="#lem-chain-homotopy-homology-2" title="Copy heading and permalink for Proof 2.11.23.1" aria-label="Copy heading and permalink for Proof 2.11.23.1">🔗</a></div></article></details><div class="para" id="subsubsec-chain-homotopies-5">The key theorem of next week — homotopy invariance of singular homology — amounts to showing that if <span class="process-math">\(f,g\colon X\to Y\)</span> are homotopic continuous maps, then the chain maps <span class="process-math">\(f_\sharp\)</span> and <span class="process-math">\(g_\sharp\)</span> are chain homotopic. The chain homotopy will be constructed using the <dfn class="terminology">prism operator</dfn>, which decomposes the product <span class="process-math">\(\Delta^n\times[0,1]\)</span> into <span class="process-math">\((n+1)\)</span>-simplices — an algebraic incarnation of the cylinder constructions we studied in week 10.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-chain-homotopies-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsubsection: Chain homotopies"><a href="#subsubsec-chain-homotopies" title="Copy heading and permalink for Subsubsection: Chain homotopies" aria-label="Copy heading and permalink for Subsubsection: Chain homotopies">🔗</a></div></section><div class="autopermalink" data-description="Subsection: Friday"><a href="#notes-week-11-4" title="Copy heading and permalink for Subsection: Friday" aria-label="Copy heading and permalink for Subsection: Friday">🔗</a></div></section><div class="autopermalink" data-description="Section 2.11: Week 11"><a href="#notes-week-11" title="Copy heading and permalink for Section 2.11: Week 11" aria-label="Copy heading and permalink for Section 2.11: Week 11">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="notes-week-10.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="homework.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

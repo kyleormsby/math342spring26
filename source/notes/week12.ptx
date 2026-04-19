@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-12">
+  <title>Week 12</title>
+
+  <subsection>
+    <title>Monday</title>
+    <p>
+      Last week we built singular homology, established its functoriality, and introduced the
+      relative homology groups <m>H_n(X,A)</m> together with the long exact sequence of a pair.
+      We closed by defining chain homotopies and showing that chain homotopic chain maps induce
+      the same map on homology. This week we cash that in: we prove <term>homotopy
+      invariance</term> of singular homology (Monday), develop the technology of <term>barycentric
+      subdivision</term> needed to pass between large and small chains (Wednesday), and combine
+      these to prove the <term>excision theorem</term> and the <term>Mayer–Vietoris
+      sequence</term> (Friday). Mayer–Vietoris will let us at last compute
+      <m>H_*(S^n)</m>; the remaining computations, including <m>H_*(\mathbb{RP}^n)</m>, will
+      occupy week 13.
+    </p>
+
+    <subsubsection xml:id="subsubsec-prism-operator">
+      <title>The prism operator</title>
+      <p>
+        Our task is to construct, for any homotopy <m>h\colon X\times[0,1]\to Y</m> between
+        continuous maps <m>f,g\colon X\to Y</m>, a chain homotopy <m>P</m> from
+        <m>f_\sharp</m> to <m>g_\sharp</m>. The geometric idea is straightforward: a singular
+        simplex <m>\sigma\colon\Delta^n\to X</m> together with the homotopy gives a "prism"
+        <md>
+          h\circ(\sigma\times\mathrm{id})\colon\Delta^n\times[0,1]\longrightarrow Y,
+        </md>
+        and the boundary of this prism consists of the bottom <m>f\circ\sigma</m>, the top
+        <m>g\circ\sigma</m>, and the side faces, which involve <m>\partial\sigma</m>. To turn this
+        into an algebraic chain homotopy we need a canonical decomposition of the prism
+        <m>\Delta^n\times[0,1]</m> into <m>(n+1)</m>-simplices.
+      </p>
+      <definition xml:id="def-prism-decomposition">
+        <title>Simplicial decomposition of the prism</title>
+        <statement>
+          <p>
+            Let <m>\Delta^n=[v_0,\ldots,v_n]</m> with <m>v_i=e_i</m>. Write the vertices of
+            <m>\Delta^n\times[0,1]</m> as
+            <md>
+              v_i^- := (v_i,0), \qquad v_i^+ := (v_i,1), \qquad 0\le i\le n.
+            </md>
+            For each <m>0\le i\le n</m>, let
+            <md>
+              \tau_i := \bigl[v_0^-,\ldots,v_i^-,v_i^+,\ldots,v_n^+\bigr]
+            </md>
+            denote the affine-linear singular <m>(n+1)</m>-simplex
+            <m>\tau_i\colon\Delta^{n+1}\to\Delta^n\times[0,1]</m> sending the vertices of
+            <m>\Delta^{n+1}</m> in order to <m>v_0^-,\ldots,v_i^-,v_i^+,\ldots,v_n^+</m>. The
+            simplices <m>\tau_0,\ldots,\tau_n</m> have pairwise disjoint interiors and
+            their images cover <m>\Delta^n\times[0,1]</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        For <m>n=2</m>, the prism <m>\Delta^2\times[0,1]</m> is a triangular prism, and the
+        decomposition produces three tetrahedra
+        <m>\tau_0=[v_0^-,v_0^+,v_1^+,v_2^+]</m>,
+        <m>\tau_1=[v_0^-,v_1^-,v_1^+,v_2^+]</m>, and
+        <m>\tau_2=[v_0^-,v_1^-,v_2^-,v_2^+]</m>. They are separated by two interior triangular
+        cuts <m>[v_0^-,v_1^+,v_2^+]</m> (between <m>\tau_0</m> and <m>\tau_1</m>) and
+        <m>[v_0^-,v_1^-,v_2^+]</m> (between <m>\tau_1</m> and <m>\tau_2</m>); these cuts add
+        three new (interior) edges, drawn in color below.
+        <image width="80%">
+          <description>
+            The triangular prism <m>\Delta^2\times[0,1]</m> with vertices
+            <m>v_0^-,v_1^-,v_2^-</m> on the bottom face and <m>v_0^+,v_1^+,v_2^+</m> on the top
+            face, decomposed into three tetrahedra <m>\tau_0,\tau_1,\tau_2</m> by the three
+            interior diagonal edges <m>v_0^-v_1^+</m>, <m>v_0^-v_2^+</m>, and <m>v_1^-v_2^+</m>.
+          </description>
+          <latex-image>
+            \begin{tikzpicture}[scale=1.05, line join=round, line cap=round, every node/.style={font=\small}]
+              % Oblique projection of the prism Delta^2 x [0,1]
+              \coordinate (a) at (0, 0);          % v_0^-
+              \coordinate (b) at (4, 0);          % v_1^-
+              \coordinate (c) at (2.7, 1.5);      % v_2^-
+              \coordinate (A) at (0, 3);          % v_0^+
+              \coordinate (B) at (4, 3);          % v_1^+
+              \coordinate (C) at (2.7, 4.5);      % v_2^+
+
+              % Light shading on the visible exterior faces (depth cue)
+              \fill[gray!8] (a) -- (b) -- (B) -- (A) -- cycle;
+              \fill[gray!5] (A) -- (B) -- (C) -- cycle;
+
+              % Outer prism edges
+              \draw[thick] (a) -- (b) -- (B) -- (A) -- cycle;
+              \draw[thick] (A) -- (C) -- (B);
+              % Hidden back edges (behind the front rectangular face)
+              \draw[thick, dashed] (a) -- (c);
+              \draw[thick, dashed] (b) -- (c);
+              \draw[thick, dashed] (c) -- (C);
+
+              % Interior diagonal edges introduced by the decomposition
+              % (blue drawn last so it appears in front of the others)
+              \draw[very thick, violet!75!black] (a) -- (C);
+              \draw[very thick, orange!85!black] (b) -- (C);
+              \draw[very thick, blue!70!black]   (a) -- (B);
+
+              % Vertex dots
+              \foreach \v in {a, b, c, A, B, C} \fill (\v) circle (1.9pt);
+
+              % Vertex labels
+              \node[below left]  at (a) {$v_0^-$};
+              \node[below right] at (b) {$v_1^-$};
+              \node[right=2pt]   at (c) {$v_2^-$};
+              \node[above left]  at (A) {$v_0^+$};
+              \node[above right] at (B) {$v_1^+$};
+              \node[above]       at (C) {$v_2^+$};
+
+              % Legend identifying the three tetrahedra by their characteristic interior edges
+              \begin{scope}[shift={(5.6, 1.4)}, font=\footnotesize]
+                \draw[very thick, blue!70!black]   (0,2) -- (0.6,2);
+                \node[anchor=west] at (0.7,2) {$\tau_0\cap\tau_1=[v_0^-,v_1^+,v_2^+]$};
+                \draw[very thick, violet!75!black] (0,1.3) -- (0.6,1.3);
+                \node[anchor=west] at (0.7,1.3) {shared edge $v_0^-v_2^+$};
+                \draw[very thick, orange!85!black] (0,0.6) -- (0.6,0.6);
+                \node[anchor=west] at (0.7,0.6) {$\tau_1\cap\tau_2=[v_0^-,v_1^-,v_2^+]$};
+              \end{scope}
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </p>
+      <definition xml:id="def-prism-operator">
+        <title>Prism operator</title>
+        <statement>
+          <p>
+            Let <m>h\colon X\times[0,1]\to Y</m> be a homotopy. The <term>prism
+            operator</term> <m>P_n\colon C_n(X)\to C_{n+1}(Y)</m> is defined on a generator
+            <m>\sigma\colon\Delta^n\to X</m> by
+            <md>
+              P_n(\sigma) := \sum_{i=0}^n (-1)^i\,(h\circ(\sigma\times\mathrm{id}))\circ\tau_i,
+            </md>
+            and extended linearly to all of <m>C_n(X)</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Each summand <m>(h\circ(\sigma\times\mathrm{id}))\circ\tau_i</m> is a singular
+        <m>(n+1)</m>-simplex in <m>Y</m>; intuitively it is the image in <m>Y</m> of the
+        <m>i</m>-th piece of the prism. The signs are chosen so that the algebraic boundary
+        of <m>P_n(\sigma)</m> reproduces the geometric boundary of the prism.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-homotopy-invariance">
+      <title>Homotopy invariance</title>
+      <lemma xml:id="lem-prism-chain-homotopy">
+        <title>The prism operator is a chain homotopy</title>
+        <statement>
+          <p>
+            For any homotopy <m>h\colon X\times[0,1]\to Y</m> between <m>f,g\colon X\to Y</m>,
+            the prism operator satisfies
+            <md>
+              \partial_{n+1}\circ P_n + P_{n-1}\circ\partial_n = g_\sharp - f_\sharp
+            </md>
+            for all <m>n\ge 0</m>. That is, <m>P</m> is a chain homotopy from
+            <m>f_\sharp</m> to <m>g_\sharp</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            By linearity it suffices to evaluate both sides on a generator
+            <m>\sigma\colon\Delta^n\to X</m>. Let
+            <m>H:=h\circ(\sigma\times\mathrm{id})\colon\Delta^n\times[0,1]\to Y</m>. We compute
+            <m>\partial_{n+1}P_n(\sigma)</m> using the definition of the boundary on each
+            <m>\tau_i</m>. The face of <m>\tau_i</m> obtained by omitting the vertex with
+            label <m>j</m> falls into one of three classes:
+          </p>
+          <p>
+            (a) The faces <em>internal</em> to the prism (omitting <m>v_i^-</m> from <m>\tau_i</m>
+            yields the same face as omitting <m>v_i^+</m> from <m>\tau_{i-1}</m>, with opposite
+            sign). All such internal faces cancel pairwise.
+          </p>
+          <p>
+            (b) The <em>top</em> face (omitting all "minus" vertices from <m>\tau_n</m>, i.e.,
+            <m>j=0</m> in <m>\tau_n</m>) gives <m>g\circ\sigma</m>.
+          </p>
+          <p>
+            (c) The <em>bottom</em> face (omitting all "plus" vertices from <m>\tau_0</m>, i.e.,
+            <m>j=n+1</m> in <m>\tau_0</m>) gives <m>-(-1)^0 f\circ\sigma\cdot(-1)^{n+1}\cdot(-1)^{n+1} = -f\circ\sigma</m>;
+            tracking the alternating signs carefully yields exactly <m>-f_\sharp\sigma</m>.
+          </p>
+          <p>
+            (d) The <em>side</em> faces (omitting <m>v_j^-</m> with <m>j&lt;i</m>, or
+            <m>v_j^+</m> with <m>j&gt;i</m>) reassemble to <m>-P_{n-1}(\partial_n\sigma)</m>.
+            Indeed, the faces involving <m>\sigma\circ d_j</m> are precisely the prism over the
+            <m>j</m>-th face of <m>\sigma</m>, with the correct signs.
+          </p>
+          <p>
+            Combining (a)–(d) gives
+            <m>\partial_{n+1}P_n(\sigma) = g_\sharp\sigma - f_\sharp\sigma - P_{n-1}(\partial_n\sigma)</m>,
+            which is the desired identity. The detailed sign verification, while tedious, reduces
+            to the simplicial identities for the face maps <m>d_i</m>; see Hatcher, Theorem 2.10
+            for a fully explicit accounting.
+          </p>
+        </proof>
+      </lemma>
+      <theorem xml:id="thm-homotopy-invariance">
+        <title>Homotopy invariance of singular homology</title>
+        <statement>
+          <p>
+            If <m>f,g\colon X\to Y</m> are homotopic continuous maps, then they induce the
+            same map on homology:
+            <md>
+              f_*=g_*\colon H_n(X)\longrightarrow H_n(Y)\quad\text{for all } n\ge 0.
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Choose a homotopy <m>h</m> from <m>f</m> to <m>g</m>. By
+            <xref ref="lem-prism-chain-homotopy"/>, the prism operator <m>P</m> is a chain
+            homotopy from <m>f_\sharp</m> to <m>g_\sharp</m>. By
+            <xref ref="lem-chain-homotopy-homology"/>, chain homotopic chain maps induce equal
+            maps on homology, so <m>f_*=g_*</m>.
+          </p>
+        </proof>
+      </theorem>
+      <corollary xml:id="cor-homotopy-equivalence-homology">
+        <title>Homotopy equivalences induce isomorphisms</title>
+        <statement>
+          <p>
+            If <m>f\colon X\to Y</m> is a homotopy equivalence, then
+            <m>f_*\colon H_n(X)\to H_n(Y)</m> is an isomorphism for every <m>n\ge 0</m>.
+            In particular, homotopy equivalent spaces have isomorphic homology groups.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>g\colon Y\to X</m> be a homotopy inverse, so that
+            <m>g\circ f\simeq\mathrm{id}_X</m> and <m>f\circ g\simeq\mathrm{id}_Y</m>. By
+            functoriality (<xref ref="prop-functoriality"/>) and homotopy invariance,
+            <md>
+              g_*\circ f_* = (g\circ f)_* = (\mathrm{id}_X)_* = \mathrm{id}_{H_n(X)},
+            </md>
+            and similarly <m>f_*\circ g_*=\mathrm{id}_{H_n(Y)}</m>. So <m>f_*</m> is an
+            isomorphism with inverse <m>g_*</m>.
+          </p>
+        </proof>
+      </corollary>
+      <p>
+        The corollary makes our earlier corollary <xref ref="cor-contractible-homology"/>
+        precise: if <m>X</m> is contractible, then the unique map <m>X\to\mathrm{pt}</m> is
+        a homotopy equivalence, so <m>\widetilde{H}_n(X)\cong\widetilde{H}_n(\mathrm{pt})=0</m>
+        for all <m>n</m>. Concretely, <m>\widetilde{H}_n(\mathbb{R}^k)=0</m>,
+        <m>\widetilde{H}_n(D^k)=0</m>, and <m>\widetilde{H}_n(\mathrm{cone}(Y))=0</m> for
+        every space <m>Y</m> and every <m>k,n</m>.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-relative-homotopy-invariance">
+      <title>Relative homotopy invariance</title>
+      <p>
+        The same prism construction gives homotopy invariance of relative homology, provided we
+        track the subspaces. A <term>map of pairs</term> <m>f\colon(X,A)\to(Y,B)</m> is a
+        continuous map <m>f\colon X\to Y</m> with <m>f(A)\subseteq B</m>. Two such maps
+        <m>f,g</m> are <term>homotopic as maps of pairs</term> if there is a homotopy
+        <m>h\colon X\times[0,1]\to Y</m> from <m>f</m> to <m>g</m> with
+        <m>h(A\times[0,1])\subseteq B</m>.
+      </p>
+      <theorem xml:id="thm-relative-homotopy-invariance">
+        <title>Relative homotopy invariance</title>
+        <statement>
+          <p>
+            If <m>f,g\colon(X,A)\to(Y,B)</m> are homotopic as maps of pairs, then
+            <m>f_*=g_*\colon H_n(X,A)\to H_n(Y,B)</m> for all <m>n\ge 0</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            The prism operator built from <m>h</m> sends <m>C_n(A)</m> into <m>C_{n+1}(B)</m>
+            because <m>h(A\times[0,1])\subseteq B</m>. Hence it descends to a chain homotopy on
+            the relative chain complexes <m>C_\bullet(X,A)\to C_\bullet(Y,B)</m>, and
+            <xref ref="lem-chain-homotopy-homology"/> applies as before.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        Calling a map of pairs <m>f\colon(X,A)\to(Y,B)</m> a <term>homotopy equivalence of
+        pairs</term> if it admits a homotopy inverse of pairs, we obtain
+        <m>H_n(X,A)\cong H_n(Y,B)</m> whenever <m>(X,A)</m> and <m>(Y,B)</m> are homotopy
+        equivalent pairs. We will use this freely on Friday.
+      </p>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Wednesday</title>
+    <p>
+      The remaining major hurdle on the way to Mayer–Vietoris is to compare the homology computed
+      from <em>all</em> singular simplices to the homology computed from singular simplices that
+      are "small" with respect to a chosen open cover. The bridge is <term>barycentric
+      subdivision</term>, a chain map <m>S\colon C_n(X)\to C_n(X)</m> together with a chain
+      homotopy from <m>S</m> to the identity. Iterating <m>S</m> shrinks any simplex
+      eventually inside any prescribed open cover.
+    </p>
+
+    <subsubsection xml:id="subsubsec-barycenter-cone">
+      <title>Barycenters and the cone construction</title>
+      <definition xml:id="def-barycenter">
+        <title>Barycenter</title>
+        <statement>
+          <p>
+            The <term>barycenter</term> of an affine simplex <m>[w_0,\ldots,w_n]</m> in a
+            convex set is the point
+            <md>
+              b[w_0,\ldots,w_n] := \frac{1}{n+1}\sum_{i=0}^n w_i.
+            </md>
+            For the standard simplex <m>\Delta^n=[v_0,\ldots,v_n]</m> we write
+            <m>b_n:=b[v_0,\ldots,v_n]</m>.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Let <m>Y\subseteq\mathbb{R}^N</m> be a convex set, and let
+        <m>LC_n(Y)\subseteq C_n(Y)</m> denote the subgroup generated by <m>affine</m>
+        singular simplices, i.e., affine-linear maps <m>\Delta^n\to Y</m>. We write an affine
+        simplex by its vertices: <m>[w_0,\ldots,w_n]</m>. The boundary operator restricts to
+        <m>LC_\bullet(Y)</m> by <m>\partial[w_0,\ldots,w_n]=\sum_i(-1)^i[w_0,\ldots,\widehat{w_i},\ldots,w_n]</m>.
+      </p>
+      <definition xml:id="def-cone-operator">
+        <title>Cone operator</title>
+        <statement>
+          <p>
+            For a point <m>b\in Y</m>, the <term>cone operator</term>
+            <m>b\colon LC_n(Y)\to LC_{n+1}(Y)</m> is defined on generators by
+            <md>
+              b\cdot[w_0,\ldots,w_n] := [b,w_0,\ldots,w_n].
+            </md>
+          </p>
+        </statement>
+      </definition>
+      <lemma xml:id="lem-cone-relation">
+        <title>The cone relation</title>
+        <statement>
+          <p>
+            For any affine chain <m>\alpha\in LC_n(Y)</m>,
+            <md>
+              \partial(b\cdot\alpha) = \alpha - b\cdot\partial\alpha\quad\text{if } n\ge 1,
+              \qquad \partial(b\cdot\alpha)=\alpha-\varepsilon(\alpha)\,b\quad\text{if } n=0.
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Both formulas are immediate from the definition: omitting the vertex <m>b</m> from
+            <m>[b,w_0,\ldots,w_n]</m> gives <m>\alpha</m>, and omitting any other vertex
+            <m>w_i</m> gives <m>b\cdot</m> (the corresponding face of <m>\alpha</m>).
+          </p>
+        </proof>
+      </lemma>
+      <p>
+        The cone relation expresses the geometric fact that a cone <m>b\cdot\alpha</m> is a
+        nullhomotopy of <m>\alpha</m>: its boundary is <m>\alpha</m> minus a chain involving
+        the apex <m>b</m>. We will use this repeatedly to construct chain homotopies.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-subdivision">
+      <title>Barycentric subdivision</title>
+      <definition xml:id="def-affine-subdivision">
+        <title>Subdivision of affine simplices</title>
+        <statement>
+          <p>
+            Define <m>S\colon LC_n(Y)\to LC_n(Y)</m> recursively on generators. For
+            <m>n=0</m>, set <m>S[w_0]:=[w_0]</m>. For <m>n\ge 1</m>, let
+            <m>\beta:=[w_0,\ldots,w_n]</m> with barycenter <m>b_\beta</m>, and define
+            <md>
+              S(\beta) := b_\beta\cdot S(\partial\beta).
+            </md>
+            That is, subdivide the boundary, then cone from the barycenter.
+          </p>
+        </statement>
+      </definition>
+      <p>
+        Unrolling the recursion shows that <m>S(\beta)</m> is a signed sum of all
+        <m>(n+1)!</m> simplices <m>[b_{F_0},b_{F_1},\ldots,b_{F_n}]</m>, where
+        <m>F_0\subsetneq F_1\subsetneq\cdots\subsetneq F_n=\beta</m> is a chain of faces, and
+        <m>b_F</m> denotes the barycenter of <m>F</m>. Geometrically, <m>S(\beta)</m> is the
+        familiar barycentric subdivision of the simplex <m>\beta</m>.
+      </p>
+      <lemma xml:id="lem-subdivision-chain-map">
+        <title>Subdivision is a chain map</title>
+        <statement>
+          <p>
+            For any convex <m>Y\subseteq\mathbb{R}^N</m>, the subdivision operator
+            <m>S\colon LC_\bullet(Y)\to LC_\bullet(Y)</m> satisfies <m>\partial S=S\partial</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            By induction on <m>n</m>. The base case <m>n=0</m> is immediate. For <m>n\ge 1</m>,
+            using <xref ref="lem-cone-relation"/> and the inductive hypothesis,
+            <md>
+              \partial S(\beta) = \partial(b_\beta\cdot S(\partial\beta))
+              = S(\partial\beta) - b_\beta\cdot\partial S(\partial\beta)
+              = S(\partial\beta) - b_\beta\cdot S(\partial^2\beta) = S(\partial\beta),
+            </md>
+            since <m>\partial^2=0</m>.
+          </p>
+        </proof>
+      </lemma>
+      <p>
+        We now extend <m>S</m> to general singular chains. Given a singular simplex
+        <m>\sigma\colon\Delta^n\to X</m>, define
+        <md>
+          S(\sigma) := \sigma_\sharp\bigl(S(\iota_n)\bigr),
+        </md>
+        where <m>\iota_n\colon\Delta^n\to\Delta^n</m> is the identity (regarded as an affine
+        singular simplex in the convex set <m>\Delta^n</m>) and
+        <m>\sigma_\sharp\colon C_\bullet(\Delta^n)\to C_\bullet(X)</m> is the chain map induced
+        by <m>\sigma</m>. Naturality is built in: <m>S</m> is now a natural transformation
+        <m>C_\bullet\Rightarrow C_\bullet</m> on the category of topological spaces. The chain map
+        property <m>\partial S=S\partial</m> on general singular chains follows from the affine
+        case applied to <m>\iota_n</m>.
+      </p>
+      <lemma xml:id="lem-subdivision-chain-homotopy">
+        <title>Subdivision is chain homotopic to the identity</title>
+        <statement>
+          <p>
+            There is a natural chain homotopy <m>T\colon C_n(X)\to C_{n+1}(X)</m> with
+            <md>
+              \partial T + T\partial = S - \mathrm{id}.
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            On affine chains in a convex set <m>Y</m>, define <m>T</m> recursively by
+            <m>T[w_0]:=0</m> and, for <m>n\ge 1</m>,
+            <md>
+              T(\beta) := b_\beta\cdot\bigl(S(\beta)-\beta-T(\partial\beta)\bigr).
+            </md>
+            By induction (using <xref ref="lem-cone-relation"/> and
+            <xref ref="lem-subdivision-chain-map"/>),
+            <md>
+              \partial T(\beta) = S(\beta)-\beta-T(\partial\beta) - b_\beta\cdot\partial(S(\beta)-\beta-T(\partial\beta)).
+            </md>
+            The bracketed inner expression equals <m>S(\partial\beta)-\partial\beta-(S(\partial\beta)-\partial\beta-T(\partial^2\beta))=0</m>
+            by induction (the case <m>n=1</m> uses the augmentation form of the cone relation
+            and verifies directly). So <m>\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta</m>.
+            Extending to general singular chains by
+            <m>T(\sigma):=\sigma_\sharp T(\iota_n)</m> and using naturality gives the result on
+            <m>C_\bullet(X)</m>.
+          </p>
+        </proof>
+      </lemma>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-small-chains">
+      <title>Iterated subdivision and the small chains theorem</title>
+      <p>
+        Let <m>\mathcal{U}=\{U_\alpha\}</m> be a collection of subspaces of <m>X</m> whose
+        interiors cover <m>X</m>. We say a singular simplex <m>\sigma\colon\Delta^n\to X</m>
+        is <term><m>\mathcal{U}</m>-small</term> if <m>\sigma(\Delta^n)\subseteq U_\alpha</m>
+        for some <m>\alpha</m>. Let
+        <md>
+          C_n^{\mathcal{U}}(X)\subseteq C_n(X)
+        </md>
+        denote the subgroup generated by <m>\mathcal{U}</m>-small singular simplices. Since
+        the boundary of a <m>\mathcal{U}</m>-small simplex is again a sum of
+        <m>\mathcal{U}</m>-small simplices, <m>C_\bullet^{\mathcal{U}}(X)</m> is a subcomplex.
+        Write <m>H_n^{\mathcal{U}}(X)</m> for its homology and
+        <m>\iota\colon C_\bullet^{\mathcal{U}}(X)\hookrightarrow C_\bullet(X)</m> for the
+        inclusion.
+      </p>
+      <theorem xml:id="thm-small-chains">
+        <title>The small chains theorem</title>
+        <statement>
+          <p>
+            The inclusion <m>\iota\colon C_\bullet^{\mathcal{U}}(X)\hookrightarrow C_\bullet(X)</m>
+            is a chain homotopy equivalence; in particular it induces an isomorphism
+            <m>H_n^{\mathcal{U}}(X)\xrightarrow{\;\sim\;}H_n(X)</m> for every <m>n</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Given <m>\sigma\colon\Delta^n\to X</m>, the open cover
+            <m>\{\sigma^{-1}(\mathrm{int}\,U_\alpha)\}</m> of the compact metric space
+            <m>\Delta^n</m> has a Lebesgue number <m>\delta_\sigma&gt;0</m>. The diameter of an
+            affine simplex strictly decreases under barycentric subdivision: if
+            <m>\Delta</m> has diameter <m>d</m>, then every simplex of <m>S(\Delta)</m> has
+            diameter at most <m>\frac{n}{n+1}d</m>. Hence after sufficiently many subdivisions
+            <m>S^{m_\sigma}(\sigma)</m>, every simplex appearing has diameter less than
+            <m>\delta_\sigma</m>, so its image lies inside some <m>U_\alpha</m>.
+          </p>
+          <p>
+            Define a homomorphism <m>D_n\colon C_n(X)\to C_{n+1}(X)</m> as the "telescoping
+            chain homotopy" associated with iteration of the chain homotopy
+            <m>T</m> from <xref ref="lem-subdivision-chain-homotopy"/>:
+            <md>
+              D_n(\sigma) := \sum_{i=0}^{m_\sigma-1} T S^i(\sigma).
+            </md>
+            One verifies <m>\partial D + D\partial = S^{m_\sigma}-\mathrm{id}</m> on each
+            generator <m>\sigma</m>, and the residue <m>S^{m_\sigma}(\sigma)</m> lies in
+            <m>C_n^{\mathcal{U}}(X)</m>. Defining
+            <m>\rho(\sigma):=S^{m_\sigma}(\sigma) - \partial D(\sigma) - D(\partial\sigma)</m>
+            after a small adjustment (to ensure <m>\rho</m> takes values in
+            <m>C_\bullet^{\mathcal{U}}(X)</m>) produces a chain map
+            <m>\rho\colon C_\bullet(X)\to C_\bullet^{\mathcal{U}}(X)</m> with
+            <m>\iota\rho\simeq\mathrm{id}</m> and <m>\rho\iota=\mathrm{id}</m>. The full
+            verification appears in Hatcher, Proposition 2.21.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        The takeaway is precisely what we want: for any open cover <m>\mathcal{U}</m> of
+        <m>X</m>, every homology class is represented by a chain whose simplices are entirely
+        contained in members of <m>\mathcal{U}</m>, and two such chains are homologous via
+        small chains whenever they are homologous at all.
+      </p>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Friday</title>
+    <p>
+      Today we reach the destination of the last three weeks: the <term>excision theorem</term>,
+      the <term>Mayer–Vietoris sequence</term>, and our first major computation —
+      <m>H_*(S^n)</m>. As an immediate payoff we deduce the Brouwer fixed point theorem and
+      see that <m>\mathbb{R}^m</m> and <m>\mathbb{R}^n</m> are not homeomorphic when
+      <m>m\neq n</m>.
+    </p>
+
+    <subsubsection xml:id="subsubsec-excision">
+      <title>Excision</title>
+      <theorem xml:id="thm-excision">
+        <title>Excision</title>
+        <statement>
+          <p>
+            Let <m>(X,A)</m> be a pair and let <m>Z\subseteq A</m> be a subspace whose closure
+            lies in the interior of <m>A</m>: <m>\overline{Z}\subseteq\mathrm{int}\,A</m>. Then
+            the inclusion of pairs <m>(X\setminus Z, A\setminus Z)\hookrightarrow(X,A)</m>
+            induces an isomorphism
+            <md>
+              H_n(X\setminus Z, A\setminus Z)\xrightarrow{\;\sim\;} H_n(X,A)
+            </md>
+            for every <m>n\ge 0</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>B:=X\setminus Z</m>. The hypothesis
+            <m>\overline{Z}\subseteq\mathrm{int}\,A</m> implies
+            <m>\mathrm{int}\,A\cup\mathrm{int}\,B = X</m>, so
+            <m>\mathcal{U}:=\{A,B\}</m> is a cover whose interiors cover <m>X</m>. Let
+            <m>C_\bullet^{\mathcal{U}}(X)</m> be the subcomplex of <m>\mathcal{U}</m>-small
+            chains and <m>C_\bullet^{\mathcal{U}}(X,A):=C_\bullet^{\mathcal{U}}(X)/C_\bullet(A)</m>
+            the corresponding relative complex. By <xref ref="thm-small-chains"/> and the
+            five lemma applied to the long exact sequence of the pair, the inclusion
+            <m>C_\bullet^{\mathcal{U}}(X,A)\hookrightarrow C_\bullet(X,A)</m> induces an
+            isomorphism on homology.
+          </p>
+          <p>
+            On the other hand, every <m>\mathcal{U}</m>-small chain decomposes uniquely (modulo
+            chains in <m>A</m>) as a sum of a chain in <m>A</m> and a chain in <m>B</m>. The
+            inclusion <m>C_\bullet(B)\hookrightarrow C_\bullet^{\mathcal{U}}(X)</m> therefore
+            descends to an isomorphism of relative complexes
+            <md>
+              C_\bullet(B)/C_\bullet(A\cap B)\;\xrightarrow{\;\sim\;}\;C_\bullet^{\mathcal{U}}(X)/C_\bullet(A).
+            </md>
+            Since <m>B=X\setminus Z</m> and <m>A\cap B=A\setminus Z</m>, the left side is
+            <m>C_\bullet(X\setminus Z, A\setminus Z)</m>. Composing the two isomorphisms yields
+            the result.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        Excision is the fundamental "locality" property of singular homology: removing a
+        well-embedded subspace from both <m>X</m> and <m>A</m> does not change the relative
+        homology. It is what distinguishes homology from, say, the homotopy groups
+        <m>\pi_n</m>, which are not excisive.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-mayer-vietoris">
+      <title>The Mayer–Vietoris sequence</title>
+      <p>
+        Let <m>X=A\cup B</m> with <m>A,B</m> subspaces whose interiors cover <m>X</m>. The
+        small chains theorem provides a short exact sequence
+        <md>
+          0\to C_n(A\cap B)\xrightarrow{\;(i,-j)\;} C_n(A)\oplus C_n(B)\xrightarrow{\;k+\ell\;} C_n^{\mathcal{U}}(X)\to 0,
+        </md>
+        where <m>i\colon A\cap B\hookrightarrow A</m>, <m>j\colon A\cap B\hookrightarrow B</m>,
+        <m>k\colon A\hookrightarrow X</m>, and <m>\ell\colon B\hookrightarrow X</m> are the
+        inclusions. (Exactness at the middle term is the "decomposition" used in the proof of
+        excision; surjectivity at the right is the small chains theorem.) Passing to homology
+        via the snake lemma yields:
+      </p>
+      <theorem xml:id="thm-mayer-vietoris">
+        <title>Mayer–Vietoris sequence</title>
+        <statement>
+          <p>
+            Let <m>X=A\cup B</m> with <m>\mathrm{int}\,A\cup\mathrm{int}\,B=X</m>. Then there
+            is a long exact sequence
+            <md>
+              \cdots\to H_n(A\cap B)\xrightarrow{\;(i_*,-j_*)\;} H_n(A)\oplus H_n(B)\xrightarrow{\;k_*+\ell_*\;} H_n(X)
+              \xrightarrow{\;\partial_*\;} H_{n-1}(A\cap B)\to\cdots
+            </md>
+            ending at <m>H_0(X)\to 0</m>. The connecting homomorphism <m>\partial_*</m> is
+            described as follows: a class <m>[c]\in H_n(X)</m> can be represented (using the
+            small chains theorem) by a cycle <m>c=a+b</m> with <m>a\in C_n(A)</m> and
+            <m>b\in C_n(B)</m>; then <m>\partial a=-\partial b</m> is a chain in <m>A\cap B</m>,
+            and <m>\partial_*[c]:=[\partial a]\in H_{n-1}(A\cap B)</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Apply the long exact sequence in homology to the short exact sequence of chain
+            complexes displayed above, and use the small chains isomorphism
+            <m>H_n^{\mathcal{U}}(X)\cong H_n(X)</m>.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        There is also a reduced version: if <m>A\cap B</m> is nonempty, the same argument
+        applied to the augmented complexes gives an exact sequence
+        <md>
+          \cdots\to\widetilde{H}_n(A\cap B)\to\widetilde{H}_n(A)\oplus\widetilde{H}_n(B)\to\widetilde{H}_n(X)\to\widetilde{H}_{n-1}(A\cap B)\to\cdots
+        </md>
+        We will use the reduced form for spheres.
+      </p>
+      <p>
+        Schematically, the Mayer–Vietoris sequence reads:
+        <image width="90%">
+          <description>
+            The Mayer–Vietoris long exact sequence rendered as a zigzag, with rows for each
+            degree connected by the connecting homomorphism.
+          </description>
+          <latex-image>
+            \begin{tikzcd}[column sep=small, row sep=small]
+              \cdots \arrow[r] \amp H_n(A\cap B) \arrow[r, "{(i_*,-j_*)}"] \amp H_n(A)\oplus H_n(B) \arrow[r, "k_*+\ell_*"] \amp H_n(X) \arrow[dll, out=-10, in=170, "\partial_*"] \\
+              \amp H_{n-1}(A\cap B) \arrow[r] \amp H_{n-1}(A)\oplus H_{n-1}(B) \arrow[r] \amp H_{n-1}(X) \arrow[dll, out=-10, in=170] \\
+              \amp \cdots
+            \end{tikzcd}
+          </latex-image>
+        </image>
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-homology-spheres">
+      <title>Homology of spheres</title>
+      <theorem xml:id="thm-homology-spheres">
+        <title>Homology of <m>S^n</m></title>
+        <statement>
+          <p>
+            For all <m>n\ge 0</m> and <m>k\ge 0</m>,
+            <md>
+              \widetilde{H}_k(S^n) \cong \begin{cases} \mathbb{Z} \amp \text{if } k=n,\\ 0 \amp \text{otherwise}.\end{cases}
+            </md>
+            Equivalently, <m>H_0(S^0)\cong\mathbb{Z}^2</m>, <m>H_k(S^0)=0</m> for
+            <m>k\ge 1</m>, and for <m>n\ge 1</m>,
+            <md>
+              H_k(S^n) \cong \begin{cases} \mathbb{Z} \amp \text{if } k=0\text{ or } k=n,\\ 0 \amp \text{otherwise}.\end{cases}
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            The case <m>n=0</m> is direct: <m>S^0</m> is two points, so
+            <m>H_0(S^0)\cong\mathbb{Z}^2</m> and <m>H_k(S^0)=0</m> for <m>k\ge 1</m> by
+            <xref ref="prop-h-zero"/> and <xref ref="prop-homology-point"/>. We proceed by
+            induction on <m>n\ge 1</m>.
+          </p>
+          <p>
+            Cover <m>S^n</m> by <m>A:=S^n\setminus\{N\}</m> and <m>B:=S^n\setminus\{S\}</m>,
+            the complements of the north and south poles. Both <m>A</m> and <m>B</m> are open,
+            and stereographic projection gives homeomorphisms <m>A\cong\mathbb{R}^n\cong B</m>.
+            In particular <m>A</m> and <m>B</m> are contractible, so
+            <m>\widetilde{H}_*(A)=\widetilde{H}_*(B)=0</m> by
+            <xref ref="cor-contractible-homology"/>. The intersection <m>A\cap B</m>
+            deformation retracts onto the equatorial <m>S^{n-1}</m>; concretely, the radial
+            projection <m>(x,t)\mapsto x/|x|</m> realizes <m>A\cap B\simeq S^{n-1}</m>.
+          </p>
+          <p>
+            The reduced Mayer–Vietoris sequence becomes
+            <md>
+              \cdots\to\widetilde{H}_k(A)\oplus\widetilde{H}_k(B)\to\widetilde{H}_k(S^n)\xrightarrow{\partial_*}\widetilde{H}_{k-1}(S^{n-1})\to\widetilde{H}_{k-1}(A)\oplus\widetilde{H}_{k-1}(B)\to\cdots
+            </md>
+            which, since the <m>A</m>- and <m>B</m>-terms vanish, collapses to isomorphisms
+            <md>
+              \partial_*\colon\widetilde{H}_k(S^n)\xrightarrow{\;\sim\;}\widetilde{H}_{k-1}(S^{n-1})\quad\text{for all } k\ge 1.
+            </md>
+            By induction <m>\widetilde{H}_{k-1}(S^{n-1})</m> is <m>\mathbb{Z}</m> when
+            <m>k-1=n-1</m> and zero otherwise, giving the claim. The case <m>k=0</m> is
+            handled by path-connectedness of <m>S^n</m> for <m>n\ge 1</m>.
+          </p>
+        </proof>
+      </theorem>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-applications-spheres">
+      <title>Applications</title>
+      <p>
+        Two classical consequences are immediate.
+      </p>
+      <corollary xml:id="cor-invariance-of-dimension">
+        <title>Invariance of dimension</title>
+        <statement>
+          <p>
+            If <m>m\neq n</m>, then <m>\mathbb{R}^m</m> and <m>\mathbb{R}^n</m> are not
+            homeomorphic. More generally, <m>S^m</m> and <m>S^n</m> are not homotopy equivalent
+            when <m>m\neq n</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Suppose <m>m,n\ge 1</m>. If <m>S^m\simeq S^n</m>, then
+            <m>\widetilde{H}_*(S^m)\cong\widetilde{H}_*(S^n)</m> by
+            <xref ref="cor-homotopy-equivalence-homology"/>; but
+            <xref ref="thm-homology-spheres"/> shows these are concentrated in different
+            degrees. For <m>\mathbb{R}^m\not\cong\mathbb{R}^n</m>, observe that a
+            hypothetical homeomorphism would restrict to a homeomorphism
+            <m>\mathbb{R}^m\setminus\{0\}\cong\mathbb{R}^n\setminus\{0'\}</m> for some point
+            <m>0'</m>. Since <m>\mathbb{R}^k\setminus\{0\}\simeq S^{k-1}</m>, this would give
+            <m>S^{m-1}\simeq S^{n-1}</m>, contradicting the previous statement. The remaining
+            cases (<m>m=0</m> or <m>n=0</m>) are handled by counting connected components.
+          </p>
+        </proof>
+      </corollary>
+      <corollary xml:id="cor-no-retraction">
+        <title>No retraction <m>D^n\to S^{n-1}</m></title>
+        <statement>
+          <p>
+            For <m>n\ge 1</m> there is no continuous retraction <m>r\colon D^n\to S^{n-1}</m>
+            (i.e., no continuous <m>r</m> with <m>r|_{S^{n-1}}=\mathrm{id}</m>).
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Such a retraction would give, with <m>\iota\colon S^{n-1}\hookrightarrow D^n</m>,
+            <m>r\circ\iota=\mathrm{id}_{S^{n-1}}</m>, whence
+            <m>r_*\circ\iota_*=\mathrm{id}</m> on <m>\widetilde{H}_{n-1}</m>. But
+            <m>\widetilde{H}_{n-1}(D^n)=0</m> while
+            <m>\widetilde{H}_{n-1}(S^{n-1})\cong\mathbb{Z}</m> — contradiction.
+          </p>
+        </proof>
+      </corollary>
+      <theorem xml:id="thm-brouwer-fixed-point">
+        <title>Brouwer fixed point theorem</title>
+        <statement>
+          <p>
+            Every continuous map <m>f\colon D^n\to D^n</m> has a fixed point.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Suppose <m>f(x)\neq x</m> for all <m>x\in D^n</m>. Define
+            <m>r\colon D^n\to S^{n-1}</m> by sending <m>x</m> to the point where the ray from
+            <m>f(x)</m> through <m>x</m> meets <m>S^{n-1}</m>. Then <m>r</m> is continuous and
+            <m>r|_{S^{n-1}}=\mathrm{id}</m> (a point on the boundary maps to itself), giving a
+            retraction <m>D^n\to S^{n-1}</m>. This contradicts
+            <xref ref="cor-no-retraction"/>.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        Next week we will leverage Mayer–Vietoris (and a related "good pair" version of
+        excision) to compute the homology of further spaces, including the real projective
+        spaces <m>\mathbb{RP}^n</m>. The key new input there is to understand the effect on
+        homology of attaching a single cell — in effect, a Mayer–Vietoris computation
+        for the pair <m>(\mathbb{RP}^n,\mathbb{RP}^{n-1})</m> — which leads naturally
+        into <term>cellular homology</term> and the calculation
+        <md>
+          H_k(\mathbb{RP}^n) \cong \begin{cases}
+            \mathbb{Z} \amp k=0,\\
+            \mathbb{Z}/2 \amp 0&lt;k&lt;n,\;k\text{ odd},\\
+            0 \amp 0&lt;k&lt;n,\;k\text{ even},\\
+            \mathbb{Z} \amp k=n,\;n\text{ odd},\\
+            0 \amp k=n,\;n\text{ even},\\
+            0 \amp k&gt;n.
+          \end{cases}
+        </md>
+      </p>
+    </subsubsection>
+  </subsection>
+
+</section>

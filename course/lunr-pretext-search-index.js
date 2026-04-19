@@ -3034,6 +3034,249 @@ var ptx_lunr_docs = [
   "body": "prism operator "
 },
 {
+  "id": "notes-week-12",
+  "level": "1",
+  "url": "notes-week-12.html",
+  "type": "Section",
+  "number": "2.12",
+  "title": "Week 12",
+  "body": " Week 12   Monday  Last week we built singular homology, established its functoriality, and introduced the relative homology groups together with the long exact sequence of a pair. We closed by defining chain homotopies and showing that chain homotopic chain maps induce the same map on homology. This week we cash that in: we prove homotopy invariance of singular homology (Monday), develop the technology of barycentric subdivision needed to pass between large and small chains (Wednesday), and combine these to prove the excision theorem and the Mayer–Vietoris sequence (Friday). Mayer–Vietoris will let us at last compute ; the remaining computations, including , will occupy week 13.   The prism operator  Our task is to construct, for any homotopy between continuous maps , a chain homotopy from to . The geometric idea is straightforward: a singular simplex together with the homotopy gives a \"prism\" and the boundary of this prism consists of the bottom , the top , and the side faces, which involve . To turn this into an algebraic chain homotopy we need a canonical decomposition of the prism into -simplices.   Simplicial decomposition of the prism   Let with . Write the vertices of as For each , let denote the affine-linear singular -simplex sending the vertices of in order to . The simplices have pairwise disjoint interiors and their images cover .    For , the prism is a triangular prism, and the decomposition produces three tetrahedra , , and . They are separated by two interior triangular cuts (between and ) and (between and ); these cuts add three new (interior) edges, drawn in color below.  The triangular prism with vertices on the bottom face and on the top face, decomposed into three tetrahedra by the three interior diagonal edges , , and .      Prism operator   Let be a homotopy. The prism operator  is defined on a generator by and extended linearly to all of .    Each summand is a singular -simplex in ; intuitively it is the image in of the -th piece of the prism. The signs are chosen so that the algebraic boundary of reproduces the geometric boundary of the prism.    Homotopy invariance   The prism operator is a chain homotopy   For any homotopy between , the prism operator satisfies for all . That is, is a chain homotopy from to .    By linearity it suffices to evaluate both sides on a generator . Let . We compute using the definition of the boundary on each . The face of obtained by omitting the vertex with label falls into one of three classes:  (a) The faces internal to the prism (omitting from yields the same face as omitting from , with opposite sign). All such internal faces cancel pairwise.  (b) The top face (omitting all \"minus\" vertices from , i.e., in ) gives .  (c) The bottom face (omitting all \"plus\" vertices from , i.e., in ) gives ; tracking the alternating signs carefully yields exactly .  (d) The side faces (omitting with , or with ) reassemble to . Indeed, the faces involving are precisely the prism over the -th face of , with the correct signs.  Combining (a)–(d) gives , which is the desired identity. The detailed sign verification, while tedious, reduces to the simplicial identities for the face maps ; see Hatcher, Theorem 2.10 for a fully explicit accounting.     Homotopy invariance of singular homology   If are homotopic continuous maps, then they induce the same map on homology:     Choose a homotopy from to . By , the prism operator is a chain homotopy from to . By , chain homotopic chain maps induce equal maps on homology, so .     Homotopy equivalences induce isomorphisms   If is a homotopy equivalence, then is an isomorphism for every . In particular, homotopy equivalent spaces have isomorphic homology groups.    Let be a homotopy inverse, so that and . By functoriality ( ) and homotopy invariance, and similarly . So is an isomorphism with inverse .    The corollary makes our earlier corollary precise: if is contractible, then the unique map is a homotopy equivalence, so for all . Concretely, , , and for every space and every .    Relative homotopy invariance  The same prism construction gives homotopy invariance of relative homology, provided we track the subspaces. A map of pairs  is a continuous map with . Two such maps are homotopic as maps of pairs if there is a homotopy from to with .   Relative homotopy invariance   If are homotopic as maps of pairs, then for all .    The prism operator built from sends into because . Hence it descends to a chain homotopy on the relative chain complexes , and applies as before.    Calling a map of pairs a homotopy equivalence of pairs if it admits a homotopy inverse of pairs, we obtain whenever and are homotopy equivalent pairs. We will use this freely on Friday.     Wednesday  The remaining major hurdle on the way to Mayer–Vietoris is to compare the homology computed from all singular simplices to the homology computed from singular simplices that are \"small\" with respect to a chosen open cover. The bridge is barycentric subdivision , a chain map together with a chain homotopy from to the identity. Iterating shrinks any simplex eventually inside any prescribed open cover.   Barycenters and the cone construction   Barycenter   The barycenter of an affine simplex in a convex set is the point For the standard simplex we write .    Let be a convex set, and let denote the subgroup generated by singular simplices, i.e., affine-linear maps . We write an affine simplex by its vertices: . The boundary operator restricts to by .   Cone operator   For a point , the cone operator  is defined on generators by      The cone relation   For any affine chain ,     Both formulas are immediate from the definition: omitting the vertex from gives , and omitting any other vertex gives (the corresponding face of ).    The cone relation expresses the geometric fact that a cone is a nullhomotopy of : its boundary is minus a chain involving the apex . We will use this repeatedly to construct chain homotopies.    Barycentric subdivision   Subdivision of affine simplices   Define recursively on generators. For , set . For , let with barycenter , and define That is, subdivide the boundary, then cone from the barycenter.    Unrolling the recursion shows that is a signed sum of all simplices , where is a chain of faces, and denotes the barycenter of . Geometrically, is the familiar barycentric subdivision of the simplex .   Subdivision is a chain map   For any convex , the subdivision operator satisfies .    By induction on . The base case is immediate. For , using and the inductive hypothesis, since .    We now extend to general singular chains. Given a singular simplex , define where is the identity (regarded as an affine singular simplex in the convex set ) and is the chain map induced by . Naturality is built in: is now a natural transformation on the category of topological spaces. The chain map property on general singular chains follows from the affine case applied to .   Subdivision is chain homotopic to the identity   There is a natural chain homotopy with     On affine chains in a convex set , define recursively by and, for , By induction (using and ), The bracketed inner expression equals by induction (the case uses the augmentation form of the cone relation and verifies directly). So . Extending to general singular chains by and using naturality gives the result on .      Iterated subdivision and the small chains theorem  Let be a collection of subspaces of whose interiors cover . We say a singular simplex is -small if for some . Let denote the subgroup generated by -small singular simplices. Since the boundary of a -small simplex is again a sum of -small simplices, is a subcomplex. Write for its homology and for the inclusion.   The small chains theorem   The inclusion is a chain homotopy equivalence; in particular it induces an isomorphism for every .    Given , the open cover of the compact metric space has a Lebesgue number . The diameter of an affine simplex strictly decreases under barycentric subdivision: if has diameter , then every simplex of has diameter at most . Hence after sufficiently many subdivisions , every simplex appearing has diameter less than , so its image lies inside some .  Define a homomorphism as the \"telescoping chain homotopy\" associated with iteration of the chain homotopy from : One verifies on each generator , and the residue lies in . Defining after a small adjustment (to ensure takes values in ) produces a chain map with and . The full verification appears in Hatcher, Proposition 2.21.    The takeaway is precisely what we want: for any open cover of , every homology class is represented by a chain whose simplices are entirely contained in members of , and two such chains are homologous via small chains whenever they are homologous at all.     Friday  Today we reach the destination of the last three weeks: the excision theorem , the Mayer–Vietoris sequence , and our first major computation — . As an immediate payoff we deduce the Brouwer fixed point theorem and see that and are not homeomorphic when .   Excision   Excision   Let be a pair and let be a subspace whose closure lies in the interior of : . Then the inclusion of pairs induces an isomorphism for every .    Let . The hypothesis implies , so is a cover whose interiors cover . Let be the subcomplex of -small chains and the corresponding relative complex. By and the five lemma applied to the long exact sequence of the pair, the inclusion induces an isomorphism on homology.  On the other hand, every -small chain decomposes uniquely (modulo chains in ) as a sum of a chain in and a chain in . The inclusion therefore descends to an isomorphism of relative complexes Since and , the left side is . Composing the two isomorphisms yields the result.    Excision is the fundamental \"locality\" property of singular homology: removing a well-embedded subspace from both and does not change the relative homology. It is what distinguishes homology from, say, the homotopy groups , which are not excisive.    The Mayer–Vietoris sequence  Let with subspaces whose interiors cover . The small chains theorem provides a short exact sequence where , , , and are the inclusions. (Exactness at the middle term is the \"decomposition\" used in the proof of excision; surjectivity at the right is the small chains theorem.) Passing to homology via the snake lemma yields:   Mayer–Vietoris sequence   Let with . Then there is a long exact sequence ending at . The connecting homomorphism is described as follows: a class can be represented (using the small chains theorem) by a cycle with and ; then is a chain in , and .    Apply the long exact sequence in homology to the short exact sequence of chain complexes displayed above, and use the small chains isomorphism .    There is also a reduced version: if is nonempty, the same argument applied to the augmented complexes gives an exact sequence We will use the reduced form for spheres.  Schematically, the Mayer–Vietoris sequence reads:  The Mayer–Vietoris long exact sequence rendered as a zigzag, with rows for each degree connected by the connecting homomorphism.       Homology of spheres   Homology of   For all and , Equivalently, , for , and for ,     The case is direct: is two points, so and for by and . We proceed by induction on .  Cover by and , the complements of the north and south poles. Both and are open, and stereographic projection gives homeomorphisms . In particular and are contractible, so by . The intersection deformation retracts onto the equatorial ; concretely, the radial projection realizes .  The reduced Mayer–Vietoris sequence becomes which, since the - and -terms vanish, collapses to isomorphisms By induction is when and zero otherwise, giving the claim. The case is handled by path-connectedness of for .      Applications  Two classical consequences are immediate.   Invariance of dimension   If , then and are not homeomorphic. More generally, and are not homotopy equivalent when .    Suppose . If , then by ; but shows these are concentrated in different degrees. For , observe that a hypothetical homeomorphism would restrict to a homeomorphism for some point . Since , this would give , contradicting the previous statement. The remaining cases ( or ) are handled by counting connected components.     No retraction   For there is no continuous retraction (i.e., no continuous with ).    Such a retraction would give, with , , whence on . But while — contradiction.     Brouwer fixed point theorem   Every continuous map has a fixed point.    Suppose for all . Define by sending to the point where the ray from through meets . Then is continuous and (a point on the boundary maps to itself), giving a retraction . This contradicts .    Next week we will leverage Mayer–Vietoris (and a related \"good pair\" version of excision) to compute the homology of further spaces, including the real projective spaces . The key new input there is to understand the effect on homology of attaching a single cell — in effect, a Mayer–Vietoris computation for the pair — which leads naturally into cellular homology and the calculation     "
+},
+{
+  "id": "notes-week-12-2-2",
+  "level": "2",
+  "url": "notes-week-12.html#notes-week-12-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homotopy invariance barycentric subdivision excision theorem Mayer–Vietoris sequence "
+},
+{
+  "id": "def-prism-decomposition",
+  "level": "2",
+  "url": "notes-week-12.html#def-prism-decomposition",
+  "type": "Definition",
+  "number": "2.12.1",
+  "title": "Simplicial decomposition of the prism.",
+  "body": " Simplicial decomposition of the prism   Let with . Write the vertices of as For each , let denote the affine-linear singular -simplex sending the vertices of in order to . The simplices have pairwise disjoint interiors and their images cover .   "
+},
+{
+  "id": "def-prism-operator",
+  "level": "2",
+  "url": "notes-week-12.html#def-prism-operator",
+  "type": "Definition",
+  "number": "2.12.2",
+  "title": "Prism operator.",
+  "body": " Prism operator   Let be a homotopy. The prism operator  is defined on a generator by and extended linearly to all of .   "
+},
+{
+  "id": "lem-prism-chain-homotopy",
+  "level": "2",
+  "url": "notes-week-12.html#lem-prism-chain-homotopy",
+  "type": "Lemma",
+  "number": "2.12.3",
+  "title": "The prism operator is a chain homotopy.",
+  "body": " The prism operator is a chain homotopy   For any homotopy between , the prism operator satisfies for all . That is, is a chain homotopy from to .    By linearity it suffices to evaluate both sides on a generator . Let . We compute using the definition of the boundary on each . The face of obtained by omitting the vertex with label falls into one of three classes:  (a) The faces internal to the prism (omitting from yields the same face as omitting from , with opposite sign). All such internal faces cancel pairwise.  (b) The top face (omitting all \"minus\" vertices from , i.e., in ) gives .  (c) The bottom face (omitting all \"plus\" vertices from , i.e., in ) gives ; tracking the alternating signs carefully yields exactly .  (d) The side faces (omitting with , or with ) reassemble to . Indeed, the faces involving are precisely the prism over the -th face of , with the correct signs.  Combining (a)–(d) gives , which is the desired identity. The detailed sign verification, while tedious, reduces to the simplicial identities for the face maps ; see Hatcher, Theorem 2.10 for a fully explicit accounting.   "
+},
+{
+  "id": "thm-homotopy-invariance",
+  "level": "2",
+  "url": "notes-week-12.html#thm-homotopy-invariance",
+  "type": "Theorem",
+  "number": "2.12.4",
+  "title": "Homotopy invariance of singular homology.",
+  "body": " Homotopy invariance of singular homology   If are homotopic continuous maps, then they induce the same map on homology:     Choose a homotopy from to . By , the prism operator is a chain homotopy from to . By , chain homotopic chain maps induce equal maps on homology, so .   "
+},
+{
+  "id": "cor-homotopy-equivalence-homology",
+  "level": "2",
+  "url": "notes-week-12.html#cor-homotopy-equivalence-homology",
+  "type": "Corollary",
+  "number": "2.12.5",
+  "title": "Homotopy equivalences induce isomorphisms.",
+  "body": " Homotopy equivalences induce isomorphisms   If is a homotopy equivalence, then is an isomorphism for every . In particular, homotopy equivalent spaces have isomorphic homology groups.    Let be a homotopy inverse, so that and . By functoriality ( ) and homotopy invariance, and similarly . So is an isomorphism with inverse .   "
+},
+{
+  "id": "subsubsec-relative-homotopy-invariance-2",
+  "level": "2",
+  "url": "notes-week-12.html#subsubsec-relative-homotopy-invariance-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "map of pairs homotopic as maps of pairs "
+},
+{
+  "id": "thm-relative-homotopy-invariance",
+  "level": "2",
+  "url": "notes-week-12.html#thm-relative-homotopy-invariance",
+  "type": "Theorem",
+  "number": "2.12.6",
+  "title": "Relative homotopy invariance.",
+  "body": " Relative homotopy invariance   If are homotopic as maps of pairs, then for all .    The prism operator built from sends into because . Hence it descends to a chain homotopy on the relative chain complexes , and applies as before.   "
+},
+{
+  "id": "subsubsec-relative-homotopy-invariance-4",
+  "level": "2",
+  "url": "notes-week-12.html#subsubsec-relative-homotopy-invariance-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homotopy equivalence of pairs "
+},
+{
+  "id": "notes-week-12-3-2",
+  "level": "2",
+  "url": "notes-week-12.html#notes-week-12-3-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "barycentric subdivision "
+},
+{
+  "id": "def-barycenter",
+  "level": "2",
+  "url": "notes-week-12.html#def-barycenter",
+  "type": "Definition",
+  "number": "2.12.7",
+  "title": "Barycenter.",
+  "body": " Barycenter   The barycenter of an affine simplex in a convex set is the point For the standard simplex we write .   "
+},
+{
+  "id": "def-cone-operator",
+  "level": "2",
+  "url": "notes-week-12.html#def-cone-operator",
+  "type": "Definition",
+  "number": "2.12.8",
+  "title": "Cone operator.",
+  "body": " Cone operator   For a point , the cone operator  is defined on generators by    "
+},
+{
+  "id": "lem-cone-relation",
+  "level": "2",
+  "url": "notes-week-12.html#lem-cone-relation",
+  "type": "Lemma",
+  "number": "2.12.9",
+  "title": "The cone relation.",
+  "body": " The cone relation   For any affine chain ,     Both formulas are immediate from the definition: omitting the vertex from gives , and omitting any other vertex gives (the corresponding face of ).   "
+},
+{
+  "id": "def-affine-subdivision",
+  "level": "2",
+  "url": "notes-week-12.html#def-affine-subdivision",
+  "type": "Definition",
+  "number": "2.12.10",
+  "title": "Subdivision of affine simplices.",
+  "body": " Subdivision of affine simplices   Define recursively on generators. For , set . For , let with barycenter , and define That is, subdivide the boundary, then cone from the barycenter.   "
+},
+{
+  "id": "lem-subdivision-chain-map",
+  "level": "2",
+  "url": "notes-week-12.html#lem-subdivision-chain-map",
+  "type": "Lemma",
+  "number": "2.12.11",
+  "title": "Subdivision is a chain map.",
+  "body": " Subdivision is a chain map   For any convex , the subdivision operator satisfies .    By induction on . The base case is immediate. For , using and the inductive hypothesis, since .   "
+},
+{
+  "id": "lem-subdivision-chain-homotopy",
+  "level": "2",
+  "url": "notes-week-12.html#lem-subdivision-chain-homotopy",
+  "type": "Lemma",
+  "number": "2.12.12",
+  "title": "Subdivision is chain homotopic to the identity.",
+  "body": " Subdivision is chain homotopic to the identity   There is a natural chain homotopy with     On affine chains in a convex set , define recursively by and, for , By induction (using and ), The bracketed inner expression equals by induction (the case uses the augmentation form of the cone relation and verifies directly). So . Extending to general singular chains by and using naturality gives the result on .   "
+},
+{
+  "id": "subsubsec-small-chains-2",
+  "level": "2",
+  "url": "notes-week-12.html#subsubsec-small-chains-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "-small "
+},
+{
+  "id": "thm-small-chains",
+  "level": "2",
+  "url": "notes-week-12.html#thm-small-chains",
+  "type": "Theorem",
+  "number": "2.12.13",
+  "title": "The small chains theorem.",
+  "body": " The small chains theorem   The inclusion is a chain homotopy equivalence; in particular it induces an isomorphism for every .    Given , the open cover of the compact metric space has a Lebesgue number . The diameter of an affine simplex strictly decreases under barycentric subdivision: if has diameter , then every simplex of has diameter at most . Hence after sufficiently many subdivisions , every simplex appearing has diameter less than , so its image lies inside some .  Define a homomorphism as the \"telescoping chain homotopy\" associated with iteration of the chain homotopy from : One verifies on each generator , and the residue lies in . Defining after a small adjustment (to ensure takes values in ) produces a chain map with and . The full verification appears in Hatcher, Proposition 2.21.   "
+},
+{
+  "id": "notes-week-12-4-2",
+  "level": "2",
+  "url": "notes-week-12.html#notes-week-12-4-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "excision theorem Mayer–Vietoris sequence "
+},
+{
+  "id": "thm-excision",
+  "level": "2",
+  "url": "notes-week-12.html#thm-excision",
+  "type": "Theorem",
+  "number": "2.12.14",
+  "title": "Excision.",
+  "body": " Excision   Let be a pair and let be a subspace whose closure lies in the interior of : . Then the inclusion of pairs induces an isomorphism for every .    Let . The hypothesis implies , so is a cover whose interiors cover . Let be the subcomplex of -small chains and the corresponding relative complex. By and the five lemma applied to the long exact sequence of the pair, the inclusion induces an isomorphism on homology.  On the other hand, every -small chain decomposes uniquely (modulo chains in ) as a sum of a chain in and a chain in . The inclusion therefore descends to an isomorphism of relative complexes Since and , the left side is . Composing the two isomorphisms yields the result.   "
+},
+{
+  "id": "thm-mayer-vietoris",
+  "level": "2",
+  "url": "notes-week-12.html#thm-mayer-vietoris",
+  "type": "Theorem",
+  "number": "2.12.15",
+  "title": "Mayer–Vietoris sequence.",
+  "body": " Mayer–Vietoris sequence   Let with . Then there is a long exact sequence ending at . The connecting homomorphism is described as follows: a class can be represented (using the small chains theorem) by a cycle with and ; then is a chain in , and .    Apply the long exact sequence in homology to the short exact sequence of chain complexes displayed above, and use the small chains isomorphism .   "
+},
+{
+  "id": "thm-homology-spheres",
+  "level": "2",
+  "url": "notes-week-12.html#thm-homology-spheres",
+  "type": "Theorem",
+  "number": "2.12.16",
+  "title": "Homology of <span class=\"process-math\">\\(S^n\\)<\/span>.",
+  "body": " Homology of   For all and , Equivalently, , for , and for ,     The case is direct: is two points, so and for by and . We proceed by induction on .  Cover by and , the complements of the north and south poles. Both and are open, and stereographic projection gives homeomorphisms . In particular and are contractible, so by . The intersection deformation retracts onto the equatorial ; concretely, the radial projection realizes .  The reduced Mayer–Vietoris sequence becomes which, since the - and -terms vanish, collapses to isomorphisms By induction is when and zero otherwise, giving the claim. The case is handled by path-connectedness of for .   "
+},
+{
+  "id": "cor-invariance-of-dimension",
+  "level": "2",
+  "url": "notes-week-12.html#cor-invariance-of-dimension",
+  "type": "Corollary",
+  "number": "2.12.17",
+  "title": "Invariance of dimension.",
+  "body": " Invariance of dimension   If , then and are not homeomorphic. More generally, and are not homotopy equivalent when .    Suppose . If , then by ; but shows these are concentrated in different degrees. For , observe that a hypothetical homeomorphism would restrict to a homeomorphism for some point . Since , this would give , contradicting the previous statement. The remaining cases ( or ) are handled by counting connected components.   "
+},
+{
+  "id": "cor-no-retraction",
+  "level": "2",
+  "url": "notes-week-12.html#cor-no-retraction",
+  "type": "Corollary",
+  "number": "2.12.18",
+  "title": "No retraction <span class=\"process-math\">\\(D^n\\to S^{n-1}\\)<\/span>.",
+  "body": " No retraction   For there is no continuous retraction (i.e., no continuous with ).    Such a retraction would give, with , , whence on . But while — contradiction.   "
+},
+{
+  "id": "thm-brouwer-fixed-point",
+  "level": "2",
+  "url": "notes-week-12.html#thm-brouwer-fixed-point",
+  "type": "Theorem",
+  "number": "2.12.19",
+  "title": "Brouwer fixed point theorem.",
+  "body": " Brouwer fixed point theorem   Every continuous map has a fixed point.    Suppose for all . Define by sending to the point where the ray from through meets . Then is continuous and (a point on the boundary maps to itself), giving a retraction . This contradicts .   "
+},
+{
+  "id": "subsubsec-applications-spheres-6",
+  "level": "2",
+  "url": "notes-week-12.html#subsubsec-applications-spheres-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "cellular homology "
+},
+{
   "id": "homework-2",
   "level": "1",
   "url": "homework-2.html",

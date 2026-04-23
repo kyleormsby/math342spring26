@@ -147,7 +147,7 @@
     <!-- https://pretextbook.org/doc/guide/html/publication-file-online.html#online-style-options -->
     <css
         theme="default-modern"
-        primary-color="#00FFCC"
+        primary-color="#006652"
         primary-color-dark="#00FFCC"
         provide-dark-mode="yes"
     />

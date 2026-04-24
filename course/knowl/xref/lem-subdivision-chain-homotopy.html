@@ -28,25 +28,118 @@
 \partial T + T\partial = S - \mathrm{id}.
 \end{equation*}
 </div>
+<div class="para">Pictured as a diagram:</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="image-box" style="width: 85%; margin-left: 7.5%; margin-right: 7.5%;"><img src="generated/latex-image/lem-subdivision-chain-homotopy-2-2.svg" role="img" class="contained" alt="Chain homotopy diagram: two copies of the singular chain complex with boundary maps horizontally, with the diagonal maps T going up one degree. The vertical arrows S - id record the difference of the two chain maps, equal to ∂T + T∂."></div>
+<div class="autopermalink" data-description="Lemma 2.12.12: Subdivision is chain homotopic to the identity"><a href="#lem-subdivision-chain-homotopy" title="Copy heading and permalink for Lemma 2.12.12: Subdivision is chain homotopic to the identity" aria-label="Copy heading and permalink for Lemma 2.12.12: Subdivision is chain homotopic to the identity">🔗</a></div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para">As for the prism operator, the construction proceeds in two stages. We first build <span class="process-math">\(T\)</span> on affine chains <span class="process-math">\(LC_\bullet(Y)\)</span> in a convex set <span class="process-math">\(Y\subseteq\mathbb{R}^N\)</span> by a recursion using the cone operator; we then transport the result to a general space <span class="process-math">\(X\)</span> by naturality.<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Lemma 2.12.12: Subdivision is chain homotopic to the identity"><a href="#lem-subdivision-chain-homotopy" title="Copy heading and permalink for Lemma 2.12.12: Subdivision is chain homotopic to the identity" aria-label="Copy heading and permalink for Lemma 2.12.12: Subdivision is chain homotopic to the identity">🔗</a></div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para logical">
-<div class="para">On affine chains in a convex set <span class="process-math">\(Y\text{,}\)</span> define <span class="process-math">\(T\)</span> recursively by <span class="process-math">\(T[w_0]:=0\)</span> and, for <span class="process-math">\(n\ge 1\text{,}\)</span>
+<div class="para logical">
+<div class="para">
+<em class="alert">Where the formula comes from.</em> The recipe below can look like it falls from the sky, so it helps to see that it is essentially forced. The only chain-level tool we have on affine chains is the cone operator, which satisfies <span class="process-math">\(\partial(b\cdot\alpha)=\alpha-b\cdot\partial\alpha\)</span> — i.e., <span class="process-math">\(b\cdot(-)\)</span> is <em class="emphasis">already</em> a chain homotopy from <span class="process-math">\(\mathrm{id}\)</span> to <span class="process-math">\(0\text{.}\)</span> So we try the ansatz <span class="process-math">\(T(\beta)=b_\beta\cdot\gamma(\beta)\)</span> for some chain <span class="process-math">\(\gamma(\beta)\)</span> to be determined (using the same canonical vertex <span class="process-math">\(b_\beta\)</span> as <span class="process-math">\(S\)</span>). The cone relation then gives <span class="process-math">\(\partial T(\beta)=\gamma(\beta)-b_\beta\cdot\partial\gamma(\beta)\text{,}\)</span> and the desired identity <span class="process-math">\(\partial T+T\partial=S-\mathrm{id}\)</span> rearranges to</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\gamma(\beta) \;=\; S(\beta) - \beta - T(\partial\beta) + b_\beta\cdot\partial\gamma(\beta).
+\end{equation*}
+</div>
+<div class="para">If we <em class="emphasis">drop</em> the last correction term and simply set <span class="process-math">\(\gamma(\beta):=S(\beta)-\beta-T(\partial\beta)\text{,}\)</span> a small miracle takes place: <span class="process-math">\(\partial\gamma(\beta)=0\text{,}\)</span> so <span class="process-math">\(b_\beta\cdot\partial\gamma(\beta)=0\)</span> and the recursion is self-consistent. The vanishing of <span class="process-math">\(\partial\gamma(\beta)\)</span> combines three ingredients we already have in hand — <span class="process-math">\(\partial S = S\partial\text{,}\)</span> <span class="process-math">\(\partial^2 = 0\text{,}\)</span> and the inductive hypothesis for <span class="process-math">\(T\)</span> on <span class="process-math">\(\partial\beta\)</span> — and we verify it explicitly below.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">
+<em class="alert">Recursive definition on affine chains.</em> On the generators <span class="process-math">\([w_0]\)</span> of <span class="process-math">\(LC_0(Y)\text{,}\)</span> set</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-cone-operator.html">
+\begin{equation*}
+T\bigl([w_0]\bigr) := 0.
+\end{equation*}
+</div>
+<div class="para">For <span class="process-math">\(n\ge 1\text{,}\)</span> assuming <span class="process-math">\(T\)</span> has been defined on <span class="process-math">\(LC_{n-1}(Y)\text{,}\)</span> set</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-cone-operator.html">
+\begin{equation*}
+T(\beta) \;:=\; b_\beta\cdot\bigl(S(\beta)-\beta-T(\partial\beta)\bigr)
+\qquad\text{for each affine } n\text{-simplex } \beta,
+\end{equation*}
+</div>
+<div class="para">and extend <span class="process-math">\(\mathbb{Z}\)</span>-linearly. Here <span class="process-math">\(b_\beta\)</span> is the barycenter of <span class="process-math">\(\beta\)</span> and <span class="process-math">\(b_\beta\cdot(-)\)</span> denotes the cone operator (<a href="notes-week-12.html#def-cone-operator" class="xref" data-knowl="./knowl/xref/def-cone-operator.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.12.8: Cone operator">Definition 2.12.8</a>). The recursion is well-posed because <span class="process-math">\(T(\partial\beta)\text{,}\)</span> involving only <span class="process-math">\((n-1)\)</span>-chains, has already been defined.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para">
+<em class="alert">Verification of the chain-homotopy identity on <span class="process-math">\(LC_\bullet(Y)\text{.}\)</span></em> We show <span class="process-math">\(\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta\)</span> for every affine simplex <span class="process-math">\(\beta\text{,}\)</span> by induction on <span class="process-math">\(n=\dim\beta\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para">
+<em class="emphasis">Base case <span class="process-math">\(n=0\text{.}\)</span></em> For <span class="process-math">\(\beta=[w_0]\text{,}\)</span> both <span class="process-math">\(T(\beta)=0\)</span> and <span class="process-math">\(T(\partial\beta)=0\)</span> (the latter because <span class="process-math">\(\partial[w_0]=0\)</span>), so the left-hand side is <span class="process-math">\(0\text{.}\)</span> The right-hand side is also <span class="process-math">\(0\)</span> since <span class="process-math">\(S([w_0])=[w_0]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">
+<em class="emphasis">Inductive step.</em> Fix <span class="process-math">\(n\ge 1\)</span> and an affine <span class="process-math">\(n\)</span>-simplex <span class="process-math">\(\beta\text{,}\)</span> and abbreviate</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html">
+\begin{equation*}
+\xi \;:=\; S(\beta)-\beta-T(\partial\beta) \;\in\; LC_n(Y),
+\qquad\text{so that}\qquad T(\beta)=b_\beta\cdot\xi.
+\end{equation*}
+</div>
+<div class="para">Applying the cone relation <a href="notes-week-12.html#lem-cone-relation" class="xref" data-knowl="./knowl/xref/lem-cone-relation.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.9: The cone relation">Lemma 2.12.9</a> to <span class="process-math">\(b_\beta\cdot\xi\text{,}\)</span>
 </div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html">
 \begin{equation*}
-T(\beta) := b_\beta\cdot\bigl(S(\beta)-\beta-T(\partial\beta)\bigr).
+\partial T(\beta) \;=\; \partial(b_\beta\cdot\xi)
+\;=\; \xi \,-\, b_\beta\cdot\partial\xi.
+\tag{\(\ast\)}
 \end{equation*}
 </div>
-<div class="para">By induction (using <a href="notes-week-12.html#lem-cone-relation" class="xref" data-knowl="./knowl/xref/lem-cone-relation.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.9: The cone relation">Lemma 2.12.9</a> and <a href="notes-week-12.html#lem-subdivision-chain-map" class="xref" data-knowl="./knowl/xref/lem-subdivision-chain-map.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.11: Subdivision is a chain map">Lemma 2.12.11</a>),</div>
+<div class="para">We now evaluate <span class="process-math">\(\partial\xi\text{.}\)</span> By linearity of <span class="process-math">\(\partial\text{,}\)</span>
+</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html">
 \begin{equation*}
-\partial T(\beta) = S(\beta)-\beta-T(\partial\beta) - b_\beta\cdot\partial(S(\beta)-\beta-T(\partial\beta)).
+\partial\xi \;=\; \partial S(\beta)\,-\,\partial\beta\,-\,\partial T(\partial\beta).
 \end{equation*}
 </div>
-<div class="para">The bracketed inner expression equals <span class="process-math">\(S(\partial\beta)-\partial\beta-(S(\partial\beta)-\partial\beta-T(\partial^2\beta))=0\)</span> by induction (the case <span class="process-math">\(n=1\)</span> uses the augmentation form of the cone relation and verifies directly). So <span class="process-math">\(\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta\text{.}\)</span> Extending to general singular chains by <span class="process-math">\(T(\sigma):=\sigma_\sharp T(\iota_n)\)</span> and using naturality gives the result on <span class="process-math">\(C_\bullet(X)\text{.}\)</span>
+<div class="para">Since <span class="process-math">\(\partial S=S\partial\)</span> (<a href="notes-week-12.html#lem-subdivision-chain-map" class="xref" data-knowl="./knowl/xref/lem-subdivision-chain-map.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.11: Subdivision is a chain map">Lemma 2.12.11</a>), the first term equals <span class="process-math">\(S(\partial\beta)\text{.}\)</span> For the third term we apply the inductive hypothesis to the <span class="process-math">\((n-1)\)</span>-chain <span class="process-math">\(\partial\beta\text{:}\)</span>
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html">
+\begin{equation*}
+\partial T(\partial\beta)+T(\partial^2\beta) \;=\; S(\partial\beta)-\partial\beta.
+\end{equation*}
+</div>
+<div class="para">Because <span class="process-math">\(\partial^2=0\text{,}\)</span> the <span class="process-math">\(T(\partial^2\beta)\)</span> term vanishes, and we obtain <span class="process-math">\(\partial T(\partial\beta)=S(\partial\beta)-\partial\beta\text{.}\)</span> Substituting these two identifications into the expansion of <span class="process-math">\(\partial\xi\)</span> gives</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html">
+\begin{equation*}
+\partial\xi
+\;=\; S(\partial\beta)\,-\,\partial\beta\,-\,\bigl(S(\partial\beta)-\partial\beta\bigr)
+\;=\; 0.
+\end{equation*}
+</div>
+<div class="para">Plugging back into <span class="process-math">\((\ast)\text{,}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html">
+\begin{equation*}
+\partial T(\beta) \;=\; \xi \;=\; S(\beta)-\beta-T(\partial\beta),
+\end{equation*}
+</div>
+<div class="para">which rearranges to <span class="process-math">\(\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta\text{,}\)</span> completing the induction.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">
+<em class="alert">Extension to singular chains by naturality.</em> Let <span class="process-math">\(\iota_n\colon\Delta^n\to\Delta^n\)</span> denote the identity <span class="process-math">\(n\)</span>-simplex, viewed as an affine singular simplex in the convex set <span class="process-math">\(\Delta^n\subseteq\mathbb{R}^{n+1}\text{.}\)</span> For a general singular simplex <span class="process-math">\(\sigma\colon\Delta^n\to X\text{,}\)</span> define</div>
+<div class="displaymath process-math">
+\begin{equation*}
+T(\sigma) \;:=\; \sigma_\sharp\bigl(T(\iota_n)\bigr) \;\in\; C_{n+1}(X),
+\end{equation*}
+</div>
+<div class="para">and extend linearly to <span class="process-math">\(T\colon C_n(X)\to C_{n+1}(X)\text{.}\)</span> Every ingredient in the affine recursion (namely <span class="process-math">\(S\text{,}\)</span> <span class="process-math">\(\partial\text{,}\)</span> and the cone operator) is natural in the space, so for every continuous map <span class="process-math">\(\sigma\colon\Delta^n\to X\)</span> the induced chain map <span class="process-math">\(\sigma_\sharp\)</span> commutes with <span class="process-math">\(T\text{,}\)</span> <span class="process-math">\(S\text{,}\)</span> and <span class="process-math">\(\partial\text{.}\)</span> Concretely,</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="image-box" style="width: 70%; margin-left: 15%; margin-right: 15%;"><img src="generated/latex-image/lem-subdivision-chain-homotopy-3-8.svg" role="img" class="contained" alt="Naturality square showing that sigma-sharp intertwines the affine T on LC(Delta^n) with the singular T on C(X)."></div>
+<div class="para logical">
+<div class="para">Applying <span class="process-math">\(\sigma_\sharp\)</span> to the already-proven identity <span class="process-math">\(\partial T(\iota_n)+T(\partial\iota_n)=S(\iota_n)-\iota_n\)</span> in <span class="process-math">\(LC_\bullet(\Delta^n)\)</span> yields</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\partial T(\sigma)+T(\partial\sigma) \;=\; S(\sigma)-\sigma
+\end{equation*}
+</div>
+<div class="para">in <span class="process-math">\(C_\bullet(X)\text{,}\)</span> as required. Naturality is built into the definition: for any continuous <span class="process-math">\(f\colon X\to Y\text{,}\)</span> the square <span class="process-math">\(f_\sharp\circ T=T\circ f_\sharp\)</span> commutes, since both sides equal <span class="process-math">\((f\circ\sigma)_\sharp(T(\iota_n))\)</span> on a generator <span class="process-math">\(\sigma\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proof 2.12.12.1"><a href="#lem-subdivision-chain-homotopy-3" title="Copy heading and permalink for Proof 2.12.12.1" aria-label="Copy heading and permalink for Proof 2.12.12.1">🔗</a></div></article></details><span class="incontext"><a class="internal" href="notes-week-12.html#lem-subdivision-chain-homotopy">in-context</a></span>
 </body>

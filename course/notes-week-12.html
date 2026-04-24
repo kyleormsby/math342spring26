@@ -102,14 +102,14 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.13.4';
+eBookConfig.runestone_version = '7.13.5';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.b76b8eace4405b9e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.bbf2283c5c1d4f99.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<script src="_static/prefix-runtime.52176322e2c1dde5.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.bbf2283c5c1d4f99.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
 <link rel="stylesheet" type="text/css" href="_static/prefix-runestone.b12a7b3f0773ebcd.css">
 <script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
@@ -716,25 +716,118 @@ S(\sigma) := \sigma_\sharp\bigl(S(\iota_n)\bigr),
 \partial T + T\partial = S - \mathrm{id}.
 \end{equation*}
 </div>
+<div class="para">Pictured as a diagram:</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="image-box" style="width: 85%; margin-left: 7.5%; margin-right: 7.5%;"><img src="generated/latex-image/lem-subdivision-chain-homotopy-2-2.svg" role="img" class="contained" alt="Chain homotopy diagram: two copies of the singular chain complex with boundary maps horizontally, with the diagonal maps T going up one degree. The vertical arrows S - id record the difference of the two chain maps, equal to ∂T + T∂."></div>
+<div class="autopermalink" data-description="Lemma 2.12.12: Subdivision is chain homotopic to the identity"><a href="#lem-subdivision-chain-homotopy" title="Copy heading and permalink for Lemma 2.12.12: Subdivision is chain homotopic to the identity" aria-label="Copy heading and permalink for Lemma 2.12.12: Subdivision is chain homotopic to the identity">🔗</a></div></article><details id="lem-subdivision-chain-homotopy-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="lem-subdivision-chain-homotopy-3-1">As for the prism operator, the construction proceeds in two stages. We first build <span class="process-math">\(T\)</span> on affine chains <span class="process-math">\(LC_\bullet(Y)\)</span> in a convex set <span class="process-math">\(Y\subseteq\mathbb{R}^N\)</span> by a recursion using the cone operator; we then transport the result to a general space <span class="process-math">\(X\)</span> by naturality.<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Lemma 2.12.12: Subdivision is chain homotopic to the identity"><a href="#lem-subdivision-chain-homotopy" title="Copy heading and permalink for Lemma 2.12.12: Subdivision is chain homotopic to the identity" aria-label="Copy heading and permalink for Lemma 2.12.12: Subdivision is chain homotopic to the identity">🔗</a></div></article><details id="lem-subdivision-chain-homotopy-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para logical" id="lem-subdivision-chain-homotopy-3-1">
-<div class="para">On affine chains in a convex set <span class="process-math">\(Y\text{,}\)</span> define <span class="process-math">\(T\)</span> recursively by <span class="process-math">\(T[w_0]:=0\)</span> and, for <span class="process-math">\(n\ge 1\text{,}\)</span>
-</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html" id="lem-subdivision-chain-homotopy-3-1-5">
+<div class="para logical" id="lem-subdivision-chain-homotopy-3-2">
+<div class="para">
+<em class="alert">Where the formula comes from.</em> The recipe below can look like it falls from the sky, so it helps to see that it is essentially forced. The only chain-level tool we have on affine chains is the cone operator, which satisfies <span class="process-math">\(\partial(b\cdot\alpha)=\alpha-b\cdot\partial\alpha\)</span> — i.e., <span class="process-math">\(b\cdot(-)\)</span> is <em class="emphasis">already</em> a chain homotopy from <span class="process-math">\(\mathrm{id}\)</span> to <span class="process-math">\(0\text{.}\)</span> So we try the ansatz <span class="process-math">\(T(\beta)=b_\beta\cdot\gamma(\beta)\)</span> for some chain <span class="process-math">\(\gamma(\beta)\)</span> to be determined (using the same canonical vertex <span class="process-math">\(b_\beta\)</span> as <span class="process-math">\(S\)</span>). The cone relation then gives <span class="process-math">\(\partial T(\beta)=\gamma(\beta)-b_\beta\cdot\partial\gamma(\beta)\text{,}\)</span> and the desired identity <span class="process-math">\(\partial T+T\partial=S-\mathrm{id}\)</span> rearranges to</div>
+<div class="displaymath process-math" id="lem-subdivision-chain-homotopy-3-2-13">
 \begin{equation*}
-T(\beta) := b_\beta\cdot\bigl(S(\beta)-\beta-T(\partial\beta)\bigr).
+\gamma(\beta) \;=\; S(\beta) - \beta - T(\partial\beta) + b_\beta\cdot\partial\gamma(\beta).
 \end{equation*}
 </div>
-<div class="para">By induction (using <a href="notes-week-12.html#lem-cone-relation" class="xref" data-knowl="./knowl/xref/lem-cone-relation.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.9: The cone relation">Lemma 2.12.9</a> and <a href="notes-week-12.html#lem-subdivision-chain-map" class="xref" data-knowl="./knowl/xref/lem-subdivision-chain-map.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.11: Subdivision is a chain map">Lemma 2.12.11</a>),</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html" id="lem-subdivision-chain-homotopy-3-1-8">
+<div class="para">If we <em class="emphasis">drop</em> the last correction term and simply set <span class="process-math">\(\gamma(\beta):=S(\beta)-\beta-T(\partial\beta)\text{,}\)</span> a small miracle takes place: <span class="process-math">\(\partial\gamma(\beta)=0\text{,}\)</span> so <span class="process-math">\(b_\beta\cdot\partial\gamma(\beta)=0\)</span> and the recursion is self-consistent. The vanishing of <span class="process-math">\(\partial\gamma(\beta)\)</span> combines three ingredients we already have in hand — <span class="process-math">\(\partial S = S\partial\text{,}\)</span> <span class="process-math">\(\partial^2 = 0\text{,}\)</span> and the inductive hypothesis for <span class="process-math">\(T\)</span> on <span class="process-math">\(\partial\beta\)</span> — and we verify it explicitly below.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="lem-subdivision-chain-homotopy-3-3">
+<div class="para">
+<em class="alert">Recursive definition on affine chains.</em> On the generators <span class="process-math">\([w_0]\)</span> of <span class="process-math">\(LC_0(Y)\text{,}\)</span> set</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-cone-operator.html" id="lem-subdivision-chain-homotopy-3-3-4">
 \begin{equation*}
-\partial T(\beta) = S(\beta)-\beta-T(\partial\beta) - b_\beta\cdot\partial(S(\beta)-\beta-T(\partial\beta)).
+T\bigl([w_0]\bigr) := 0.
 \end{equation*}
 </div>
-<div class="para">The bracketed inner expression equals <span class="process-math">\(S(\partial\beta)-\partial\beta-(S(\partial\beta)-\partial\beta-T(\partial^2\beta))=0\)</span> by induction (the case <span class="process-math">\(n=1\)</span> uses the augmentation form of the cone relation and verifies directly). So <span class="process-math">\(\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta\text{.}\)</span> Extending to general singular chains by <span class="process-math">\(T(\sigma):=\sigma_\sharp T(\iota_n)\)</span> and using naturality gives the result on <span class="process-math">\(C_\bullet(X)\text{.}\)</span>
+<div class="para">For <span class="process-math">\(n\ge 1\text{,}\)</span> assuming <span class="process-math">\(T\)</span> has been defined on <span class="process-math">\(LC_{n-1}(Y)\text{,}\)</span> set</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-cone-operator.html" id="lem-subdivision-chain-homotopy-3-3-8">
+\begin{equation*}
+T(\beta) \;:=\; b_\beta\cdot\bigl(S(\beta)-\beta-T(\partial\beta)\bigr)
+\qquad\text{for each affine } n\text{-simplex } \beta,
+\end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">and extend <span class="process-math">\(\mathbb{Z}\)</span>-linearly. Here <span class="process-math">\(b_\beta\)</span> is the barycenter of <span class="process-math">\(\beta\)</span> and <span class="process-math">\(b_\beta\cdot(-)\)</span> denotes the cone operator (<a href="notes-week-12.html#def-cone-operator" class="xref" data-knowl="./knowl/xref/def-cone-operator.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.12.8: Cone operator">Definition 2.12.8</a>). The recursion is well-posed because <span class="process-math">\(T(\partial\beta)\text{,}\)</span> involving only <span class="process-math">\((n-1)\)</span>-chains, has already been defined.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="lem-subdivision-chain-homotopy-3-4">
+<em class="alert">Verification of the chain-homotopy identity on <span class="process-math">\(LC_\bullet(Y)\text{.}\)</span></em> We show <span class="process-math">\(\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta\)</span> for every affine simplex <span class="process-math">\(\beta\text{,}\)</span> by induction on <span class="process-math">\(n=\dim\beta\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="lem-subdivision-chain-homotopy-3-5">
+<em class="emphasis">Base case <span class="process-math">\(n=0\text{.}\)</span></em> For <span class="process-math">\(\beta=[w_0]\text{,}\)</span> both <span class="process-math">\(T(\beta)=0\)</span> and <span class="process-math">\(T(\partial\beta)=0\)</span> (the latter because <span class="process-math">\(\partial[w_0]=0\)</span>), so the left-hand side is <span class="process-math">\(0\text{.}\)</span> The right-hand side is also <span class="process-math">\(0\)</span> since <span class="process-math">\(S([w_0])=[w_0]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="lem-subdivision-chain-homotopy-3-6">
+<div class="para">
+<em class="emphasis">Inductive step.</em> Fix <span class="process-math">\(n\ge 1\)</span> and an affine <span class="process-math">\(n\)</span>-simplex <span class="process-math">\(\beta\text{,}\)</span> and abbreviate</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html" id="lem-subdivision-chain-homotopy-3-6-5">
+\begin{equation*}
+\xi \;:=\; S(\beta)-\beta-T(\partial\beta) \;\in\; LC_n(Y),
+\qquad\text{so that}\qquad T(\beta)=b_\beta\cdot\xi.
+\end{equation*}
+</div>
+<div class="para">Applying the cone relation <a href="notes-week-12.html#lem-cone-relation" class="xref" data-knowl="./knowl/xref/lem-cone-relation.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.9: The cone relation">Lemma 2.12.9</a> to <span class="process-math">\(b_\beta\cdot\xi\text{,}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html" id="lem-subdivision-chain-homotopy-3-6-8">
+\begin{equation*}
+\partial T(\beta) \;=\; \partial(b_\beta\cdot\xi)
+\;=\; \xi \,-\, b_\beta\cdot\partial\xi.
+\tag{\(\ast\)}
+\end{equation*}
+</div>
+<div class="para">We now evaluate <span class="process-math">\(\partial\xi\text{.}\)</span> By linearity of <span class="process-math">\(\partial\text{,}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html" id="lem-subdivision-chain-homotopy-3-6-11">
+\begin{equation*}
+\partial\xi \;=\; \partial S(\beta)\,-\,\partial\beta\,-\,\partial T(\partial\beta).
+\end{equation*}
+</div>
+<div class="para">Since <span class="process-math">\(\partial S=S\partial\)</span> (<a href="notes-week-12.html#lem-subdivision-chain-map" class="xref" data-knowl="./knowl/xref/lem-subdivision-chain-map.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.11: Subdivision is a chain map">Lemma 2.12.11</a>), the first term equals <span class="process-math">\(S(\partial\beta)\text{.}\)</span> For the third term we apply the inductive hypothesis to the <span class="process-math">\((n-1)\)</span>-chain <span class="process-math">\(\partial\beta\text{:}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html" id="lem-subdivision-chain-homotopy-3-6-17">
+\begin{equation*}
+\partial T(\partial\beta)+T(\partial^2\beta) \;=\; S(\partial\beta)-\partial\beta.
+\end{equation*}
+</div>
+<div class="para">Because <span class="process-math">\(\partial^2=0\text{,}\)</span> the <span class="process-math">\(T(\partial^2\beta)\)</span> term vanishes, and we obtain <span class="process-math">\(\partial T(\partial\beta)=S(\partial\beta)-\partial\beta\text{.}\)</span> Substituting these two identifications into the expansion of <span class="process-math">\(\partial\xi\)</span> gives</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html" id="lem-subdivision-chain-homotopy-3-6-22">
+\begin{equation*}
+\partial\xi
+\;=\; S(\partial\beta)\,-\,\partial\beta\,-\,\bigl(S(\partial\beta)-\partial\beta\bigr)
+\;=\; 0.
+\end{equation*}
+</div>
+<div class="para">Plugging back into <span class="process-math">\((\ast)\text{,}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-cone-relation.html ./knowl/xref/lem-subdivision-chain-map.html" id="lem-subdivision-chain-homotopy-3-6-24">
+\begin{equation*}
+\partial T(\beta) \;=\; \xi \;=\; S(\beta)-\beta-T(\partial\beta),
+\end{equation*}
+</div>
+<div class="para">which rearranges to <span class="process-math">\(\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta\text{,}\)</span> completing the induction.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="lem-subdivision-chain-homotopy-3-7">
+<div class="para">
+<em class="alert">Extension to singular chains by naturality.</em> Let <span class="process-math">\(\iota_n\colon\Delta^n\to\Delta^n\)</span> denote the identity <span class="process-math">\(n\)</span>-simplex, viewed as an affine singular simplex in the convex set <span class="process-math">\(\Delta^n\subseteq\mathbb{R}^{n+1}\text{.}\)</span> For a general singular simplex <span class="process-math">\(\sigma\colon\Delta^n\to X\text{,}\)</span> define</div>
+<div class="displaymath process-math" id="lem-subdivision-chain-homotopy-3-7-6">
+\begin{equation*}
+T(\sigma) \;:=\; \sigma_\sharp\bigl(T(\iota_n)\bigr) \;\in\; C_{n+1}(X),
+\end{equation*}
+</div>
+<div class="para">and extend linearly to <span class="process-math">\(T\colon C_n(X)\to C_{n+1}(X)\text{.}\)</span> Every ingredient in the affine recursion (namely <span class="process-math">\(S\text{,}\)</span> <span class="process-math">\(\partial\text{,}\)</span> and the cone operator) is natural in the space, so for every continuous map <span class="process-math">\(\sigma\colon\Delta^n\to X\)</span> the induced chain map <span class="process-math">\(\sigma_\sharp\)</span> commutes with <span class="process-math">\(T\text{,}\)</span> <span class="process-math">\(S\text{,}\)</span> and <span class="process-math">\(\partial\text{.}\)</span> Concretely,</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="image-box" style="width: 70%; margin-left: 15%; margin-right: 15%;"><img src="generated/latex-image/lem-subdivision-chain-homotopy-3-8.svg" role="img" class="contained" alt="Naturality square showing that sigma-sharp intertwines the affine T on LC(Delta^n) with the singular T on C(X)."></div>
+<div class="para logical" id="lem-subdivision-chain-homotopy-3-9">
+<div class="para">Applying <span class="process-math">\(\sigma_\sharp\)</span> to the already-proven identity <span class="process-math">\(\partial T(\iota_n)+T(\partial\iota_n)=S(\iota_n)-\iota_n\)</span> in <span class="process-math">\(LC_\bullet(\Delta^n)\)</span> yields</div>
+<div class="displaymath process-math" id="lem-subdivision-chain-homotopy-3-9-4">
+\begin{equation*}
+\partial T(\sigma)+T(\partial\sigma) \;=\; S(\sigma)-\sigma
+\end{equation*}
+</div>
+<div class="para">in <span class="process-math">\(C_\bullet(X)\text{,}\)</span> as required. Naturality is built into the definition: for any continuous <span class="process-math">\(f\colon X\to Y\text{,}\)</span> the square <span class="process-math">\(f_\sharp\circ T=T\circ f_\sharp\)</span> commutes, since both sides equal <span class="process-math">\((f\circ\sigma)_\sharp(T(\iota_n))\)</span> on a generator <span class="process-math">\(\sigma\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#lem-subdivision-chain-homotopy-3-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proof 2.12.12.1"><a href="#lem-subdivision-chain-homotopy-3" title="Copy heading and permalink for Proof 2.12.12.1" aria-label="Copy heading and permalink for Proof 2.12.12.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsubsection: Barycentric subdivision"><a href="#subsubsec-subdivision" title="Copy heading and permalink for Subsubsection: Barycentric subdivision" aria-label="Copy heading and permalink for Subsubsection: Barycentric subdivision">🔗</a></div></section><section class="subsubsection" id="subsubsec-small-chains"><h4 class="heading hide-type">
 <span class="type">Subsubsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Iterated subdivision and the small chains theorem</span>
@@ -754,17 +847,115 @@ C_n^{\mathcal{U}}(X)\subseteq C_n(X)
 </h5>
 <div class="para" id="thm-small-chains-2-1">The inclusion <span class="process-math">\(\iota\colon C_\bullet^{\mathcal{U}}(X)\hookrightarrow C_\bullet(X)\)</span> is a chain homotopy equivalence; in particular it induces an isomorphism <span class="process-math">\(H_n^{\mathcal{U}}(X)\xrightarrow{\;\sim\;}H_n(X)\)</span> for every <span class="process-math">\(n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 2.12.13: The small chains theorem"><a href="#thm-small-chains" title="Copy heading and permalink for Theorem 2.12.13: The small chains theorem" aria-label="Copy heading and permalink for Theorem 2.12.13: The small chains theorem">🔗</a></div></article><details id="thm-small-chains-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-small-chains-3-1">Given <span class="process-math">\(\sigma\colon\Delta^n\to X\text{,}\)</span> the open cover <span class="process-math">\(\{\sigma^{-1}(\mathrm{int}\,U_\alpha)\}\)</span> of the compact metric space <span class="process-math">\(\Delta^n\)</span> has a Lebesgue number <span class="process-math">\(\delta_\sigma&gt;0\text{.}\)</span> The diameter of an affine simplex strictly decreases under barycentric subdivision: if <span class="process-math">\(\Delta\)</span> has diameter <span class="process-math">\(d\text{,}\)</span> then every simplex of <span class="process-math">\(S(\Delta)\)</span> has diameter at most <span class="process-math">\(\frac{n}{n+1}d\text{.}\)</span> Hence after sufficiently many subdivisions <span class="process-math">\(S^{m_\sigma}(\sigma)\text{,}\)</span> every simplex appearing has diameter less than <span class="process-math">\(\delta_\sigma\text{,}\)</span> so its image lies inside some <span class="process-math">\(U_\alpha\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Theorem 2.12.13: The small chains theorem"><a href="#thm-small-chains" title="Copy heading and permalink for Theorem 2.12.13: The small chains theorem" aria-label="Copy heading and permalink for Theorem 2.12.13: The small chains theorem">🔗</a></div></article><details id="thm-small-chains-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><article class="hiddenproof knowl__content"><div class="para" id="thm-small-chains-3-1">The proof marries two metric facts — the <dfn class="terminology">Lebesgue number lemma</dfn> and the diameter-shrinking property of barycentric subdivision — with an iterated application of the chain homotopy <span class="process-math">\(T\)</span> from <a href="notes-week-12.html#lem-subdivision-chain-homotopy" class="xref" data-knowl="./knowl/xref/lem-subdivision-chain-homotopy.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.12: Subdivision is chain homotopic to the identity">Lemma 2.12.12</a>.<div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical" id="thm-small-chains-3-2">
-<div class="para">Define a homomorphism <span class="process-math">\(D_n\colon C_n(X)\to C_{n+1}(X)\)</span> as the "telescoping chain homotopy" associated with iteration of the chain homotopy <span class="process-math">\(T\)</span> from <a href="notes-week-12.html#lem-subdivision-chain-homotopy" class="xref" data-knowl="./knowl/xref/lem-subdivision-chain-homotopy.html" data-reveal-label="Reveal" data-close-label="Close" title="Lemma 2.12.12: Subdivision is chain homotopic to the identity">Lemma 2.12.12</a>:</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lem-subdivision-chain-homotopy.html" id="thm-small-chains-3-2-4">
+<div class="para">
+<em class="alert">Step 1: Lebesgue numbers.</em> Given an open cover <span class="process-math">\(\{V_\beta\}\)</span> of a compact metric space <span class="process-math">\((K,\rho)\text{,}\)</span> a <dfn class="terminology">Lebesgue number</dfn> for the cover is a real <span class="process-math">\(\delta&gt;0\)</span> with the property that <em class="emphasis">every</em> subset of <span class="process-math">\(K\)</span> of diameter less than <span class="process-math">\(\delta\)</span> is contained in some <span class="process-math">\(V_\beta\text{.}\)</span> A Lebesgue number always exists: pass to a finite subcover <span class="process-math">\(V_1,\ldots,V_k\text{,}\)</span> and define</div>
+<div class="displaymath process-math" id="thm-small-chains-3-2-11">
 \begin{equation*}
-D_n(\sigma) := \sum_{i=0}^{m_\sigma-1} T S^i(\sigma).
+f\colon K\to\mathbb{R}, \qquad f(x) := \max_{1\le i\le k}\rho(x,\, K\setminus V_i).
 \end{equation*}
 </div>
-<div class="para">One verifies <span class="process-math">\(\partial D + D\partial = S^{m_\sigma}-\mathrm{id}\)</span> on each generator <span class="process-math">\(\sigma\text{,}\)</span> and the residue <span class="process-math">\(S^{m_\sigma}(\sigma)\)</span> lies in <span class="process-math">\(C_n^{\mathcal{U}}(X)\text{.}\)</span> Defining <span class="process-math">\(\rho(\sigma):=S^{m_\sigma}(\sigma) - \partial D(\sigma) - D(\partial\sigma)\)</span> after a small adjustment (to ensure <span class="process-math">\(\rho\)</span> takes values in <span class="process-math">\(C_\bullet^{\mathcal{U}}(X)\)</span>) produces a chain map <span class="process-math">\(\rho\colon C_\bullet(X)\to C_\bullet^{\mathcal{U}}(X)\)</span> with <span class="process-math">\(\iota\rho\simeq\mathrm{id}\)</span> and <span class="process-math">\(\rho\iota=\mathrm{id}\text{.}\)</span> The full verification appears in Hatcher, Proposition 2.21.</div>
+<div class="para">Each distance-to-complement <span class="process-math">\(x\mapsto\rho(x,K\setminus V_i)\)</span> is continuous, and vanishes exactly on <span class="process-math">\(K\setminus V_i\text{.}\)</span> Since every <span class="process-math">\(x\)</span> lies in some <span class="process-math">\(V_i\text{,}\)</span> at least one of these is positive at <span class="process-math">\(x\text{,}\)</span> so <span class="process-math">\(f(x)&gt;0\)</span> on all of <span class="process-math">\(K\text{.}\)</span> By compactness, <span class="process-math">\(\delta:=\min_{x\in K}f(x)\)</span> is strictly positive. If <span class="process-math">\(A\subseteq K\)</span> has diameter <span class="process-math">\(&lt;\delta\)</span> and contains a point <span class="process-math">\(x\text{,}\)</span> choose <span class="process-math">\(i\)</span> attaining the max in <span class="process-math">\(f(x)\text{:}\)</span> then <span class="process-math">\(A\subseteq B_\rho(x,\delta)\subseteq V_i\text{.}\)</span>
+</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="thm-small-chains-3-3">
+<div class="para">
+<em class="alert">Step 2: subdivision shrinks simplices.</em> If <span class="process-math">\(\Delta\subseteq\mathbb{R}^N\)</span> is an affine <span class="process-math">\(n\)</span>-simplex with diameter <span class="process-math">\(d\text{,}\)</span> every simplex appearing in <span class="process-math">\(S(\Delta)\)</span> has diameter at most <span class="process-math">\(\tfrac{n}{n+1}d\text{.}\)</span> To see this, let <span class="process-math">\(F\subseteq\Delta\)</span> be a face with vertices <span class="process-math">\(v_0,\ldots,v_k\)</span> (<span class="process-math">\(k\le n\)</span>) and barycenter <span class="process-math">\(b_F=\tfrac{1}{k+1}\sum_{l}v_l\text{.}\)</span> For any vertex <span class="process-math">\(v_l\)</span> of <span class="process-math">\(F\text{,}\)</span>
+</div>
+<div class="displaymath process-math" id="thm-small-chains-3-3-13">
+\begin{equation*}
+v_l - b_F \;=\; \tfrac{1}{k+1}\sum_{m\neq l}(v_l - v_m),
+\qquad\text{so}\qquad \|v_l - b_F\|\;\le\;\tfrac{k}{k+1}d\;\le\;\tfrac{n}{n+1}d.
+\end{equation*}
+</div>
+<div class="para">The closed ball of radius <span class="process-math">\(\tfrac{n}{n+1}d\)</span> around <span class="process-math">\(b_F\)</span> therefore contains every vertex of <span class="process-math">\(F\text{,}\)</span> and since balls are convex, it contains all of <span class="process-math">\(F\text{.}\)</span> Now a simplex of <span class="process-math">\(S(\Delta)\)</span> has vertices <span class="process-math">\(b_{F_0},\ldots,b_{F_n}\)</span> with <span class="process-math">\(F_0\subsetneq\cdots\subsetneq F_n=\Delta\text{.}\)</span> For <span class="process-math">\(i&lt;j\text{,}\)</span> <span class="process-math">\(b_{F_i}\in F_i\subseteq F_j\text{,}\)</span> so <span class="process-math">\(\|b_{F_i}-b_{F_j}\|\le\tfrac{n}{n+1}d\)</span> by the bound applied to <span class="process-math">\(F_j\text{.}\)</span> The diameter of a simplex is the largest distance between its vertices, so the bound propagates.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="thm-small-chains-3-4">Iterating, every simplex of <span class="process-math">\(S^m(\Delta)\)</span> has diameter at most <span class="process-math">\(\bigl(\tfrac{n}{n+1}\bigr)^m d\text{,}\)</span> which tends to <span class="process-math">\(0\)</span> as <span class="process-math">\(m\to\infty\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="thm-small-chains-3-5">
+<div class="para">
+<em class="alert">Step 3: iteration makes chains <span class="process-math">\(\mathcal{U}\)</span>-small.</em> Fix a singular simplex <span class="process-math">\(\sigma\colon\Delta^n\to X\text{.}\)</span> The sets <span class="process-math">\(\sigma^{-1}(\mathrm{int}\,U_\alpha)\)</span> form an open cover of the compact metric space <span class="process-math">\(\Delta^n\text{,}\)</span> so by Step 1 it has a Lebesgue number <span class="process-math">\(\delta_\sigma&gt;0\text{.}\)</span> By Step 2, there is a least <span class="process-math">\(m(\sigma)\ge 0\)</span> such that every simplex of <span class="process-math">\(S^{m(\sigma)}(\iota_n)\)</span> has diameter less than <span class="process-math">\(\delta_\sigma\)</span> (where <span class="process-math">\(\iota_n\colon\Delta^n\to\Delta^n\)</span> is the identity). Each such sub-simplex has image under <span class="process-math">\(\sigma\)</span> contained in some <span class="process-math">\(U_\alpha\text{,}\)</span> so</div>
+<div class="displaymath process-math" id="thm-small-chains-3-5-12">
+\begin{equation*}
+S^{m(\sigma)}(\sigma) \;=\; \sigma_\sharp\bigl(S^{m(\sigma)}(\iota_n)\bigr) \;\in\; C_n^{\mathcal{U}}(X).
+\end{equation*}
+</div>
+<div class="para">Extend linearly: <span class="process-math">\(m(\sigma)\)</span> is defined on generators. Note that because the subcomplex <span class="process-math">\(C_\bullet^{\mathcal{U}}(X)\)</span> is closed under <span class="process-math">\(\partial\text{,}\)</span> once <span class="process-math">\(S^m(\sigma)\)</span> is <span class="process-math">\(\mathcal{U}\)</span>-small so are all its faces: concretely, <span class="process-math">\(m(\tau)\le m(\sigma)\)</span> whenever <span class="process-math">\(\tau\)</span> is a face of <span class="process-math">\(\sigma\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="thm-small-chains-3-6">
+<div class="para">
+<em class="alert">Step 4: a telescoping chain homotopy.</em> For each fixed <span class="process-math">\(m\ge 0\text{,}\)</span> define <span class="process-math">\(T_m\colon C_n(X)\to C_{n+1}(X)\)</span> by</div>
+<div class="displaymath process-math" id="thm-small-chains-3-6-4">
+\begin{equation*}
+T_m \;:=\; \sum_{i=0}^{m-1} T\circ S^i.
+\end{equation*}
+</div>
+<div class="para">Using <span class="process-math">\(\partial T = (S-\mathrm{id}) - T\partial\)</span> on each summand, together with <span class="process-math">\(\partial S^i = S^i\partial\text{,}\)</span>
+</div>
+<div class="displaymath process-math" id="thm-small-chains-3-6-7">
+\begin{equation*}
+\partial T_m \;=\; \sum_{i=0}^{m-1}\bigl[(S-\mathrm{id})S^i - T\partial S^i\bigr]
+\;=\; (S^m - \mathrm{id}) - T_m\,\partial,
+\end{equation*}
+</div>
+<div class="para">i.e. <span class="process-math">\(\partial T_m + T_m\partial = S^m - \mathrm{id}\text{.}\)</span> (The <span class="process-math">\(S^{i+1}-S^i\)</span> terms telescope.)</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="thm-small-chains-3-7">
+<div class="para">
+<em class="alert">Step 5: from fixed <span class="process-math">\(m\)</span> to variable <span class="process-math">\(m(\sigma)\text{.}\)</span></em> Define <span class="process-math">\(D\colon C_n(X)\to C_{n+1}(X)\)</span> on generators by</div>
+<div class="displaymath process-math" id="thm-small-chains-3-7-3">
+\begin{equation*}
+D(\sigma) \;:=\; T_{m(\sigma)}(\sigma),
+\end{equation*}
+</div>
+<div class="para">and the candidate retraction <span class="process-math">\(\rho\colon C_n(X)\to C_n^{\mathcal{U}}(X)\)</span> by</div>
+<div class="displaymath process-math" id="thm-small-chains-3-7-5">
+\begin{equation*}
+\rho(\sigma) \;:=\; \sigma + \partial D(\sigma) + D(\partial\sigma).
+\end{equation*}
+</div>
+<div class="para">Applying Step 4 on the generator <span class="process-math">\(\sigma\)</span> (with <span class="process-math">\(m=m(\sigma)\)</span>) gives <span class="process-math">\(\partial D(\sigma) = S^{m(\sigma)}(\sigma) - \sigma - T_{m(\sigma)}(\partial\sigma)\text{,}\)</span> so</div>
+<div class="displaymath process-math" id="thm-small-chains-3-7-9">
+\begin{equation*}
+\rho(\sigma) \;=\; S^{m(\sigma)}(\sigma) \,+\, \bigl(D(\partial\sigma) - T_{m(\sigma)}(\partial\sigma)\bigr).
+\end{equation*}
+</div>
+<div class="para">The first summand is <span class="process-math">\(\mathcal{U}\)</span>-small by Step 3. For the correction term, on a face <span class="process-math">\(\tau\)</span> of <span class="process-math">\(\partial\sigma\)</span> (so that <span class="process-math">\(m(\tau)\le m(\sigma)\)</span>),</div>
+<div class="displaymath process-math" id="thm-small-chains-3-7-14">
+\begin{equation*}
+D(\tau) - T_{m(\sigma)}(\tau)
+\;=\; T_{m(\tau)}(\tau) - T_{m(\sigma)}(\tau)
+\;=\; -\sum_{i=m(\tau)}^{m(\sigma)-1} T\bigl(S^i(\tau)\bigr).
+\end{equation*}
+</div>
+<div class="para">For <span class="process-math">\(i\ge m(\tau)\text{,}\)</span> the chain <span class="process-math">\(S^i(\tau)\)</span> is <span class="process-math">\(\mathcal{U}\)</span>-small; and because <span class="process-math">\(T\)</span> applied to any singular simplex <span class="process-math">\(\eta\)</span> is supported in the image of <span class="process-math">\(\eta\)</span> (since <span class="process-math">\(T(\eta)=\eta_\sharp T(\iota_{n-1})\)</span>), <span class="process-math">\(T(S^i(\tau))\)</span> is also <span class="process-math">\(\mathcal{U}\)</span>-small. So the correction lies in <span class="process-math">\(C_\bullet^{\mathcal{U}}(X)\text{,}\)</span> and <span class="process-math">\(\rho(\sigma)\in C_n^{\mathcal{U}}(X)\)</span> as required.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="thm-small-chains-3-8">
+<div class="para">
+<em class="alert">Step 6: <span class="process-math">\(\rho\)</span> is a chain-homotopy inverse to <span class="process-math">\(\iota\text{.}\)</span></em> A direct computation using <span class="process-math">\(\partial^2=0\)</span> shows that <span class="process-math">\(\rho\)</span> is a chain map:</div>
+<div class="displaymath process-math" id="thm-small-chains-3-8-4">
+\begin{equation*}
+\partial\rho(\sigma) \;=\; \partial\sigma + \partial^2 D(\sigma) + \partial D(\partial\sigma)
+\;=\; \partial\sigma + \partial D(\partial\sigma)
+\;=\; \rho(\partial\sigma),
+\end{equation*}
+</div>
+<div class="para">using <span class="process-math">\(D(\partial^2\sigma)=0\)</span> in the last step. If <span class="process-math">\(\sigma\)</span> is already <span class="process-math">\(\mathcal{U}\)</span>-small, then <span class="process-math">\(m(\sigma)=0\text{,}\)</span> <span class="process-math">\(D(\sigma)=0\text{,}\)</span> and each face is also <span class="process-math">\(\mathcal{U}\)</span>-small with <span class="process-math">\(m(\tau)=0\text{,}\)</span> so <span class="process-math">\(D(\partial\sigma)=0\text{;}\)</span> hence <span class="process-math">\(\rho\iota=\mathrm{id}\text{.}\)</span> Finally, the defining formula rearranges to</div>
+<div class="displaymath process-math" id="thm-small-chains-3-8-14">
+\begin{equation*}
+\iota\rho - \mathrm{id} \;=\; \partial D + D\partial,
+\end{equation*}
+</div>
+<div class="para">exhibiting <span class="process-math">\(D\)</span> as a chain homotopy from <span class="process-math">\(\mathrm{id}\)</span> to <span class="process-math">\(\iota\rho\text{.}\)</span> Therefore <span class="process-math">\(\iota\)</span> is a chain homotopy equivalence, and the induced map on homology is an isomorphism.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#thm-small-chains-3-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proof 2.12.13.1"><a href="#thm-small-chains-3" title="Copy heading and permalink for Proof 2.12.13.1" aria-label="Copy heading and permalink for Proof 2.12.13.1">🔗</a></div></article></details><div class="para" id="subsubsec-small-chains-4">The takeaway is precisely what we want: for any open cover <span class="process-math">\(\mathcal{U}\)</span> of <span class="process-math">\(X\text{,}\)</span> every homology class is represented by a chain whose simplices are entirely contained in members of <span class="process-math">\(\mathcal{U}\text{,}\)</span> and two such chains are homologous via small chains whenever they are homologous at all.<div class="autopermalink" data-description="Paragraph"><a href="#subsubsec-small-chains-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>

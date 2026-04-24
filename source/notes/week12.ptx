@@ -424,26 +424,188 @@
             <md>
               \partial T + T\partial = S - \mathrm{id}.
             </md>
+            Pictured as a diagram:
           </p>
+          <image width="85%">
+            <description>
+              Chain homotopy diagram: two copies of the singular chain complex with
+              boundary maps horizontally, with the diagonal maps T going up one
+              degree. The vertical arrows S - id record the difference of the two
+              chain maps, equal to ∂T + T∂.
+            </description>
+            <latex-image>
+              \begin{tikzcd}[column sep=large, row sep=large]
+                \cdots \arrow[r, "\partial"]
+                  \amp C_{n+1}(X) \arrow[r, "\partial"] \arrow[d, "S-\mathrm{id}"']
+                  \amp C_n(X) \arrow[r, "\partial"] \arrow[d, "S-\mathrm{id}"'] \arrow[dl, dashed, "T"']
+                  \amp C_{n-1}(X) \arrow[r, "\partial"] \arrow[d, "S-\mathrm{id}"'] \arrow[dl, dashed, "T"']
+                  \amp \cdots \arrow[dl, dashed, "T"'] \\
+                \cdots \arrow[r, "\partial"']
+                  \amp C_{n+1}(X) \arrow[r, "\partial"']
+                  \amp C_n(X) \arrow[r, "\partial"']
+                  \amp C_{n-1}(X) \arrow[r, "\partial"']
+                  \amp \cdots
+              \end{tikzcd}
+            </latex-image>
+          </image>
         </statement>
         <proof>
           <p>
-            On affine chains in a convex set <m>Y</m>, define <m>T</m> recursively by
-            <m>T[w_0]:=0</m> and, for <m>n\ge 1</m>,
+            As for the prism operator, the construction proceeds in two stages.
+            We first build <m>T</m> on affine chains <m>LC_\bullet(Y)</m> in a
+            convex set <m>Y\subseteq\mathbb{R}^N</m> by a recursion using the
+            cone operator; we then transport the result to a general space
+            <m>X</m> by naturality.
+          </p>
+
+          <p>
+            <alert>Where the formula comes from.</alert>
+            The recipe below can look like it falls from the sky, so it helps
+            to see that it is essentially forced. The only chain-level tool we
+            have on affine chains is the cone operator, which satisfies
+            <m>\partial(b\cdot\alpha)=\alpha-b\cdot\partial\alpha</m> — i.e.,
+            <m>b\cdot(-)</m> is <em>already</em> a chain homotopy from
+            <m>\mathrm{id}</m> to <m>0</m>. So we try the ansatz
+            <m>T(\beta)=b_\beta\cdot\gamma(\beta)</m> for some chain
+            <m>\gamma(\beta)</m> to be determined (using the same canonical
+            vertex <m>b_\beta</m> as <m>S</m>). The cone relation then gives
+            <m>\partial T(\beta)=\gamma(\beta)-b_\beta\cdot\partial\gamma(\beta)</m>,
+            and the desired identity
+            <m>\partial T+T\partial=S-\mathrm{id}</m> rearranges to
             <md>
-              T(\beta) := b_\beta\cdot\bigl(S(\beta)-\beta-T(\partial\beta)\bigr).
+              \gamma(\beta) \;=\; S(\beta) - \beta - T(\partial\beta) + b_\beta\cdot\partial\gamma(\beta).
             </md>
-            By induction (using <xref ref="lem-cone-relation"/> and
-            <xref ref="lem-subdivision-chain-map"/>),
+            If we <em>drop</em> the last correction term and simply set
+            <m>\gamma(\beta):=S(\beta)-\beta-T(\partial\beta)</m>, a small
+            miracle takes place: <m>\partial\gamma(\beta)=0</m>, so
+            <m>b_\beta\cdot\partial\gamma(\beta)=0</m> and the recursion is
+            self-consistent. The vanishing of <m>\partial\gamma(\beta)</m>
+            combines three ingredients we already have in hand —
+            <m>\partial S = S\partial</m>,
+            <m>\partial^2 = 0</m>, and the inductive hypothesis for <m>T</m>
+            on <m>\partial\beta</m> — and we verify it explicitly below.
+          </p>
+
+          <p>
+            <alert>Recursive definition on affine chains.</alert>
+            On the generators <m>[w_0]</m> of <m>LC_0(Y)</m>, set
             <md>
-              \partial T(\beta) = S(\beta)-\beta-T(\partial\beta) - b_\beta\cdot\partial(S(\beta)-\beta-T(\partial\beta)).
+              T\bigl([w_0]\bigr) := 0.
             </md>
-            The bracketed inner expression equals <m>S(\partial\beta)-\partial\beta-(S(\partial\beta)-\partial\beta-T(\partial^2\beta))=0</m>
-            by induction (the case <m>n=1</m> uses the augmentation form of the cone relation
-            and verifies directly). So <m>\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta</m>.
-            Extending to general singular chains by
-            <m>T(\sigma):=\sigma_\sharp T(\iota_n)</m> and using naturality gives the result on
-            <m>C_\bullet(X)</m>.
+            For <m>n\ge 1</m>, assuming <m>T</m> has been defined on
+            <m>LC_{n-1}(Y)</m>, set
+            <md>
+              T(\beta) \;:=\; b_\beta\cdot\bigl(S(\beta)-\beta-T(\partial\beta)\bigr)
+              \qquad\text{for each affine } n\text{-simplex } \beta,
+            </md>
+            and extend <m>\mathbb{Z}</m>-linearly. Here <m>b_\beta</m> is the
+            barycenter of <m>\beta</m> and <m>b_\beta\cdot(-)</m> denotes the
+            cone operator (<xref ref="def-cone-operator"/>). The recursion is well-posed
+            because <m>T(\partial\beta)</m>, involving only <m>(n-1)</m>-chains,
+            has already been defined.
+          </p>
+
+          <p>
+            <alert>Verification of the chain-homotopy identity on <m>LC_\bullet(Y)</m>.</alert>
+            We show <m>\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta</m> for every
+            affine simplex <m>\beta</m>, by induction on <m>n=\dim\beta</m>.
+          </p>
+
+          <p>
+            <em>Base case <m>n=0</m>.</em> For <m>\beta=[w_0]</m>, both
+            <m>T(\beta)=0</m> and <m>T(\partial\beta)=0</m> (the latter because
+            <m>\partial[w_0]=0</m>), so the left-hand side is <m>0</m>. The
+            right-hand side is also <m>0</m> since
+            <m>S([w_0])=[w_0]</m>.
+          </p>
+
+          <p>
+            <em>Inductive step.</em> Fix <m>n\ge 1</m> and an affine
+            <m>n</m>-simplex <m>\beta</m>, and abbreviate
+            <md>
+              \xi \;:=\; S(\beta)-\beta-T(\partial\beta) \;\in\; LC_n(Y),
+              \qquad\text{so that}\qquad T(\beta)=b_\beta\cdot\xi.
+            </md>
+            Applying the cone relation <xref ref="lem-cone-relation"/> to
+            <m>b_\beta\cdot\xi</m>,
+            <md>
+              \partial T(\beta) \;=\; \partial(b_\beta\cdot\xi)
+                \;=\; \xi \,-\, b_\beta\cdot\partial\xi.
+              \tag{\(\ast\)}
+            </md>
+            We now evaluate <m>\partial\xi</m>. By linearity of
+            <m>\partial</m>,
+            <md>
+              \partial\xi \;=\; \partial S(\beta)\,-\,\partial\beta\,-\,\partial T(\partial\beta).
+            </md>
+            Since <m>\partial S=S\partial</m>
+            (<xref ref="lem-subdivision-chain-map"/>), the first term equals
+            <m>S(\partial\beta)</m>. For the third term we apply the inductive
+            hypothesis to the <m>(n-1)</m>-chain <m>\partial\beta</m>:
+            <md>
+              \partial T(\partial\beta)+T(\partial^2\beta) \;=\; S(\partial\beta)-\partial\beta.
+            </md>
+            Because <m>\partial^2=0</m>, the <m>T(\partial^2\beta)</m> term
+            vanishes, and we obtain
+            <m>\partial T(\partial\beta)=S(\partial\beta)-\partial\beta</m>.
+            Substituting these two identifications into the expansion of
+            <m>\partial\xi</m> gives
+            <md>
+              \partial\xi
+                \;=\; S(\partial\beta)\,-\,\partial\beta\,-\,\bigl(S(\partial\beta)-\partial\beta\bigr)
+                \;=\; 0.
+            </md>
+            Plugging back into <m>(\ast)</m>,
+            <md>
+              \partial T(\beta) \;=\; \xi \;=\; S(\beta)-\beta-T(\partial\beta),
+            </md>
+            which rearranges to
+            <m>\partial T(\beta)+T(\partial\beta)=S(\beta)-\beta</m>, completing
+            the induction.
+          </p>
+
+          <p>
+            <alert>Extension to singular chains by naturality.</alert>
+            Let <m>\iota_n\colon\Delta^n\to\Delta^n</m> denote the identity
+            <m>n</m>-simplex, viewed as an affine singular simplex in the convex
+            set <m>\Delta^n\subseteq\mathbb{R}^{n+1}</m>. For a general singular
+            simplex <m>\sigma\colon\Delta^n\to X</m>, define
+            <md>
+              T(\sigma) \;:=\; \sigma_\sharp\bigl(T(\iota_n)\bigr) \;\in\; C_{n+1}(X),
+            </md>
+            and extend linearly to <m>T\colon C_n(X)\to C_{n+1}(X)</m>. Every
+            ingredient in the affine recursion (namely <m>S</m>, <m>\partial</m>,
+            and the cone operator) is natural in the space, so for every
+            continuous map <m>\sigma\colon\Delta^n\to X</m> the induced chain
+            map <m>\sigma_\sharp</m> commutes with <m>T</m>, <m>S</m>, and
+            <m>\partial</m>. Concretely,
+          </p>
+          <image width="70%">
+            <description>
+              Naturality square showing that sigma-sharp intertwines the affine
+              T on LC(Delta^n) with the singular T on C(X).
+            </description>
+            <latex-image>
+              \begin{tikzcd}[column sep=huge, row sep=large]
+                LC_n(\Delta^n) \arrow[r, "T"] \arrow[d, "\sigma_\sharp"']
+                  \amp LC_{n+1}(\Delta^n) \arrow[d, "\sigma_\sharp"] \\
+                C_n(X) \arrow[r, "T"']
+                  \amp C_{n+1}(X)
+              \end{tikzcd}
+            </latex-image>
+          </image>
+          <p>
+            Applying <m>\sigma_\sharp</m> to the already-proven identity
+            <m>\partial T(\iota_n)+T(\partial\iota_n)=S(\iota_n)-\iota_n</m> in
+            <m>LC_\bullet(\Delta^n)</m> yields
+            <md>
+              \partial T(\sigma)+T(\partial\sigma) \;=\; S(\sigma)-\sigma
+            </md>
+            in <m>C_\bullet(X)</m>, as required. Naturality is built into the
+            definition: for any continuous <m>f\colon X\to Y</m>, the square
+            <m>f_\sharp\circ T=T\circ f_\sharp</m> commutes, since both sides
+            equal <m>(f\circ\sigma)_\sharp(T(\iota_n))</m> on a generator
+            <m>\sigma</m>.
           </p>
         </proof>
       </lemma>
@@ -477,31 +639,163 @@
         </statement>
         <proof>
           <p>
-            Given <m>\sigma\colon\Delta^n\to X</m>, the open cover
-            <m>\{\sigma^{-1}(\mathrm{int}\,U_\alpha)\}</m> of the compact metric space
-            <m>\Delta^n</m> has a Lebesgue number <m>\delta_\sigma&gt;0</m>. The diameter of an
-            affine simplex strictly decreases under barycentric subdivision: if
-            <m>\Delta</m> has diameter <m>d</m>, then every simplex of <m>S(\Delta)</m> has
-            diameter at most <m>\frac{n}{n+1}d</m>. Hence after sufficiently many subdivisions
-            <m>S^{m_\sigma}(\sigma)</m>, every simplex appearing has diameter less than
-            <m>\delta_\sigma</m>, so its image lies inside some <m>U_\alpha</m>.
+            The proof marries two metric facts — the <term>Lebesgue number
+            lemma</term> and the diameter-shrinking property of barycentric
+            subdivision — with an iterated application of the chain homotopy
+            <m>T</m> from
+            <xref ref="lem-subdivision-chain-homotopy"/>.
           </p>
+
           <p>
-            Define a homomorphism <m>D_n\colon C_n(X)\to C_{n+1}(X)</m> as the "telescoping
-            chain homotopy" associated with iteration of the chain homotopy
-            <m>T</m> from <xref ref="lem-subdivision-chain-homotopy"/>:
+            <alert>Step 1: Lebesgue numbers.</alert>
+            Given an open cover <m>\{V_\beta\}</m> of a compact metric space
+            <m>(K,\rho)</m>, a <term>Lebesgue number</term> for the cover is a
+            real <m>\delta&gt;0</m> with the property that <em>every</em> subset
+            of <m>K</m> of diameter less than <m>\delta</m> is contained in
+            some <m>V_\beta</m>. A Lebesgue number always exists: pass to a
+            finite subcover <m>V_1,\ldots,V_k</m>, and define
             <md>
-              D_n(\sigma) := \sum_{i=0}^{m_\sigma-1} T S^i(\sigma).
+              f\colon K\to\mathbb{R}, \qquad f(x) := \max_{1\le i\le k}\rho(x,\, K\setminus V_i).
             </md>
-            One verifies <m>\partial D + D\partial = S^{m_\sigma}-\mathrm{id}</m> on each
-            generator <m>\sigma</m>, and the residue <m>S^{m_\sigma}(\sigma)</m> lies in
-            <m>C_n^{\mathcal{U}}(X)</m>. Defining
-            <m>\rho(\sigma):=S^{m_\sigma}(\sigma) - \partial D(\sigma) - D(\partial\sigma)</m>
-            after a small adjustment (to ensure <m>\rho</m> takes values in
-            <m>C_\bullet^{\mathcal{U}}(X)</m>) produces a chain map
-            <m>\rho\colon C_\bullet(X)\to C_\bullet^{\mathcal{U}}(X)</m> with
-            <m>\iota\rho\simeq\mathrm{id}</m> and <m>\rho\iota=\mathrm{id}</m>. The full
-            verification appears in Hatcher, Proposition 2.21.
+            Each distance-to-complement <m>x\mapsto\rho(x,K\setminus V_i)</m>
+            is continuous, and vanishes exactly on <m>K\setminus V_i</m>.
+            Since every <m>x</m> lies in some <m>V_i</m>, at least one of
+            these is positive at <m>x</m>, so <m>f(x)&gt;0</m> on all of
+            <m>K</m>. By compactness, <m>\delta:=\min_{x\in K}f(x)</m> is
+            strictly positive. If <m>A\subseteq K</m> has diameter
+            <m>&lt;\delta</m> and contains a point <m>x</m>, choose <m>i</m>
+            attaining the max in <m>f(x)</m>: then
+            <m>A\subseteq B_\rho(x,\delta)\subseteq V_i</m>.
+          </p>
+
+          <p>
+            <alert>Step 2: subdivision shrinks simplices.</alert>
+            If <m>\Delta\subseteq\mathbb{R}^N</m> is an affine
+            <m>n</m>-simplex with diameter <m>d</m>, every simplex appearing
+            in <m>S(\Delta)</m> has diameter at most
+            <m>\tfrac{n}{n+1}d</m>. To see this, let
+            <m>F\subseteq\Delta</m> be a face with vertices
+            <m>v_0,\ldots,v_k</m> (<m>k\le n</m>) and barycenter
+            <m>b_F=\tfrac{1}{k+1}\sum_{l}v_l</m>. For any vertex <m>v_l</m> of
+            <m>F</m>,
+            <md>
+              v_l - b_F \;=\; \tfrac{1}{k+1}\sum_{m\neq l}(v_l - v_m),
+              \qquad\text{so}\qquad \|v_l - b_F\|\;\le\;\tfrac{k}{k+1}d\;\le\;\tfrac{n}{n+1}d.
+            </md>
+            The closed ball of radius <m>\tfrac{n}{n+1}d</m> around
+            <m>b_F</m> therefore contains every vertex of <m>F</m>, and since
+            balls are convex, it contains all of <m>F</m>. Now a simplex of
+            <m>S(\Delta)</m> has vertices <m>b_{F_0},\ldots,b_{F_n}</m> with
+            <m>F_0\subsetneq\cdots\subsetneq F_n=\Delta</m>. For <m>i&lt;j</m>,
+            <m>b_{F_i}\in F_i\subseteq F_j</m>, so
+            <m>\|b_{F_i}-b_{F_j}\|\le\tfrac{n}{n+1}d</m> by the bound applied
+            to <m>F_j</m>. The diameter of a simplex is the largest distance
+            between its vertices, so the bound propagates.
+          </p>
+
+          <p>
+            Iterating, every simplex of <m>S^m(\Delta)</m> has diameter at most
+            <m>\bigl(\tfrac{n}{n+1}\bigr)^m d</m>, which tends to <m>0</m> as
+            <m>m\to\infty</m>.
+          </p>
+
+          <p>
+            <alert>Step 3: iteration makes chains <m>\mathcal{U}</m>-small.</alert>
+            Fix a singular simplex <m>\sigma\colon\Delta^n\to X</m>. The sets
+            <m>\sigma^{-1}(\mathrm{int}\,U_\alpha)</m> form an open cover of
+            the compact metric space <m>\Delta^n</m>, so by Step 1 it has a
+            Lebesgue number <m>\delta_\sigma&gt;0</m>. By Step 2, there is a
+            least <m>m(\sigma)\ge 0</m> such that every simplex of
+            <m>S^{m(\sigma)}(\iota_n)</m> has diameter less than
+            <m>\delta_\sigma</m> (where
+            <m>\iota_n\colon\Delta^n\to\Delta^n</m> is the identity). Each
+            such sub-simplex has image under <m>\sigma</m> contained in some
+            <m>U_\alpha</m>, so
+            <md>
+              S^{m(\sigma)}(\sigma) \;=\; \sigma_\sharp\bigl(S^{m(\sigma)}(\iota_n)\bigr) \;\in\; C_n^{\mathcal{U}}(X).
+            </md>
+            Extend linearly: <m>m(\sigma)</m> is defined on generators. Note
+            that because the subcomplex <m>C_\bullet^{\mathcal{U}}(X)</m> is
+            closed under <m>\partial</m>, once <m>S^m(\sigma)</m> is
+            <m>\mathcal{U}</m>-small so are all its faces: concretely,
+            <m>m(\tau)\le m(\sigma)</m> whenever <m>\tau</m> is a face of
+            <m>\sigma</m>.
+          </p>
+
+          <p>
+            <alert>Step 4: a telescoping chain homotopy.</alert>
+            For each fixed <m>m\ge 0</m>, define
+            <m>T_m\colon C_n(X)\to C_{n+1}(X)</m> by
+            <md>
+              T_m \;:=\; \sum_{i=0}^{m-1} T\circ S^i.
+            </md>
+            Using <m>\partial T = (S-\mathrm{id}) - T\partial</m> on each
+            summand, together with <m>\partial S^i = S^i\partial</m>,
+            <md>
+              \partial T_m \;=\; \sum_{i=0}^{m-1}\bigl[(S-\mathrm{id})S^i - T\partial S^i\bigr]
+                             \;=\; (S^m - \mathrm{id}) - T_m\,\partial,
+            </md>
+            i.e. <m>\partial T_m + T_m\partial = S^m - \mathrm{id}</m>. (The
+            <m>S^{i+1}-S^i</m> terms telescope.)
+          </p>
+
+          <p>
+            <alert>Step 5: from fixed <m>m</m> to variable <m>m(\sigma)</m>.</alert>
+            Define <m>D\colon C_n(X)\to C_{n+1}(X)</m> on generators by
+            <md>
+              D(\sigma) \;:=\; T_{m(\sigma)}(\sigma),
+            </md>
+            and the candidate retraction
+            <m>\rho\colon C_n(X)\to C_n^{\mathcal{U}}(X)</m> by
+            <md>
+              \rho(\sigma) \;:=\; \sigma + \partial D(\sigma) + D(\partial\sigma).
+            </md>
+            Applying Step 4 on the generator <m>\sigma</m> (with
+            <m>m=m(\sigma)</m>) gives
+            <m>\partial D(\sigma) = S^{m(\sigma)}(\sigma) - \sigma - T_{m(\sigma)}(\partial\sigma)</m>,
+            so
+            <md>
+              \rho(\sigma) \;=\; S^{m(\sigma)}(\sigma) \,+\, \bigl(D(\partial\sigma) - T_{m(\sigma)}(\partial\sigma)\bigr).
+            </md>
+            The first summand is <m>\mathcal{U}</m>-small by Step 3. For the
+            correction term, on a face <m>\tau</m> of <m>\partial\sigma</m>
+            (so that <m>m(\tau)\le m(\sigma)</m>),
+            <md>
+              D(\tau) - T_{m(\sigma)}(\tau)
+                \;=\; T_{m(\tau)}(\tau) - T_{m(\sigma)}(\tau)
+                \;=\; -\sum_{i=m(\tau)}^{m(\sigma)-1} T\bigl(S^i(\tau)\bigr).
+            </md>
+            For <m>i\ge m(\tau)</m>, the chain <m>S^i(\tau)</m> is
+            <m>\mathcal{U}</m>-small; and because <m>T</m> applied to any
+            singular simplex <m>\eta</m> is supported in the image of
+            <m>\eta</m> (since <m>T(\eta)=\eta_\sharp T(\iota_{n-1})</m>),
+            <m>T(S^i(\tau))</m> is also <m>\mathcal{U}</m>-small. So the
+            correction lies in <m>C_\bullet^{\mathcal{U}}(X)</m>, and
+            <m>\rho(\sigma)\in C_n^{\mathcal{U}}(X)</m> as required.
+          </p>
+
+          <p>
+            <alert>Step 6: <m>\rho</m> is a chain-homotopy inverse to
+            <m>\iota</m>.</alert>
+            A direct computation using <m>\partial^2=0</m> shows that
+            <m>\rho</m> is a chain map:
+            <md>
+              \partial\rho(\sigma) \;=\; \partial\sigma + \partial^2 D(\sigma) + \partial D(\partial\sigma)
+                                    \;=\; \partial\sigma + \partial D(\partial\sigma)
+                                    \;=\; \rho(\partial\sigma),
+            </md>
+            using <m>D(\partial^2\sigma)=0</m> in the last step. If
+            <m>\sigma</m> is already <m>\mathcal{U}</m>-small, then
+            <m>m(\sigma)=0</m>, <m>D(\sigma)=0</m>, and each face is also
+            <m>\mathcal{U}</m>-small with <m>m(\tau)=0</m>, so
+            <m>D(\partial\sigma)=0</m>; hence <m>\rho\iota=\mathrm{id}</m>.
+            Finally, the defining formula rearranges to
+            <md>
+              \iota\rho - \mathrm{id} \;=\; \partial D + D\partial,
+            </md>
+            exhibiting <m>D</m> as a chain homotopy from <m>\mathrm{id}</m>
+            to <m>\iota\rho</m>. Therefore <m>\iota</m> is a chain homotopy
+            equivalence, and the induced map on homology is an isomorphism.
           </p>
         </proof>
       </theorem>

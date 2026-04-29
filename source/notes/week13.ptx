@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="notes-week-13">
+  <title>Week 13</title>
+
+  <subsection>
+    <title>Monday</title>
+    <p>
+      Last week we developed the technology of barycentric subdivision and proved the
+      <term>small chains theorem</term>: every homology class is represented by a chain
+      whose simplices are entirely contained in members of any chosen open cover. Today
+      we cash that in. We prove the <term>excision theorem</term> and the
+      <term>Mayer–Vietoris sequence</term>, and then deploy them to compute our first
+      family of nontrivial homology groups: <m>H_*(S^n)</m>. Two classical applications
+      follow at once — the <term>invariance of dimension</term> and the
+      <term>Brouwer fixed point theorem</term>.
+    </p>
+
+    <subsubsection xml:id="subsubsec-excision">
+      <title>Excision</title>
+      <theorem xml:id="thm-excision">
+        <title>Excision</title>
+        <statement>
+          <p>
+            Let <m>(X,A)</m> be a pair and let <m>Z\subseteq A</m> be a subspace whose closure
+            lies in the interior of <m>A</m>: <m>\overline{Z}\subseteq\mathrm{int}\,A</m>. Then
+            the inclusion of pairs <m>(X\setminus Z, A\setminus Z)\hookrightarrow(X,A)</m>
+            induces an isomorphism
+            <md>
+              H_n(X\setminus Z, A\setminus Z)\xrightarrow{\;\sim\;} H_n(X,A)
+            </md>
+            for every <m>n\ge 0</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Let <m>B:=X\setminus Z</m>. The hypothesis
+            <m>\overline{Z}\subseteq\mathrm{int}\,A</m> implies
+            <m>\mathrm{int}\,A\cup\mathrm{int}\,B = X</m>, so
+            <m>\mathcal{U}:=\{A,B\}</m> is a cover whose interiors cover <m>X</m>. Let
+            <m>C_\bullet^{\mathcal{U}}(X)</m> be the subcomplex of <m>\mathcal{U}</m>-small
+            chains and <m>C_\bullet^{\mathcal{U}}(X,A):=C_\bullet^{\mathcal{U}}(X)/C_\bullet(A)</m>
+            the corresponding relative complex. By <xref ref="thm-small-chains"/> and the
+            five lemma applied to the long exact sequence of the pair, the inclusion
+            <m>C_\bullet^{\mathcal{U}}(X,A)\hookrightarrow C_\bullet(X,A)</m> induces an
+            isomorphism on homology.
+          </p>
+          <p>
+            On the other hand, every <m>\mathcal{U}</m>-small chain decomposes uniquely (modulo
+            chains in <m>A</m>) as a sum of a chain in <m>A</m> and a chain in <m>B</m>. The
+            inclusion <m>C_\bullet(B)\hookrightarrow C_\bullet^{\mathcal{U}}(X)</m> therefore
+            descends to an isomorphism of relative complexes
+            <md>
+              C_\bullet(B)/C_\bullet(A\cap B)\;\xrightarrow{\;\sim\;}\;C_\bullet^{\mathcal{U}}(X)/C_\bullet(A).
+            </md>
+            Since <m>B=X\setminus Z</m> and <m>A\cap B=A\setminus Z</m>, the left side is
+            <m>C_\bullet(X\setminus Z, A\setminus Z)</m>. Composing the two isomorphisms yields
+            the result.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        Excision is the fundamental "locality" property of singular homology: removing a
+        well-embedded subspace from both <m>X</m> and <m>A</m> does not change the relative
+        homology. It is what distinguishes homology from, say, the homotopy groups
+        <m>\pi_n</m>, which are not excisive.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-mayer-vietoris">
+      <title>The Mayer–Vietoris sequence</title>
+      <p>
+        Let <m>X=A\cup B</m> with <m>A,B</m> subspaces whose interiors cover <m>X</m>. The
+        small chains theorem provides a short exact sequence
+        <md>
+          0\to C_n(A\cap B)\xrightarrow{\;(i,-j)\;} C_n(A)\oplus C_n(B)\xrightarrow{\;k+\ell\;} C_n^{\mathcal{U}}(X)\to 0,
+        </md>
+        where <m>i\colon A\cap B\hookrightarrow A</m>, <m>j\colon A\cap B\hookrightarrow B</m>,
+        <m>k\colon A\hookrightarrow X</m>, and <m>\ell\colon B\hookrightarrow X</m> are the
+        inclusions. (Exactness at the middle term is the "decomposition" used in the proof of
+        excision; surjectivity at the right is the small chains theorem.) Passing to homology
+        via the snake lemma yields:
+      </p>
+      <theorem xml:id="thm-mayer-vietoris">
+        <title>Mayer–Vietoris sequence</title>
+        <statement>
+          <p>
+            Let <m>X=A\cup B</m> with <m>\mathrm{int}\,A\cup\mathrm{int}\,B=X</m>. Then there
+            is a long exact sequence
+            <md>
+              \cdots\to H_n(A\cap B)\xrightarrow{\;(i_*,-j_*)\;} H_n(A)\oplus H_n(B)\xrightarrow{\;k_*+\ell_*\;} H_n(X)
+              \xrightarrow{\;\partial_*\;} H_{n-1}(A\cap B)\to\cdots
+            </md>
+            ending at <m>H_0(X)\to 0</m>. The connecting homomorphism <m>\partial_*</m> is
+            described as follows: a class <m>[c]\in H_n(X)</m> can be represented (using the
+            small chains theorem) by a cycle <m>c=a+b</m> with <m>a\in C_n(A)</m> and
+            <m>b\in C_n(B)</m>; then <m>\partial a=-\partial b</m> is a chain in <m>A\cap B</m>,
+            and <m>\partial_*[c]:=[\partial a]\in H_{n-1}(A\cap B)</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Apply the long exact sequence in homology to the short exact sequence of chain
+            complexes displayed above, and use the small chains isomorphism
+            <m>H_n^{\mathcal{U}}(X)\cong H_n(X)</m>.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        There is also a reduced version: if <m>A\cap B</m> is nonempty, the same argument
+        applied to the augmented complexes gives an exact sequence
+        <md>
+          \cdots\to\widetilde{H}_n(A\cap B)\to\widetilde{H}_n(A)\oplus\widetilde{H}_n(B)\to\widetilde{H}_n(X)\to\widetilde{H}_{n-1}(A\cap B)\to\cdots
+        </md>
+        We will use the reduced form for spheres.
+      </p>
+      <p>
+        Schematically, the Mayer–Vietoris sequence reads:
+        <image width="90%">
+          <description>
+            The Mayer–Vietoris long exact sequence rendered as a zigzag, with rows for each
+            degree connected by the connecting homomorphism.
+          </description>
+          <latex-image>
+            \begin{tikzcd}[column sep=small, row sep=small]
+              \cdots \arrow[r] \amp H_n(A\cap B) \arrow[r, "{(i_*,-j_*)}"] \amp H_n(A)\oplus H_n(B) \arrow[r, "k_*+\ell_*"] \amp H_n(X) \arrow[dll, out=-10, in=170, "\partial_*"] \\
+              \amp H_{n-1}(A\cap B) \arrow[r] \amp H_{n-1}(A)\oplus H_{n-1}(B) \arrow[r] \amp H_{n-1}(X) \arrow[dll, out=-10, in=170] \\
+              \amp \cdots
+            \end{tikzcd}
+          </latex-image>
+        </image>
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-homology-spheres">
+      <title>Homology of spheres</title>
+      <theorem xml:id="thm-homology-spheres">
+        <title>Homology of <m>S^n</m></title>
+        <statement>
+          <p>
+            For all <m>n\ge 0</m> and <m>k\ge 0</m>,
+            <md>
+              \widetilde{H}_k(S^n) \cong \begin{cases} \mathbb{Z} \amp \text{if } k=n,\\ 0 \amp \text{otherwise}.\end{cases}
+            </md>
+            Equivalently, <m>H_0(S^0)\cong\mathbb{Z}^2</m>, <m>H_k(S^0)=0</m> for
+            <m>k\ge 1</m>, and for <m>n\ge 1</m>,
+            <md>
+              H_k(S^n) \cong \begin{cases} \mathbb{Z} \amp \text{if } k=0\text{ or } k=n,\\ 0 \amp \text{otherwise}.\end{cases}
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            The case <m>n=0</m> is direct: <m>S^0</m> is two points, so
+            <m>H_0(S^0)\cong\mathbb{Z}^2</m> and <m>H_k(S^0)=0</m> for <m>k\ge 1</m> by
+            <xref ref="prop-h-zero"/> and <xref ref="prop-homology-point"/>. We proceed by
+            induction on <m>n\ge 1</m>.
+          </p>
+          <p>
+            Cover <m>S^n</m> by <m>A:=S^n\setminus\{N\}</m> and <m>B:=S^n\setminus\{S\}</m>,
+            the complements of the north and south poles. Both <m>A</m> and <m>B</m> are open,
+            and stereographic projection gives homeomorphisms <m>A\cong\mathbb{R}^n\cong B</m>.
+            In particular <m>A</m> and <m>B</m> are contractible, so
+            <m>\widetilde{H}_*(A)=\widetilde{H}_*(B)=0</m> by
+            <xref ref="cor-contractible-homology"/>. The intersection <m>A\cap B</m>
+            deformation retracts onto the equatorial <m>S^{n-1}</m>; concretely, the radial
+            projection <m>(x,t)\mapsto x/|x|</m> realizes <m>A\cap B\simeq S^{n-1}</m>.
+          </p>
+          <p>
+            The reduced Mayer–Vietoris sequence becomes
+            <md>
+              \cdots\to\widetilde{H}_k(A)\oplus\widetilde{H}_k(B)\to\widetilde{H}_k(S^n)\xrightarrow{\partial_*}\widetilde{H}_{k-1}(S^{n-1})\to\widetilde{H}_{k-1}(A)\oplus\widetilde{H}_{k-1}(B)\to\cdots
+            </md>
+            which, since the <m>A</m>- and <m>B</m>-terms vanish, collapses to isomorphisms
+            <md>
+              \partial_*\colon\widetilde{H}_k(S^n)\xrightarrow{\;\sim\;}\widetilde{H}_{k-1}(S^{n-1})\quad\text{for all } k\ge 1.
+            </md>
+            By induction <m>\widetilde{H}_{k-1}(S^{n-1})</m> is <m>\mathbb{Z}</m> when
+            <m>k-1=n-1</m> and zero otherwise, giving the claim. The case <m>k=0</m> is
+            handled by path-connectedness of <m>S^n</m> for <m>n\ge 1</m>.
+          </p>
+        </proof>
+      </theorem>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-applications-spheres">
+      <title>Applications</title>
+      <p>
+        Two classical consequences are immediate.
+      </p>
+      <corollary xml:id="cor-invariance-of-dimension">
+        <title>Invariance of dimension</title>
+        <statement>
+          <p>
+            If <m>m\neq n</m>, then <m>\mathbb{R}^m</m> and <m>\mathbb{R}^n</m> are not
+            homeomorphic. More generally, <m>S^m</m> and <m>S^n</m> are not homotopy equivalent
+            when <m>m\neq n</m>.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Suppose <m>m,n\ge 1</m>. If <m>S^m\simeq S^n</m>, then
+            <m>\widetilde{H}_*(S^m)\cong\widetilde{H}_*(S^n)</m> by
+            <xref ref="cor-homotopy-equivalence-homology"/>; but
+            <xref ref="thm-homology-spheres"/> shows these are concentrated in different
+            degrees. For <m>\mathbb{R}^m\not\cong\mathbb{R}^n</m>, observe that a
+            hypothetical homeomorphism would restrict to a homeomorphism
+            <m>\mathbb{R}^m\setminus\{0\}\cong\mathbb{R}^n\setminus\{0'\}</m> for some point
+            <m>0'</m>. Since <m>\mathbb{R}^k\setminus\{0\}\simeq S^{k-1}</m>, this would give
+            <m>S^{m-1}\simeq S^{n-1}</m>, contradicting the previous statement. The remaining
+            cases (<m>m=0</m> or <m>n=0</m>) are handled by counting connected components.
+          </p>
+        </proof>
+      </corollary>
+      <corollary xml:id="cor-no-retraction">
+        <title>No retraction <m>D^n\to S^{n-1}</m></title>
+        <statement>
+          <p>
+            For <m>n\ge 1</m> there is no continuous retraction <m>r\colon D^n\to S^{n-1}</m>
+            (i.e., no continuous <m>r</m> with <m>r|_{S^{n-1}}=\mathrm{id}</m>).
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Such a retraction would give, with <m>\iota\colon S^{n-1}\hookrightarrow D^n</m>,
+            <m>r\circ\iota=\mathrm{id}_{S^{n-1}}</m>, whence
+            <m>r_*\circ\iota_*=\mathrm{id}</m> on <m>\widetilde{H}_{n-1}</m>. But
+            <m>\widetilde{H}_{n-1}(D^n)=0</m> while
+            <m>\widetilde{H}_{n-1}(S^{n-1})\cong\mathbb{Z}</m> — contradiction.
+          </p>
+        </proof>
+      </corollary>
+      <theorem xml:id="thm-brouwer-fixed-point">
+        <title>Brouwer fixed point theorem</title>
+        <statement>
+          <p>
+            Every continuous map <m>f\colon D^n\to D^n</m> has a fixed point.
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Suppose <m>f(x)\neq x</m> for all <m>x\in D^n</m>. Define
+            <m>r\colon D^n\to S^{n-1}</m> by sending <m>x</m> to the point where the ray from
+            <m>f(x)</m> through <m>x</m> meets <m>S^{n-1}</m>. Then <m>r</m> is continuous and
+            <m>r|_{S^{n-1}}=\mathrm{id}</m> (a point on the boundary maps to itself), giving a
+            retraction <m>D^n\to S^{n-1}</m>. This contradicts
+            <xref ref="cor-no-retraction"/>.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        On Wednesday we will leverage Mayer–Vietoris (and a related "good pair" version of
+        excision) to compute the homology of further spaces — most notably the complex and
+        real projective spaces. The key new input there is to understand the effect on
+        homology of attaching a single cell, leading to the calculation
+        <md>
+          H_k(\mathbb{RP}^n) \cong \begin{cases}
+            \mathbb{Z} \amp k=0,\\
+            \mathbb{Z}/2 \amp 0&lt;k&lt;n,\;k\text{ odd},\\
+            0 \amp 0&lt;k&lt;n,\;k\text{ even},\\
+            \mathbb{Z} \amp k=n,\;n\text{ odd},\\
+            0 \amp k=n,\;n\text{ even},\\
+            0 \amp k&gt;n.
+          \end{cases}
+        </md>
+      </p>
+    </subsubsection>
+  </subsection>
+
+  <subsection>
+    <title>Wednesday</title>
+    <p>
+      Today we put singular homology to work in earnest. We introduce one technical
+      ingredient — the <term>good-pair theorem</term>, which identifies the relative
+      homology <m>H_*(X,A)</m> with the reduced homology of the quotient
+      <m>X/A</m> for nice pairs — and then carry out two cellular computations:
+      <m>H_*(\mathbb{CP}^n)</m> (where the answer is uniformly <m>\mathbb{Z}</m> in
+      every even degree up to <m>2n</m>) and
+      <m>H_*(\mathbb{RP}^n)</m> (where torsion appears for the first time, courtesy of
+      a degree-<m>2</m> attaching map).
+    </p>
+
+    <subsubsection xml:id="subsubsec-good-pair">
+      <title>The good-pair theorem</title>
+      <p>
+        Let <m>(X,A)</m> be a CW pair, meaning <m>X</m> is a CW complex and
+        <m>A\subseteq X</m> is a subcomplex. The homotopy extension property
+        of CW pairs (developed in week 10) implies that <m>A</m> has an open neighborhood
+        <m>V\subseteq X</m> that deformation retracts onto <m>A</m> — concretely, an
+        open thickening one cell at a time. We use this to relate
+        <m>H_n(X,A)</m> to the homology of the quotient space.
+      </p>
+      <theorem xml:id="thm-good-pair">
+        <title>Good-pair theorem</title>
+        <statement>
+          <p>
+            If <m>(X,A)</m> is a CW pair, then the quotient map <m>q\colon X\to X/A</m>
+            induces, for every <m>n\ge 0</m>, an isomorphism
+            <md>
+              q_*\colon H_n(X, A)\;\xrightarrow{\;\sim\;}\;\widetilde{H}_n(X/A).
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            Choose an open neighborhood <m>V\supseteq A</m> in <m>X</m> that deformation
+            retracts to <m>A</m>. The deformation retraction induces, by
+            <xref ref="thm-relative-homotopy-invariance"/> and the five-lemma applied to the
+            long exact sequence of the pair, an isomorphism <m>H_n(X,A)\xrightarrow{\sim}H_n(X,V)</m>.
+            By excision (<xref ref="thm-excision"/>) applied to <m>Z:=A</m>, whose closure
+            is contained in the interior of <m>V</m>,
+            <md>
+              H_n(X\setminus A,\, V\setminus A)\;\xrightarrow{\;\sim\;}\;H_n(X, V).
+            </md>
+            The same argument applied inside <m>X/A</m> with <m>A</m> collapsed to the
+            basepoint gives <m>H_n(X/A,\, q(V)/A)\cong\widetilde{H}_n(X/A)</m> together
+            with an excision isomorphism
+            <m>H_n((X/A)\setminus(A/A),\,q(V)/A\setminus(A/A))\xrightarrow{\sim}H_n(X/A,\,q(V)/A)</m>.
+            But <m>q</m> restricts to a homeomorphism
+            <m>X\setminus A\xrightarrow{\sim}(X/A)\setminus(A/A)</m> sending
+            <m>V\setminus A</m> homeomorphically to <m>q(V)/A\setminus(A/A)</m>, so the two
+            excised relative groups agree. Composing,
+            <md>
+              H_n(X,A) \;\cong\; H_n(X\setminus A, V\setminus A) \;\cong\; H_n(X/A, q(V)/A) \;\cong\; \widetilde{H}_n(X/A),
+            </md>
+            and tracing through the construction shows the composite is <m>q_*</m>.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        Combined with the long exact sequence of the pair <m>(X,A)</m>, the good-pair
+        theorem says that the homology of a CW complex is built up from the homology of
+        its skeleta by a connecting map whose target we can identify with
+        <m>\widetilde{H}_*</m> of an explicit quotient. In our applications,
+        <m>X/A</m> will be a wedge of spheres — typically just a single sphere — and the
+        sequence will be very tractable.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-homology-cpn">
+      <title>Complex projective space</title>
+      <p>
+        Recall that <m>\mathbb{CP}^n</m> has a CW structure with exactly one cell in each
+        even dimension <m>0,2,4,\ldots,2n</m> (and no cells in odd dimensions). The
+        <m>2k</m>-skeleton is naturally <m>\mathbb{CP}^k</m>, and the <m>2k</m>-cell is
+        attached to <m>\mathbb{CP}^{k-1}</m> via the Hopf map
+        <m>S^{2k-1}\to\mathbb{CP}^{k-1}</m>.
+      </p>
+      <theorem xml:id="thm-homology-cpn">
+        <title>Homology of <m>\mathbb{CP}^n</m></title>
+        <statement>
+          <p>
+            For all <m>n\ge 0</m> and <m>k\ge 0</m>,
+            <md>
+              H_k(\mathbb{CP}^n) \;\cong\; \begin{cases}
+                \mathbb{Z} \amp \text{if } 0\le k\le 2n \text{ and } k\text{ is even},\\
+                0 \amp \text{otherwise}.
+              \end{cases}
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            By induction on <m>n</m>. The base case <m>n=0</m> is
+            <m>\mathbb{CP}^0=\mathrm{pt}</m>, for which the claim is
+            <xref ref="prop-homology-point"/>. For the inductive step, consider the CW pair
+            <m>(\mathbb{CP}^n,\mathbb{CP}^{n-1})</m>. The quotient
+            <m>\mathbb{CP}^n/\mathbb{CP}^{n-1}</m> is obtained by collapsing the boundary
+            of the <m>2n</m>-cell to a point and so is homeomorphic to <m>S^{2n}</m>. The
+            good-pair theorem (<xref ref="thm-good-pair"/>) and
+            <xref ref="thm-homology-spheres"/> yield
+            <md>
+              H_k(\mathbb{CP}^n,\mathbb{CP}^{n-1})\;\cong\;\widetilde{H}_k(S^{2n})\;=\;
+                \begin{cases}\mathbb{Z}\amp k=2n,\\ 0\amp\text{otherwise}.\end{cases}
+            </md>
+            The long exact sequence of the pair therefore reduces to
+            <md>
+              \cdots\to H_k(\mathbb{CP}^{n-1})\to H_k(\mathbb{CP}^n)\to H_k(\mathbb{CP}^n,\mathbb{CP}^{n-1})\to H_{k-1}(\mathbb{CP}^{n-1})\to\cdots
+            </md>
+            with the relative term vanishing except in degree <m>2n</m>. Two cases:
+          </p>
+          <p>
+            <em>Case <m>k\neq 2n,2n-1</m>.</em> Both adjacent relative terms vanish, so
+            <m>H_k(\mathbb{CP}^n)\cong H_k(\mathbb{CP}^{n-1})</m>; the inductive hypothesis
+            gives the claimed value.
+          </p>
+          <p>
+            <em>Cases <m>k=2n</m> or <m>k=2n-1</m>.</em> The relevant portion of the long
+            exact sequence is
+            <md>
+              0 \to H_{2n}(\mathbb{CP}^{n-1})\to H_{2n}(\mathbb{CP}^n)\to\mathbb{Z}\xrightarrow{\partial}H_{2n-1}(\mathbb{CP}^{n-1})\to H_{2n-1}(\mathbb{CP}^n)\to 0.
+            </md>
+            By induction, <m>H_{2n}(\mathbb{CP}^{n-1})=0</m> (because <m>2n&gt; 2(n-1)</m>)
+            and <m>H_{2n-1}(\mathbb{CP}^{n-1})=0</m> (because <m>2n-1</m> is odd). So the
+            sequence collapses to
+            <md>
+              0\to H_{2n}(\mathbb{CP}^n)\to\mathbb{Z}\to 0\to H_{2n-1}(\mathbb{CP}^n)\to 0,
+            </md>
+            giving <m>H_{2n}(\mathbb{CP}^n)\cong\mathbb{Z}</m> and
+            <m>H_{2n-1}(\mathbb{CP}^n)=0</m>, as claimed.
+          </p>
+        </proof>
+      </theorem>
+      <p>
+        The computation is unusually painless because the absence of odd-dimensional
+        cells makes the connecting map land in a zero group every time. The next example
+        is harder because real projective space has cells in every dimension, so the
+        connecting map carries genuine information.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-homology-rpn">
+      <title>Real projective space</title>
+      <p>
+        Recall the CW structure on <m>\mathbb{RP}^n</m> with one <m>k</m>-cell in each
+        dimension <m>0\le k\le n</m>. The <m>k</m>-skeleton is <m>\mathbb{RP}^k</m>, and
+        the <m>k</m>-cell is attached to <m>\mathbb{RP}^{k-1}</m> via the antipodal
+        quotient
+        <md>
+          \varphi_k\colon S^{k-1}\twoheadrightarrow S^{k-1}/(x\sim -x)\;=\;\mathbb{RP}^{k-1}.
+        </md>
+        Collapsing <m>\mathbb{RP}^{n-1}</m> in <m>\mathbb{RP}^n</m> identifies the entire
+        boundary of the top <m>n</m>-cell to a single point, so
+        <m>\mathbb{RP}^n/\mathbb{RP}^{n-1}\cong D^n/\partial D^n\cong S^n</m>. By the
+        good-pair theorem,
+        <md>
+          H_k(\mathbb{RP}^n,\mathbb{RP}^{n-1})\;\cong\;\widetilde{H}_k(S^n)\;=\;\begin{cases}\mathbb{Z}\amp k=n,\\ 0\amp\text{otherwise}.\end{cases}
+        </md>
+        Plugging into the long exact sequence of the pair, every degree <m>k\notin\{n,n-1\}</m>
+        gives an isomorphism <m>H_k(\mathbb{RP}^{n-1})\cong H_k(\mathbb{RP}^n)</m>, while
+        the two interesting degrees fit into
+        <md>
+          0\to H_n(\mathbb{RP}^{n-1})\to H_n(\mathbb{RP}^n)\to\mathbb{Z}\xrightarrow{\partial_n}H_{n-1}(\mathbb{RP}^{n-1})\to H_{n-1}(\mathbb{RP}^n)\to 0.
+          \tag{\(*\)}
+        </md>
+        Everything reduces to identifying the connecting map <m>\partial_n</m>.
+      </p>
+
+      <lemma xml:id="lem-rpn-connecting-map">
+        <title>The connecting map for <m>(\mathbb{RP}^n,\mathbb{RP}^{n-1})</m></title>
+        <statement>
+          <p>
+            For <m>n\ge 2</m>, the connecting homomorphism
+            <m>\partial_n\colon\mathbb{Z}\to H_{n-1}(\mathbb{RP}^{n-1})</m> in the
+            sequence (<m>*</m>) sends the generator to the class of the attaching map:
+            <md>
+              \partial_n(1) \;=\; [\varphi_n]_*\bigl([S^{n-1}]\bigr) \;\in\; H_{n-1}(\mathbb{RP}^{n-1}),
+            </md>
+            and this class equals
+            <md>
+              \begin{cases}
+                \pm 2\cdot\text{generator} \amp \text{if } n \text{ is even},\\
+                0 \amp \text{if } n \text{ is odd}.
+              \end{cases}
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            That <m>\partial_n(1)=[\varphi_n]_*[S^{n-1}]</m> is the standard description of
+            the connecting homomorphism for a pair <m>(X,A)</m> obtained by attaching an
+            <m>n</m>-cell along <m>\varphi</m>: the boundary of the relative
+            <m>n</m>-cycle (a singular simplex parameterizing the cell) is the image of the
+            <m>(n-1)</m>-sphere under the attaching map.
+          </p>
+          <p>
+            <em>Case <m>n</m> odd.</em> By induction (the case <m>n-1</m> of this very
+            theorem, treating the base case <m>n=1</m> directly: <m>\mathbb{RP}^1=S^1</m>),
+            <m>H_{n-1}(\mathbb{RP}^{n-1})=0</m> when <m>n-1</m> is even and <m>n-1\ge 2</m>.
+            For <m>n=1</m> the connecting map lands in <m>H_0(\mathbb{RP}^0)\cong\mathbb{Z}</m>
+            and is zero because <m>\varphi_1\colon S^0\to\mathrm{pt}</m> is constant. In
+            all cases <m>\partial_n=0</m>.
+          </p>
+          <p>
+            <em>Case <m>n</m> even.</em> By induction, <m>H_{n-1}(\mathbb{RP}^{n-1})\cong\mathbb{Z}</m>
+            (with <m>n-1</m> odd), and the quotient map
+            <m>q\colon\mathbb{RP}^{n-1}\to\mathbb{RP}^{n-1}/\mathbb{RP}^{n-2}\cong S^{n-1}</m>
+            induces an isomorphism on <m>H_{n-1}</m> — this is itself a special case of
+            the same long exact sequence, applied one dimension down: in the analogue of
+            (<m>*</m>) for <m>(\mathbb{RP}^{n-1},\mathbb{RP}^{n-2})</m>, both
+            <m>H_{n-1}(\mathbb{RP}^{n-2})</m> and <m>H_{n-2}(\mathbb{RP}^{n-2})\to H_{n-2}(\mathbb{RP}^{n-1})</m>
+            are constrained so that
+            <m>q_*\colon H_{n-1}(\mathbb{RP}^{n-1})\to\widetilde{H}_{n-1}(S^{n-1})\cong\mathbb{Z}</m>
+            is an isomorphism (see the case <m>n-1</m> odd of the inductive hypothesis).
+          </p>
+          <p>
+            Pre-composing with <m>q</m> reduces the calculation to a self-map of
+            <m>S^{n-1}</m>:
+            <md>
+              q\circ\varphi_n \colon S^{n-1}\to\mathbb{RP}^{n-1}\to S^{n-1}.
+            </md>
+            This composite has degree <m>1+(-1)^n=2</m> (for <m>n</m> even) — geometrically,
+            a generic point <m>p\in S^{n-1}</m> has two preimages in <m>S^{n-1}</m> under
+            <m>\varphi_n</m> (namely <m>p</m> and its antipode), and the antipodal map on
+            <m>S^{n-1}</m> has degree <m>(-1)^n=+1</m>, so both preimages contribute
+            with the same sign and the local degrees add. Therefore
+            <m>(q\circ\varphi_n)_*=2\cdot\mathrm{id}_\mathbb{Z}</m>, and applying
+            <m>q_*^{-1}</m> shows <m>(\varphi_n)_*[S^{n-1}]=\pm 2\cdot\text{generator}</m>
+            of <m>H_{n-1}(\mathbb{RP}^{n-1})</m>.
+          </p>
+        </proof>
+      </lemma>
+
+      <theorem xml:id="thm-homology-rpn">
+        <title>Homology of <m>\mathbb{RP}^n</m></title>
+        <statement>
+          <p>
+            For all <m>n\ge 1</m> and <m>k\ge 0</m>,
+            <md>
+              H_k(\mathbb{RP}^n) \;\cong\; \begin{cases}
+                \mathbb{Z} \amp k=0,\\
+                \mathbb{Z}/2 \amp 0&lt;k&lt;n,\;k\text{ odd},\\
+                0 \amp 0&lt;k&lt;n,\;k\text{ even},\\
+                \mathbb{Z} \amp k=n,\;n\text{ odd},\\
+                0 \amp k=n,\;n\text{ even},\\
+                0 \amp k&gt;n.
+              \end{cases}
+            </md>
+          </p>
+        </statement>
+        <proof>
+          <p>
+            By induction on <m>n</m>. The base case <m>n=1</m> is
+            <m>\mathbb{RP}^1\cong S^1</m>, with <m>H_0=\mathbb{Z}</m>,
+            <m>H_1=\mathbb{Z}</m>, and higher groups zero — matching the formula
+            (<m>n=1</m> is odd, so <m>H_n=\mathbb{Z}</m>).
+          </p>
+          <p>
+            Assume the formula for <m>\mathbb{RP}^{n-1}</m>. For
+            <m>k&gt; n</m>, both <m>H_k(\mathbb{RP}^{n-1})</m> and the relative term vanish,
+            forcing <m>H_k(\mathbb{RP}^n)=0</m>. For <m>0\le k\le n-2</m>, the relative
+            term is also zero on both sides, so
+            <m>H_k(\mathbb{RP}^n)\cong H_k(\mathbb{RP}^{n-1})</m>, matching the formula.
+            It remains to compute <m>H_n(\mathbb{RP}^n)</m> and <m>H_{n-1}(\mathbb{RP}^n)</m>.
+            Recall the exact sequence (<m>*</m>) above:
+            <md>
+              0\to H_n(\mathbb{RP}^{n-1})\to H_n(\mathbb{RP}^n)\to\mathbb{Z}\xrightarrow{\partial_n}H_{n-1}(\mathbb{RP}^{n-1})\to H_{n-1}(\mathbb{RP}^n)\to 0.
+            </md>
+            By induction <m>H_n(\mathbb{RP}^{n-1})=0</m> (since <m>n&gt; n-1</m>), so
+            the sequence simplifies to
+            <md>
+              0\to H_n(\mathbb{RP}^n)\to\mathbb{Z}\xrightarrow{\partial_n}H_{n-1}(\mathbb{RP}^{n-1})\to H_{n-1}(\mathbb{RP}^n)\to 0.
+            </md>
+            We split on the parity of <m>n</m>.
+          </p>
+          <p>
+            <em>Case <m>n</m> odd, <m>n\ge 3</m>.</em> By induction
+            <m>H_{n-1}(\mathbb{RP}^{n-1})=0</m> (since <m>n-1</m> is even and
+            <m>n-1=n-1</m> is the top dimension of <m>\mathbb{RP}^{n-1}</m>, and the formula
+            says this group vanishes). The exact sequence collapses to
+            <m>0\to H_n(\mathbb{RP}^n)\to\mathbb{Z}\to 0\to H_{n-1}(\mathbb{RP}^n)\to 0</m>,
+            yielding <m>H_n(\mathbb{RP}^n)=\mathbb{Z}</m> and
+            <m>H_{n-1}(\mathbb{RP}^n)=0</m>. Both agree with the formula.
+          </p>
+          <p>
+            <em>Case <m>n</m> even, <m>n\ge 2</m>.</em> By induction
+            <m>H_{n-1}(\mathbb{RP}^{n-1})\cong\mathbb{Z}</m> (since <m>n-1</m> is odd and
+            <m>n-1</m> is the top dimension). By
+            <xref ref="lem-rpn-connecting-map"/>, the connecting map
+            <m>\partial_n\colon\mathbb{Z}\to\mathbb{Z}</m> is multiplication by
+            <m>\pm 2</m> — in particular, injective with image <m>2\mathbb{Z}</m>.
+            Therefore <m>H_n(\mathbb{RP}^n)=\ker\partial_n=0</m> and
+            <m>H_{n-1}(\mathbb{RP}^n)=\mathbb{Z}/2\mathbb{Z}</m>. Both match the formula.
+          </p>
+        </proof>
+      </theorem>
+
+      <p>
+        The pattern of homology groups
+        <md>
+          \mathbb{Z},\;\mathbb{Z}/2,\;0,\;\mathbb{Z}/2,\;0,\;\mathbb{Z}/2,\;\ldots
+        </md>
+        for <m>\mathbb{RP}^\infty</m> is striking: torsion appears in every odd
+        positive degree and nothing else survives. It is a first-time
+        encounter with non-free homology, and a first sign that
+        <m>\mathbb{Z}</m>-coefficients are not always the cleanest place to work.
+        Coefficients in <m>\mathbb{Z}/2</m>, where antipodal-degree subtleties disappear, give
+        <md>
+          H_k(\mathbb{RP}^n;\mathbb{Z}/2) \;\cong\; \mathbb{Z}/2 \quad\text{for all } 0\le k\le n,
+        </md>
+        a phenomenon that motivates the systematic study of <term>cohomology with arbitrary
+        coefficients</term> in a follow-up course.
+      </p>
+    </subsubsection>
+
+    <subsubsection xml:id="subsubsec-coda">
+      <title>Coda</title>
+      <p>
+        We have come a long way: starting from open sets in January, working through the
+        categorical apparatus of point-set topology, the homotopical language of CW
+        complexes, the algebraic machinery of chain complexes, and finally arriving at
+        excision and Mayer–Vietoris.
+      </p>
+      <p>
+        From here the natural continuations diverge. <term>Cellular homology</term>
+        re-organizes today's computation into a finite chain complex one can write down
+        directly from the CW structure. <term>Cohomology</term> introduces a
+        contravariant theory with a multiplicative structure (the cup product) that
+        distinguishes spaces whose ordinary homology agrees. Universal coefficients,
+        Künneth, and the Eilenberg–Steenrod axioms unify the picture. And the homotopy
+        groups <m>\pi_n(X)</m>, which we have steered around all year because they fail
+        excision, return as the deepest invariants of all. A second-semester sequel
+        would visit each of these in turn.
+      </p>
+      <p>
+        For now: thank you, and well done.
+      </p>
+    </subsubsection>
+  </subsection>
+
+</section>
